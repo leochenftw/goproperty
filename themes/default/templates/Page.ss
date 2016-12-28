@@ -14,6 +14,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
 		<% include GA %>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase">
 		<% include Header %>

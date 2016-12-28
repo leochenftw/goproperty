@@ -1,0 +1,16 @@
+---
+Name: 'silverstripejsmanager'
+After: 'framework/*','cms/*', 'siteconfig/*'
+---
+#SiteConfig:
+#  extensions:
+#    - SiteJSExtension
+SiteJsConfig:
+  extensions:
+    - Versioned("Stage","Live")
+#Controller:
+#  extensions:
+#    - SiteJSControllerExtension
+#SiteTree:
+#  extensions:
+#    - SiteJSPageDecorator

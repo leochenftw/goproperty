@@ -1,5 +1,7 @@
 <?php
 
 class ImageExt extends DataExtension {
-    protected static $has_one = array();
+    protected static $has_one = array(
+        'PropertyPage'      =>  'PropertyPage'
+    );
 }

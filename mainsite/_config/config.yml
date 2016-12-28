@@ -26,9 +26,21 @@ Page_Controller:
 ModelAdmin:
   extensions:
     - ModelAdminExtension
-
+Member:
+  extensions:
+    - AddressProperties
+    - MemberExtension
 SeoConfig:
     Page: true
     ErrorPage: false
     RedirectorPage: false
     VirtualPage: false
+PropertyPage:
+  MaxBedroom: 10
+  MaxBathroom: 5
+Image:
+  extensions:
+    - ImageExt
+GoogleAPIs:
+  Recaptcha: '6LcK8g8UAAAAAMspUwFUpvzBPZDgNN56AlUn6rqL'
+  Recaptcha_site: '6LcK8g8UAAAAAHvUzsx9cEF4X8-OJEbVmamdkz06'

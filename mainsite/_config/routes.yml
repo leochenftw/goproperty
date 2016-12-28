@@ -1,0 +1,9 @@
+---
+Name: apiroutes
+After: framework/routes#coreroutes
+---
+Director:
+  rules:
+    'signup': 'Signup'
+    'signin': 'Signin'
+    'member': 'Dashboard'
