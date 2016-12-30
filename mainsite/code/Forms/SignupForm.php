@@ -50,10 +50,11 @@ class SignupForm extends Form {
     				$check = $this->PassCheck($data['Email'], $data['Password']['_Password']);
 
     				if ($check['status']) {
-    					$customer = new Member();
-    					$form->saveInto($customer);
-    					$customer->write();
-
+    					$member = new Member();
+    					$form->saveInto($member);
+    					$member->write();
+                		$email = new ConfirmationEmail($member);
+                		$email->send();
     					$this->sessionMessage('Thank you for signing up! We have sent you an activation email to you. Please follow the instruction and activate your account.', 'good');
     				} else {
     					$messages = $check['messages'];

@@ -4,8 +4,8 @@ use SaltedHerring\Debugger;
 class Signin extends Page_Controller
 {
     private static $allowed_actions = array(
-        'index',
-        'SigninForm'
+        'SigninForm',
+        'resend'
     );
 
     public function index($request) {
@@ -16,6 +16,19 @@ class Signin extends Page_Controller
             $this->redirect($backURL);
         }
         return $this->renderWith(array('Signin', 'Page'));
+    }
+
+    public function resend()
+    {
+        if ($member = Member::CurrentUser()) {
+            if (!empty($member->ValidationKey)) {
+    			$email = new ConfirmationEmail($member);
+    			$email->send();
+                return true;
+    		}
+        }
+
+        return false;
     }
 
     public function SigninForm() {

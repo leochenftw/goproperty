@@ -5,6 +5,9 @@ After: 'framework/*','cms/*'
 # YAML configuration for SilverStripe
 # See http://doc.silverstripe.org/framework/en/topics/configuration
 # Caution: Indentation through two spaces, not tabs
+Email:
+  admin_email: 'goProperty <admin@goproperty.co.nz>'
+  noreply_email: 'goProperty <no-reply@goproperty.co.nz>'
 SiteVersion:
   version: 1.0
 SSViewer:

@@ -8,6 +8,10 @@ class SigninForm extends MemberLoginForm {
 		parent::__construct($controller, $name);
 
 		$fields = parent::Fields();
+        $actions = parent::Actions();
+        if ($btnSignin = $actions->fieldByName('action_dologin')) {
+            $btnSignin->setTitle('Sign in');
+        }
 
 		$this->setFormMethod('POST',true);
 		$this->setFormAction(Controller::join_links(BASE_URL, "signin", "SigninForm"));
@@ -19,13 +23,14 @@ class SigninForm extends MemberLoginForm {
 
 	public function dologin($data) {
         Session::clear('Message');
-        $email = $data['Email'];
-        if ($member = Member::get()->filter('Email', $email)->first()) {
-            if (!empty($member->ValidationKey)) {
-                $this->sessionMessage('You need to activate your account first.', 'bad');
-                return $this->controller->redirectBack();
-            }
-        }
+        /* uncomment below to disallow not-validated users to login */
+        // $email = $data['Email'];
+        // if ($member = Member::get()->filter('Email', $email)->first()) {
+        //     if (!empty($member->ValidationKey)) {
+        //         $this->sessionMessage('You need to activate your account first.', 'bad');
+        //         return $this->controller->redirectBack();
+        //     }
+        // }
          if($this->performLogin($data)) {
              $this->logInUserAndRedirect($data);
          } else {

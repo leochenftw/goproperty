@@ -1,0 +1,1 @@
+<div class="message-warning">You have not validated your email address. You may check your email inbox and junkbox, or <a target="_blank" href="/signin/resend" title="Resend validation email">request another validation email</a>.</div>

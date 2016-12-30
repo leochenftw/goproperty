@@ -100,7 +100,7 @@ class ConfirmationEmail extends Email {
 	}
 
 	public function __construct($member, $from = null) {
-		$from    = $from ? $from : 'no-reply@nzyogo.co.nz';
+		$from    = $from ? $from : Config::inst()->get('Email', 'noreply_email');
 		$to      = $member->Email;
 		$subject = self::get_parsed_string(self::DEFAULT_SUBJECT, $member);
 
