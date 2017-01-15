@@ -5,14 +5,25 @@ class MemberProfileForm extends Form {
 	public function __construct($controller) {
 		$member = Member::currentUser();
 		$fields = new FieldList();
-        $fields->push(LiteralField::create('Cropped', $this->getCroppedPortrait()->FillMax(300, 300)));
+        $fields->push(LiteralField::create('Cropped', !empty($this->getCroppedPortrait()) ? $this->getCroppedPortrait()->FillMax(300, 300) : null));
         $fields->push($uploader = UploadField::create('Image', 'Portrait'));
 		$fields->push($email = EmailField::create('Email', 'Email')->setValue($member->Email)->setDescription('<a data-title="My profile | Change email address" href="/member/action/email-update" class="ajax-routed">Change email address</a>')->performReadonlyTransformation());
 		$fields->push($first = TextField::create('FirstName', 'First name')->setValue($member->FirstName));
 		$fields->push($last = TextField::create('Surname', 'Surname')->setValue($member->Surname));
+        $fields->push($addr = TextField::create('FullAddress', 'Address')->setValue($member->FullAddress));
 		$fields->push($first = TextField::create('ContactNumber', 'Landline/Mobile')->setValue($member->ContactNumber));
 
-        $fields->push(HiddenField::create('ContainerX','ContainerX', $this->getCoordinate('ContainerX')));
+        $fields->push(HiddenField::create('StreetNumber','StreetNumber', $member->StreetNumber));
+        $fields->push(HiddenField::create('StreetName','StreetName', $member->StreetName));
+        $fields->push(HiddenField::create('Suburb','Suburb', $member->Suburb));
+        $fields->push(HiddenField::create('City','City', $member->City));
+        $fields->push(HiddenField::create('Region','Region', $member->Region));
+        $fields->push(HiddenField::create('Country','Country', $member->Country));
+        $fields->push(HiddenField::create('PostCode','PostCode', $member->PostCode));
+        $fields->push(HiddenField::create('Lat','Lat', $member->Lat));
+        $fields->push(HiddenField::create('Lng','Lng', $member->Lng));
+
+        $fields->push(HiddenField::create('ContainerX','ContainerX', $wtf = $this->getCoordinate('ContainerX')));
         $fields->push(HiddenField::create('ContainerY','ContainerY', $this->getCoordinate('ContainerY')));
         $fields->push(HiddenField::create('ContainerWidth','ContainerWidth', $this->getCoordinate('ContainerWidth')));
         $fields->push(HiddenField::create('ContainerHeight','ContainerHeight', $this->getCoordinate('ContainerHeight')));

@@ -38,7 +38,10 @@
  * Blocks.
  * */
 @import 'blocks/cropperjs',
-        'blocks/docking-bay';
+        'blocks/cropperjs-override',
+        'blocks/docking-bay',
+        'blocks/datetimepicker',
+        'blocks/property-form';
 /**
  * Plugins.
  * */

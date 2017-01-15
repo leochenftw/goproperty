@@ -10,10 +10,12 @@ class AddressProperties extends DataExtension
         'FullAddress'       =>  'Text',
         'StreetNumber'      =>  'Varchar(8)',
         'StreetName'        =>  'Varchar(512)',
+        'Suburb'            =>  'Varchar(128)',
         'City'              =>  'Varchar(128)',
         'Region'            =>  'Varchar(128)',
         'Country'           =>  'Varchar(128)',
         'Lat'               =>  'Varchar(64)',
-        'Lng'               =>  'Varchar(64)'
+        'Lng'               =>  'Varchar(64)',
+        'PostCode'          =>  'Varchar(16)'
     );
 }

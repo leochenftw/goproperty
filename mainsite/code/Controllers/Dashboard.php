@@ -12,7 +12,11 @@ class Dashboard extends Page_Controller {
 		'MemberProfileForm',
 		'UpdatePasswordForm',
 		'UpdateEmailForm',
-        'isValidated'
+        //'PropertyForm',
+		'RentForm',
+		'SaleForm',
+        'AccountUpgradeForm',
+        'addCreditcardForm'
 	);
 
 	public function index($request) {
@@ -20,8 +24,29 @@ class Dashboard extends Page_Controller {
 			return $this->redirect('/signin?BackURL=/member');
 		}
 		$tab = $request->param('tab');
+
+        if (($tab == 'list-property-for-sale' || $tab == 'agencies') && !$this->isAgent()) {
+            return $this->redirect('/member/action/upgrade');
+        }
+
 		if ($request->isAjax()) {
 			switch ($tab) {
+
+                case 'my-properties':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('MyProperties'));
+                    break;
+
+                case 'payment-history':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('PaymentHistory'));
+                    break;
+
+                case 'creditcards':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('Creditcards'));
+                    break;
+
+                case 'agencies':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('Agencies'));
+                    break;
 
 				case 'password':
 					return $this->customise(array('tab' => $tab))->renderWith(array('UpdatePasswordForm'));
@@ -30,6 +55,22 @@ class Dashboard extends Page_Controller {
 				case 'email-update':
 					return $this->customise(array('tab' => $tab))->renderWith(array('UpdateEmailForm'));
 					break;
+
+                case 'list-property-for-rent':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('PropertyForm'));
+					break;
+
+				case 'list-property-for-sale':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('PropertyForm'));
+					break;
+
+                case 'upgrade':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('AccountUpgradeForm'));
+					break;
+
+                case 'cancel-subscription':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('SubscriptionManager'));
+                    break;
 
 				default:
 					return $this->customise(array('tab' => $tab))->renderWith(array('MemberProfileForm'));
@@ -47,16 +88,65 @@ class Dashboard extends Page_Controller {
 		$this->redirect('/');
 	}
 
-	public function MemberProfileForm() {
+    public function addCreditcardForm()
+    {
+        return new addCreditcardForm($this);
+    }
+
+    public function AccountUpgradeForm()
+    {
+        return new AccountUpgradeForm($this);
+    }
+
+	public function MemberProfileForm()
+    {
 		return new MemberProfileForm($this);
 	}
 
-	public function UpdatePasswordForm() {
+	public function UpdatePasswordForm()
+    {
 		return new UpdatePasswordForm($this);
 	}
 
-	public function UpdateEmailForm() {
+	public function UpdateEmailForm()
+    {
 		return new UpdateEmailForm($this);
+	}
+
+	public function RentForm()
+	{
+		$property = null;
+        if ($prop_id = $this->request->getVar('property_id')) {
+            $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($prop_id);
+            if (empty($property)) {
+                return $this->httpError(404);
+            }
+        }
+
+        if (!empty($property->RentOrSale) && $property->RentOrSale != 'rent') {
+            $this->redirect('/member/action/list-property-for-sale?property_id=' . $prop_id);
+            return;
+        }
+
+        return new RentForm($this, $property);
+	}
+
+	public function SaleForm()
+	{
+        $property = null;
+        if ($prop_id = $this->request->getVar('property_id')) {
+            $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($prop_id);
+            if (empty($property)) {
+                return $this->httpError(404);
+            }
+
+            if (!empty($property->RentOrSale) && $property->RentOrSale != 'sale') {
+                $this->redirect('/member/action/list-property-for-rent?property_id=' . $prop_id);
+                return;
+            }
+        }
+
+        return new SaleForm($this, $property);
 	}
 
     public function Link($action = NULL) {
@@ -70,5 +160,64 @@ class Dashboard extends Page_Controller {
     public function EmailisValidated()
     {
         return empty(Member::currentUser()->ValidationKey);
-    }    
+    }
+
+    public function getExistings()
+    {
+        $request = $this->controller->request;
+        Debugger::inspect($request);
+        return null;
+    }
+
+    public function getMyProperties()
+    {
+        $properties = Versioned::get_by_stage('PropertyPage', 'Stage')->filter(array('ListerID' => Member::currentUserID()));
+
+        return $properties;
+    }
+
+    public function isAgent()
+    {
+        if ($member = Member::currentUser()) {
+            return $member->isAgent();
+        }
+
+        return false;
+    }
+
+    public function getAgencies()
+    {
+        if ($member = Member::currentUser()) {
+            return $member->MemberOf();
+        }
+
+        return null;
+    }
+
+    public function getCreditcards()
+    {
+        if ($member = Member::currentUser()) {
+            return $member->Creditcards();
+        }
+
+        return null;
+    }
+
+    public function getSubscription()
+    {
+        if ($member = Member::currentUser()) {
+            return $member->getSubscription();
+        }
+
+        return null;
+    }
+
+    public function getPaymentHistory()
+    {
+        if ($member = Member::currentUser()) {
+            return $member->getPaymentHistory();
+        }
+
+        return null;
+    }
 }

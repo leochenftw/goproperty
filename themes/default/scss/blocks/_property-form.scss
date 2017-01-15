@@ -1,0 +1,123 @@
+.property-form {
+    .fields {
+        &__main,
+        &__aside {
+            width: 100%;
+        }
+
+        &__main {
+            max-width: rem(700);
+            padding-right: rem(20);
+        }
+
+        &__aside {
+            max-width: rem(500);
+            #location-on-map {
+                position: relative;
+                padding-top: 56.25%;
+            }
+
+            .previewable-uploader {
+                &.limit-reached {
+                    .previewable-uploader__previewable {
+                        max-width: 100%;
+                    }
+
+                    .previewable-uploader__uploadable {
+                        display: none;
+                    }
+                }
+
+                &__previewable {
+                    padding: rem(20) 0;
+                    padding-right: rem(10);
+                    width: auto;
+                    max-width: calc(100% - 102px);
+                    overflow: hidden;
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                    &.hide {
+                        display: none;
+                    }
+                    &__thumbnail {
+                        @include flex-shrink(0);
+                        margin-right: rem(10);
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        .btn-remove-thumbnail {
+                            visibility: hidden;
+                            opacity: 0;
+                            @include transition(all ease-in-out 0.5s);
+                            position: absolute;
+                            width: rem(20);
+                            height: rem(20);
+                            background-color: #ed1c24;
+                            text-indent: -999px;
+                            overflow: hidden;
+                            border-radius: 50%;
+                            outline: 0;
+                            border: none;
+                            top: rem(-5);
+                            right: rem(-5);
+                        }
+
+                        &:hover {
+                            .btn-remove-thumbnail {
+                                visibility: visible;
+                                opacity: 1;
+                            }
+
+                        }
+
+                        .thumbnail-core {
+                            border-radius: rem(10);
+                            border: 1px solid #ccc;
+                            opacity: 0;
+                            visibility: hidden;
+                            overflow: hidden;
+                            @include transition(opacity 0.5s);
+                            @include transition-delay(0.01s);
+                            &.show {
+                                visibility: visible;
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+
+                &__uploadable {
+                    margin-top: rem(20);
+                    position: relative;
+                    background-color: #d8d8d8;
+                    border: rem(4) dashed #333;
+                    border-radius: rem(10);
+                    height: rem(92);
+                    width: rem(92);
+                    overflow: hidden;
+
+                    &:before {
+                        content: '+';
+                        display: block;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        font-size: rem(42);
+                        color: #999;
+                        pointer-events: none;
+                        line-height: 1;
+                        @include transform(translate(-50%, -50%));
+                    }
+                    input {
+                        display: block;
+                        padding-left: rem(999);
+                        height: 100%;
+                        outline: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

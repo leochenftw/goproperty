@@ -27,6 +27,8 @@
     "zepto": "~1.0.0",
     "gsap": "^1.18.2",
     "salted-js": "*",
-    "cropperjs": "^0.8.1"
+    "cropperjs": "^0.8.1",
+    "jquery.scrollTo": "^2.1.2",
+    "datetimepicker": "^2.5.4"
   }
 }

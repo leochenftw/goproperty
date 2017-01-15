@@ -7,3 +7,4 @@ Director:
     'signup': 'Signup'
     'signin': 'Signin'
     'member': 'Dashboard'
+    'checkout/complete': 'PaystationController'

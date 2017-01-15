@@ -30,20 +30,62 @@ ModelAdmin:
   extensions:
     - ModelAdminExtension
 Member:
+  MonthlySubscription: 50
   extensions:
     - AddressProperties
     - MemberExtension
+    - OrderExtension
 SeoConfig:
     Page: true
     ErrorPage: false
     RedirectorPage: false
     VirtualPage: false
 PropertyPage:
+  DailyCharge: 1.67
   MaxBedroom: 10
   MaxBathroom: 5
+  MaxCapacity: 20
+  RentForm:
+    - 'Apartment'
+    - 'House'
+    - 'Townhouse'
+    - 'Unit'
+  SaleForm:
+    - 'Apartment'
+    - 'House'
+    - 'Lifestyle bare land'
+    - 'Lifestyle dwelling'
+    - 'Section'
+    - 'Townhouse'
+    - 'Unit'
+  Parking:
+    - 'No carpark'
+    - 'On-street'
+    - 'Off-street'
+    - 'Garage'
+    - 'Carport'
+    - 'Residential parking'
+    - 'Coupon parking'
+  IdealTenants:
+    - 'Student'
+    - 'Professional'
 Image:
   extensions:
     - ImageExt
 GoogleAPIs:
   Recaptcha: '6LcK8g8UAAAAAMspUwFUpvzBPZDgNN56AlUn6rqL'
   Recaptcha_site: '6LcK8g8UAAAAAHvUzsx9cEF4X8-OJEbVmamdkz06'
+
+SaltedPayment:
+  MerchantSettings:
+    MerchantHomepageURL: "https://goprop.leochen.co.nz"
+    SuccessURL: "https://goprop.leochen.co.nz/cart/checkout/success"
+    FailureURL: "https://goprop.leochen.co.nz/cart/checkout/fail"
+    CancellationURL: "https://goprop.leochen.co.nz/cart/checkout/cancel"
+    CardSavedURL: "https://goprop.leochen.co.nz/member/action/creditcards"
+    PaymentScheduledURL: "https://goprop.leochen.co.nz/cart/checkout/pending"
+  GatewaySettings:
+    Paystation:
+        #HMacMode: '0',
+        #HMacSecret: 'oXqsidB0IxFNyWev'
+        pstn_pi: '615680'

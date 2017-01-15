@@ -1,3 +1,4 @@
+window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
     if ($('.docking-bay').length > 0) {
@@ -23,15 +24,73 @@ $(document).ready(function(e)
                 }
             });
         });
-
     }
 
+    if ($('#MemberProfileForm_MemberProfileForm_FullAddress').length > 0) {
+        var gplace = new autoAddress(gplaceapi, function()
+        {
+            var txt     =   gplace.gplacised('MemberProfileForm_MemberProfileForm_FullAddress'),
+                form    =   $('#MemberProfileForm_MemberProfileForm');
+            txt.addListener('place_changed', function()
+            {
+        		// Get the place details from the autocomplete object.
+        		var place = txt.getPlace();
+                form.find('input[name="Lat"]').val(place.geometry.location.lat());
+                form.find('input[name="Lng"]').val(place.geometry.location.lng());
+
+        		for (var i = 0; i < place.address_components.length; i++) {
+                    var addressType = place.address_components[i].types[0];
+                    var field = matchField(addressType);
+                    if (field.length > 0) {
+                        form.find('input[name="' + field + '"]').val(place.address_components[i].long_name);
+                    }
+
+        		}
+        	});
+        });
+    }
+
+    $('.property-form').each(function(i, el)
+    {
+        $(this).formWork();
+    });
+
 });
+
+function matchField(gprop) {
+    var field = '';
+    switch (gprop) {
+        case 'street_number':
+            field = 'StreetNumber';
+            break;
+        case 'route':
+            field = 'StreetName';
+            break;
+        case 'sublocality_level_1':
+            field = 'Suburb';
+            break;
+        case 'locality':
+            field = 'City';
+            break;
+        case 'administrative_area_level_1':
+            field = 'Region';
+            break;
+        case 'country':
+            field = 'Country';
+            break;
+        case 'postal_code':
+            field = 'PostCode';
+            break;
+    }
+
+    return field;
+}
 
 function recaptchaHandler(token)
 {
     $('#SignupForm_SignupForm').submit();
 }
+
 
 function cropperWork(img, thisForm, disabled) {
     var cropper = new Cropper(img[0], {
@@ -42,7 +101,7 @@ function cropperWork(img, thisForm, disabled) {
         minContainerHeight: 50,
         minCropBoxWidth: 50,
         dragMode: 'move',
-        guide: false,
+        guides: disabled ? false : true,
         crop: function(e) {
             var x = Math.round(cropper.getCanvasData().left * -1),
                 y = Math.round(cropper.getCanvasData().top * -1),
@@ -65,14 +124,27 @@ function cropperWork(img, thisForm, disabled) {
         },
         ready: function() {
 
-            var data = {
-                left: thisForm.find('input[name="CropperX"]').val().toFloat(),
-                top: thisForm.find('input[name="CropperY"]').val().toFloat(),
-                width: thisForm.find('input[name="CropperWidth"]').val().toFloat(),
-                height: thisForm.find('input[name="CropperHeight"]').val().toFloat()
-            };
-            trace(data);
-            cropper.setCropBoxData(data);
+
+            if (disabled) {
+                cropper.setCropBoxData({top: 0, left: 0, width: img.parents('.thumbnail-core:eq(0)').width(), height: img.parents('.thumbnail-core:eq(0)').height()});
+                cropper.disable();
+            } else {
+                var CropperData = {
+                        left: thisForm.find('input[name="CropperX"]').val() ? thisForm.find('input[name="CropperX"]').val().toFloat() : 0,
+                        top: thisForm.find('input[name="CropperY"]').val() ? thisForm.find('input[name="CropperY"]').val().toFloat() : 0,
+                        width: thisForm.find('input[name="CropperWidth"]').val() ? thisForm.find('input[name="CropperWidth"]').val().toFloat() : 0,
+                        height: thisForm.find('input[name="CropperHeight"]').val() ? thisForm.find('input[name="CropperHeight"]').val().toFloat() : 0
+                    },
+                    CanvasData = {
+                        left: thisForm.find('input[name="ContainerX"]').val() ? thisForm.find('input[name="ContainerX"]').val().toFloat() * -1 : 0,
+                        top: thisForm.find('input[name="ContainerY"]').val() ? thisForm.find('input[name="ContainerY"]').val().toFloat() * -1 : 0,
+                        width: thisForm.find('input[name="ContainerWidth"]').val() ? thisForm.find('input[name="ContainerWidth"]').val().toFloat() : 0,
+                        height: thisForm.find('input[name="ContainerHeight"]').val() ? thisForm.find('input[name="ContainerHeight"]').val().toFloat() : 0
+                    };
+
+                cropper.setCanvasData(CanvasData);
+                cropper.setCropBoxData(CropperData);
+            }
         }
     });
 }

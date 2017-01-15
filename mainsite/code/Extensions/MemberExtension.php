@@ -17,7 +17,15 @@ class MemberExtension extends DataExtension
      * @var array
      */
     private static $has_one = array(
-        'Portrait'          =>  'Portrait'
+        'Portrait'              =>  'Portrait'
+    );
+
+    /**
+     * Belongs_many_many relationship
+     * @var array
+     */
+    private static $belongs_many_many = array(
+        'MemberOf'              =>  'Agency'
     );
 
     public function populateDefaults()
@@ -43,6 +51,16 @@ class MemberExtension extends DataExtension
                 LiteralField::create('Image', $this->owner->Portrait()->Image()->FillMax(400, 400))
             )
         );
+
+        $fields->fieldByName('Root.Main.FullRef')->setReadonly(true);
+
+        if (!empty($this->Payments())) {
+            $fields->addFieldToTab(
+                'Root.Payments',
+                Grid::make('Payments', 'Payments', $this->Payments(), false, 'GridFieldConfig_RecordViewer')
+            );
+        }
+
         return $fields;
     }
     /**
@@ -56,6 +74,49 @@ class MemberExtension extends DataExtension
             $id = $portrait->write();
             $this->owner->PortraitID = $id;
         }
+
+        if (empty($this->owner->FullRef)) {
+            $created = new DateTime('NOW');
+            $timestamp = $created->format('YmdHisu');
+            $this->owner->FullRef = strtolower(sha1(md5($timestamp.'-'.session_id())));
+        }
+    }
+
+    public function Payments()
+    {
+        if (empty($this->owner->ID)) {
+            return null;
+        }
+        $payments = SaltedPaymentModel::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'));
+        return $payments->count() > 0 ? $payments : null;
+    }
+
+    public function onSaltedPaymentUpdate($success)
+    {
+        if ($success) {
+            $this->owner->addToGroupByCode('tradesmen', 'Tradesmen');
+        }
+    }
+
+    public function isAgent()
+    {
+        return $this->owner->inGroup('tradesmen');
+    }
+
+    public function getPaymentHistory()
+    {
+        if ($payment = $this->Payments()) {
+            return $payment->filter(array('Status:not' => 'Pending'));
+        }
+        return null;
+    }
+
+    public function getSubscription()
+    {
+        if ($payment = PaystationPayment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
+            return $payment->filter(array('Status' => 'Pending', 'ScheduleFuturePay' => true, 'NextPayDate:GreaterThanOrEqual' => date("Y-m-d")))->first();
+        }
+        return null;
     }
 
 }

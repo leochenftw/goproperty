@@ -1,5 +1,8 @@
 <?php
+use SaltedHerring\Debugger;
 use SaltedHerring\Utilities as Utilities;
+use SaltedHerring\SaltedPayment;
+use SaltedHerring\SaltedPayment\API\Paystation;
 class Page extends SiteTree {
 
 	private static $db = array(
@@ -62,6 +65,8 @@ Requirements::themedCSS('reset');
 		Requirements::themedCSS('form');
 */
         $this->initJS();
+        // $pay_link = Paystation::process(10, 'MembershipSubscription', (session_id() . '-' . time()));
+        // Debugger::inspect($pay_link);
 	}
 
 	protected function getSessionID() {
