@@ -1,6 +1,6 @@
-<h2 class="title">Cancel subscription</h2>
+<h2 class="title">My subscription</h2>
 <h3>Tradesman account subscription</h3>
-<% if Subscription %>
+<% if $Subscription %>
     <% with $Subscription %>
         Subscription charge: ${$Amount.Amount} <br />
         Next bill date: $NextPayDate <br />

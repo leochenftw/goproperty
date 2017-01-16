@@ -28,7 +28,13 @@
 				<li><a href="/member/signout">Sign out</a></li>
 			</ul>
             <% if $isAgent %>
-                <a data-title="Dashboard | Cancel subscription" href="/member/action/cancel-subscription" class="ajax-routed<% if $tab == 'cancel-subscription' %> active<% end_if %>">Cancel subscription</a>
+                <a data-title="Dashboard | Cancel subscription" href="/member/action/cancel-subscription" class="ajax-routed<% if $tab == 'cancel-subscription' %> active<% end_if %>">
+                <% if $Subscription %>
+                    Cancel subscription
+                <% else_if $ActiveSubscription %>
+                    Extend subscription
+                <% end_if %>
+                </a>
             <% else %>
                 <a data-title="Dashboard | Upgrade account" href="/member/action/upgrade" class="ajax-routed<% if $tab == 'upgrade' %> active<% end_if %>">Upgrde to trademan acount</a>
             <% end_if %>
