@@ -8,3 +8,6 @@ Director:
     'signin': 'Signin'
     'member': 'Dashboard'
     'checkout/complete': 'PaystationController'
+    'api/v1/payment/$ID': 'PaymentAPI'
+    'api/v1/creditcard/$ID': 'CreditcardAPI'
+    'api/v1/agency/$ID': 'AgencyAPI'

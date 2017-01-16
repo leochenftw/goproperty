@@ -23,7 +23,7 @@ class MemberProfileForm extends Form {
         $fields->push(HiddenField::create('Lat','Lat', $member->Lat));
         $fields->push(HiddenField::create('Lng','Lng', $member->Lng));
 
-        $fields->push(HiddenField::create('ContainerX','ContainerX', $wtf = $this->getCoordinate('ContainerX')));
+        $fields->push(HiddenField::create('ContainerX','ContainerX', $this->getCoordinate('ContainerX')));
         $fields->push(HiddenField::create('ContainerY','ContainerY', $this->getCoordinate('ContainerY')));
         $fields->push(HiddenField::create('ContainerWidth','ContainerWidth', $this->getCoordinate('ContainerWidth')));
         $fields->push(HiddenField::create('ContainerHeight','ContainerHeight', $this->getCoordinate('ContainerHeight')));

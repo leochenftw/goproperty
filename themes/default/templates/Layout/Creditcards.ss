@@ -9,7 +9,7 @@ $addCreditcardForm
             <td>$CardNumber</td>
             <td>{$Month}/{$Year}</td>
             <td>
-                <form class="mini-form" method="DELETE" action="/api/v1/creditcard/$ID"><button type="submit">Delete</button></form>
+                <form class="mini-ajax-form" method="POST" action="/api/v1/creditcard/$ID"><input type="hidden" name="SecurityID" value="$SecurityID" /><button type="submit">Delete</button></form>
             </td>
         </tr>
     <% end_loop %>

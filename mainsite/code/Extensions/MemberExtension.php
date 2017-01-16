@@ -30,8 +30,8 @@ class MemberExtension extends DataExtension
 
     public function populateDefaults()
     {
-		$this->owner->ValidationKey = sha1(mt_rand() . mt_rand());
-	}
+        $this->owner->ValidationKey = sha1(mt_rand() . mt_rand());
+    }
     /**
      * Update Fields
      * @return FieldList
@@ -115,6 +115,14 @@ class MemberExtension extends DataExtension
     {
         if ($payment = PaystationPayment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
             return $payment->filter(array('Status' => 'Pending', 'ScheduleFuturePay' => true, 'NextPayDate:GreaterThanOrEqual' => date("Y-m-d")))->first();
+        }
+        return null;
+    }
+
+    public function getActiveSubscription()
+    {
+        if ($payment = PaystationPayment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
+            return $payment->filter(array('Status' => 'Success', 'ProcessedAt:LessThanOrEqual' => date("Y-m-d")))->first();
         }
         return null;
     }

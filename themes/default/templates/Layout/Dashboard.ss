@@ -47,6 +47,10 @@
                 <% include Agencies %>
             <% end_if %>
 
+            <% if $tab == 'edit-agency' %>
+                <% include AgencyForm %>
+            <% end_if %>
+
             <% if $tab == 'creditcards' %>
                 <% include Creditcards %>
             <% end_if %>

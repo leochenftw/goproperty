@@ -1,36 +1,37 @@
 <?php use SaltedHerring\Debugger as Debugger;
 
 class Dashboard extends Page_Controller {
-	private static $url_handlers = array(
-		''				=>	'index',
-		'action/$tab'	=>	'index'
-	);
+    private static $url_handlers = array(
+        ''				=>	'index',
+        'action/$tab'	=>	'index'
+    );
 
-	private static $allowed_actions = array(
-		'index',
-		'signout',
-		'MemberProfileForm',
-		'UpdatePasswordForm',
-		'UpdateEmailForm',
+    private static $allowed_actions = array(
+        'index',
+        'signout',
+        'MemberProfileForm',
+        'UpdatePasswordForm',
+        'UpdateEmailForm',
         //'PropertyForm',
-		'RentForm',
-		'SaleForm',
+        'RentForm',
+        'SaleForm',
         'AccountUpgradeForm',
-        'addCreditcardForm'
-	);
+        'addCreditcardForm',
+        'AgencyForm'
+    );
 
-	public function index($request) {
-		if (!Member::currentUser()) {
-			return $this->redirect('/signin?BackURL=/member');
-		}
-		$tab = $request->param('tab');
+    public function index($request) {
+        if (!Member::currentUser()) {
+            return $this->redirect('/signin?BackURL=/member');
+        }
+        $tab = $request->param('tab');
 
         if (($tab == 'list-property-for-sale' || $tab == 'agencies') && !$this->isAgent()) {
             return $this->redirect('/member/action/upgrade');
         }
 
-		if ($request->isAjax()) {
-			switch ($tab) {
+        if ($request->isAjax()) {
+            switch ($tab) {
 
                 case 'my-properties':
                     return $this->customise(array('tab' => $tab))->renderWith(array('MyProperties'));
@@ -48,45 +49,54 @@ class Dashboard extends Page_Controller {
                     return $this->customise(array('tab' => $tab))->renderWith(array('Agencies'));
                     break;
 
-				case 'password':
-					return $this->customise(array('tab' => $tab))->renderWith(array('UpdatePasswordForm'));
-					break;
+                case 'edit-agency':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('AgencyForm'));
+                    break;
 
-				case 'email-update':
-					return $this->customise(array('tab' => $tab))->renderWith(array('UpdateEmailForm'));
-					break;
+                case 'password':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('UpdatePasswordForm'));
+                    break;
+
+                case 'email-update':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('UpdateEmailForm'));
+                    break;
 
                 case 'list-property-for-rent':
                     return $this->customise(array('tab' => $tab))->renderWith(array('PropertyForm'));
-					break;
+                    break;
 
-				case 'list-property-for-sale':
+                case 'list-property-for-sale':
                     return $this->customise(array('tab' => $tab))->renderWith(array('PropertyForm'));
-					break;
+                    break;
 
                 case 'upgrade':
                     return $this->customise(array('tab' => $tab))->renderWith(array('AccountUpgradeForm'));
-					break;
+                    break;
 
                 case 'cancel-subscription':
                     return $this->customise(array('tab' => $tab))->renderWith(array('SubscriptionManager'));
                     break;
 
-				default:
-					return $this->customise(array('tab' => $tab))->renderWith(array('MemberProfileForm'));
-			}
-		}
+                default:
+                    return $this->customise(array('tab' => $tab))->renderWith(array('MemberProfileForm'));
+            }
+        }
 
-		return $this->customise(array('tab' => $tab))->renderWith(array('Dashboard', 'Page'));
-	}
+        return $this->customise(array('tab' => $tab))->renderWith(array('Dashboard', 'Page'));
+    }
 
-	public function signout() {
-		if ($member = Member::currentUser()) {
-			$member->logOut();
-		}
+    public function signout() {
+        if ($member = Member::currentUser()) {
+            $member->logOut();
+        }
 
-		$this->redirect('/');
-	}
+        $this->redirect('/');
+    }
+
+    public function AgencyForm()
+    {
+        return new AgencyForm($this);
+    }
 
     public function addCreditcardForm()
     {
@@ -98,24 +108,24 @@ class Dashboard extends Page_Controller {
         return new AccountUpgradeForm($this);
     }
 
-	public function MemberProfileForm()
+    public function MemberProfileForm()
     {
-		return new MemberProfileForm($this);
-	}
+        return new MemberProfileForm($this);
+    }
 
-	public function UpdatePasswordForm()
+    public function UpdatePasswordForm()
     {
-		return new UpdatePasswordForm($this);
-	}
+        return new UpdatePasswordForm($this);
+    }
 
-	public function UpdateEmailForm()
+    public function UpdateEmailForm()
     {
-		return new UpdateEmailForm($this);
-	}
+        return new UpdateEmailForm($this);
+    }
 
-	public function RentForm()
-	{
-		$property = null;
+    public function RentForm()
+    {
+        $property = null;
         if ($prop_id = $this->request->getVar('property_id')) {
             $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($prop_id);
             if (empty($property)) {
@@ -129,10 +139,10 @@ class Dashboard extends Page_Controller {
         }
 
         return new RentForm($this, $property);
-	}
+    }
 
-	public function SaleForm()
-	{
+    public function SaleForm()
+    {
         $property = null;
         if ($prop_id = $this->request->getVar('property_id')) {
             $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($prop_id);
@@ -147,15 +157,15 @@ class Dashboard extends Page_Controller {
         }
 
         return new SaleForm($this, $property);
-	}
+    }
 
     public function Link($action = NULL) {
-		return 'member';
-	}
+        return 'member';
+    }
 
-	public function Title() {
-		return 'Dashboard';
-	}
+    public function Title() {
+        return 'Dashboard';
+    }
 
     public function EmailisValidated()
     {
@@ -216,6 +226,15 @@ class Dashboard extends Page_Controller {
     {
         if ($member = Member::currentUser()) {
             return $member->getPaymentHistory();
+        }
+
+        return null;
+    }
+
+    public function getActiveSubscription()
+    {
+        if ($member = Member::currentUser()) {
+            return $member->getActiveSubscription();
         }
 
         return null;

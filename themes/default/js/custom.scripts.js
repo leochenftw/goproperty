@@ -33,26 +33,44 @@ $(document).ready(function(e)
                 form    =   $('#MemberProfileForm_MemberProfileForm');
             txt.addListener('place_changed', function()
             {
-        		// Get the place details from the autocomplete object.
-        		var place = txt.getPlace();
+                // Get the place details from the autocomplete object.
+                var place = txt.getPlace();
                 form.find('input[name="Lat"]').val(place.geometry.location.lat());
                 form.find('input[name="Lng"]').val(place.geometry.location.lng());
 
-        		for (var i = 0; i < place.address_components.length; i++) {
+                for (var i = 0; i < place.address_components.length; i++) {
                     var addressType = place.address_components[i].types[0];
                     var field = matchField(addressType);
                     if (field.length > 0) {
                         form.find('input[name="' + field + '"]').val(place.address_components[i].long_name);
                     }
 
-        		}
-        	});
+                }
+            });
         });
     }
 
     $('.property-form').each(function(i, el)
     {
         $(this).formWork();
+    });
+
+    $('.mini-ajax-form').each(function(i, el)
+    {
+        $(this).ajaxSubmit(
+        {
+            success: function(data)
+            {
+                if (data.code == 307) {
+                    window.location.href = data.url;
+                }
+            },
+
+            done: function(data)
+            {
+
+            }
+        });
     });
 
 });
@@ -141,7 +159,7 @@ function cropperWork(img, thisForm, disabled) {
                         width: thisForm.find('input[name="ContainerWidth"]').val() ? thisForm.find('input[name="ContainerWidth"]').val().toFloat() : 0,
                         height: thisForm.find('input[name="ContainerHeight"]').val() ? thisForm.find('input[name="ContainerHeight"]').val().toFloat() : 0
                     };
-
+                
                 cropper.setCanvasData(CanvasData);
                 cropper.setCropBoxData(CropperData);
             }
