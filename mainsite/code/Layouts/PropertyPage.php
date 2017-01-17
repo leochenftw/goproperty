@@ -99,20 +99,12 @@ class PropertyPage extends Page
         if (!empty($this->Payments())) {
             $fields->addFieldToTab(
                 'Root.Payments',
+                //Grid::make('Payments', 'Payments', $this->Payments(), false)
                 Grid::make('Payments', 'Payments', $this->Payments(), false, 'GridFieldConfig_RecordViewer')
             );
         }
 
         return $fields;
-    }
-
-    public function Payments()
-    {
-        if (empty($this->ID)) {
-            return null;
-        }
-        $payments = SaltedPaymentModel::get()->filter(array('OrderID' => $this->ID, 'OrderClass' => 'PropertyPage'));
-        return $payments->count() > 0 ? $payments : null;
     }
 
     public function isPublished($human_friendly = null)
@@ -187,19 +179,13 @@ class PropertyPage extends Page
 
     public function onSaltedPaymentUpdate($success)
     {
-        if ($success && $this->canPublish()) {
-            $this->doPublish();
+        if ($success) {
+            $this->writeToStage('Live');
         }
     }
 
-    public function canPublish($member = null)
+    public function hasPaid()
     {
-        if (empty($member)) return false;
-
-        if ($member->inGroup('administrators')) {
-            return true;
-        }
-
         if ($payments = $this->Payments()) {
             if ($latest_payment = $payments->filter(array('Status' => 'Success'))->first()) {
                 $today  =   date_create(date("Y-m-d"));
@@ -212,8 +198,9 @@ class PropertyPage extends Page
         }
 
         return false;
-
     }
+
+
 }
 
 class PropertyPage_Controller extends Page_Controller

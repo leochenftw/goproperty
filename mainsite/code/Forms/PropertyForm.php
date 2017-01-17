@@ -139,7 +139,7 @@ class PropertyForm extends Form
                 $list_until = $list_until->setDescription(null)->performReadonlyTransformation();
             }
 
-            if ($prop->canPublish(Member::currentUser())) {
+            if ($prop->hasPaid()) {
                 $this->ListFree = true;
                 $this->ListUntil = $prop->ListingCloseOn;
             } else {
@@ -204,7 +204,7 @@ class PropertyForm extends Form
             if (!empty($data['PropertyID'])) {
                 $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($data['PropertyID']);
 
-                if ($property->canPublish(Member::currentUser())) {
+                if ($property->hasPaid()) {
                     $property->writeToStage('Live');
                     return Controller::curr()->redirect('/member/action/' . ($this->Name == 'RentForm' ? 'list-property-for-rent' : 'list-property-for-sale') . '?property_id=' . $property->ID);
                 } else {

@@ -33,15 +33,15 @@ Member:
   MonthlySubscription: 50
   extensions:
     - AddressProperties
-    - MemberExtension
     - OrderExtension
+    - MemberExtension
 SeoConfig:
     Page: true
     ErrorPage: false
     RedirectorPage: false
     VirtualPage: false
 PropertyPage:
-  DailyCharge: 1.67
+  DailyCharge: 2
   MaxBedroom: 10
   MaxBathroom: 5
   MaxCapacity: 20
@@ -79,11 +79,11 @@ GoogleAPIs:
 SaltedPayment:
   MerchantSettings:
     MerchantHomepageURL: "https://goprop.leochen.co.nz"
-    SuccessURL: "https://goprop.leochen.co.nz/cart/checkout/success"
-    FailureURL: "https://goprop.leochen.co.nz/cart/checkout/fail"
-    CancellationURL: "https://goprop.leochen.co.nz/cart/checkout/cancel"
+    SuccessURL: "https://goprop.leochen.co.nz/payment/success"
+    FailureURL: "https://goprop.leochen.co.nz/payment/fail"
+    CancellationURL: "https://goprop.leochen.co.nz/payment/cancel"
     CardSavedURL: "https://goprop.leochen.co.nz/member/action/creditcards"
-    PaymentScheduledURL: "https://goprop.leochen.co.nz/cart/checkout/pending"
+    PaymentScheduledURL: "https://goprop.leochen.co.nz/payment/pending"
   GatewaySettings:
     Paystation:
         #HMacMode: '0',

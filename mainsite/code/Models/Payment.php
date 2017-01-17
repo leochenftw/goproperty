@@ -33,8 +33,14 @@ class Payment extends PaystationPayment
         }
     }
 
+    protected function create_next_payment($fp_token, $scheduled_payment = null)
+    {
+        $scheduled_payment = new Payment();
+        parent::create_next_payment($fp_token, $scheduled_payment);
+    }
+
     public function ExpireMembership()
     {
-        
+
     }
 }

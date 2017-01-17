@@ -58,6 +58,7 @@ class MemberExtension extends DataExtension
             $fields->addFieldToTab(
                 'Root.Payments',
                 Grid::make('Payments', 'Payments', $this->Payments(), false, 'GridFieldConfig_RecordViewer')
+                // Grid::make('Payments', 'Payments', $this->Payments(), false)
             );
         }
 
@@ -113,7 +114,7 @@ class MemberExtension extends DataExtension
 
     public function getSubscription()
     {
-        if ($payment = PaystationPayment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
+        if ($payment = Payment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
             return $payment->filter(array('Status' => 'Pending', 'ScheduleFuturePay' => true, 'NextPayDate:GreaterThanOrEqual' => date("Y-m-d")))->first();
         }
         return null;
@@ -121,8 +122,8 @@ class MemberExtension extends DataExtension
 
     public function getActiveSubscription()
     {
-        if ($payment = PaystationPayment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
-            return $payment->filter(array('Status' => 'Success', 'ProcessedAt:LessThanOrEqual' => date("Y-m-d")))->first();
+        if ($payment = Payment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
+            return $payment->filter(array('Status' => 'Success', 'ProcessedAt:LessThanOrEqual' => date("Y-m-d H:i:s")))->first();
         }
         return null;
     }
