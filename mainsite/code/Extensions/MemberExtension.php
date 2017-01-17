@@ -57,8 +57,8 @@ class MemberExtension extends DataExtension
         if (!empty($this->Payments())) {
             $fields->addFieldToTab(
                 'Root.Payments',
-                Grid::make('Payments', 'Payments', $this->Payments(), false, 'GridFieldConfig_RecordViewer')
-                // Grid::make('Payments', 'Payments', $this->Payments(), false)
+                // Grid::make('Payments', 'Payments', $this->Payments(), false, 'GridFieldConfig_RecordViewer')
+                Grid::make('Payments', 'Payments', $this->Payments(), false)
             );
         }
 

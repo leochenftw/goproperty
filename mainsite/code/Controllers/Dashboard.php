@@ -225,7 +225,8 @@ class Dashboard extends Page_Controller {
     public function getPaymentHistory()
     {
         if ($member = Member::currentUser()) {
-            return $member->getPaymentHistory();
+            //return $member->getPaymentHistory();
+            return Payment::get()->filter(array('PaidByID' => $member->ID, 'Status:not' => 'Pending', 'Status:not' => 'Incomplete', 'Status:not' => 'Null'));
         }
 
         return null;

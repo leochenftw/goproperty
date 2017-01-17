@@ -29,7 +29,7 @@ class Payment extends PaystationPayment
         }
 
         if ($this->OrderClass == 'PropertyPage') {
-            return 'Property list: ' . Versioned::get_by_stage('PropertyPage', 'Stage')->byID($this->OrderID)->Title;
+            return 'Listing Property: ' . Versioned::get_by_stage('PropertyPage', 'Stage')->byID($this->OrderID)->Title;
         }
     }
 
