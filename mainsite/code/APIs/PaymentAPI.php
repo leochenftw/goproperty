@@ -36,8 +36,9 @@ class PaymentAPI extends BaseRestController {
                 $payment->write();
                 return
                     array(
-                        'code'      => 200,
-                        'message'   => 'Subscription has been cancelled'
+                        'code'      =>  200,
+                        'message'   =>  'Subscription has been cancelled',
+                        'action'    =>  'refresh'
                     );
             }
 

@@ -13,6 +13,7 @@
     <% with $ActiveSubscription %>
         <p>There is no further payment scheduled for your account. Your current subscription ends of $ValidUntil</p>
     <% end_with %>
+    $MembershipExtendingForm
 <% else %>
     <p>You have no subscription</p>
 <% end_if %>

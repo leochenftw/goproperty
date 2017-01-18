@@ -12,5 +12,6 @@
 				<% end_if %>
 			</li>
 		<% end_loop %>
+        <li><a href="/member" class="<% if LinkOrCurrent = current || $LinkOrSection = section %>current<% end_if %>">Dashboard</a></li>
 	</ul>
 </nav>

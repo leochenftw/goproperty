@@ -164,9 +164,20 @@ class PropertyForm extends Form
             } else {
                 $btnWithdraw->addExtraClass('hide');
             }
+        } else {
+            $btnList->addExtraClass('hide');
+            $btnWithdraw->addExtraClass('hide');
         }
 
-        parent::__construct($controller, $name, $fields, $actions);
+        $required_fields = array(
+            'FullAddress',
+            'ListingCloseOn'
+        );
+
+        $required = new RequiredFields($required_fields);
+
+
+        parent::__construct($controller, $name, $fields, $actions, $required);
         $this->setFormMethod('POST', true)
              ->setFormAction(Controller::join_links(BASE_URL, 'member', $name))->addExtraClass('property-form');
     }

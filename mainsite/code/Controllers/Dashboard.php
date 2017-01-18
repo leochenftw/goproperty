@@ -16,6 +16,7 @@ class Dashboard extends Page_Controller {
         'RentForm',
         'SaleForm',
         'AccountUpgradeForm',
+        'MembershipExtendingForm',
         'addCreditcardForm',
         'AgencyForm'
     );
@@ -91,6 +92,11 @@ class Dashboard extends Page_Controller {
         }
 
         $this->redirect('/');
+    }
+
+    public function MembershipExtendingForm()
+    {
+        return new MembershipExtendingForm($this);
     }
 
     public function AgencyForm()
@@ -226,7 +232,7 @@ class Dashboard extends Page_Controller {
     {
         if ($member = Member::currentUser()) {
             //return $member->getPaymentHistory();
-            return Payment::get()->filter(array('PaidByID' => $member->ID, 'Status:not' => 'Pending', 'Status:not' => 'Incomplete', 'Status:not' => 'Null'));
+            return Payment::get()->filter(array('PaidByID' => $member->ID, 'Status:not' => 'Pending', 'Status:not' => 'Incomplete'))->where('Status IS NOT NULL');
         }
 
         return null;

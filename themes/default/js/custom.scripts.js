@@ -64,6 +64,12 @@ $(document).ready(function(e)
                 if (data.code == 307) {
                     window.location.href = data.url;
                 }
+
+                if (data.action) {
+                    if (data.action == 'refresh') {
+                        window.location.reload();
+                    }
+                }
             },
 
             done: function(data)
@@ -159,7 +165,7 @@ function cropperWork(img, thisForm, disabled) {
                         width: thisForm.find('input[name="ContainerWidth"]').val() ? thisForm.find('input[name="ContainerWidth"]').val().toFloat() : 0,
                         height: thisForm.find('input[name="ContainerHeight"]').val() ? thisForm.find('input[name="ContainerHeight"]').val().toFloat() : 0
                     };
-                
+
                 cropper.setCanvasData(CanvasData);
                 cropper.setCropBoxData(CropperData);
             }
