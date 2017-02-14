@@ -1,0 +1,28 @@
+DisplayLogicCriteria:
+  comparisons:
+    - isEqualTo
+    - isNotEqualTo
+    - isGreaterThan
+    - isLessThan
+    - contains
+    - startsWith
+    - endsWith
+    - isEmpty
+    - isNotEmpty
+    - isBetween
+    - isChecked
+    - isNotChecked
+    - hasCheckedOption
+    - hasCheckedAtLeast
+    - hasCheckedLessThan
+  animations:
+    - toggle
+    - slide
+    - fade
+  default_animation: toggle
+    
+FormField:
+  extensions:
+    - DisplayLogicFormField
+DisplayLogic:
+  jquery_included: true

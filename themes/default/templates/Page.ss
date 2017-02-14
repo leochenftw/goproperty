@@ -7,7 +7,8 @@
 		<% base_tag %>
 		$MetaTags(true)
 		<% include OG %>
-		<meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
 
 		$getCSS
 

@@ -1,12 +1,12 @@
 <?php
 use SaltedHerring\Debugger;
 use SaltedHerring\Grid;
+use SaltedHerring\SaltedPayment;
 
 class PropertyPage extends Page
 {
     private static $extensions = array(
-        'AddressProperties',
-        'OrderExtension'
+        'AddressProperties'
     );
 
     /**
@@ -69,7 +69,8 @@ class PropertyPage extends Page
             array(
                 DateField::create('DateAvailable', 'Date available'),
                 TextField::create('ListingDuration', 'Days of listing'),
-                TextField::create('FullRef', 'Internal reference')->performReadonlyTransformation()
+                TextField::create('FullRef', 'Internal reference')->performReadonlyTransformation(),
+                DropdownField::create('CustomerID', 'Customer', Member::get()->map(), $this->CustomerID)->performReadonlyTransformation()
             )
         );
         $fields->addFieldsToTab(
@@ -96,11 +97,11 @@ class PropertyPage extends Page
             )
         );
 
-        if (!empty($this->Payments())) {
+        if (!empty($this->Orders())) {
             $fields->addFieldToTab(
-                'Root.Payments',
-                //Grid::make('Payments', 'Payments', $this->Payments(), false)
-                Grid::make('Payments', 'Payments', $this->Payments(), false, 'GridFieldConfig_RecordViewer')
+                'Root.Orders',
+                Grid::make('Orders', 'Orders', $this->Orders(), false)
+                // Grid::make('Payments', 'Payments', $this->Payments(), false, 'GridFieldConfig_RecordViewer')
             );
         }
 
@@ -177,30 +178,31 @@ class PropertyPage extends Page
         'Gallery'           =>  'Image'
     );
 
-    public function onSaltedPaymentUpdate($success)
-    {
-        if ($success) {
-            $this->writeToStage('Live');
-        }
-    }
-
     public function hasPaid()
     {
-        if ($payments = $this->Payments()) {
-            if ($latest_payment = $payments->filter(array('Status' => 'Success'))->first()) {
+        if ($orders = $this->Orders()) {
+            if ($last_successful = $orders->filter(array('isOpen' => false))->first()) {
                 $today  =   date_create(date("Y-m-d"));
-                $until  =   date_create($this->ListingCloseOn);
-
+                $until  =   date_create($last_successful->ValidUntil);
                 if ($until >= $today) {
                     return true;
                 }
             }
+
         }
 
         return false;
     }
 
+    public function Orders()
+    {
+        if (empty($this->ID)) {
+            return null;
+        }
 
+        $OrderClass = SaltedPayment::get_default_order_class();
+        return $OrderClass::get()->filter(array('PaidToClassID' => $this->ID));
+    }
 }
 
 class PropertyPage_Controller extends Page_Controller

@@ -5,13 +5,13 @@ use SaltedHerring\SaltedPayment\API\Paystation;
 
 class PropertyForm extends Form
 {
-	protected $FormTitle = '';
+    protected $FormTitle = '';
 
-	public function __construct($controller, $name, $prop = null)
+    public function __construct($controller, $name, $prop = null)
     {
         if (!empty($prop) && !empty($prop->Title)) {
-			$this->FormTitle = $prop->Title;
-		}
+            $this->FormTitle = $prop->Title;
+        }
 
         $fields = new FieldList();
         $fields->push(HiddenField::create(
@@ -20,14 +20,14 @@ class PropertyForm extends Form
             $name == 'RentForm' ? 'rent' : 'sale'
         ));
 
-		$fields->push(DropdownField::create(
-			'PropertyType',
-			'Property type',
-			Config::inst()->get('PropertyPage', $name),
-			!empty($prop) ? $prop->PropertyType : null
-		)->setEmptyString('- select one -'));
+        $fields->push(DropdownField::create(
+            'PropertyType',
+            'Property type',
+            Config::inst()->get('PropertyPage', $name),
+            !empty($prop) ? $prop->PropertyType : null
+        )->setEmptyString('- select one -'));
 
-		$fields->push($addr = TextField::create('FullAddress', 'Address')->addExtraClass('google-placed'));
+        $fields->push($addr = TextField::create('FullAddress', 'Address')->addExtraClass('google-placed'));
 
         if (!empty($prop)) {
             $addr->setValue($prop->FullAddress);
@@ -43,15 +43,15 @@ class PropertyForm extends Form
         $fields->push(HiddenField::create('Lat','Lat', !empty($prop) ? $prop->Lat : null));
         $fields->push(HiddenField::create('Lng','Lng', !empty($prop) ? $prop->Lng : null));
 
-		$fields->push($agent = TextField::create(
-			'AgencyReference',
-			'Agency reference #',
-			!empty($prop) ? $prop->AgencyReference : null
-		)->addExtraClass('hide'));
+        $fields->push($agent = TextField::create(
+            'AgencyReference',
+            'Agency reference #',
+            !empty($prop) ? $prop->AgencyReference : null
+        )->addExtraClass('hide'));
 
-		if (!empty($prop) && !empty($prop->ListerAgencyID)) {
-			$agent->removeExtraClass('hide');
-		}
+        if (!empty($prop) && !empty($prop->ListerAgencyID)) {
+            $agent->removeExtraClass('hide');
+        }
 
         $fields->push(TextField::create('ContactNumber', 'Contact number', !empty($prop) ? $prop->ContactNumber : (!empty(Member::currentUser()->ContactNumber) ? Member::currentUser()->ContactNumber : null)));
 
@@ -82,7 +82,7 @@ class PropertyForm extends Form
 
 
 
-		$fields->push(CheckboxField::create(
+        $fields->push(CheckboxField::create(
             'SmokeAlarm',
             'Smoke alarm',
             !empty($prop) ? $prop->SmokeAlarm : 1
@@ -91,25 +91,25 @@ class PropertyForm extends Form
         $fields->push($gallery = UploadField::create('Gallery', 'Gallery'));
 
         $gallery->setFolderName('members/' . Member::CurrentUserID() . '/propertyimages')
-				->setCanAttachExisting(false)
-				// ->setAllowedMaxFileNumber(10)
-				->setAllowedExtensions(array('jpg', 'jpeg', 'png'))
-				->setPreviewMaxWidth(400)
-				->setPreviewMaxHeight(400)
-				->setCanPreviewFolder(false)
-				->setAutoUpload(false)
+                ->setCanAttachExisting(false)
+                // ->setAllowedMaxFileNumber(10)
+                ->setAllowedExtensions(array('jpg', 'jpeg', 'png'))
+                ->setPreviewMaxWidth(400)
+                ->setPreviewMaxHeight(400)
+                ->setCanPreviewFolder(false)
+                ->setAutoUpload(false)
                 ->setFieldHolderTemplate('PropertyGalleryUploader')
-				->addExtraClass('viewable-gallery');
+                ->addExtraClass('viewable-gallery');
 
-		$member = Member::currentUser();
-		if ($member->MemberOf()->exists()) {
-			$fields->push(DropdownField::create(
-				'ListerAgencyID',
-				'List as',
-				$member->MemberOf()->map('ID', 'Title'),
-				!empty($prop) ? $prop->ListerAgencyID : null
-			)->setEmptyString('Myself'));
-		}
+        $member = Member::currentUser();
+        if ($member->MemberOf()->exists()) {
+            $fields->push(DropdownField::create(
+                'ListerAgencyID',
+                'List as',
+                $member->MemberOf()->map('ID', 'Title'),
+                !empty($prop) ? $prop->ListerAgencyID : null
+            )->setEmptyString('Myself'));
+        }
 
         if (!empty($prop)) {
             $addr->setValue($prop->FullAddress);
@@ -142,9 +142,15 @@ class PropertyForm extends Form
             if ($prop->hasPaid()) {
                 $this->ListFree = true;
                 $this->ListUntil = $prop->ListingCloseOn;
-            } else {
-                $this->Duration = $prop->ListingDuration;
-                $this->AmountToPay = $daily_charge * $prop->ListingDuration;
+            } elseif (!empty($prop->ListingCloseOn)) {
+                // Debugger::inspect();
+                $today  =   date_create(date("Y-m-d"));
+                $until  =   date_create($prop->ListingCloseOn);
+                if ($until >= $today) {
+                    $diff   =   date_diff($today,$until);
+                    $prop->ListingDuration = $this->Duration = $diff->days + 1;
+                    $this->AmountToPay = $daily_charge * $prop->ListingDuration;
+                }
             }
 
         }
@@ -156,7 +162,7 @@ class PropertyForm extends Form
 
         $actions->push($btnWithdraw = FormAction::create('doWithdraw', 'Withdraw')->addExtraClass('red'));
         $actions->push($btnList = FormAction::create('doList', 'List it')->addExtraClass('green'));
-		$actions->push(FormAction::create('doSubmit', !empty($prop) ? 'Save changes' : 'Create'));
+        $actions->push(FormAction::create('doSubmit', !empty($prop) ? 'Save changes' : 'Create'));
 
         if (!empty($prop)) {
             if ($prop->isPublished()) {
@@ -171,12 +177,10 @@ class PropertyForm extends Form
 
         $required_fields = array(
             'FullAddress',
-            'ListingCloseOn'
+            // 'ListingCloseOn'
         );
 
         $required = new RequiredFields($required_fields);
-
-
         parent::__construct($controller, $name, $fields, $actions, $required);
         $this->setFormMethod('POST', true)
              ->setFormAction(Controller::join_links(BASE_URL, 'member', $name))->addExtraClass('property-form');
@@ -202,7 +206,7 @@ class PropertyForm extends Form
             $today  =   date_create(date("Y-m-d"));
             $until  =   date_create($data['ListingCloseOn']);
             if ($until < $today) {
-                $this->addErrorMessage('ListingCloseOn', 'Listing end date cannot be earlier than today!');
+                $this->addErrorMessage('ListingCloseOn', 'Listing end date cannot be earlier than today!', 'bad');
                 return false;
             }
         }
@@ -214,6 +218,8 @@ class PropertyForm extends Form
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
             if (!empty($data['PropertyID'])) {
                 $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($data['PropertyID']);
+                $property->ListingCloseOn = $data['ListingCloseOn'];
+                $property->writeToStage('Stage');
 
                 if ($property->hasPaid()) {
                     $property->writeToStage('Live');
@@ -221,14 +227,12 @@ class PropertyForm extends Form
                 } else {
                     $daily_charge = Config::inst()->get('PropertyPage', 'DailyCharge');
                     $amount = $daily_charge * $property->ListingDuration;
-                    $payment = new Payment();
-                    $payment->PaidByID = Member::currentUserID();
-                    $payment->ValidUntil = $property->ListingCloseOn;
+                    $order = SaltedOrder::prepare_order();
+                    $order->Amount->Amount = $amount;
 
-                    $payment->Amount->Amount = $amount;
-                    $payment->OrderClass = 'PropertyPage';
-                    $payment->OrderID = $property->ID;
-                    $payment->write();
+                    $order->PaidToClass = 'PropertyPage';
+                    $order->PaidToClassID = $property->ID;
+                    $order->Pay('Paystation');
                     return;
                 }
             }

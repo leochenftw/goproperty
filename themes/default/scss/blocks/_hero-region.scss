@@ -1,0 +1,13 @@
+.hero-region {
+    padding: rem(55) 0 rem(125);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    &__logo-full {
+        @include retina-sprite(logo_full, icons, $dimensions: true, $nonRetina: true);
+        display: inline-block;
+        overflow: hidden;
+        text-indent: rem(-9999);
+    }
+}

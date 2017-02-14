@@ -1,6 +1,19 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+    $('#PropertySearchForm_PropertySearchForm .location select:not("#PropertySearchForm_PropertySearchForm_Suburb")').each(function(i, el)
+    {
+        $(this).locationSelect();
+    });
+
+    if ($('#PropertySearchForm_PropertySearchForm_Availability').length == 1) {
+        $('#PropertySearchForm_PropertySearchForm_Availability').datetimepicker(
+        {
+            timepicker: false,
+            format: 'd/m/Y',
+            scrollInput: false
+        });
+    }
     if ($('.docking-bay').length > 0) {
 
         $('.docking-bay').each(function(i, el)

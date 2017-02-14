@@ -5,7 +5,7 @@ use SaltedHerring\SaltedPayment\API\Paystation;
 
 class AccountUpgradeForm extends Form
 {
-	public function __construct($controller)
+    public function __construct($controller)
     {
         $fields = new FieldList();
 
@@ -21,17 +21,12 @@ class AccountUpgradeForm extends Form
     {
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
             if ($member = Member::currentUser()) {
-                $payment = new Payment();
-                $payment->PaidByID = $member->ID;
-                $today = date("Y-m-d 00:00:00");
-
-                $payment->ValidUntil = date('Y-m-d', strtotime($today. ' + 29 days'));
-                $payment->ScheduleFuturePay = true;
-                $payment->PaymentFrequency = 30;
-                $payment->Amount->Amount = Config::inst()->get('Member', 'MonthlySubscription');
-                $payment->OrderClass = 'Member';
-                $payment->OrderID = $member->ID;
-                $payment->write();
+                $order = SaltedOrder::prepare_order();
+                $order->Amount->Amount = Config::inst()->get('Member', 'MonthlySubscription');
+                $order->RecursiveFrequency = 30;
+                $order->PaidToClass = 'Member';
+                $order->PaidToClassID = $member->ID;
+                $order->Pay('Paystation', true);
                 return;
             }
 

@@ -1,0 +1,101 @@
+.property-search-form {
+    padding: rem(25) 0 rem(45);
+    color: #5e5e5e;
+    h2.form-title {
+        margin: 0 0 rem(5);
+        font-size: rem(36);
+        font-weight: normal;
+    }
+
+    .form-description {
+        font-size: rem(16);
+        margin: 0 0 rem(25);
+    }
+
+    .half {
+        width: 50%;
+        padding: 0 rem(20);
+        min-width: rem(320);
+        .optionset,
+        .fields-wrapper {
+            @include display-flex;
+            margin-bottom: rem(10);
+            .left,
+            .label,
+            .fields,
+            .middleColumn {
+                width: 100%;
+            }
+
+            .left,
+            .label {
+                opacity: 0.8;
+                max-width: rem(140);
+                display: block;
+                text-align: right;
+                margin-right: rem(20);
+                font-size: rem(20);
+                font-weight: normal;
+                padding-top: rem(10);
+            }
+
+            .middleColumn,
+            .fields {
+                max-width: rem(440);
+                .field {
+                    margin-bottom: rem(10);
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    .dropdown, .text {
+                        border: 1px solid #95989a;
+                        height: rem(36);
+                        display: block;
+                        width: 100%;
+                        font-size: rem(16);
+                        padding: 0.5em;
+                        border-radius: rem(5);
+                        outline: none;
+                    }
+                }
+                ul.optionset {
+                    padding: rem(10) 0 0;
+                    margin: 0;
+                    li {
+                        margin-right: 2em;
+                        list-style: none;
+                        label {
+                            font-size: rem(22);
+                        }
+                    }
+                }
+            }
+
+            &.bedroom,
+            &.bathroom,
+            &.price {
+                .fields {
+                    @include display-flex;
+                    @include align-items(center);
+                    @include justify-content(space-between);
+                    .field {
+                        margin-bottom: 0;
+                        width: 45%;
+                    }
+                }
+            }
+        }
+
+        .optionset {
+            margin: rem(20) 0;
+        }
+
+        .actions {
+            padding-left: rem(160);
+            input[type="submit"] {
+                @extend .blue-button;
+            }
+        }
+    }
+
+}

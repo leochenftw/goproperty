@@ -9,6 +9,7 @@ class PropertyListingPage extends Page
     private static $allowed_children = array(
         'PropertyPage'
     );
+
     /**
      * Creating Permissions
      * @return boolean
@@ -20,10 +21,22 @@ class PropertyListingPage extends Page
         }
         return true;
     }
-
 }
 
 class PropertyListingPage_Controller extends Page_Controller
 {
+
+    /**
+     * Defines methods that can be called directly
+     * @var array
+     */
+    private static $allowed_actions = array(
+        'PropertySearchForm'
+    );
+
+    public function PropertySearchForm()
+    {
+        return new PropertySearchForm($this);
+    }
 
 }

@@ -1,6 +1,7 @@
 <?php
 use SaltedHerring\Debugger;
 use SaltedHerring\Grid;
+use SaltedHerring\SaltedPayment;
 
 class MemberExtension extends DataExtension
 {
@@ -52,13 +53,11 @@ class MemberExtension extends DataExtension
             )
         );
 
-        $fields->fieldByName('Root.Main.FullRef')->setReadonly(true);
-
-        if (!empty($this->Payments())) {
+        if ($this->Orders()->count() > 0) {
             $fields->addFieldToTab(
-                'Root.Payments',
+                'Root.Orders',
                 // Grid::make('Payments', 'Payments', $this->Payments(), false, 'GridFieldConfig_RecordViewer')
-                Grid::make('Payments', 'Payments', $this->Payments(), false)
+                Grid::make('Orders', 'Orders', $this->Orders(), false)
             );
         }
 
@@ -75,21 +74,16 @@ class MemberExtension extends DataExtension
             $id = $portrait->write();
             $this->owner->PortraitID = $id;
         }
-
-        if (empty($this->owner->FullRef)) {
-            $created = new DateTime('NOW');
-            $timestamp = $created->format('YmdHisu');
-            $this->owner->FullRef = strtolower(sha1(md5($timestamp.'-'.session_id())));
-        }
     }
 
-    public function Payments()
+    public function Orders()
     {
         if (empty($this->owner->ID)) {
             return null;
         }
-        $payments = SaltedPaymentModel::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'));
-        return $payments->count() > 0 ? $payments : null;
+
+        $OrderClass = SaltedPayment::get_default_order_class();
+        return $OrderClass::get()->filter(array('PaidToClassID' => $this->owner->ID));
     }
 
     public function onSaltedPaymentUpdate($success)
@@ -106,26 +100,26 @@ class MemberExtension extends DataExtension
 
     public function getPaymentHistory()
     {
-        if ($payment = $this->Payments()) {
-            return $payment->filter(array('Status:not' => 'Pending'));
-        }
-        return null;
+        // if ($payment = $this->Payments()) {
+        //     return $payment->filter(array('Status:not' => 'Pending'));
+        // }
+        // return null;
     }
 
     public function getSubscription()
     {
-        if ($payment = Payment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
-            return $payment->filter(array('Status' => 'Pending', 'ScheduleFuturePay' => true, 'NextPayDate:GreaterThanOrEqual' => date("Y-m-d")))->first();
-        }
-        return null;
+        // if ($payment = Payment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
+        //     return $payment->filter(array('Status' => 'Pending', 'ScheduleFuturePay' => true, 'NextPayDate:GreaterThanOrEqual' => date("Y-m-d")))->first();
+        // }
+        // return null;
     }
 
     public function getActiveSubscription()
     {
-        if ($payment = Payment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
-            return $payment->filter(array('Status' => 'Success', 'ProcessedAt:LessThanOrEqual' => date("Y-m-d H:i:s")))->first();
-        }
-        return null;
+        // if ($payment = Payment::get()->filter(array('OrderID' => $this->owner->ID, 'OrderClass' => 'Member'))) {
+        //     return $payment->filter(array('Status' => 'Success', 'ProcessedAt:LessThanOrEqual' => date("Y-m-d H:i:s")))->first();
+        // }
+        // return null;
     }
 
 }

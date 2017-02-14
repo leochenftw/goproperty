@@ -1,0 +1,12 @@
+.tiles {
+    padding: rem(25) 0 rem(45);
+    border-bottom: rem(10) solid $green;
+    &__title {
+        padding: 0 rem(10);
+        color: #5e5e5e;
+        font-size: rem(36);
+        font-weight: normal;
+        margin: 0;
+    }
+    @import 'tile';
+}

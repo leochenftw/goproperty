@@ -27,7 +27,7 @@
 /**
  * Import Sprite sheet.
  * */
-// @include retina-sprite-add(spritesheet, 'sprites/*.png', 'retina_sprites/*.png');
+@include retina-sprite-add(icons, 'sprites/*.png', 'retina_sprites/*.png');
 
 @include h5bp-normalize;
 @include h5bp-base-styles;
@@ -41,7 +41,12 @@
         'blocks/cropperjs-override',
         'blocks/docking-bay',
         'blocks/datetimepicker',
-        'blocks/property-form';
+        'blocks/property-form',
+        'blocks/header',
+        'blocks/hero-region',
+        'blocks/search-form',
+        'blocks/mid-page-banner',
+        'blocks/tiles';
 /**
  * Plugins.
  * */
@@ -61,6 +66,10 @@ html {
 *:before,
 *:after {
   @include box-sizing(inherit);
+}
+
+body {
+    padding-top: rem(60);
 }
 
 /**

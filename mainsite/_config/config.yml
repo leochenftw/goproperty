@@ -18,6 +18,23 @@ Page:
     - TwitterCardExtension
     - SeoObjectExtension
     - SEOExtension
+NewZealand:
+  Regions:
+    'Northland': 'Northland'
+    'Auckland': 'Auckland'
+    'Waikato': 'Waikato'
+    'Bay Of Plenty': 'Bay Of Plenty'
+    'Gisborne': 'Gisborne'
+    "Hawke's Bay": "Hawke's Bay"
+    'Taranaki': 'Taranaki'
+    'Manawatu / Wanganui': 'Manawatu / Wanganui'
+    'Wellington': 'Wellington'
+    'Nelson / Tasman': 'Nelson / Tasman'
+    'Marlborough': 'Marlborough'
+    'West Coast': 'West Coast'
+    'Canterbury': 'Canterbury'
+    'Otago': 'Otago'
+    'Southland': 'Southland'
 SiteConfig:
   extensions:
     - CustomSiteConfig
@@ -33,7 +50,6 @@ Member:
   MonthlySubscription: 50
   extensions:
     - AddressProperties
-    - OrderExtension
     - MemberExtension
 SeoConfig:
     Page: true
@@ -77,6 +93,7 @@ GoogleAPIs:
   Recaptcha_site: '6LcK8g8UAAAAAHvUzsx9cEF4X8-OJEbVmamdkz06'
 
 SaltedPayment:
+  DefaultOrderClass: 'Order'
   MerchantSettings:
     MerchantHomepageURL: "https://goprop.leochen.co.nz"
     SuccessURL: "https://goprop.leochen.co.nz/payment/success"

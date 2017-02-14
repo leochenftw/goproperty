@@ -21,6 +21,11 @@ html.locked {
 	display: none;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 .inline-mini-button,
 .button,
 a.button:link,
@@ -39,6 +44,21 @@ a.button:visited {
 	&:hover {
 		@include opacity(0.8);
 	}
+}
+
+.blue-button {
+    display: block;
+    border: none;
+    border-radius: rem(5);
+    background-color: $blue;
+    font-size: rem(22);
+    padding: 0.2em 3em;
+    color: #fff;
+    line-height: 1.4;
+    @include transition(all 0.25s);
+    &:hover {
+        background-color: rgba(0,29,88,0.8);
+    }
 }
 
 a.call-to-action:link,
@@ -232,38 +252,4 @@ table.full-width {
 	padding: 0 rem(10);
 	margin-left: auto;
 	margin-right: auto;
-}
-
-.section {
-	padding: rem(60) 0;
-    @include breakpoint($iphone) {
-        padding: rem(30) 0;
-    }
-	position: relative;
-	header {
-		margin: 0 auto rem(64);
-		max-width: rem(600);
-		padding: 0 rem(10);
-	}
-
-	h2 {
-		font-size: rem(64);
-        color: #000;
-		margin-top: 0;
-		margin-bottom: rem(20);
-        @include breakpoint($iphone) {
-            font-size: rem(48);
-            margin-bottom: rem(10);
-        }
-	}
-
-	p {
-		margin-top: 0;
-		font-size: rem(20);
-        @include breakpoint($iphone) {
-            font-size: rem(18);
-        }
-		color: #545454;
-	}
-
 }

@@ -10,3 +10,4 @@ Director:
     'api/v1/payment/$ID': 'PaymentAPI'
     'api/v1/creditcard/$ID': 'CreditcardAPI'
     'api/v1/agency/$ID': 'AgencyAPI'
+    'api/v1/location/$district/$suburb': 'LocationAPI'
