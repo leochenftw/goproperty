@@ -9,7 +9,7 @@
             <% end_loop %>
         <% end_if %>
     </div>
-    <div class="previewable-uploader__uploadable<% if $Existings.Count >= 10 %> hide<% end_if %>">
+    <div class="previewable-uploader__uploadable">
         <input accept="image/*" id="$id" name="{$Name}[Uploads][]" class="$extraClass ss-uploadfield-fromcomputer-fileinput" data-config="$configString" type="file" />
     </div>
 </div>
