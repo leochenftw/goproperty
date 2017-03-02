@@ -18,7 +18,6 @@ framework
 cms
 
 ## Silverstripe Modules ##
-modules
 blog
 blogadmin
 blogcategories
