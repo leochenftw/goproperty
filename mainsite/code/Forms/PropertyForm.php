@@ -27,7 +27,13 @@ class PropertyForm extends Form
             !empty($prop) ? $prop->PropertyType : null
         )->setEmptyString('- select one -'));
 
-        $fields->push($addr = TextField::create('FullAddress', 'Address')->addExtraClass('google-placed'));
+        $fields->push($unit = TextField::create(
+            'UnitNumber',
+            'Unit/Room/Apartment/Flat number',
+            !empty($prop) ? $prop->UnitNumber : null
+        )->setAttribute('placeholder', 'e.g. Level 5 | Flat 6 | Unit 4'));
+
+        $fields->push($addr = TextField::create('FullAddress', 'Street address')->addExtraClass('google-placed'));
 
         if (!empty($prop)) {
             $addr->setValue($prop->FullAddress);
@@ -55,21 +61,21 @@ class PropertyForm extends Form
 
         $fields->push(TextField::create('ContactNumber', 'Contact number', !empty($prop) ? $prop->ContactNumber : (!empty(Member::currentUser()->ContactNumber) ? Member::currentUser()->ContactNumber : null)));
 
-        $fields->push($details = TextareaField::create('Content', 'Details')->setAttribute('placeholder', 'The property has features such as termsheet facebook focus product management customer partner network business-to-consumer.')->setDescription('Provide details such as heating, <br />insulation, flooring, <br />whiteware etc.'));
+        $fields->push($details = TextareaField::create('Content', 'Details')->setAttribute('placeholder', 'The property has features such as termsheet facebook focus product management customer partner network business-to-consumer.')->setDescription('Provide details such as heating, insulation, flooring, whiteware etc.'));
 
         $fields->push(DropdownField::create(
             'NumBedrooms',
             'Bedrooms',
             $this->makeList('MaxBedroom'),
             !empty($prop) ? $prop->NumBedrooms : null
-        )->setEmptyString('Number of bedrooms'));
+        )->setEmptyString('- select one -'));
 
         $fields->push(DropdownField::create(
             'NumBathrooms',
             'Bathrooms',
             $this->makeList('MaxBathroom'),
             !empty($prop) ? $prop->NumBathrooms : null
-        )->setEmptyString('Number of bathrooms'));
+        )->setEmptyString('- select one -'));
 
         $fields->push($amenities = TextareaField::create('Amenities', 'Amenities')->setAttribute('placeholder', 'Amentities in the area such as termsheet facebook focus product management partner network termsheet facebook focus product management.'));
 
@@ -132,7 +138,9 @@ class PropertyForm extends Form
 
         $daily_charge = Config::inst()->get('PropertyPage', 'DailyCharge');
 
-        $list_until = DateField::create('ListingCloseOn','Listing ends', !empty($prop) ? $prop->ListingCloseOn : null)->setDescription('Rate: $' . $daily_charge . ' per day.');
+        $listing_desc = 'Rate: $' . $daily_charge . ' per day. ';
+
+        $list_until = DateField::create('ListingCloseOn','Listing ends', !empty($prop) ? $prop->ListingCloseOn : null);
 
         if (!empty($prop)) {
             if ($prop->isPublished()) {
@@ -150,9 +158,10 @@ class PropertyForm extends Form
                     $diff   =   date_diff($today,$until);
                     $prop->ListingDuration = $this->Duration = $diff->days + 1;
                     $this->AmountToPay = $daily_charge * $prop->ListingDuration;
+                    $listing_desc .= 'You are going to list this property for <strong>' . $prop->ListingDuration . '</strong> day(s). This is going to cost you: <span>$' . $this->AmountToPay . '</span>';
+                    $list_until->setDescription($listing_desc);
                 }
             }
-
         }
 
         $fields->push($list_until);
@@ -238,7 +247,7 @@ class PropertyForm extends Form
             }
         }
 
-        return Controller::curr()->httpError(400);
+        return Controller::curr()->httpError(400, 'missing token');
     }
 
     public function doWithdraw($data, $form)

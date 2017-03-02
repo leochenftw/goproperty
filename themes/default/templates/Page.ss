@@ -17,10 +17,13 @@
 		<% include GA %>
         <script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
-	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase">
+	<body class="page-$URLSegment.LowerCase<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase<% if $extraBodyClassName %> $extraBodyClassName<% end_if %>">
 		<% include Header %>
 
 		<main id="main">
+            <% if $HomepageHero %>
+            <% include PageHero %>
+            <% end_if %>
 			$Layout
 		</main>
 

@@ -4,7 +4,7 @@
             <% loop $Existings %>
             <div class="previewable-uploader__previewable__thumbnail relative">
                 $FillMax(92, 92)
-                <button class="btn-remove-thumbnail solid" data-id="$ID">remove</button>
+                <button class="btn-remove-thumbnail solid icon-close" data-id="$ID">remove</button>
             </div>
             <% end_loop %>
         <% end_if %>

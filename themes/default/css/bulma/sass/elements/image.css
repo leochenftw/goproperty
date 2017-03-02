@@ -1,0 +1,102 @@
+/*
+Error: Undefined mixin 'overlay'.
+        on line 18 of /var/www/silverstripe/BSE/www/goprop/htdocs/themes/default/scss/bulma/sass/elements/image.sass, in `overlay'
+        from line 18 of /var/www/silverstripe/BSE/www/goprop/htdocs/themes/default/scss/bulma/sass/elements/image.sass
+
+13:   &.is-4by3,
+14:   &.is-3by2,
+15:   &.is-16by9,
+16:   &.is-2by1
+17:     img
+18:       +overlay
+19:       height: 100%
+20:       width: 100%
+21:   &.is-square,
+22:   &.is-1by1
+23:     padding-top: 100%
+
+Backtrace:
+/var/www/silverstripe/BSE/www/goprop/htdocs/themes/default/scss/bulma/sass/elements/image.sass:18:in `overlay'
+/var/www/silverstripe/BSE/www/goprop/htdocs/themes/default/scss/bulma/sass/elements/image.sass:18
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:348:in `block in visit_mixin'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:98:in `block in with_mixin'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:98:in `with_mixin'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:346:in `visit_mixin'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `block (2 levels) in visit_rule'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `map'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `block in visit_rule'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:428:in `visit_rule'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `block (2 levels) in visit_rule'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `map'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `block in visit_rule'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:428:in `visit_rule'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `block (2 levels) in visit_rule'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `map'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `block in visit_rule'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:428:in `visit_rule'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `map'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/root_node.rb:36:in `css_tree'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/engine.rb:285:in `render_with_sourcemap'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:209:in `each'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/usr/local/rvm/gems/ruby-2.1.2/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:293:in `watch'
+/usr/local/rvm/gems/ruby-2.1.2/gems/compass-1.0.3/lib/compass/sass_compiler.rb:46:in `watch!'
+/usr/local/rvm/gems/ruby-2.1.2/gems/compass-1.0.3/lib/compass/commands/watch_project.rb:41:in `perform'
+/usr/local/rvm/gems/ruby-2.1.2/gems/compass-1.0.3/lib/compass/commands/base.rb:18:in `execute'
+/usr/local/rvm/gems/ruby-2.1.2/gems/compass-1.0.3/lib/compass/commands/project_base.rb:19:in `execute'
+/usr/local/rvm/gems/ruby-2.1.2/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/usr/local/rvm/gems/ruby-2.1.2/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/usr/local/rvm/gems/ruby-2.1.2/gems/compass-1.0.3/bin/compass:30:in `block in <top (required)>'
+/usr/local/rvm/gems/ruby-2.1.2/gems/compass-1.0.3/bin/compass:44:in `call'
+/usr/local/rvm/gems/ruby-2.1.2/gems/compass-1.0.3/bin/compass:44:in `<top (required)>'
+/usr/local/rvm/gems/ruby-2.1.2/bin/compass:23:in `load'
+/usr/local/rvm/gems/ruby-2.1.2/bin/compass:23:in `<main>'
+/usr/local/rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+/usr/local/rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined mixin 'overlay'.\A         on line 18 of /var/www/silverstripe/BSE/www/goprop/htdocs/themes/default/scss/bulma/sass/elements/image.sass, in `overlay'\A         from line 18 of /var/www/silverstripe/BSE/www/goprop/htdocs/themes/default/scss/bulma/sass/elements/image.sass\A \A 13:   &.is-4by3,\A 14:   &.is-3by2,\A 15:   &.is-16by9,\A 16:   &.is-2by1\A 17:     img\A 18:       +overlay\A 19:       height: 100%\A 20:       width: 100%\A 21:   &.is-square,\A 22:   &.is-1by1\A 23:     padding-top: 100%"; }

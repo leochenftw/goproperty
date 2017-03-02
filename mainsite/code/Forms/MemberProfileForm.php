@@ -2,16 +2,16 @@
 
 class MemberProfileForm extends Form {
 
-	public function __construct($controller) {
-		$member = Member::currentUser();
-		$fields = new FieldList();
-        $fields->push(LiteralField::create('Cropped', !empty($this->getCroppedPortrait()) ? $this->getCroppedPortrait()->FillMax(300, 300) : null));
+    public function __construct($controller) {
+        $member = Member::currentUser();
+        $fields = new FieldList();
+        // $fields->push(LiteralField::create('Cropped', !empty($this->getCroppedPortrait()) ? $this->getCroppedPortrait()->FillMax(300, 300) : null));
         $fields->push($uploader = UploadField::create('Image', 'Portrait'));
-		$fields->push($email = EmailField::create('Email', 'Email')->setValue($member->Email)->setDescription('<a data-title="My profile | Change email address" href="/member/action/email-update" class="ajax-routed">Change email address</a>')->performReadonlyTransformation());
-		$fields->push($first = TextField::create('FirstName', 'First name')->setValue($member->FirstName));
-		$fields->push($last = TextField::create('Surname', 'Surname')->setValue($member->Surname));
+        $fields->push($email = EmailField::create('Email', 'Email')->setValue($member->Email)->setDescription('<a data-title="My profile | Change email address" href="/member/action/email-update" class="ajax-routed">Change email address</a>')->performReadonlyTransformation());
+        $fields->push($first = TextField::create('FirstName', 'First name')->setValue($member->FirstName));
+        $fields->push($last = TextField::create('Surname', 'Surname')->setValue($member->Surname));
         $fields->push($addr = TextField::create('FullAddress', 'Address')->setValue($member->FullAddress));
-		$fields->push($first = TextField::create('ContactNumber', 'Landline/Mobile')->setValue($member->ContactNumber));
+        $fields->push($first = TextField::create('ContactNumber', 'Landline/Mobile')->setValue($member->ContactNumber));
 
         $fields->push(HiddenField::create('StreetNumber','StreetNumber', $member->StreetNumber));
         $fields->push(HiddenField::create('StreetName','StreetName', $member->StreetName));
@@ -34,23 +34,23 @@ class MemberProfileForm extends Form {
         $fields->push(HiddenField::create('CropperHeight','CropperHeight', $this->getCoordinate('CropperHeight')));
 
         $uploader->setFolderName('members/' . Member::CurrentUserID() . '/portraits')
-				->setCanAttachExisting(false)
-				->setAllowedMaxFileNumber(1)
-				->setAllowedExtensions(array('jpg', 'jpeg', 'png'))
-				->setPreviewMaxWidth(400)
-				->setPreviewMaxHeight(400)
-				->setCanPreviewFolder(false)
-				->setAutoUpload(false)
-				->setFieldHolderTemplate('FrontendUploadField');
+                ->setCanAttachExisting(false)
+                ->setAllowedMaxFileNumber(1)
+                ->setAllowedExtensions(array('jpg', 'jpeg', 'png'))
+                ->setPreviewMaxWidth(400)
+                ->setPreviewMaxHeight(400)
+                ->setCanPreviewFolder(false)
+                ->setAutoUpload(false)
+                ->setFieldHolderTemplate('FrontendUploadField');
 
-		$actions = new FieldList(
-			$btnSubmit = FormAction::create('doUpdate','Save changes')
-		);
+        $actions = new FieldList(
+            $btnSubmit = FormAction::create('doUpdate','Save changes')
+        );
 
-		parent::__construct($controller, 'MemberProfileForm', $fields, $actions);
-		$this->setFormMethod('POST', true)
-			 ->setFormAction(Controller::join_links(BASE_URL, 'member', "MemberProfileForm"));
-	}
+        parent::__construct($controller, 'MemberProfileForm', $fields, $actions);
+        $this->setFormMethod('POST', true)
+             ->setFormAction(Controller::join_links(BASE_URL, 'member', "MemberProfileForm"));
+    }
 
     private function getCoordinate($attribute)
     {
@@ -63,10 +63,10 @@ class MemberProfileForm extends Form {
         return 0;
     }
 
-	public function doUpdate($data, $form) {
-		if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
+    public function doUpdate($data, $form) {
+        if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
 
-			if ($member = Member::currentUser()) {
+            if ($member = Member::currentUser()) {
 
                 $portrait = $member->Portrait()->exists() ? $member->Portrait() : new Portrait();
                 if (!empty($data['Image']['type']['Uploads'][0])) {
@@ -83,15 +83,15 @@ class MemberProfileForm extends Form {
                 }
                 $portrait->write();
 
-				$form->saveInto($member);
-				$member->write();
-			}
+                $form->saveInto($member);
+                $member->write();
+            }
 
-			return Controller::curr()->redirectBack();
-		}
+            return Controller::curr()->redirectBack();
+        }
 
-		return Controller::curr()->httpError(400);
-	}
+        return Controller::curr()->httpError(400);
+    }
 
     public function getCroppedPortrait()
     {

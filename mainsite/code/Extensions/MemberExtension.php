@@ -11,14 +11,19 @@ class MemberExtension extends DataExtension
      */
     private static $db = array(
         'ValidationKey'  	 	=>	'Varchar(40)',
-        'ContactNumber'         =>  'Varchar(24)'
+        'ContactNumber'         =>  'Varchar(24)',
+        'beLandlords'           =>  'Boolean',
+        'beTradesmen'           =>  'Boolean',
+        'beRealtors'            =>  'Boolean'
     );
+
     /**
      * Has_one relationship
      * @var array
      */
     private static $has_one = array(
-        'Portrait'              =>  'Portrait'
+        'Portrait'              =>  'Portrait',
+        'Business'              =>  'Business'
     );
 
     /**
@@ -95,15 +100,31 @@ class MemberExtension extends DataExtension
 
     public function isAgent()
     {
+        return $this->owner->inGroup('realtors');
+    }
+
+
+    public function isLandlord()
+    {
+        return $this->owner->inGroup('landlords');
+    }
+
+    public function isTradesperson()
+    {
         return $this->owner->inGroup('tradesmen');
+    }
+
+    public function isRealtor()
+    {
+        return $this->owner->isAgent();
     }
 
     public function getPaymentHistory()
     {
-        // if ($payment = $this->Payments()) {
-        //     return $payment->filter(array('Status:not' => 'Pending'));
-        // }
-        // return null;
+        if ($payment = $this->owner->Orders()) {
+            return $payment->filter(array('isOpen' => false));
+        }
+        return null;
     }
 
     public function getSubscription()
@@ -120,6 +141,16 @@ class MemberExtension extends DataExtension
         //     return $payment->filter(array('Status' => 'Success', 'ProcessedAt:LessThanOrEqual' => date("Y-m-d H:i:s")))->first();
         // }
         // return null;
+    }
+
+    public function getTitle()
+    {
+        return $this->owner->FirstName . (!empty($this->owner->Surname) ? (' ' . $this->owner->Surname) : '');
+    }
+
+    public function Title()
+    {
+        return $this->getTitle();
     }
 
 }

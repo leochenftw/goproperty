@@ -27,7 +27,7 @@ class RentForm extends PropertyForm
             !empty($prop) ? $prop->AllowSmoker : 'No'
         ));
 
-        $fields->push($furnishings = TextareaField::create('Furnishings', 'Furnishings'));
+        $fields->push($furnishings = TextareaField::create('Furnishings', 'Furnishing'));
 
         $fields->push($testimonial = TextareaField::create('Testimonial', 'Testimonial')->setAttribute('placeholder', 'Customer partner network the property has features such as termsheet facebook focus product management.'));
 
@@ -48,13 +48,13 @@ class RentForm extends PropertyForm
             'Max number of tenants',
             $this->makeList('MaxCapacity'),
             !empty($prop) ? $prop->MaxCapacity : null
-        )->setEmptyString('Number of tenants'));
+        )->setEmptyString('- select one -'));
 
 		$fields->changeFieldOrder(array(
+            'DateAvailable',
             'PropertyType',
 			'WeeklyRent',
             'FullAddress',
-            'DateAvailable',
             'AgencyReference',
 			'MaxCapacity',
 			'NumBedrooms',

@@ -1,3 +1,4 @@
+.tradesmen-search-form,
 .property-search-form {
     padding: rem(25) 0 rem(45);
     color: #5e5e5e;
@@ -19,6 +20,9 @@
         .optionset,
         .fields-wrapper {
             @include display-flex;
+            &.hide {
+                display: none;
+            }
             margin-bottom: rem(10);
             .left,
             .label,
@@ -49,7 +53,7 @@
                     }
                     .dropdown, .text {
                         border: 1px solid #95989a;
-                        height: rem(36);
+                        height: rem(40);
                         display: block;
                         width: 100%;
                         font-size: rem(16);
@@ -66,6 +70,7 @@
                         list-style: none;
                         label {
                             font-size: rem(22);
+                            margin-left: 0.5em;
                         }
                     }
                 }
@@ -91,6 +96,7 @@
         }
 
         .actions {
+            margin-top: rem(30);
             padding-left: rem(160);
             input[type="submit"] {
                 @extend .blue-button;

@@ -7,10 +7,20 @@
 /**
  * Fontello
  * */
-/*
-@include font-face('fontello', font-files('fontello.woff', 'fontello.woff2', 'fontello.ttf', 'fontello.svg'), 'fontello.eot', normal,
-					normal);
-*/
+
+@include font-face(
+            'go-property',
+            font-files(
+                'go-property.woff',
+                'go-property.woff2',
+                'go-property.ttf',
+                'go-property.svg'
+            ),
+            'go-property.eot',
+            normal,
+            normal
+        );
+
 
 
 /**
@@ -18,7 +28,7 @@
  * */
 /*
 @include font-face('RealtimeStencil', font-files('30669F_0_0.woff', '30669F_0_0.woff2', '30669F_0_0.ttf',
-										'30669F_0_0.svg'), '30669F_0_0.eot', bold, normal);
+                                        '30669F_0_0.svg'), '30669F_0_0.eot', bold, normal);
 */
 
 
@@ -33,39 +43,68 @@ $default_font_family: 'Lato', sans-serif;
  * - Update with the values output by fontello.
  * */
 $icons: (
-	//dashboard:		'\e800',
+    //dashboard:		'\e800',
+    user:               '\e800',
+    login:              '\e801',
+    logout:             '\e802',
+    agency:             '\e803',
+    creditcard:         '\e804',
+    key:                '\e805',
+    property:           '\e840',
+    twitter:            '\f099',
+    mail:               '\f0e0',
+    dashboard:          '\f0e4',
+    dollar:             '\f155',
+    youtube:            '\f16a',
+    instagram:          '\f16d',
+    garage:             '\f1b9',
+    bed:                '\f236',
+    bath:               '\f2cd',
+    facebook:           '\f308',
+    close:              '\e806',
+    arrow-down:         '\e807',
+    arrow-left:         '\f104',
+    arrow-right:        '\f105',
+    calendar:           '\e808',
+    star:               '\e809',
+    star-empty:         '\e80a',
+    star-half:          '\f123',
+    check:              '\e80b',
+    check-empty:        '\f096',
+    wrench:             '\e80c',
+    promote:            '\f102'
 );
 
 @mixin icon($icon: dashboard, $font-size: rem(14), $position: before, $hide-font: true) {
 
-	@if $hide-font {
-		font-size: 0;
-		line-height: 0;
-		text-indent: -1000000px;
-	}
+    @if $hide-font {
+        font-size: 0;
+        line-height: 0;
+        text-indent: -1000000px;
+    }
 
-	&:#{$position} {
-		font-family: "fontello";
-		font-style: normal;
-		font-weight: normal;
-		font-size: $font-size;
-		text-indent: 0;
-		speak: none;
+    &:#{$position} {
+        font-family: "go-property";
+        font-style: normal;
+        font-weight: normal;
+        font-size: $font-size;
+        text-indent: 0;
+        speak: none;
 
-		display: inline-block;
-		text-decoration: inherit;
-		text-align: center;
-		font-variant: normal;
-		text-transform: none;
+        display: inline-block;
+        text-decoration: inherit;
+        text-align: center;
+        font-variant: normal;
+        text-transform: none;
 
-		line-height: 1em;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
+        line-height: 1em;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
 
-		content: map-get($icons, $icon);
+        content: map-get($icons, $icon);
 
-		@content;
-	}
+        @content;
+    }
 }
 
 @each $key, $value in $icons {

@@ -1,5 +1,35 @@
 .hero-region {
-    padding: rem(55) 0 rem(125);
+    position: relative;
+    .page-home & {
+        padding: rem(55) 0 rem(125);
+    }
+
+    &#g-map-hero-wrapper {
+        min-height: 20vh;
+        background-color: #d7d7d7;
+        &:before {
+            content: '';
+            display: block;
+            @include retina-sprite(logo_white, icons, $dimensions: true, $nonRetina: true);
+            position: absolute;
+            top: 50%;
+            left: rem(60);
+            @include transform(translateY(-50%));
+            z-index: 2;
+        }
+
+        &:after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(184, 232, 30, 0.3);
+            z-index: 1;
+        }
+    }
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -9,5 +39,32 @@
         display: inline-block;
         overflow: hidden;
         text-indent: rem(-9999);
+    }
+
+    &__google-maps {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        .gmnoprint a,
+        .gmnoprint span,
+        .gm-style-cc {
+            display:none;
+        }
+        .gmnoprint div {
+            background:none !important;
+        }
+    }
+
+    &__text-overlay {
+        position: absolute;;
+        z-index: 2;
+        top: 64%;
+        left: 0;
+        width: 100%;
+        max-width: none;
+        @include transform(translateY(-50%));
     }
 }

@@ -47,7 +47,10 @@ ModelAdmin:
   extensions:
     - ModelAdminExtension
 Member:
-  MonthlySubscription: 50
+  Subscriptions:
+    'Landlords': 15
+    'Tradesmen': 25
+    'Realtors': 35
   extensions:
     - AddressProperties
     - MemberExtension
@@ -56,6 +59,13 @@ SeoConfig:
     ErrorPage: false
     RedirectorPage: false
     VirtualPage: false
+TradesPerson:
+  WorkTypes:
+    'electrical': 'Electrical'
+    'builder': 'Builder'
+    'carpenter': 'Carpenter'
+    'plumber': 'Plumber'
+    'mover': 'Mover'
 PropertyPage:
   DailyCharge: 2
   MaxBedroom: 10
@@ -91,7 +101,11 @@ Image:
 GoogleAPIs:
   Recaptcha: '6LcK8g8UAAAAAMspUwFUpvzBPZDgNN56AlUn6rqL'
   Recaptcha_site: '6LcK8g8UAAAAAHvUzsx9cEF4X8-OJEbVmamdkz06'
-
+MenuSet:
+  default_sets:
+    - "Footer First-Menu"
+    - "Footer Second-Menu"
+    - "Footer Social-Menu"
 SaltedPayment:
   DefaultOrderClass: 'Order'
   MerchantSettings:

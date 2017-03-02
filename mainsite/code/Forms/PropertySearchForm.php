@@ -1,5 +1,6 @@
 <?php
 use SaltedHerring\Debugger;
+use Cocur\Slugify\Slugify;
 
 class PropertySearchForm extends Form
 {
@@ -7,6 +8,15 @@ class PropertySearchForm extends Form
     {
         $agency = null;
         $fields = new FieldList();
+        $fields->push(OptionsetField::create(
+            'RentOrSale',
+            'Rent / Sale',
+            array(
+                'rent'  => 'Rent',
+                'sale'  =>  'Sale'
+            ),
+            'rent'
+        ));
         $fields->push(DropdownField::create(
             'Region',
             'Region',
@@ -24,9 +34,15 @@ class PropertySearchForm extends Form
         )->setEmptyString('All suburbs'));
 
         $fields->push(DropdownField::create(
-            'PropertyType',
+            'RentalPropertyType',
             'Property Type',
-            $this->makeList(Config::inst()->get('PropertyPage', 'RentForm'))
+            Config::inst()->get('PropertyPage', 'RentForm')
+        )->setEmptyString('All types'));
+
+        $fields->push(DropdownField::create(
+            'SalePropertyType',
+            'Property Type',
+            Config::inst()->get('PropertyPage', 'SaleForm')
         )->setEmptyString('All types'));
 
         $fields->push(DropdownField::create(
@@ -64,6 +80,16 @@ class PropertySearchForm extends Form
         )->setAttribute('placeholder', 'Any'));
 
         $fields->push(TextField::create(
+            'PriceFrom',
+            'Price from'
+        )->setAttribute('placeholder', 'Any'));
+
+        $fields->push(TextField::create(
+            'PriceTo',
+            'Price to'
+        )->setAttribute('placeholder', 'Any'));
+
+        $fields->push(TextField::create(
             'Availability',
             'Available from'
         ));
@@ -80,19 +106,95 @@ class PropertySearchForm extends Form
             array('No' => 'No', 'Yes' => 'Yes')
         ));
 
-
-
         $actions = new FieldList();
         $actions->push(FormAction::create('doSearch', 'Search'));
 
         parent::__construct($controller, 'PropertySearchForm', $fields, $actions);
-        $this->setFormMethod('POST', true)
-             ->setFormAction(Controller::join_links(BASE_URL, 'all-properties', 'PropertySearchForm'))->addExtraClass('property-search-form');
+        $this->setFormMethod('POST', true)->addExtraClass('property-search-form');
     }
+
+    public function validate()
+    {
+         return true;
+    }
+
 
     public function doSearch($data, $form)
     {
+        /*
+        [Region] => Northland
+        [City] =>
+        [Suburb] =>
+        [PropertyType] => Townhouse
+        [BedroomFrom] => 1
+        [BedroomTo] => 3
+        [BathroomFrom] => 2
+        [BathroomTo] => 2
+        [RentFrom] => 1000
+        [RentTo] => 2000
+        [Availability] => 24/02/2017
+        [AllowPet] => Yes
+        [AllowSmoker] => Yes
+        [SecurityID] => 91d45feb9e0e4a9d678583ffd68a22f3eaf90358
+        [action_doSearch] => Search
+        */
+        if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
+            $region     =   !empty($data['Region']) ? strtolower($data['Region']) : null;
+            $district   =   !empty($data['City']) ? strtolower($data['City']) : null;
+            $suburb     =   !empty($data['Suburb']) ? strtolower($data['Suburb']) : null;
 
+            if (!empty($data['Availability'])) {
+                $dates = explode('/', $data['Availability']);
+                $dates = array_reverse($dates);
+                $data['Availability'] = implode('-', $dates);
+            }
+
+            $url        =   '/list';
+
+            $slugify = new Slugify();
+
+            if (!empty($region)) {
+                $region = $slugify->slugify($region);
+                $url .= "/$region";
+            }
+
+            if (!empty($district)) {
+                $district = $slugify->slugify($district);
+                $url .= "/$district";
+            }
+
+            if (!empty($suburb)) {
+                $suburb = $slugify->slugify($suburb);
+                $url .= "/$suburb";
+            }
+
+            unset($data['Region']);
+            unset($data['City']);
+            unset($data['Suburb']);
+            unset($data['SecurityID']);
+            unset($data['action_doSearch']);
+
+            $link = $url . '?';
+            foreach ($data as $key => $value) {
+                if (!empty($value)) {
+                    if (is_array($value)) {
+                        foreach ($value as $value_item) {
+                            $link .= $key . '[]=' . $value_item . '&';
+                        }
+                    } else {
+                        $link .= ($key . '=' . $value . '&');
+                    }
+                }
+            }
+
+            $link = rtrim(rtrim($link, '&'), '?');
+            $url = $link;
+
+            return $this->controller->redirect($url);
+
+        }
+
+        return $this->controller->httpError(400);
     }
 
     private function makeList($array)

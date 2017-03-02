@@ -26,6 +26,18 @@ img {
     height: auto;
 }
 
+.mt-10 {
+    margin-top: rem(10);
+}
+
+.mt-20 {
+    margin-top: rem(20);
+}
+
+.mt-30 {
+    margin-top: rem(30);
+}
+
 .inline-mini-button,
 .button,
 a.button:link,
@@ -240,6 +252,15 @@ table.full-width {
     @include font-smoothing;
 }
 
+.li-inline-block {
+    padding-left: 0;
+    li {
+        display: inline-block;
+        list-style: none;
+		list-style-image: none;
+    }
+}
+
 .neat-ul {
 	li {
 		list-style: none;
@@ -252,4 +273,10 @@ table.full-width {
 	padding: 0 rem(10);
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.message {
+    &.required {
+        color: red;
+    }
 }

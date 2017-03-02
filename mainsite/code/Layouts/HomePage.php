@@ -27,11 +27,6 @@ class HomePage extends Page
 
 class HomePage_Controller extends Page_Controller
 {
-    public function Form()
-    {
-        return new PropertySearchForm($this);
-    }
-
     public function getTiles()
     {
         return Tile::get()->limit(6);

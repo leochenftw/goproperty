@@ -2,6 +2,7 @@
 
 class Signup extends Page_Controller
 {
+    private $extraClassName = '';
     /**
      * Defines methods that can be called directly
      * @var array
@@ -22,6 +23,7 @@ class Signup extends Page_Controller
 
     public function activate($request) {
 		$member_id = $request->getVar('id');
+        $this->extraClassName = 'activation';
 		$key = $request->getVar('token');
 		if ($member = Member::get()->byID($member_id)) {
 			if (empty($member->ValidationKey)) {
@@ -52,12 +54,17 @@ class Signup extends Page_Controller
 
     public function Title()
     {
-        return 'Signup';
+        return 'Sign up';
     }
 
     public function ShowOff()
     {
 
+    }
+
+    public function extraBodyClassName()
+    {
+        return $this->extraClassName;
     }
 
 }

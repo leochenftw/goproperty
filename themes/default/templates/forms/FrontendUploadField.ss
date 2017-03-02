@@ -42,7 +42,7 @@
 			<div class="clear"><!-- --></div>
 		</div>
 		<div class="text-centered buttons">
-			<a href="#" class="btn-file-browser">Upload file</a>
+			<a href="#" class="btn-file-browser as-block">Upload file</a>
 		</div>
 	<% end_if %>
 </div>

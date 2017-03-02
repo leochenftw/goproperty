@@ -40,13 +40,18 @@
 @import 'blocks/cropperjs',
         'blocks/cropperjs-override',
         'blocks/docking-bay',
+        'blocks/owl-carousel',
         'blocks/datetimepicker',
-        'blocks/property-form',
         'blocks/header',
         'blocks/hero-region',
         'blocks/search-form',
+        'blocks/main',
         'blocks/mid-page-banner',
-        'blocks/tiles';
+        'blocks/tiles',
+        'blocks/property-tile',
+        'blocks/pagination',
+        'blocks/account-selectors',
+        'blocks/footer';
 /**
  * Plugins.
  * */
@@ -70,6 +75,7 @@ html {
 
 body {
     padding-top: rem(60);
+    background-color: #7f8184;
 }
 
 /**

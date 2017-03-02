@@ -21,6 +21,10 @@
             color: #fff;
             font-size: rem(18);
             line-height: rem(30);
+            &:before {
+                font-size: rem(18);
+                margin-right: .5em;
+            }
         }
     }
 }

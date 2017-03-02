@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * @file styles.scss
  *
@@ -444,16 +445,19 @@
 /**
  * Fontello
  * */
-/*
-@include font-face('fontello', font-files('fontello.woff', 'fontello.woff2', 'fontello.ttf', 'fontello.svg'), 'fontello.eot', normal,
-					normal);
-*/
+@font-face {
+  font-family: "go-property";
+  src: url('../fonts/go-property.eot?1488086453');
+  src: url('../fonts/go-property.eot?&1488086453#iefix') format('embedded-opentype'), url('../fonts/go-property.woff?1488086453') format('woff'), url('../fonts/go-property.woff2?1488086453') format('woff2'), url('../fonts/go-property.ttf?1488086453') format('truetype'), url('../fonts/go-property.svg?1488086453') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 /**
  * Example font import:
  * */
 /*
 @include font-face('RealtimeStencil', font-files('30669F_0_0.woff', '30669F_0_0.woff2', '30669F_0_0.ttf',
-										'30669F_0_0.svg'), '30669F_0_0.eot', bold, normal);
+                                        '30669F_0_0.svg'), '30669F_0_0.eot', bold, normal);
 */
 /**
  * The default font stack.
@@ -462,6 +466,673 @@
  * Fontello config:
  * - Update with the values output by fontello.
  * */
+.icon-user {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-user:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-login {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-login:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-logout {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-logout:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-agency {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-agency:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-creditcard {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-creditcard:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-key {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-key:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-property {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-property:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-twitter {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-twitter:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-mail {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-mail:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-dashboard {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-dashboard:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-dollar {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-dollar:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-youtube {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-youtube:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-instagram {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-instagram:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-garage {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-garage:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-bed {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-bed:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-bath {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-bath:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-facebook {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-facebook:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-close {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-close:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-arrow-down {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-arrow-down:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-arrow-left, #main .property__gallery__thumbnails .owl-nav div.owl-prev {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-arrow-left:before, #main .property__gallery__thumbnails .owl-nav div.owl-prev:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-arrow-right, #main .property__gallery__thumbnails .owl-nav div.owl-next {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-arrow-right:before, #main .property__gallery__thumbnails .owl-nav div.owl-next:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-calendar {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-calendar:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-star {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-star:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-star-empty {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-star-empty:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-star-half {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-star-half:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-check, .account-types li.checked {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-check:before, .account-types li.checked:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-check-empty, .account-types li {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-check-empty:before, .account-types li:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-wrench {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-wrench:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-promote {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-promote:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
 /**
  * @file _sprites.scss
  *
@@ -522,6 +1193,18 @@ img {
   height: auto;
 }
 
+.mt-10 {
+  margin-top: 0.625rem;
+}
+
+.mt-20 {
+  margin-top: 1.25rem;
+}
+
+.mt-30 {
+  margin-top: 1.875rem;
+}
+
 .inline-mini-button,
 .button,
 a.button:link,
@@ -550,7 +1233,9 @@ a.button:visited:hover {
   opacity: 0.8;
 }
 
-.blue-button, .property-search-form .half .actions input[type="submit"] {
+.blue-button, .tradesmen-search-form .half .actions input[type="submit"],
+.property-search-form .half .actions input[type="submit"], #main .member-area__content form .Actions input.action, #main #SignupForm_SignupForm .Actions input.action,
+#main #SigninForm_SigninForm .Actions input.action {
   display: block;
   border: none;
   border-radius: 0.3125rem;
@@ -564,7 +1249,9 @@ a.button:visited:hover {
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
-.blue-button:hover, .property-search-form .half .actions input[type="submit"]:hover {
+.blue-button:hover, .tradesmen-search-form .half .actions input[type="submit"]:hover,
+.property-search-form .half .actions input[type="submit"]:hover, #main .member-area__content form .Actions input.action:hover, #main #SignupForm_SignupForm .Actions input.action:hover,
+#main #SigninForm_SigninForm .Actions input.action:hover {
   background-color: rgba(0, 29, 88, 0.8);
 }
 
@@ -767,6 +1454,15 @@ b {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.li-inline-block {
+  padding-left: 0;
+}
+.li-inline-block li {
+  display: inline-block;
+  list-style: none;
+  list-style-image: none;
+}
+
 .neat-ul li {
   list-style: none;
   list-style-image: none;
@@ -777,6 +1473,10 @@ b {
   padding: 0 0.625rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.message.required {
+  color: red;
 }
 
 /**
@@ -823,7 +1523,7 @@ h4,
 h5,
 h6 {
   line-height: 1.2em;
-  margin-bottom: 1.375rem;
+  margin: 0 0 1.375rem;
 }
 
 h1 {
@@ -1512,6 +2212,210 @@ textarea {
   overflow: hidden;
 }
 
+#businessform-logo-uploader .docking-bay {
+  width: 36.25rem;
+  height: 21.125rem;
+  overflow: hidden;
+}
+
+/**
+ * Owl Carousel v2.2.0
+ * Copyright 2013-2016 David Deutsch
+ * Licensed under MIT (https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE)
+ */
+.owl-carousel, .owl-carousel .owl-item {
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.owl-carousel {
+  display: none;
+  width: 100%;
+  z-index: 1;
+}
+
+.owl-carousel .owl-stage {
+  position: relative;
+  -ms-touch-action: pan-Y;
+}
+
+.owl-carousel .owl-stage:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.owl-carousel .owl-stage-outer {
+  position: relative;
+  overflow: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.owl-carousel .owl-item {
+  min-height: 1px;
+  float: left;
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none;
+}
+
+.owl-carousel .owl-item img {
+  display: block;
+  width: 100%;
+  -webkit-transform-style: preserve-3d;
+}
+
+.owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
+  display: none;
+}
+
+.no-js .owl-carousel, .owl-carousel.owl-loaded {
+  display: block;
+}
+
+.owl-carousel .owl-dot, .owl-carousel .owl-nav .owl-next, .owl-carousel .owl-nav .owl-prev {
+  cursor: pointer;
+  cursor: hand;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.owl-carousel.owl-loading {
+  opacity: 0;
+  display: block;
+}
+
+.owl-carousel.owl-hidden {
+  opacity: 0;
+}
+
+.owl-carousel.owl-refresh .owl-item {
+  visibility: hidden;
+}
+
+.owl-carousel.owl-drag .owl-item {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.owl-carousel.owl-grab {
+  cursor: move;
+  cursor: grab;
+}
+
+.owl-carousel.owl-rtl {
+  direction: rtl;
+}
+
+.owl-carousel.owl-rtl .owl-item {
+  float: right;
+}
+
+.owl-carousel .animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.owl-carousel .owl-animated-in {
+  z-index: 0;
+}
+
+.owl-carousel .owl-animated-out {
+  z-index: 1;
+}
+
+.owl-carousel .fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.owl-height {
+  transition: height .5s ease-in-out;
+}
+
+.owl-carousel .owl-item .owl-lazy {
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.owl-carousel .owl-item img.owl-lazy {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.owl-carousel .owl-video-wrapper {
+  position: relative;
+  height: 100%;
+  background: #000;
+}
+
+.owl-carousel .owl-video-play-icon {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+  background: url(owl.video.play.png) no-repeat;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  transition: -webkit-transform .1s ease;
+  transition: transform .1s ease;
+}
+
+.owl-carousel .owl-video-play-icon:hover {
+  -webkit-transform: scale(1.3, 1.3);
+  -ms-transform: scale(1.3, 1.3);
+  transform: scale(1.3, 1.3);
+}
+
+.owl-carousel .owl-video-playing .owl-video-play-icon, .owl-carousel .owl-video-playing .owl-video-tn {
+  display: none;
+}
+
+.owl-carousel .owl-video-tn {
+  opacity: 0;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity .4s ease;
+}
+
+.owl-carousel .owl-video-frame {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
 .xdsoft_datetimepicker {
   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);
   background: #fff;
@@ -2083,27 +2987,741 @@ textarea {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f8fa',endColorstr='#FFF',GradientType=0);
 }
 
-.property-form .fields__main, .property-form .fields__aside {
+#header {
+  position: fixed;
   width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 3.75rem;
+  background-color: #b8e81e;
+  padding: 0.9375rem 2.5rem;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
 }
-.property-form .fields__main {
-  max-width: 43.75rem;
-  padding-right: 1.25rem;
+#header #logo {
+  background-image: url('../images/sprites-s9e7de5c2eb.png');
+  background-position: 0 -299px;
+  -moz-background-size: auto;
+  -o-background-size: auto;
+  -webkit-background-size: auto;
+  background-size: auto;
+  background-repeat: repeat-y;
+  height: 30px;
+  width: 40px;
+  display: block;
+  overflow: hidden;
+  text-indent: -624.9375rem;
 }
-.property-form .fields__aside {
-  max-width: 31.25rem;
+#header #top_side_menu a {
+  color: #fff;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
 }
-.property-form .fields__aside #location-on-map {
+#header #top_side_menu a:before {
+  font-size: 1.125rem;
+  margin-right: .5em;
+}
+
+.hero-region {
   position: relative;
-  padding-top: 56.25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
 }
-.property-form .fields__aside .previewable-uploader.limit-reached .previewable-uploader__previewable {
-  max-width: 100%;
+.page-home .hero-region {
+  padding: 3.4375rem 0 7.8125rem;
 }
-.property-form .fields__aside .previewable-uploader.limit-reached .previewable-uploader__uploadable {
+.hero-region#g-map-hero-wrapper {
+  min-height: 20vh;
+  background-color: #d7d7d7;
+}
+.hero-region#g-map-hero-wrapper:before {
+  content: '';
+  display: block;
+  background-image: url('../images/sprites-s9e7de5c2eb.png');
+  background-position: 0 -329px;
+  -moz-background-size: auto;
+  -o-background-size: auto;
+  -webkit-background-size: auto;
+  background-size: auto;
+  background-repeat: repeat-y;
+  height: 60px;
+  width: 167px;
+  position: absolute;
+  top: 50%;
+  left: 3.75rem;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.hero-region#g-map-hero-wrapper:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(184, 232, 30, 0.3);
+  z-index: 1;
+}
+.hero-region__logo-full {
+  background-image: url('../images/sprites-s9e7de5c2eb.png');
+  background-position: 0 -86px;
+  -moz-background-size: auto;
+  -o-background-size: auto;
+  -webkit-background-size: auto;
+  background-size: auto;
+  background-repeat: repeat-y;
+  height: 213px;
+  width: 464px;
+  display: inline-block;
+  overflow: hidden;
+  text-indent: -624.9375rem;
+}
+.hero-region__google-maps {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+.hero-region__google-maps .gmnoprint a,
+.hero-region__google-maps .gmnoprint span,
+.hero-region__google-maps .gm-style-cc {
   display: none;
 }
-.property-form .fields__aside .previewable-uploader__previewable {
+.hero-region__google-maps .gmnoprint div {
+  background: none !important;
+}
+.hero-region__text-overlay {
+  position: absolute;
+  z-index: 2;
+  top: 64%;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.tradesmen-search-form,
+.property-search-form {
+  padding: 1.5625rem 0 2.8125rem;
+  color: #5e5e5e;
+}
+.tradesmen-search-form h2.form-title,
+.property-search-form h2.form-title {
+  margin: 0 0 0.3125rem;
+  font-size: 2.25rem;
+  font-weight: normal;
+}
+.tradesmen-search-form .form-description,
+.property-search-form .form-description {
+  font-size: 1rem;
+  margin: 0 0 1.5625rem;
+}
+.tradesmen-search-form .half,
+.property-search-form .half {
+  width: 50%;
+  padding: 0 1.25rem;
+  min-width: 20rem;
+}
+.tradesmen-search-form .half .optionset,
+.tradesmen-search-form .half .fields-wrapper,
+.property-search-form .half .optionset,
+.property-search-form .half .fields-wrapper {
+  display: -webkit-flex;
+  display: flex;
+  margin-bottom: 0.625rem;
+}
+.tradesmen-search-form .half .optionset.hide,
+.tradesmen-search-form .half .fields-wrapper.hide,
+.property-search-form .half .optionset.hide,
+.property-search-form .half .fields-wrapper.hide {
+  display: none;
+}
+.tradesmen-search-form .half .optionset .left,
+.tradesmen-search-form .half .optionset .label,
+.tradesmen-search-form .half .optionset .fields,
+.tradesmen-search-form .half .optionset .middleColumn,
+.tradesmen-search-form .half .fields-wrapper .left,
+.tradesmen-search-form .half .fields-wrapper .label,
+.tradesmen-search-form .half .fields-wrapper .fields,
+.tradesmen-search-form .half .fields-wrapper .middleColumn,
+.property-search-form .half .optionset .left,
+.property-search-form .half .optionset .label,
+.property-search-form .half .optionset .fields,
+.property-search-form .half .optionset .middleColumn,
+.property-search-form .half .fields-wrapper .left,
+.property-search-form .half .fields-wrapper .label,
+.property-search-form .half .fields-wrapper .fields,
+.property-search-form .half .fields-wrapper .middleColumn {
+  width: 100%;
+}
+.tradesmen-search-form .half .optionset .left,
+.tradesmen-search-form .half .optionset .label,
+.tradesmen-search-form .half .fields-wrapper .left,
+.tradesmen-search-form .half .fields-wrapper .label,
+.property-search-form .half .optionset .left,
+.property-search-form .half .optionset .label,
+.property-search-form .half .fields-wrapper .left,
+.property-search-form .half .fields-wrapper .label {
+  opacity: 0.8;
+  max-width: 8.75rem;
+  display: block;
+  text-align: right;
+  margin-right: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: normal;
+  padding-top: 0.625rem;
+}
+.tradesmen-search-form .half .optionset .middleColumn,
+.tradesmen-search-form .half .optionset .fields,
+.tradesmen-search-form .half .fields-wrapper .middleColumn,
+.tradesmen-search-form .half .fields-wrapper .fields,
+.property-search-form .half .optionset .middleColumn,
+.property-search-form .half .optionset .fields,
+.property-search-form .half .fields-wrapper .middleColumn,
+.property-search-form .half .fields-wrapper .fields {
+  max-width: 27.5rem;
+}
+.tradesmen-search-form .half .optionset .middleColumn .field,
+.tradesmen-search-form .half .optionset .fields .field,
+.tradesmen-search-form .half .fields-wrapper .middleColumn .field,
+.tradesmen-search-form .half .fields-wrapper .fields .field,
+.property-search-form .half .optionset .middleColumn .field,
+.property-search-form .half .optionset .fields .field,
+.property-search-form .half .fields-wrapper .middleColumn .field,
+.property-search-form .half .fields-wrapper .fields .field {
+  margin-bottom: 0.625rem;
+}
+.tradesmen-search-form .half .optionset .middleColumn .field:last-child,
+.tradesmen-search-form .half .optionset .fields .field:last-child,
+.tradesmen-search-form .half .fields-wrapper .middleColumn .field:last-child,
+.tradesmen-search-form .half .fields-wrapper .fields .field:last-child,
+.property-search-form .half .optionset .middleColumn .field:last-child,
+.property-search-form .half .optionset .fields .field:last-child,
+.property-search-form .half .fields-wrapper .middleColumn .field:last-child,
+.property-search-form .half .fields-wrapper .fields .field:last-child {
+  margin-bottom: 0;
+}
+.tradesmen-search-form .half .optionset .middleColumn .field .dropdown, .tradesmen-search-form .half .optionset .middleColumn .field .text,
+.tradesmen-search-form .half .optionset .fields .field .dropdown,
+.tradesmen-search-form .half .optionset .fields .field .text,
+.tradesmen-search-form .half .fields-wrapper .middleColumn .field .dropdown,
+.tradesmen-search-form .half .fields-wrapper .middleColumn .field .text,
+.tradesmen-search-form .half .fields-wrapper .fields .field .dropdown,
+.tradesmen-search-form .half .fields-wrapper .fields .field .text,
+.property-search-form .half .optionset .middleColumn .field .dropdown,
+.property-search-form .half .optionset .middleColumn .field .text,
+.property-search-form .half .optionset .fields .field .dropdown,
+.property-search-form .half .optionset .fields .field .text,
+.property-search-form .half .fields-wrapper .middleColumn .field .dropdown,
+.property-search-form .half .fields-wrapper .middleColumn .field .text,
+.property-search-form .half .fields-wrapper .fields .field .dropdown,
+.property-search-form .half .fields-wrapper .fields .field .text {
+  border: 1px solid #95989a;
+  height: 2.5rem;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5em;
+  border-radius: 0.3125rem;
+  outline: none;
+}
+.tradesmen-search-form .half .optionset .middleColumn ul.optionset,
+.tradesmen-search-form .half .optionset .fields ul.optionset,
+.tradesmen-search-form .half .fields-wrapper .middleColumn ul.optionset,
+.tradesmen-search-form .half .fields-wrapper .fields ul.optionset,
+.property-search-form .half .optionset .middleColumn ul.optionset,
+.property-search-form .half .optionset .fields ul.optionset,
+.property-search-form .half .fields-wrapper .middleColumn ul.optionset,
+.property-search-form .half .fields-wrapper .fields ul.optionset {
+  padding: 0.625rem 0 0;
+  margin: 0;
+}
+.tradesmen-search-form .half .optionset .middleColumn ul.optionset li,
+.tradesmen-search-form .half .optionset .fields ul.optionset li,
+.tradesmen-search-form .half .fields-wrapper .middleColumn ul.optionset li,
+.tradesmen-search-form .half .fields-wrapper .fields ul.optionset li,
+.property-search-form .half .optionset .middleColumn ul.optionset li,
+.property-search-form .half .optionset .fields ul.optionset li,
+.property-search-form .half .fields-wrapper .middleColumn ul.optionset li,
+.property-search-form .half .fields-wrapper .fields ul.optionset li {
+  margin-right: 2em;
+  list-style: none;
+}
+.tradesmen-search-form .half .optionset .middleColumn ul.optionset li label,
+.tradesmen-search-form .half .optionset .fields ul.optionset li label,
+.tradesmen-search-form .half .fields-wrapper .middleColumn ul.optionset li label,
+.tradesmen-search-form .half .fields-wrapper .fields ul.optionset li label,
+.property-search-form .half .optionset .middleColumn ul.optionset li label,
+.property-search-form .half .optionset .fields ul.optionset li label,
+.property-search-form .half .fields-wrapper .middleColumn ul.optionset li label,
+.property-search-form .half .fields-wrapper .fields ul.optionset li label {
+  font-size: 1.375rem;
+  margin-left: 0.5em;
+}
+.tradesmen-search-form .half .optionset.bedroom .fields, .tradesmen-search-form .half .optionset.bathroom .fields, .tradesmen-search-form .half .optionset.price .fields,
+.tradesmen-search-form .half .fields-wrapper.bedroom .fields,
+.tradesmen-search-form .half .fields-wrapper.bathroom .fields,
+.tradesmen-search-form .half .fields-wrapper.price .fields,
+.property-search-form .half .optionset.bedroom .fields,
+.property-search-form .half .optionset.bathroom .fields,
+.property-search-form .half .optionset.price .fields,
+.property-search-form .half .fields-wrapper.bedroom .fields,
+.property-search-form .half .fields-wrapper.bathroom .fields,
+.property-search-form .half .fields-wrapper.price .fields {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.tradesmen-search-form .half .optionset.bedroom .fields .field, .tradesmen-search-form .half .optionset.bathroom .fields .field, .tradesmen-search-form .half .optionset.price .fields .field,
+.tradesmen-search-form .half .fields-wrapper.bedroom .fields .field,
+.tradesmen-search-form .half .fields-wrapper.bathroom .fields .field,
+.tradesmen-search-form .half .fields-wrapper.price .fields .field,
+.property-search-form .half .optionset.bedroom .fields .field,
+.property-search-form .half .optionset.bathroom .fields .field,
+.property-search-form .half .optionset.price .fields .field,
+.property-search-form .half .fields-wrapper.bedroom .fields .field,
+.property-search-form .half .fields-wrapper.bathroom .fields .field,
+.property-search-form .half .fields-wrapper.price .fields .field {
+  margin-bottom: 0;
+  width: 45%;
+}
+.tradesmen-search-form .half .optionset,
+.property-search-form .half .optionset {
+  margin: 1.25rem 0;
+}
+.tradesmen-search-form .half .actions,
+.property-search-form .half .actions {
+  margin-top: 1.875rem;
+  padding-left: 10rem;
+}
+
+#main {
+  padding-bottom: 3.75rem;
+  background-color: #fff;
+}
+.page-propertylister #main {
+  padding-bottom: 0;
+}
+#main h1 {
+  margin-top: 0;
+}
+#main h1.business {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#main .search-forms {
+  position: relative;
+}
+#main .search-forms .fake-tabs {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: -3.75rem;
+}
+#main .search-forms .fake-tabs a {
+  display: block;
+  height: 3.75rem;
+  line-height: 3.75rem;
+  padding: 0 2.1875rem;
+  font-size: 1.25rem;
+  background-color: #001d58;
+  color: #fff;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-radius: 0.3125rem 0.3125rem 0 0;
+  margin-right: 0.125rem;
+  border: 2px solid #fff;
+  border-bottom: none;
+}
+#main .search-forms .fake-tabs a.active, #main .search-forms .fake-tabs a:hover, #main .search-forms .fake-tabs a:focus {
+  background-color: #fff;
+  color: #7f8184;
+}
+#main .search-forms .fake-tabs a:first-child {
+  border-radius: 0.625rem 0.3125rem 0 0;
+}
+#main .search-forms .fake-tabs a:last-child {
+  border-radius: 0.3125rem 0.625rem 0 0;
+}
+#main .search-forms .fake-tabs a span {
+  font-weight: bold;
+}
+#main .member-area {
+  padding: 1.875rem 0;
+  position: relative;
+}
+#main .member-area__content, #main .member-area__sidebar {
+  width: 100%;
+  padding: 0.625rem 0.625rem 1.25rem;
+}
+#main .member-area.slim-aside .member-area__content {
+  max-width: none;
+  width: 100%;
+  padding-left: 3.75rem;
+  z-index: 1;
+}
+#main .member-area.slim-aside .member-area__sidebar {
+  position: absolute;
+  z-index: 2;
+  max-width: none;
+  width: 2.5rem;
+}
+#main .member-area.slim-aside .member-area__sidebar ul li a {
+  border: none;
+}
+#main .member-area.slim-aside .member-area__sidebar ul li a:before {
+  margin-right: 0;
+}
+#main .member-area.slim-aside .member-area__sidebar ul li a span {
+  display: none;
+}
+#main .member-area__sidebar {
+  max-width: 15rem;
+}
+#main .member-area__sidebar ul {
+  margin: 0;
+  padding: 0;
+}
+#main .member-area__sidebar ul li {
+  line-height: 1.4;
+}
+#main .member-area__sidebar ul li a {
+  border-bottom: 1px solid rgba(127, 129, 132, 0.2);
+  padding: 0.625rem 0;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  font-size: 1.25rem;
+  color: #7f8184;
+  display: block;
+  text-indent: 0;
+}
+#main .member-area__sidebar ul li a:before {
+  font-size: 1.25rem;
+  margin-right: 1em;
+  width: 1.25rem;
+}
+#main .member-area__sidebar ul li a.active, #main .member-area__sidebar ul li a:hover {
+  border-bottom: 1px solid rgba(0, 29, 88, 0.2);
+  color: #001d58;
+}
+#main .member-area__sidebar ul li ul {
+  padding-left: 1.5em;
+  display: none;
+}
+#main .member-area__content {
+  position: relative;
+  padding-left: 3.125rem;
+  max-width: 60rem;
+}
+#main .member-area__content .title {
+  color: #001d58;
+}
+#main .member-area__content form#MemberProfileForm_MemberProfileForm fieldset {
+  padding-right: 22.5rem;
+  min-height: 28.75rem;
+}
+#main .member-area__content form#UpdateEmailForm_UpdateEmailForm .current-email {
+  margin-bottom: 0.625rem;
+  font-size: 1rem;
+}
+#main .member-area__content form#UpdateEmailForm_UpdateEmailForm .current-email span {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+#main .member-area__content form#UpdateEmailForm_UpdateEmailForm input.email {
+  margin-bottom: 0.625rem;
+}
+#main .member-area__content form fieldset {
+  position: relative;
+}
+#main .member-area__content form fieldset .field-group {
+  margin-bottom: 2.5rem;
+}
+#main .member-area__content form fieldset .field-group .field {
+  margin-bottom: 0;
+}
+#main .member-area__content form fieldset .ss-uploadfield-item-info {
+  display: none;
+}
+#main .member-area__content form fieldset .btn-file-browser {
+  display: inline-block;
+  background-color: #001d58;
+  color: #fff;
+  padding: 0.625rem 1.875rem;
+}
+#main .member-area__content form fieldset .btn-file-browser.as-block {
+  display: block;
+}
+#main .member-area__content form fieldset .btn-file-browser:hover, #main .member-area__content form fieldset .btn-file-browser:active {
+  opacity: 0.8;
+}
+#main .member-area__content form fieldset .simple-previewable-holder {
+  width: 100%;
+  max-width: 25rem;
+}
+#main .member-area__content form fieldset .simple-previewable-holder img {
+  max-width: 100%;
+  height: auto;
+}
+#main .member-area__content form fieldset .dropdown .middleColumn {
+  position: relative;
+}
+#main .member-area__content form fieldset .dropdown .middleColumn:after {
+  position: absolute;
+  content: '\e807';
+  font-family: 'go-property';
+  font-size: 1em;
+  display: block;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 0.5em;
+  pointer-events: none;
+}
+#main .member-area__content form fieldset ul.optionset {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+#main .member-area__content form fieldset ul.optionset li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 1em;
+}
+#main .member-area__content form fieldset ul.optionset li:last-child {
+  margin-right: 0;
+}
+#main .member-area__content form fieldset ul.optionset li label,
+#main .member-area__content form fieldset ul.optionset li input {
+  display: inline-block;
+  color: #001d58;
+}
+#main .member-area__content form fieldset ul.optionset li input {
+  margin-right: 0.5em;
+}
+#main .member-area__content form fieldset .field {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+#main .member-area__content form fieldset .field label {
+  display: block;
+  float: none;
+  color: #7F8184;
+  font-size: 0.875rem;
+  margin-bottom: 0.625rem;
+}
+#main .member-area__content form fieldset .field#RentForm_RentForm_SmokeAlarm_Holder {
+  margin-bottom: 2.5rem;
+}
+#main .member-area__content form fieldset .field .textarea,
+#main .member-area__content form fieldset .field select,
+#main .member-area__content form fieldset .field span.text,
+#main .member-area__content form fieldset .field input.text {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(0, 29, 88, 0.2);
+  font-size: 1.25rem;
+  padding-bottom: 0.3125rem;
+  outline: none;
+  color: #001d58;
+}
+#main .member-area__content form fieldset .field select,
+#main .member-area__content form fieldset .field span.text,
+#main .member-area__content form fieldset .field input.text {
+  height: 2.6875rem;
+}
+#main .member-area__content form fieldset .field span.text {
+  border: none;
+  margin-right: 0.5em;
+}
+#main .member-area__content form fieldset .field select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding: 0.25rem 0 0.625rem;
+  background-color: transparent;
+  border-radius: 0;
+  line-height: 1.4;
+}
+#main .member-area__content form fieldset .field .textarea {
+  background-color: #f7f7f7;
+  border: none;
+  padding: 0.625rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+#main .member-area__content form fieldset .field#MemberProfileForm_MemberProfileForm_Email_Holder {
+  border-bottom: 1px solid rgba(0, 29, 88, 0.2);
+  padding-bottom: 0.5rem;
+}
+#main .member-area__content form fieldset .field#MemberProfileForm_MemberProfileForm_Email_Holder .middleColumn,
+#main .member-area__content form fieldset .field#MemberProfileForm_MemberProfileForm_Email_Holder .description {
+  display: inline-block;
+}
+#main .member-area__content form fieldset .field#MemberProfileForm_MemberProfileForm_Email_Holder .description a {
+  font-style: italic;
+  display: block;
+  color: #7F8184;
+}
+#main .member-area__content form fieldset .field#MemberProfileForm_MemberProfileForm_Email_Holder .description a:hover {
+  color: #000;
+}
+#main .member-area__content form fieldset .field#memberprofileform-image-uploader {
+  position: absolute;
+  top: 1.875rem;
+  right: 0;
+  max-width: 18.75rem;
+}
+#main .member-area__content form .Actions {
+  margin-top: 1.25rem;
+}
+#main .member-area__content form .Actions input.action {
+  display: inline-block;
+}
+#main .member-area__content form .Actions input.action.hide {
+  display: none;
+}
+#main .member-area__content #tagged-services {
+  margin-bottom: 2.5rem;
+}
+#main .member-area__content .property-form fieldset .fields .field.textarea {
+  margin-bottom: 2.5rem;
+}
+#main .member-area__content .property-form fieldset .fields .field.textarea#Furnishings_Holder {
+  margin-bottom: 0.625rem;
+}
+#main .member-area__content .property-form fieldset .fields .field.textarea .middleColumn {
+  margin-bottom: 0.625rem;
+}
+#main .member-area__content .property-form fieldset .fields .field.text {
+  margin-bottom: 2.5rem;
+}
+#main .member-area__content .property-form fieldset .fields .field.text.date {
+  margin-bottom: 0;
+}
+#main .member-area__content .property-form fieldset .fields .field.text .middleColumn {
+  margin-bottom: 0.625rem;
+}
+#main .member-area__content .property-form fieldset .fields .field.uploader h3 {
+  margin-bottom: 0.625rem;
+}
+#main .member-area__content .property-form fieldset .fields .field.checkbox {
+  position: relative;
+  padding-left: 1.5em;
+}
+#main .member-area__content .property-form fieldset .fields .field.checkbox input.checkbox {
+  position: absolute;
+  top: 0.125rem;
+  left: 0;
+}
+#main .member-area__content .property-form fieldset .fields__main, #main .member-area__content .property-form fieldset .fields__aside {
+  width: 100%;
+}
+#main .member-area__content .property-form fieldset .fields__main {
+  min-width: 20rem;
+  width: calc(100% - 500px);
+  padding-right: 3.125rem;
+}
+@media (max-width: 959px) {
+  #main .member-area__content .property-form fieldset .fields__main {
+    order: 2;
+  }
+}
+#main .member-area__content .property-form fieldset .fields__main .items-2 .field {
+  width: 50%;
+}
+#main .member-area__content .property-form fieldset .fields__main .items-3 .field {
+  width: 33.33%;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#SaleForm_SaleForm_NumBedrooms_Holder, #main .member-area__content .property-form fieldset .fields__main .field#FloorArea_Holder, #main .member-area__content .property-form fieldset .fields__main .field#RentForm_RentForm_NumBedrooms_Holder, #main .member-area__content .property-form fieldset .fields__main .field#IdealTenants_Holder, #main .member-area__content .property-form fieldset .fields__main .field#DateAvailable_Holder {
+  padding-right: 0.625rem;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#HideRV_Holder {
+  width: 45%;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#HideRV_Holder label {
+  margin-bottom: 0;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#SaleForm_SaleForm_NumBathrooms_Holder, #main .member-area__content .property-form fieldset .fields__main .field#LandArea_Holder, #main .member-area__content .property-form fieldset .fields__main .field#MaxCapacity_Holder, #main .member-area__content .property-form fieldset .fields__main .field#RentForm_RentForm_NumBathrooms_Holder, #main .member-area__content .property-form fieldset .fields__main .field#RentForm_RentForm_PropertyType_Holder {
+  padding-left: 0.625rem;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#SaleForm_SaleForm_Parking_Holder, #main .member-area__content .property-form fieldset .fields__main .field#RentForm_RentForm_ListingCloseOn_Holder, #main .member-area__content .property-form fieldset .fields__main .field#RentForm_RentForm_Parking_Holder {
+  margin-bottom: 2.5rem;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#HideRV_Holder, #main .member-area__content .property-form fieldset .fields__main .field#RateableValue_Holder, #main .member-area__content .property-form fieldset .fields__main .field#LandArea_Holder, #main .member-area__content .property-form fieldset .fields__main .field#FloorArea_Holder {
+  margin-bottom: 0;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#HideRV_Holder .middleColumn, #main .member-area__content .property-form fieldset .fields__main .field#RateableValue_Holder .middleColumn, #main .member-area__content .property-form fieldset .fields__main .field#LandArea_Holder .middleColumn, #main .member-area__content .property-form fieldset .fields__main .field#FloorArea_Holder .middleColumn {
+  margin-bottom: 0;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#LandArea_Holder, #main .member-area__content .property-form fieldset .fields__main .field#FloorArea_Holder {
+  position: relative;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#LandArea_Holder input.text, #main .member-area__content .property-form fieldset .fields__main .field#FloorArea_Holder input.text {
+  padding-right: 1.375rem;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#LandArea_Holder .description, #main .member-area__content .property-form fieldset .fields__main .field#FloorArea_Holder .description {
+  position: absolute;
+  bottom: 0.3125rem;
+  right: 0;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#FloorArea_Holder .description {
+  right: 0.625rem;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#PriceOption .optionset {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+#main .member-area__content .property-form fieldset .fields__main .field#PriceOption .optionset li {
+  margin-right: 0;
+  width: 50%;
+  padding-right: 0.625rem;
+}
+#main .member-area__content .property-form fieldset .fields__aside {
+  max-width: 31.25rem;
+}
+@media (max-width: 959px) {
+  #main .member-area__content .property-form fieldset .fields__aside {
+    order: 1;
+  }
+}
+#main .member-area__content .property-form fieldset .fields__aside #location-on-map {
+  position: relative;
+  padding-top: 56.25%;
+  margin-bottom: 1.875rem;
+}
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader.limit-reached .previewable-uploader__previewable {
+  max-width: 100%;
+}
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader.limit-reached .previewable-uploader__uploadable {
+  display: none;
+}
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__previewable {
   padding: 1.25rem 0;
   padding-right: 0.625rem;
   width: auto;
@@ -2111,19 +3729,20 @@ textarea {
   overflow: hidden;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  margin-right: 0.3125rem;
 }
-.property-form .fields__aside .previewable-uploader__previewable.hide {
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__previewable.hide {
   display: none;
 }
-.property-form .fields__aside .previewable-uploader__previewable__thumbnail {
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__previewable__thumbnail {
   -webkit-flex-shrink: 0;
   flex-shrink: 0;
   margin-right: 0.625rem;
 }
-.property-form .fields__aside .previewable-uploader__previewable__thumbnail:last-child {
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__previewable__thumbnail:last-child {
   margin-right: 0;
 }
-.property-form .fields__aside .previewable-uploader__previewable__thumbnail .btn-remove-thumbnail {
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__previewable__thumbnail .btn-remove-thumbnail {
   visibility: hidden;
   opacity: 0;
   -moz-transition: all 0.5s ease-in-out;
@@ -2142,11 +3761,22 @@ textarea {
   top: -0.3125rem;
   right: -0.3125rem;
 }
-.property-form .fields__aside .previewable-uploader__previewable__thumbnail:hover .btn-remove-thumbnail {
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__previewable__thumbnail .btn-remove-thumbnail:before {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: #fff;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__previewable__thumbnail:hover .btn-remove-thumbnail {
   visibility: visible;
   opacity: 1;
 }
-.property-form .fields__aside .previewable-uploader__previewable__thumbnail .thumbnail-core {
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__previewable__thumbnail .thumbnail-core {
   border-radius: 0.625rem;
   border: 1px solid #ccc;
   opacity: 0;
@@ -2161,11 +3791,11 @@ textarea {
   -webkit-transition-delay: 0.01s;
   transition-delay: 0.01s;
 }
-.property-form .fields__aside .previewable-uploader__previewable__thumbnail .thumbnail-core.show {
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__previewable__thumbnail .thumbnail-core.show {
   visibility: visible;
   opacity: 1;
 }
-.property-form .fields__aside .previewable-uploader__uploadable {
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__uploadable {
   margin-top: 1.25rem;
   position: relative;
   background-color: #d8d8d8;
@@ -2175,7 +3805,7 @@ textarea {
   width: 5.75rem;
   overflow: hidden;
 }
-.property-form .fields__aside .previewable-uploader__uploadable:before {
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__uploadable:before {
   content: '+';
   display: block;
   position: absolute;
@@ -2190,194 +3820,417 @@ textarea {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-.property-form .fields__aside .previewable-uploader__uploadable input {
+#main .member-area__content .property-form fieldset .fields__aside .previewable-uploader__uploadable input {
   display: block;
   padding-left: 62.4375rem;
   height: 100%;
   outline: none;
   cursor: pointer;
 }
-
-#header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  height: 3.75rem;
-  background-color: #b8e81e;
-  padding: 0.9375rem 2.5rem;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
+#main .member-area__content ul.neat-ul {
+  padding-left: 0;
 }
-#header #logo {
-  background-image: url('../images/sprites-sa53d33e157.png');
-  background-position: 0 -299px;
-  -moz-background-size: auto;
-  -o-background-size: auto;
-  -webkit-background-size: auto;
-  background-size: auto;
-  background-repeat: repeat-y;
-  height: 30px;
-  width: 40px;
+#main .member-area__content ul.neat-ul li {
+  padding: 0.625rem 0;
+  border-bottom: 1px dashed #d7d7d7;
+}
+#main .member-area__content ul.neat-ul li a {
+  font-size: 1rem;
+  color: #001d58;
+}
+#main .member-area__content .control-buttons {
+  position: absolute;
+  right: 0;
+  top: 1.25rem;
+}
+#main .member-area__content .control-buttons a {
   display: block;
-  overflow: hidden;
-  text-indent: -624.9375rem;
-}
-#header #top_side_menu a {
+  border-radius: 0.25rem;
+  padding: 0.3125rem 0.625rem;
+  margin-right: 0.625rem;
+  background-color: #b8e81e;
   color: #fff;
-  font-size: 1.125rem;
-  line-height: 1.875rem;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
 }
-
-.hero-region {
-  padding: 3.4375rem 0 7.8125rem;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  text-align: center;
+#main .member-area__content .control-buttons a:hover {
+  background-color: #001d58;
+  color: #fff;
 }
-.hero-region__logo-full {
-  background-image: url('../images/sprites-sa53d33e157.png');
-  background-position: 0 -86px;
-  -moz-background-size: auto;
-  -o-background-size: auto;
-  -webkit-background-size: auto;
-  background-size: auto;
-  background-repeat: repeat-y;
-  height: 213px;
-  width: 464px;
-  display: inline-block;
+#main .property__gallery__image-viewer {
+  position: relative;
+  padding-top: 56.6667%;
+  margin-bottom: 1.25rem;
   overflow: hidden;
-  text-indent: -624.9375rem;
+  background-color: #f7f7f7;
 }
-
-.property-search-form {
-  padding: 1.5625rem 0 2.8125rem;
+#main .property__gallery__image-viewer img {
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#main .property__gallery__thumbnails {
+  padding: 0 7.8125rem;
+}
+#main .property__gallery__thumbnails__thumbnail {
+  display: block;
+  width: 9.375rem;
+  height: 5.625rem;
+}
+#main .property__gallery__thumbnails .owl-nav {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#main .property__gallery__thumbnails .owl-nav div {
+  top: 0;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: absolute;
+  border-radius: 50%;
+  width: 1.5625rem;
+  height: 1.5625rem;
+  background-color: #b8e81e;
+}
+#main .property__gallery__thumbnails .owl-nav div.owl-prev {
+  text-indent: 0;
+  text-align: center;
+  color: #fff;
+  left: 4.6875rem;
+}
+#main .property__gallery__thumbnails .owl-nav div.owl-prev:before {
+  font-size: 1.25rem;
+  line-height: 1.5625rem;
+}
+#main .property__gallery__thumbnails .owl-nav div.owl-next {
+  text-indent: 0;
+  text-align: center;
+  color: #fff;
+  right: 4.6875rem;
+}
+#main .property__gallery__thumbnails .owl-nav div.owl-next:before {
+  font-size: 1.25rem;
+  line-height: 1.5625rem;
+}
+#main .signin-form-wrapper,
+#main .signup-form-wrapper,
+#main .property {
+  border-top: 0.625rem solid #b8e81e;
+  padding-top: 1.875rem;
+}
+#main .signin-form-wrapper .container.title,
+#main .signup-form-wrapper .container.title,
+#main .property .container.title {
+  padding: 0 1.25rem;
+}
+#main .signin-form-wrapper .container.title h1,
+#main .signup-form-wrapper .container.title h1,
+#main .property .container.title h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.9375rem;
   color: #5e5e5e;
 }
-.property-search-form h2.form-title {
-  margin: 0 0 0.3125rem;
-  font-size: 2.25rem;
-  font-weight: normal;
-}
-.property-search-form .form-description {
+#main .signin-form-wrapper .container.title p,
+#main .signup-form-wrapper .container.title p,
+#main .property .container.title p {
+  margin: 0 0 1.875rem;
+  color: #7f8184;
   font-size: 1rem;
-  margin: 0 0 1.5625rem;
 }
-.property-search-form .half {
+#main .signin-form-wrapper__content-area,
+#main .signup-form-wrapper__content-area,
+#main .property__content-area {
+  padding-top: 3.75rem;
+}
+#main .signin-form-wrapper__content-area.business,
+#main .signup-form-wrapper__content-area.business,
+#main .property__content-area.business {
+  padding-top: 0;
+}
+#main .signin-form-wrapper__content-area__aside, #main .signin-form-wrapper__content-area__content,
+#main .signup-form-wrapper__content-area__aside,
+#main .signup-form-wrapper__content-area__content,
+#main .property__content-area__aside,
+#main .property__content-area__content {
   width: 50%;
-  padding: 0 1.25rem;
   min-width: 20rem;
+  padding: 1.25rem 1.25rem;
 }
-.property-search-form .half .optionset,
-.property-search-form .half .fields-wrapper {
+#main .signin-form-wrapper__content-area__aside,
+#main .signup-form-wrapper__content-area__aside,
+#main .property__content-area__aside {
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+#main .signin-form-wrapper__content-area__aside dl,
+#main .signup-form-wrapper__content-area__aside dl,
+#main .property__content-area__aside dl {
   display: -webkit-flex;
   display: flex;
-  margin-bottom: 0.625rem;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
-.property-search-form .half .optionset .left,
-.property-search-form .half .optionset .label,
-.property-search-form .half .optionset .fields,
-.property-search-form .half .optionset .middleColumn,
-.property-search-form .half .fields-wrapper .left,
-.property-search-form .half .fields-wrapper .label,
-.property-search-form .half .fields-wrapper .fields,
-.property-search-form .half .fields-wrapper .middleColumn {
-  width: 100%;
-}
-.property-search-form .half .optionset .left,
-.property-search-form .half .optionset .label,
-.property-search-form .half .fields-wrapper .left,
-.property-search-form .half .fields-wrapper .label {
-  opacity: 0.8;
-  max-width: 8.75rem;
-  display: block;
+#main .signin-form-wrapper__content-area__aside dl dt,
+#main .signup-form-wrapper__content-area__aside dl dt,
+#main .property__content-area__aside dl dt {
+  width: 30%;
+  color: #001d58;
   text-align: right;
-  margin-right: 1.25rem;
-  font-size: 1.25rem;
-  font-weight: normal;
-  padding-top: 0.625rem;
 }
-.property-search-form .half .optionset .middleColumn,
-.property-search-form .half .optionset .fields,
-.property-search-form .half .fields-wrapper .middleColumn,
-.property-search-form .half .fields-wrapper .fields {
-  max-width: 27.5rem;
-}
-.property-search-form .half .optionset .middleColumn .field,
-.property-search-form .half .optionset .fields .field,
-.property-search-form .half .fields-wrapper .middleColumn .field,
-.property-search-form .half .fields-wrapper .fields .field {
+#main .signin-form-wrapper__content-area__aside dl dd,
+#main .signup-form-wrapper__content-area__aside dl dd,
+#main .property__content-area__aside dl dd {
+  color: #7f8184;
+  width: 70%;
+  margin-left: 0;
+  padding: 0 0 0.625rem 1.875rem;
   margin-bottom: 0.625rem;
 }
-.property-search-form .half .optionset .middleColumn .field:last-child,
-.property-search-form .half .optionset .fields .field:last-child,
-.property-search-form .half .fields-wrapper .middleColumn .field:last-child,
-.property-search-form .half .fields-wrapper .fields .field:last-child {
-  margin-bottom: 0;
+#main .signin-form-wrapper__content-area__aside__map-holder,
+#main .signup-form-wrapper__content-area__aside__map-holder,
+#main .property__content-area__aside__map-holder {
+  position: relative;
+  padding-top: 56.667%;
 }
-.property-search-form .half .optionset .middleColumn .field .dropdown, .property-search-form .half .optionset .middleColumn .field .text,
-.property-search-form .half .optionset .fields .field .dropdown,
-.property-search-form .half .optionset .fields .field .text,
-.property-search-form .half .fields-wrapper .middleColumn .field .dropdown,
-.property-search-form .half .fields-wrapper .middleColumn .field .text,
-.property-search-form .half .fields-wrapper .fields .field .dropdown,
-.property-search-form .half .fields-wrapper .fields .field .text {
-  border: 1px solid #95989a;
-  height: 2.25rem;
-  display: block;
+#main .signin-form-wrapper__content-area__aside__map-holder__map,
+#main .signup-form-wrapper__content-area__aside__map-holder__map,
+#main .property__content-area__aside__map-holder__map {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  font-size: 1rem;
-  padding: 0.5em;
-  border-radius: 0.3125rem;
-  outline: none;
+  height: 100%;
 }
-.property-search-form .half .optionset .middleColumn ul.optionset,
-.property-search-form .half .optionset .fields ul.optionset,
-.property-search-form .half .fields-wrapper .middleColumn ul.optionset,
-.property-search-form .half .fields-wrapper .fields ul.optionset {
-  padding: 0.625rem 0 0;
-  margin: 0;
+#main .signin-form-wrapper__content-area__content,
+#main .signup-form-wrapper__content-area__content,
+#main .property__content-area__content {
+  font-size: 1.375rem;
+  line-height: 1.6;
+  color: #7f8184;
+  margin-bottom: 1.875rem;
 }
-.property-search-form .half .optionset .middleColumn ul.optionset li,
-.property-search-form .half .optionset .fields ul.optionset li,
-.property-search-form .half .fields-wrapper .middleColumn ul.optionset li,
-.property-search-form .half .fields-wrapper .fields ul.optionset li {
-  margin-right: 2em;
-  list-style: none;
+#main .signin-form-wrapper__content-area__content h2,
+#main .signup-form-wrapper__content-area__content h2,
+#main .property__content-area__content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
 }
-.property-search-form .half .optionset .middleColumn ul.optionset li label,
-.property-search-form .half .optionset .fields ul.optionset li label,
-.property-search-form .half .fields-wrapper .middleColumn ul.optionset li label,
-.property-search-form .half .fields-wrapper .fields ul.optionset li label {
+#main .signin-form-wrapper__content-area__content .services,
+#main .signup-form-wrapper__content-area__content .services,
+#main .property__content-area__content .services {
+  margin-bottom: 1.875rem;
+  font-size: 0;
+}
+#main .signin-form-wrapper__content-area__content .services span,
+#main .signup-form-wrapper__content-area__content .services span,
+#main .property__content-area__content .services span {
+  font-size: 1.125rem;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  border-radius: 0.25rem;
+  display: inline-block;
+  background-color: #d8d8d8;
+  padding: 0.1em 0.5em 0.25em;
+}
+#main .signin-form-wrapper__content-area__content .content,
+#main .signup-form-wrapper__content-area__content .content,
+#main .property__content-area__content .content {
+  margin-bottom: 3.75rem;
+}
+#main .signin-form-wrapper__content-area__content p, #main .signin-form-wrapper__content-area__content ul, #main .signin-form-wrapper__content-area__content li, #main .signin-form-wrapper__content-area__content td,
+#main .signup-form-wrapper__content-area__content p,
+#main .signup-form-wrapper__content-area__content ul,
+#main .signup-form-wrapper__content-area__content li,
+#main .signup-form-wrapper__content-area__content td,
+#main .property__content-area__content p,
+#main .property__content-area__content ul,
+#main .property__content-area__content li,
+#main .property__content-area__content td {
   font-size: 1.375rem;
 }
-.property-search-form .half .optionset.bedroom .fields, .property-search-form .half .optionset.bathroom .fields, .property-search-form .half .optionset.price .fields,
-.property-search-form .half .fields-wrapper.bedroom .fields,
-.property-search-form .half .fields-wrapper.bathroom .fields,
-.property-search-form .half .fields-wrapper.price .fields {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
+#main .signin-form-wrapper__content-area__testimonial h2,
+#main .signup-form-wrapper__content-area__testimonial h2,
+#main .property__content-area__testimonial h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
 }
-.property-search-form .half .optionset.bedroom .fields .field, .property-search-form .half .optionset.bathroom .fields .field, .property-search-form .half .optionset.price .fields .field,
-.property-search-form .half .fields-wrapper.bedroom .fields .field,
-.property-search-form .half .fields-wrapper.bathroom .fields .field,
-.property-search-form .half .fields-wrapper.price .fields .field {
+#main .signin-form-wrapper__content-area .member-tile,
+#main .signup-form-wrapper__content-area .member-tile,
+#main .property__content-area .member-tile {
+  border-bottom: 1px solid #d8d8d8;
+  padding-bottom: 2.5rem;
+  margin-bottom: 1.875rem;
+}
+#main .signin-form-wrapper__content-area .member-tile__portrait,
+#main .signup-form-wrapper__content-area .member-tile__portrait,
+#main .property__content-area .member-tile__portrait {
+  width: 4.6875rem;
+  padding-top: 0.625rem;
+}
+#main .signin-form-wrapper__content-area .member-tile__portrait img,
+#main .signup-form-wrapper__content-area .member-tile__portrait img,
+#main .property__content-area .member-tile__portrait img {
+  border-radius: 50%;
+}
+#main .signin-form-wrapper__content-area .member-tile__details,
+#main .signup-form-wrapper__content-area .member-tile__details,
+#main .property__content-area .member-tile__details {
+  width: calc(100% - 75px);
+  padding-left: 1.875rem;
+}
+#main .signin-form-wrapper__content-area .member-tile__details ul.rating,
+#main .signup-form-wrapper__content-area .member-tile__details ul.rating,
+#main .property__content-area .member-tile__details ul.rating {
+  margin: 0 0 0.625rem;
+  padding-left: 0;
+}
+#main .signin-form-wrapper__content-area .member-tile__details ul.rating li,
+#main .signup-form-wrapper__content-area .member-tile__details ul.rating li,
+#main .property__content-area .member-tile__details ul.rating li {
+  display: inline-block;
+  text-indent: 0;
+  margin-right: 0.625rem;
+  color: #b8e81e;
+}
+#main .signin-form-wrapper__content-area .member-tile__details ul.rating li:before,
+#main .signup-form-wrapper__content-area .member-tile__details ul.rating li:before,
+#main .property__content-area .member-tile__details ul.rating li:before {
+  line-height: 1;
+  font-size: 1.5rem;
+}
+#main .signin-form-wrapper__content-area .member-tile__details .blue-button, #main .signin-form-wrapper__content-area .member-tile__details .tradesmen-search-form .half .actions input[type="submit"], .tradesmen-search-form .half .actions #main .signin-form-wrapper__content-area .member-tile__details input[type="submit"],
+#main .signin-form-wrapper__content-area .member-tile__details .property-search-form .half .actions input[type="submit"],
+.property-search-form .half .actions #main .signin-form-wrapper__content-area .member-tile__details input[type="submit"], #main .signin-form-wrapper__content-area .member-tile__details .member-area__content form .Actions input.action, #main .member-area__content form .Actions .signin-form-wrapper__content-area .member-tile__details input.action, #main .signin-form-wrapper__content-area .member-tile__details #SignupForm_SignupForm .Actions input.action, #main #SignupForm_SignupForm .Actions .signin-form-wrapper__content-area .member-tile__details input.action,
+#main .signin-form-wrapper__content-area .member-tile__details #SigninForm_SigninForm .Actions input.action,
+#main #SigninForm_SigninForm .Actions .signin-form-wrapper__content-area .member-tile__details input.action,
+#main .signup-form-wrapper__content-area .member-tile__details .blue-button,
+#main .signup-form-wrapper__content-area .member-tile__details .tradesmen-search-form .half .actions input[type="submit"],
+.tradesmen-search-form .half .actions #main .signup-form-wrapper__content-area .member-tile__details input[type="submit"],
+#main .signup-form-wrapper__content-area .member-tile__details .property-search-form .half .actions input[type="submit"],
+.property-search-form .half .actions #main .signup-form-wrapper__content-area .member-tile__details input[type="submit"],
+#main .signup-form-wrapper__content-area .member-tile__details .member-area__content form .Actions input.action,
+#main .member-area__content form .Actions .signup-form-wrapper__content-area .member-tile__details input.action,
+#main .signup-form-wrapper__content-area .member-tile__details #SignupForm_SignupForm .Actions input.action,
+#main #SignupForm_SignupForm .Actions .signup-form-wrapper__content-area .member-tile__details input.action,
+#main .signup-form-wrapper__content-area .member-tile__details #SigninForm_SigninForm .Actions input.action,
+#main #SigninForm_SigninForm .Actions .signup-form-wrapper__content-area .member-tile__details input.action,
+#main .property__content-area .member-tile__details .blue-button,
+#main .property__content-area .member-tile__details .tradesmen-search-form .half .actions input[type="submit"],
+.tradesmen-search-form .half .actions #main .property__content-area .member-tile__details input[type="submit"],
+#main .property__content-area .member-tile__details .property-search-form .half .actions input[type="submit"],
+.property-search-form .half .actions #main .property__content-area .member-tile__details input[type="submit"],
+#main .property__content-area .member-tile__details .member-area__content form .Actions input.action,
+#main .member-area__content form .Actions .property__content-area .member-tile__details input.action,
+#main .property__content-area .member-tile__details #SignupForm_SignupForm .Actions input.action,
+#main #SignupForm_SignupForm .Actions .property__content-area .member-tile__details input.action,
+#main .property__content-area .member-tile__details #SigninForm_SigninForm .Actions input.action,
+#main #SigninForm_SigninForm .Actions .property__content-area .member-tile__details input.action {
+  display: inline-block;
+}
+#main .message-wrapper {
+  text-align: center;
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto 2.5rem;
+}
+#main #SignupForm_SignupForm,
+#main #SigninForm_SigninForm {
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+#main #SignupForm_SignupForm a,
+#main #SigninForm_SigninForm a {
+  color: #001d58;
+  text-decoration: underline;
+}
+#main #SignupForm_SignupForm .field,
+#main #SigninForm_SigninForm .field {
+  margin-bottom: 1.25rem;
+}
+#main #SignupForm_SignupForm .field#SigninForm_SigninForm_Remember_Holder,
+#main #SigninForm_SigninForm .field#SigninForm_SigninForm_Remember_Holder {
+  margin-bottom: 0.625rem;
+}
+#main #SignupForm_SignupForm .field label,
+#main #SigninForm_SigninForm .field label {
+  font-size: 1rem;
+  margin-bottom: 0.625rem;
+  display: block;
+  float: none;
+}
+#main #SignupForm_SignupForm .field input.text,
+#main #SigninForm_SigninForm .field input.text {
+  display: block;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 0.25em 0.5em;
+}
+#main #SignupForm_SignupForm .field.checkbox,
+#main #SigninForm_SigninForm .field.checkbox {
+  text-align: center;
+}
+#main #SignupForm_SignupForm .field.checkbox label,
+#main #SigninForm_SigninForm .field.checkbox label {
+  display: inline-block;
   margin-bottom: 0;
-  width: 45%;
+  margin-left: 0.5em;
 }
-.property-search-form .half .optionset {
-  margin: 1.25rem 0;
+#main #SignupForm_SignupForm .field.checkbox#SignupForm_SignupForm_AgreeToTnC_Holder,
+#main #SigninForm_SigninForm .field.checkbox#SignupForm_SignupForm_AgreeToTnC_Holder {
+  text-align: left;
+  position: relative;
+  padding-left: 1.5em;
 }
-.property-search-form .half .actions {
-  padding-left: 10rem;
+#main #SignupForm_SignupForm .field.checkbox#SignupForm_SignupForm_AgreeToTnC_Holder input.checkbox,
+#main #SigninForm_SigninForm .field.checkbox#SignupForm_SignupForm_AgreeToTnC_Holder input.checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.1875rem;
+}
+#main #SignupForm_SignupForm .field.checkbox#SignupForm_SignupForm_AgreeToTnC_Holder label,
+#main #SigninForm_SigninForm .field.checkbox#SignupForm_SignupForm_AgreeToTnC_Holder label {
+  margin-left: 0;
+}
+#main #SignupForm_SignupForm #ForgotPassword,
+#main #SigninForm_SigninForm #ForgotPassword {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+#main #SignupForm_SignupForm .Actions,
+#main #SigninForm_SigninForm .Actions {
+  text-align: center;
+}
+#main #SignupForm_SignupForm .Actions input.action,
+#main #SigninForm_SigninForm .Actions input.action {
+  display: inline-block;
+  border: none;
+}
+.page-gatewaycontroller #main, .activation #main {
+  padding-top: 3.75rem;
+}
+.page-dashboard #main table tr th, .page-dashboard #main table tr td {
+  padding: 0.625rem 0.3125rem;
+  vertical-align: top;
+  border-bottom: 1px solid #d8d8d8;
+}
+.page-dashboard #main table tr th {
+  text-align: left;
 }
 
 .mid-page-banner {
@@ -2399,6 +4252,9 @@ textarea {
   background-color: rgba(184, 232, 30, 0.8);
   z-index: 0;
 }
+.page-propertylister .mid-page-banner:before {
+  background-color: rgba(0, 29, 88, 0.8);
+}
 .mid-page-banner .container {
   position: relative;
   z-index: 1;
@@ -2410,17 +4266,22 @@ textarea {
   font-weight: normal;
   color: #fff;
 }
+.page-propertylister .mid-page-banner__button {
+  background-color: #7f8184;
+}
+.page-propertylister .mid-page-banner__button:hover {
+  background-color: #b8e81e;
+}
 
 .tiles {
   padding: 1.5625rem 0 2.8125rem;
-  border-bottom: 0.625rem solid #b8e81e;
 }
 .tiles__title {
   padding: 0 0.625rem;
   color: #5e5e5e;
   font-size: 2.25rem;
   font-weight: normal;
-  margin: 0;
+  margin: 0 0 1.25rem;
 }
 .tiles .tiles__tiles_tile {
   background-size: cover;
@@ -2468,6 +4329,361 @@ textarea {
   background-color: rgba(0, 29, 88, 0);
 }
 
+.tradesmen-list,
+.property-list {
+  border-top: 0.625rem solid #b8e81e;
+  padding-top: 1.875rem;
+}
+.tradesmen-list header h1,
+.property-list header h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.9375rem;
+}
+.tradesmen-list .criteria h2,
+.property-list .criteria h2 {
+  color: #7f8184;
+  font-size: 1rem;
+  font-weight: normal;
+}
+.tradesmen-list .tiles,
+.property-list .tiles {
+  padding-bottom: 3.75rem;
+}
+.tradesmen-list__tile,
+.property-list__tile {
+  width: 50%;
+  min-width: 20rem;
+  padding: 0 0.625rem;
+  margin-bottom: 3.125rem;
+}
+.tradesmen-list__tile__cover,
+.property-list__tile__cover {
+  display: block;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  padding-top: 58.25%;
+}
+.tradesmen-list__tile__cover.business-logo img,
+.property-list__tile__cover.business-logo img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+.tradesmen-list__tile__cover.business-logo:before,
+.property-list__tile__cover.business-logo:before {
+  z-index: 1;
+}
+.tradesmen-list__tile__cover:before,
+.property-list__tile__cover:before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 29, 88, 0.4);
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  content: '';
+}
+.tradesmen-list__tile__cover:hover:before,
+.property-list__tile__cover:hover:before {
+  background-color: rgba(0, 29, 88, 0);
+}
+.tradesmen-list__tile__cover__bath-bed,
+.property-list__tile__cover__bath-bed {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+}
+.tradesmen-list__tile__cover__bath-bed span,
+.property-list__tile__cover__bath-bed span {
+  display: inline-block;
+  text-indent: 0;
+  font-size: 1.625rem;
+  line-height: 1;
+  margin-right: 1.25rem;
+  color: #fff;
+}
+.tradesmen-list__tile__cover__bath-bed span:before,
+.property-list__tile__cover__bath-bed span:before {
+  font-size: 2.25rem;
+  line-height: 1;
+  margin-right: 0.625rem;
+}
+.tradesmen-list__tile__cover__bath-bed span.icon-bed:before,
+.property-list__tile__cover__bath-bed span.icon-bed:before {
+  -moz-transform: translateY(5px);
+  -ms-transform: translateY(5px);
+  -webkit-transform: translateY(5px);
+  transform: translateY(5px);
+}
+.tradesmen-list__tile__details,
+.property-list__tile__details {
+  padding: 1rem 0 1.5rem;
+  color: #7f8184;
+  line-height: 1.4;
+}
+.tradesmen-list__tile__details__price,
+.property-list__tile__details__price {
+  width: 45%;
+  font-size: 1.25rem;
+  padding-right: 1.25rem;
+}
+.tradesmen-list__tile__details__price.business-detail,
+.property-list__tile__details__price.business-detail {
+  font-size: 1rem;
+}
+.tradesmen-list__tile__details__price.business-detail h2,
+.property-list__tile__details__price.business-detail h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+.tradesmen-list__tile__details__price.business-detail .iconed,
+.property-list__tile__details__price.business-detail .iconed {
+  font-size: 1rem;
+  text-indent: 0;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+.tradesmen-list__tile__details__price.business-detail .iconed:before,
+.property-list__tile__details__price.business-detail .iconed:before {
+  font-size: 1rem;
+  position: absolute;
+  top: 0.25em;
+  left: 0;
+}
+.tradesmen-list__tile__details__location-lister,
+.property-list__tile__details__location-lister {
+  position: relative;
+  font-size: 1rem;
+  width: 55%;
+}
+.tradesmen-list__tile__details__location-lister.business-services,
+.property-list__tile__details__location-lister.business-services {
+  padding-left: 1.25rem;
+}
+.tradesmen-list__tile__details__location-lister__location h3,
+.property-list__tile__details__location-lister__location h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+.tradesmen-list__tile__details__location-lister__location .services,
+.property-list__tile__details__location-lister__location .services {
+  font-size: 0;
+}
+.tradesmen-list__tile__details__location-lister__location__service,
+.property-list__tile__details__location-lister__location__service {
+  display: inline-block;
+  padding: 0.1em 0.5em;
+  border-radius: 0.125rem;
+  background-color: #d8d8d8;
+  color: #7f8184;
+  font-size: 1rem;
+  margin-right: 0.3125rem;
+  margin-bottom: 0.3125rem;
+}
+.tradesmen-list__tile__details__location-lister__lister,
+.property-list__tile__details__location-lister__lister {
+  position: absolute;
+  top: -50%;
+  right: 1.875rem;
+  -moz-transform: translateY(-16px);
+  -ms-transform: translateY(-16px);
+  -webkit-transform: translateY(-16px);
+  transform: translateY(-16px);
+}
+.tradesmen-list__tile__details__location-lister__lister img,
+.property-list__tile__details__location-lister__lister img {
+  border-radius: 50%;
+}
+.tradesmen-list__tile__actions,
+.property-list__tile__actions {
+  padding: 0 1.875rem;
+}
+.tradesmen-list__tile__actions a.blue-button,
+.property-list__tile__actions a.blue-button {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+.tradesmen-list__tile__actions ul.rating,
+.property-list__tile__actions ul.rating {
+  padding-left: 0;
+  margin: 0 0 0.625rem;
+  width: 50%;
+  text-align: right;
+}
+.tradesmen-list__tile__actions ul.rating li,
+.property-list__tile__actions ul.rating li {
+  display: inline-block;
+  text-indent: 0;
+  margin-right: 0.625rem;
+  color: #b8e81e;
+}
+.tradesmen-list__tile__actions ul.rating li:before,
+.property-list__tile__actions ul.rating li:before {
+  line-height: 1;
+  font-size: 1.5rem;
+}
+
+.pagination {
+  padding: 1.25rem 0.625rem 2.5rem;
+}
+.pagination span, .pagination a {
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0 0 0.3125rem;
+  margin: 0 0.5em;
+  font-size: 1.25rem;
+  color: #7f8184;
+  border-bottom: 1px solid rgba(127, 129, 132, 0);
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.pagination span:hover, .pagination a:hover {
+  border-bottom: 1px solid #7f8184;
+}
+.pagination span {
+  border-bottom: 1px solid #7f8184;
+}
+
+.account-types-holder h3 {
+  font-size: 0.875rem;
+  color: #7f8184;
+  margin-bottom: 0.625rem;
+  font-weight: normal;
+}
+
+.account-types {
+  padding-left: 0;
+}
+.account-types li {
+  list-style: none;
+  padding-left: 2.5rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  text-indent: 0;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 1.875rem;
+}
+.account-types li:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.5rem;
+  margin-top: 0.1875rem;
+}
+.account-types li.checked {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  text-indent: 0;
+}
+.account-types li.checked:before {
+  font-size: 1.5rem;
+  margin-top: 0.1875rem;
+}
+.account-types li h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.625rem;
+}
+.account-types li p {
+  margin: 0;
+}
+
+.already {
+  margin-bottom: 2.5rem;
+}
+.already .account-types li {
+  cursor: default;
+}
+
+.detailed-account-types li {
+  margin-right: 1.5em;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-indent: 0;
+  position: relative;
+}
+.detailed-account-types li:before {
+  margin-right: 0.25em;
+  font-size: 1rem;
+}
+.detailed-account-types li h4 {
+  font-size: 1rem;
+  font-weight: normal;
+  display: inline-block;
+}
+
+.footer {
+  background-color: #7f8184;
+  border-top: 0.625rem solid #b8e81e;
+  padding: 3.75rem 0 5.25rem;
+}
+.footer__col {
+  padding: 0 0.625rem;
+  width: 100%;
+  max-width: 25rem;
+}
+.footer__col ul {
+  padding: 0;
+  margin: 0;
+}
+.footer__col ul li {
+  list-style: none;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+.footer__col ul li:last-child {
+  margin-bottom: 0;
+}
+.footer__col ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer__col.social ul {
+  font-size: 0;
+}
+.footer__col.social ul li {
+  display: inline-block;
+  margin-right: 1.25rem;
+  margin-bottom: 0;
+}
+.footer__col.social ul li:last-child {
+  margin-right: 0;
+}
+.footer__col.social ul li a:before {
+  font-size: 2rem;
+}
+.footer__col__logo-holder {
+  margin-bottom: 1rem;
+}
+.footer__col__logo-holder a {
+  display: block;
+  overflow: hidden;
+  text-indent: -624.9375rem;
+  background-image: url('../images/sprites-s9e7de5c2eb.png');
+  background-position: 0 -329px;
+  -moz-background-size: auto;
+  -o-background-size: auto;
+  -webkit-background-size: auto;
+  background-size: auto;
+  background-repeat: repeat-y;
+  height: 60px;
+  width: 167px;
+}
+
 /**
  * Plugins.
  * */
@@ -2493,6 +4709,7 @@ html {
 
 body {
   padding-top: 3.75rem;
+  background-color: #7f8184;
 }
 
 /**

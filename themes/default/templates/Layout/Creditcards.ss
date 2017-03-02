@@ -1,5 +1,4 @@
 <h2 class="title">Manage saved creditcards</h2>
-$addCreditcardForm
 <table class="as-table full-width creditcards">
     <tbody>
     <% loop $Creditcards %>
@@ -15,3 +14,4 @@ $addCreditcardForm
     <% end_loop %>
     </tbody>
 </table>
+$addCreditcardForm

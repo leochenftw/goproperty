@@ -1,28 +1,34 @@
-<footer id="footer">
-	<div class="container">
-		<div class="row">
-			<div class="grid_4">
-				<span id="share">Share:</span>
-				<a href="#"><span class="fbshare"></span>Facebook</a>
-				<a href="#"><span class="twshare"></span>Twitter</a>
-			</div>
-			<div class="grid_4">
-				<strong>Connect with us</strong>
-				<ul class="connect">
-					<li>
-						<a href="#" class="twitter">Twitter</a>
-					</li>
-					<li>
-						<a href="#" class="facebook">Facebook</a>
-					</li>
-					<li>
-						<a href="#" class="pinterest">Pinterest</a>
-					</li>
-				</ul>
-			</div>
-			<div class="grid_4 footer_right">
-				<span class="copyright">&copy; $Now.Year $SiteConfig.Title</span>
-			</div>
-		</div>
-	</div>
+<footer id="footer" class="footer">
+    <div class="container as-flex wrap space-between">
+        <% if $MenuSet('Footer First-Menu').MenuItems.Count > 0 %>
+            <div class="footer__col first">
+                <ul>
+                <% loop $MenuSet('Footer First-Menu').MenuItems %>
+                    <li><a href="$Link" class="$LinkingMode">$MenuTitle</a></li>
+                <% end_loop %>
+                </ul>
+            </div>
+        <% end_if %>
+        <% if $MenuSet('Footer Second-Menu').MenuItems.Count > 0 %>
+            <div class="footer__col second">
+                <ul>
+                <% loop $MenuSet('Footer Second-Menu').MenuItems %>
+                    <li><a href="$Link" class="$LinkingMode">$MenuTitle</a></li>
+                <% end_loop %>
+                </ul>
+            </div>
+        <% end_if %>
+        <% if $MenuSet('Footer Social-Menu').MenuItems.Count > 0 %>
+            <div class="footer__col social">
+                <div class="footer__col__logo-holder">
+                    <a href="$Top.baseURL">$Top.SiteConfig.Title</a>
+                </div>
+                <ul>
+                <% loop $MenuSet('Footer Social-Menu').MenuItems %>
+                    <li><a href="$Link"<% if $IsNewWindow %> target="_blank"<% end_if %> class="$LinkingMode icon-$MenuTitle.LowerCase">$MenuTitle</a></li>
+                <% end_loop %>
+                </ul>
+            </div>
+        <% end_if %>
+    </div>
 </footer>

@@ -49,6 +49,27 @@ class PropertyPage extends Page
         'BeenRented'            =>  'Boolean'
     );
 
+    public function getPrice()
+    {
+        if (!empty($this->EnquiriesOver) && $this->EnquiriesOver > 0) {
+            return 'Enquiries over $' . $this->EnquiriesOver;
+        }
+
+        if (!empty($this->AskingPrice) && $this->AskingPrice > 0) {
+            return 'Asking price $' . $this->AskingPrice;
+        }
+
+        if (!empty($this->RateableValue) && $this->RateableValue > 0) {
+            return 'RV $' . $this->RateableValue;
+        }
+
+        if (!empty($this->WeeklyRent) && $this->WeeklyRent > 0) {
+            return '$' . $this->WeeklyRent . ' per week';
+        }
+
+        return '- price not specified -';
+    }
+
     /**
      * Define the default values for all the $db fields
      * @var array
@@ -77,15 +98,16 @@ class PropertyPage extends Page
             'Root.Location',
             array(
                 TextField::create('FullAddress', 'Address'),
+                TextField::create('UnitNumber', 'Unit/Room/Apartment/Flat number'),
                 TextField::create('StreetNumber', 'Street number'),
                 TextField::create('StreetName', 'Street'),
-                TextField::create('Suburb', 'Suburb'),
-                TextField::create('City', 'City'),
-                TextField::create('Region', 'Region'),
+                TextField::create('Suburb', 'Suburb')->setDescription('slug: ' . $this->SuburbSlug),
+                TextField::create('City', 'City')->setDescription('slug: ' . $this->CitySlug),
+                TextField::create('Region', 'Region')->setDescription('slug: ' . $this->RegionSlug),
                 TextField::create('Country', 'Country'),
                 TextField::create('PostCode', 'Post code'),
                 TextField::create('Lat', 'Latitude'),
-                TextField::create('Lng', 'Longitude'),
+                TextField::create('Lng', 'Longitude')
             )
         );
 
@@ -158,6 +180,28 @@ class PropertyPage extends Page
             }
         }
 
+        /*
+        'Amenities'             =>  'Text',
+        'Testimonial'           =>  'Text',
+        'Furnishings'           =>  'Text',
+        */
+
+        if (!empty($this->Amenities)) {
+            $this->Amenities = strip_tags($this->Amenities);
+        }
+
+        if (!empty($this->Testimonial)) {
+            $this->Testimonial = strip_tags($this->Testimonial);
+        }
+
+        if (!empty($this->Furnishings)) {
+            $this->Furnishings = strip_tags($this->Furnishings);
+        }
+
+        if (!empty($this->Content)) {
+            $this->Content = strip_tags($this->Content);
+        }
+
         $this->ShowInMenus = false;
     }
 
@@ -203,9 +247,41 @@ class PropertyPage extends Page
         $OrderClass = SaltedPayment::get_default_order_class();
         return $OrderClass::get()->filter(array('PaidToClassID' => $this->ID));
     }
+
+    public function Member()
+    {
+        return $this->Lister();
+    }
 }
 
 class PropertyPage_Controller extends Page_Controller
 {
+    public function getPropType()
+    {
+        $options = Config::inst()->get('PropertyPage', $this->RentOrSale == 'rent' ? 'RentForm' : 'SaleForm');
+        $idx = !empty($this->PropertyType) ? $this->PropertyType : 0;
+        return $options[$idx];
+    }
 
+    public function getParkingOption()
+    {
+        $idx = !empty($this->Parking) ? $this->Parking : 0;
+        $options = Config::inst()->get('PropertyPage', 'Parking');
+        return $options[$idx];
+    }
+
+    public function getTenantOption()
+    {
+        $idx = !empty($this->IdealTenants) ? $this->IdealTenants : 0;
+        $options = Config::inst()->get('PropertyPage', 'IdealTenants');
+        return $options[$idx];
+    }
+
+    public function Friendlify($string)
+    {
+        if (!empty($string)) {
+            $string = str_replace("\n", '<br />', $string);
+        }
+        return $string;
+    }
 }

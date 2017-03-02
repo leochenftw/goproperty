@@ -18,21 +18,39 @@ class Dashboard extends Page_Controller {
         'AccountUpgradeForm',
         'MembershipExtendingForm',
         'addCreditcardForm',
-        'AgencyForm'
+        'AgencyForm',
+        'BusinessForm'
     );
 
     public function index($request) {
         if (!Member::currentUser()) {
             return $this->redirect('/signin?BackURL=/member');
         }
+
+        $member = Member::currentUser();
         $tab = $request->param('tab');
+
+        if (($member->beLandlords || $member->beTradesmen || $member->beRealtors) && $tab != 'upgrade' && $tab != 'signout'){
+            return $this->redirect('/member/action/upgrade');
+        }
 
         if (($tab == 'list-property-for-sale' || $tab == 'agencies') && !$this->isAgent()) {
             return $this->redirect('/member/action/upgrade');
         }
 
+        if ($tab == 'list-property-for-rent' && !$this->isAgent() && !$this->isLandlord()) {
+            return $this->redirect('/member/action/upgrade');
+        }
+
+        if ($tab == 'my-business' && !$this->isTradesperson()) {
+            return $this->redirect('/member/action/upgrade');
+        }
+
         if ($request->isAjax()) {
             switch ($tab) {
+                case 'my-business':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('MyBusiness'));
+                    break;
 
                 case 'my-properties':
                     return $this->customise(array('tab' => $tab))->renderWith(array('MyProperties'));
@@ -165,6 +183,13 @@ class Dashboard extends Page_Controller {
         return new SaleForm($this, $property);
     }
 
+    public function BusinessForm()
+    {
+        $member = Member::currentUser();
+        $business = $member->Business()->exists() ? $member->Business() : null;
+        return new BusinessForm($this, $business);
+    }
+
     public function Link($action = NULL) {
         return 'member';
     }
@@ -196,6 +221,24 @@ class Dashboard extends Page_Controller {
     {
         if ($member = Member::currentUser()) {
             return $member->isAgent();
+        }
+
+        return false;
+    }
+
+    public function isLandlord()
+    {
+        if ($member = Member::currentUser()) {
+            return $member->isLandlord();
+        }
+
+        return false;
+    }
+
+    public function isTradesperson()
+    {
+        if ($member = Member::currentUser()) {
+            return $member->isTradesperson();
         }
 
         return false;

@@ -1,0 +1,20 @@
+&__portrait {
+    width: rem(75);
+    padding-top: rem(10);
+    img {
+        border-radius: 50%;
+    }
+}
+
+&__details {
+    width: calc(100% - 75px);
+    padding-left: rem(30);
+    ul.rating {
+        margin: 0 0 rem(10);
+        padding-left: 0;
+        @import 'rating';
+    }
+    .blue-button {
+        display: inline-block;
+    }
+}

@@ -1,0 +1,21 @@
+.pagination {
+    padding: rem(20) rem(10) rem(40);
+    span, a {
+        vertical-align: middle;
+        display: inline-block;
+        padding: 0 0 rem(5);
+        margin: 0 0.5em;
+        font-size: rem(20);
+        color: $grey;
+        border-bottom: 1px solid rgba(127,129,132, 0);
+        @include transition(all 0.25s);
+        
+        &:hover {
+            border-bottom: 1px solid rgba(127,129,132, 1);
+        }
+    }
+
+    span {
+        border-bottom: 1px solid rgba(127,129,132, 1);
+    }
+}
