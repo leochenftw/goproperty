@@ -118,5 +118,5 @@ SaltedPayment:
   GatewaySettings:
     Paystation:
         #HMacMode: '0',
-        #HMacSecret: 'oXqsidB0IxFNyWev'
-        pstn_pi: '615680'
+        #HMacSecret: 'O6cS8Y52pb5fbEz6'
+        pstn_pi: '615812'

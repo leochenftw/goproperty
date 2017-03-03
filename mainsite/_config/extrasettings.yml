@@ -1,0 +1,20 @@
+---
+Name: extrasettings
+After: 'mainsite'
+Only:
+  environment: 'test'
+---
+SaltedPayment:
+  DefaultOrderClass: 'Order'
+  MerchantSettings:
+    MerchantHomepageURL: "http://goproperty.digital.base2.co.nz"
+    SuccessURL: "http://goproperty.digital.base2.co.nz/payment/success"
+    FailureURL: "http://goproperty.digital.base2.co.nz/payment/fail"
+    CancellationURL: "http://goproperty.digital.base2.co.nz/payment/cancel"
+    CardSavedURL: "http://goproperty.digital.base2.co.nz/member/action/creditcards"
+    PaymentScheduledURL: "http://goproperty.digital.base2.co.nz/payment/pending"
+  GatewaySettings:
+    Paystation:
+        #HMacMode: '0',
+        #HMacSecret: 'oXqsidB0IxFNyWev'
+        pstn_pi: '615680'

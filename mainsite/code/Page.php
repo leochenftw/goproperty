@@ -37,6 +37,8 @@ class Page_Controller extends ContentController {
     );
 
     public function init() {
+        // Debugger::inspect(SS_ENVIRONMENT_TYPE);
+        Debugger::inspect(Config::inst()->get('SaltedPayment', 'MerchantSettings'));
         parent::init();
         Requirements::block(THIRDPARTY_DIR . '/jquery-ui-themes/smoothness/jquery-ui.css');
         Requirements::block('framework/css/UploadField.css');
