@@ -3,6 +3,7 @@
     <header class="container padding"><h1>Search result</h1></header>
     <div class="container criteria padding">
         <h2>Search criteria:</h2>
+        $FilterForm
     </div>
     <div class="container as-flex wrap tiles">
         <% loop $Properties %>

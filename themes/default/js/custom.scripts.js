@@ -11,6 +11,37 @@ $(document).ready(function(e)
         }
     );
 
+    $('.filter-form button').click(function(e)
+    {
+        e.preventDefault();
+        var form    =   $(this).parents('.filter-form:eq(0)'),
+            name    =   $(this).attr('name');
+        form.find('[name="'+name+'"]').remove();
+        if (name == 'region') {
+            form.find('[name="district"], [name="suburb"]').remove();
+        }
+
+        if (name == 'district') {
+            form.find('[name="suburb"]').remove();
+        }
+
+        var segments = [form.find('[name="region"]').html(), form.find('[name="district"]').html(), form.find('[name="suburb"]').html()];
+        var url = '/';
+        for (var i = 0; i < segments.length; i++) {
+            if (segments[i] !== undefined) {
+                url += segments[i] + '/';
+            }
+        }
+
+        form.attr('action', form.attr('action') + url );
+        form.submit();
+    });
+
+    $('ul.rating').each(function(i, el)
+    {
+        $(this).rating();
+    });
+
     if ($('body').hasClass('activation')) {
         setTimeout(function()
         {

@@ -9,11 +9,7 @@
     <div class="member-tile__details">
         <div class="member-tile__details__name">$Member.FirstName<% if  $Member.Surname %> $Member.Surname<% end_if %></div>
         <ul class="rating">
-            <li class="icon-star"></li>
-            <li class="icon-star"></li>
-            <li class="icon-star"></li>
-            <li class="icon-star-half"></li>
-            <li class="icon-star-empty"></li>
+            $Member.getRating(1)
         </ul>
         <a href="mailto:$Member.Email" class="blue-button">Contact</a>
     </div>

@@ -27,6 +27,15 @@ class MemberExtension extends DataExtension
     );
 
     /**
+     * Has_many relationship
+     * @var array
+     */
+    private static $has_many = array(
+        'Rate'                  =>  'Rating.Giver',
+        'BeingRated'            =>  'Rating.Taker'
+    );
+
+    /**
      * Belongs_many_many relationship
      * @var array
      */
@@ -151,6 +160,44 @@ class MemberExtension extends DataExtension
     public function Title()
     {
         return $this->getTitle();
+    }
+
+    public function getRating($asHTML = false)
+    {
+        if ($this->owner->BeingRated()->exists()) {
+            $received = $this->owner->BeingRated();
+            $total = $received->count() * 5;
+            $actual = 0;
+            foreach ($received as $rating) {
+                $actual += $rating->Stars;
+            }
+
+            $n = ($actual / $total) * 5;
+            if ($asHTML) {
+                return $this->ratingHTML($n);
+            }
+
+            return $n;
+        }
+
+        return !$asHTML ? 0 : $this->ratingHTML(0);
+    }
+
+    private function ratingHTML($n)
+    {
+        $arr = array();
+        $i = floor($n);
+        for ($j = 0; $j < 5; $j++) {
+            $arr[] = '<li data-stars="' . ($j+1) . '" class="' . ($j < $i ? 'icon-star' : 'icon-star-empty') . '"></li>';
+        }
+
+        if ($n == 0) {
+            $arr[0] = '<li data-stars="1" class="icon-star-empty"></li>';
+        } elseif ($n - $i > 0 ) {
+            $arr[$i] = '<li data-stars="' . $i . '" class="icon-star-half"></li>';
+        }
+
+        return implode("\n", $arr);
     }
 
 }

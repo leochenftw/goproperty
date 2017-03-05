@@ -3347,8 +3347,8 @@ textarea {
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
   border-radius: 0.3125rem 0.3125rem 0 0;
-  margin-right: 0.125rem;
-  border: 2px solid #fff;
+  margin-right: 0.0625rem;
+  border: 1px solid #fff;
   border-bottom: none;
 }
 #main .search-forms .fake-tabs a.active, #main .search-forms .fake-tabs a:hover, #main .search-forms .fake-tabs a:focus {
@@ -4106,6 +4106,7 @@ textarea {
   text-indent: 0;
   margin-right: 0.625rem;
   color: #b8e81e;
+  cursor: pointer;
 }
 #main .signin-form-wrapper__content-area .member-tile__details ul.rating li:before,
 #main .signup-form-wrapper__content-area .member-tile__details ul.rating li:before,
@@ -4528,6 +4529,7 @@ textarea {
   text-indent: 0;
   margin-right: 0.625rem;
   color: #b8e81e;
+  cursor: pointer;
 }
 .tradesmen-list__tile__actions ul.rating li:before,
 .property-list__tile__actions ul.rating li:before {
@@ -4682,6 +4684,35 @@ textarea {
   background-repeat: repeat-y;
   height: 60px;
   width: 167px;
+}
+
+.filter-form {
+  font-size: 0;
+}
+.filter-form button {
+  margin-right: 0.625rem;
+  font-size: 1rem;
+  border: 1px solid #7f8184;
+  background-color: #d8d8d8;
+  padding: 0.3125rem 2.1875rem 0.3125rem 0.625rem;
+  border-radius: 0.1875rem;
+  margin-bottom: 0.625rem;
+  position: relative;
+}
+.filter-form button:after {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  content: '\e806';
+  padding: 0.3125rem 0.625rem;
+  border-left: 1px solid #7f8184;
+}
+.filter-form p {
+  margin-top: 0;
 }
 
 /**

@@ -3,27 +3,19 @@ use SaltedHerring\Debugger;
 
 class PropertyLister extends Page_Controller
 {
+    /**
+     * Defines methods that can be called directly
+     * @var array
+     */
+    private static $allowed_actions = array(
+        'FilterForm'          =>  true
+    );
     public function index($request)
     {
         //Debugger::inspect($request->param('region'));
         $properties = PropertyPage::get();
 
         if ($region = $request->param('region')) {
-            if ($region == 'landlords') {
-                $properties = $properties->filter(array('RentOrSale' => 'rent'));
-                return $this->customise(array('Properties' => $properties))->renderWith(array('PropertyList', 'Page'));
-            }
-
-            if ($region == 'sales') {
-                $properties = $properties->filter(array('RentOrSale' => 'sale'));
-                return $this->customise(array('Properties' => $properties))->renderWith(array('PropertyList', 'Page'));
-            }
-
-            if ($region == 'agent-sales') {
-                $properties = $properties->filter(array('RentOrSale' => 'sale', 'ListerAgencyID:not' => 0));
-                return $this->customise(array('Properties' => $properties))->renderWith(array('PropertyList', 'Page'));
-            }
-
             $properties = $properties->filter(array('RegionSlug' => $region));
         }
 
@@ -118,5 +110,10 @@ class PropertyLister extends Page_Controller
     public function Title()
     {
         return $this->getTitle();
+    }
+
+    public function FilterForm()
+    {
+        return new FilterForm($this);
     }
 }

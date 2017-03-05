@@ -21,12 +21,8 @@
     </div>
     <div class="property-list__tile__actions as-flex wrap space-between">
         <a class="blue-button inline-block" href="$Link">More details</a>
-        <ul class="rating">
-            <li class="icon-star"></li>
-            <li class="icon-star"></li>
-            <li class="icon-star"></li>
-            <li class="icon-star-half"></li>
-            <li class="icon-star-empty"></li>
+        <ul class="rating" data-sid="$SecurityID" data-uid="$Member.ID">
+            $Member.getRating(1)
         </ul>
     </div>
 </div>
