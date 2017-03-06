@@ -170,5 +170,14 @@
                 self.find('.previewable-uploader__uploadable input[name="Gallery[Uploads][]"]:last').removeClass('hide');
             });
         }
+
+        $(this).find('input.text').keydown(function(e)
+        {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        });
     };
 })(jQuery);

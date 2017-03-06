@@ -289,4 +289,13 @@ class Dashboard extends Page_Controller {
 
         return null;
     }
+
+    public function NeedsToPay()
+    {
+        if ($member = Member::currentUser()) {
+            return $member->NeedsToPay();
+        }
+
+        return false;
+    }
 }

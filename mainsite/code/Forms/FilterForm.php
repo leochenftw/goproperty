@@ -32,6 +32,11 @@ class FilterForm extends Form
         if (count($terms) > 0) {
 
             foreach ($terms as $key => $value) {
+
+                if ($key == 'RentalPropertyType' || $key == 'SalePropertyType') {
+                    $value = PropertyPage_Controller::translateType($value, $key == 'RentalPropertyType' ? 'RentForm' : 'SaleForm');
+                }
+
                 $fields->push(LiteralField::create($key, '<button name="' . $key . '">' . $this->friendlify($key) . $value . '</button>'));
                 $fields->push(HiddenField::create(
                     $key,
@@ -66,6 +71,10 @@ class FilterForm extends Form
     {
         switch ($name) {
             case 'RentOrSale':
+                $name = '';
+                break;
+
+            case 'RentalPropertyType':
                 $name = '';
                 break;
 

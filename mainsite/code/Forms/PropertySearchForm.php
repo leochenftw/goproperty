@@ -174,9 +174,10 @@ class PropertySearchForm extends Form
             unset($data['SecurityID']);
             unset($data['action_doSearch']);
 
+
             $link = $url . '?';
             foreach ($data as $key => $value) {
-                if (!empty($value)) {
+                if (strlen($value) > 0) {
                     if (is_array($value)) {
                         foreach ($value as $value_item) {
                             $link .= $key . '[]=' . $value_item . '&';

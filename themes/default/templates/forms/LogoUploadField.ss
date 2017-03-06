@@ -42,7 +42,7 @@
             <div class="clear"><!-- --></div>
         </div>
         <div class="buttons mt-20">
-			<a href="#" class="btn-file-browser">Upload file</a>
+			<a href="#" class="btn-file-browser">Choose image...</a>
 		</div>
     <% end_if %>
 </div>

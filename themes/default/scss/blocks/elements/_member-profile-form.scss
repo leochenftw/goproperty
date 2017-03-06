@@ -190,6 +190,10 @@ form {
             &.hide {
                 display: none;
             }
+            margin-right: rem(10);
+            &:last-child {
+                margin-right: 0;
+            }
         }
     }
 }

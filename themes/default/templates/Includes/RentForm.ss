@@ -1,6 +1,6 @@
 <form $FormAttributes>
     <% if $Message %>
-    <div class="message-wrapper error">$Message</div>
+    <div id="PropertyForm_Message" class="message-wrapper $MessageType">$Message <button></button></div>
     <% end_if %>
     <fieldset>
     <div class="fields as-flex wrap">

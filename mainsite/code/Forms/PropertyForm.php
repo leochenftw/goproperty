@@ -211,6 +211,7 @@ class PropertyForm extends Form
     {
         $result = parent::validate();
         $data = $this->getData();
+
         if (!empty($data['ListingCloseOn'])) {
             $today  =   date_create(date("Y-m-d"));
             $until  =   date_create($data['ListingCloseOn']);
@@ -294,6 +295,7 @@ class PropertyForm extends Form
             }
 
             $property->writeToStage('Stage');
+            $this->sessionMessage('Property saved. Do you want to <a href="/member/action/list-property-for-rent">create another one</a>?', 'good', false);
 
             //return Controller::curr()->redirectBack();
             return Controller::curr()->redirect('/member/action/' . ($this->Name == 'RentForm' ? 'list-property-for-rent' : 'list-property-for-sale') . '?property_id=' . $property->ID);

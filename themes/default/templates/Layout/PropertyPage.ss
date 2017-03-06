@@ -28,10 +28,12 @@
                     <dt>In the area</dt>
                     <dd>$Friendlify($Amenities)</dd>
                 <% end_if %>
-                <dt>Pet OK</dt>
-                <dd>$AllowPet</dd>
-                <dt>Smoker OK</dt>
-                <dd>$AllowSmoker</dd>
+                <% if $RentOrSale == 'rent' %>
+                    <dt>Pet OK</dt>
+                    <dd>$AllowPet</dd>
+                    <dt>Smoker OK</dt>
+                    <dd>$AllowSmoker</dd>
+                <% end_if %>
                 <dt>Parking</dt>
                 <dd>$ParkingOption</dd>
                 <% if $IdealTenants %>

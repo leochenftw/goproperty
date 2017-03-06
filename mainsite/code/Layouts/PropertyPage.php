@@ -256,11 +256,25 @@ class PropertyPage extends Page
 
 class PropertyPage_Controller extends Page_Controller
 {
+    /**
+     * Defines methods that can be called directly
+     * @var array
+     */
+    private static $allowed_actions = array(
+        'ContactForm'
+    );
+
     public function getPropType()
     {
         $options = Config::inst()->get('PropertyPage', $this->RentOrSale == 'rent' ? 'RentForm' : 'SaleForm');
         $idx = !empty($this->PropertyType) ? $this->PropertyType : 0;
         return $options[$idx];
+    }
+
+    public static function translateType($name, $type)
+    {
+        $options = Config::inst()->get('PropertyPage', $type);
+        return $options[$name];
     }
 
     public function getParkingOption()
@@ -275,6 +289,11 @@ class PropertyPage_Controller extends Page_Controller
         $idx = !empty($this->IdealTenants) ? $this->IdealTenants : 0;
         $options = Config::inst()->get('PropertyPage', 'IdealTenants');
         return $options[$idx];
+    }
+
+    public function ContactForm()
+    {
+        return new ContactForm($this, $this->ListerID);
     }
 
     public function Friendlify($string)

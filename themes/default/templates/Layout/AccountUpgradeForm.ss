@@ -1,8 +1,8 @@
-<h2 class="title">Upgrade your account</h2>
-<% if $CurrentMember.beLandlords || $CurrentMember.beTradesmen || $CurrentMember.beRealtors %>
-    <p>Please proceed the payment, and finalise your account upgrade</p>
+<h2 class="title"><% if $CurrentMember.NeedsToPay %>Account<% else %>Upgrade your account<% end_if %></h2>
+<% if $CurrentMember.NeedsToPay %>
+    <p>Please proceed the payment, and finalise your account activation.</p>
 <% else %>
-    <p>Want to empower your account to do more? Choose from below account types</p>
+    <p>Want to empower your account to do more? Choose from below account types.</p>
 <% end_if %>
 <% if $CurrentMember.isLandlord || $CurrentMember.isRealtor || $CurrentMember.isTradesperson %>
 <div class="already">

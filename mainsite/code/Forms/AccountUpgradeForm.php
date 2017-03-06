@@ -50,7 +50,7 @@ class AccountUpgradeForm extends Form
         )->addExtraClass('hide'));
 
         $actions = new FieldList();
-        $actions->push(FormAction::create('doUpgrade', 'Upgrade now'));
+        $actions->push(FormAction::create('doUpgrade', $member->NeedsToPay() ? 'Activate' : 'Upgrade now'));
 
         parent::__construct($controller, 'AccountUpgradeForm', $fields, $actions);
         $this->setFormMethod('POST', true)

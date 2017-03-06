@@ -200,4 +200,13 @@ class MemberExtension extends DataExtension
         return implode("\n", $arr);
     }
 
+    public function NeedsToPay()
+    {
+        if ($this->owner->beLandlords || $this->owner->beTradesmen || $this->owner->beRealtors) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

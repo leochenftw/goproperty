@@ -3,8 +3,20 @@ use SaltedHerring\Debugger;
 
 class TradesmenLister extends Page_Controller
 {
+    /**
+     * Defines methods that can be called directly
+     * @var array
+     */
+    private static $allowed_actions = array(
+        'ContactForm'
+    );
+
     public function index($request)
     {
+        if ($request->param('region') == 'ContactForm') {
+            return $this->ContactForm();
+        }
+
         if ($serviceSlug = $request->getVar('WorkType')) {
             $service = Service::get()->filter(array('Slug' => $serviceSlug))->first();
             $business = $service->Business();
@@ -65,4 +77,46 @@ class TradesmenLister extends Page_Controller
     {
         return $this->getTitle();
     }
+
+    public function Link($action = NULL)
+    {
+        return '/tradesmen/';
+    }
+
+    public function ContactForm()
+    {
+        $request = $this->request;
+        if ($serviceSlug = $request->getVar('WorkType')) {
+            $service = Service::get()->filter(array('Slug' => $serviceSlug))->first();
+            $business = $service->Business();
+        } else {
+            $business = Business::get();
+        }
+
+        $filters = array();
+        if ($region = $request->param('region')) {
+            $filters['RegionSlug'] = $region;
+        }
+
+        if ($district = $request->param('district')) {
+            $filters['CitySlug'] = $district;
+        }
+
+        if ($suburb = $request->param('suburb')) {
+            $filters['SuburbSlug'] = $suburb;
+        }
+
+        if ($slug = $request->param('slug')) {
+            $filters['Slug'] = $slug;
+        }
+
+        $business = $business->filter($filters);
+
+        if (!empty($slug)) {
+            $business = $business->first();
+        }
+
+        return new ContactForm($this, $business->BusinessOwnerID, $business->ID);
+    }
+
 }

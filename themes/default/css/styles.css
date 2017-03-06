@@ -3315,6 +3315,67 @@ textarea {
   padding-bottom: 3.75rem;
   background-color: #fff;
 }
+#main #PropertyForm_Message,
+#main #ContactForm_ContactForm_error {
+  position: absolute;
+  z-index: 9;
+  width: 96%;
+  max-width: 30rem;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+#main #PropertyForm_Message a,
+#main #ContactForm_ContactForm_error a {
+  text-decoration: underline;
+  color: #000;
+}
+#main #PropertyForm_Message.good,
+#main #ContactForm_ContactForm_error.good {
+  background-color: #b8e81e;
+  color: #001d58;
+  border-radius: 0.3125rem;
+  padding: 0.625rem 1.25rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+#main #PropertyForm_Message:after,
+#main #ContactForm_ContactForm_error:after {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  content: '\e806';
+  padding: 0.3125rem 0.625rem;
+  border: none;
+  line-height: 1.625rem;
+}
+#main #ContactForm_ContactForm_error {
+  cursor: pointer;
+}
+#main #PropertyForm_Message:after {
+  content: none;
+}
+#main #PropertyForm_Message button {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 0.3125rem 0.625rem;
+  background-color: transparent;
+  border: none;
+}
+#main #PropertyForm_Message button:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  content: '\e806';
+  line-height: 1.625rem;
+}
 .page-propertylister #main {
   padding-bottom: 0;
 }
@@ -3598,9 +3659,13 @@ textarea {
 }
 #main .member-area__content form .Actions input.action {
   display: inline-block;
+  margin-right: 0.625rem;
 }
 #main .member-area__content form .Actions input.action.hide {
   display: none;
+}
+#main .member-area__content form .Actions input.action:last-child {
+  margin-right: 0;
 }
 #main .member-area__content #tagged-services {
   margin-bottom: 2.5rem;
@@ -3991,6 +4056,11 @@ textarea {
   width: 30%;
   color: #001d58;
   text-align: right;
+}
+.page-tradesmenlister #main .signin-form-wrapper__content-area__aside dl dt, .page-tradesmenlister
+#main .signup-form-wrapper__content-area__aside dl dt, .page-tradesmenlister
+#main .property__content-area__aside dl dt {
+  text-align: left;
 }
 #main .signin-form-wrapper__content-area__aside dl dd,
 #main .signup-form-wrapper__content-area__aside dl dd,
@@ -4741,6 +4811,51 @@ html {
 body {
   padding-top: 3.75rem;
   background-color: #7f8184;
+}
+body #overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+}
+body #ContactForm_ContactForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 96%;
+  max-width: 30rem;
+  background-color: #fff;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+body #ContactForm_ContactForm label {
+  font-size: 1rem;
+  margin-bottom: 0.625rem;
+}
+body #ContactForm_ContactForm textarea.textarea {
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  height: 25rem;
+}
+body #ContactForm_ContactForm .Actions {
+  text-align: right;
+}
+body #ContactForm_ContactForm .Actions .blue-button, body #ContactForm_ContactForm .Actions .tradesmen-search-form .half .actions input[type="submit"], .tradesmen-search-form .half .actions body #ContactForm_ContactForm .Actions input[type="submit"],
+body #ContactForm_ContactForm .Actions .property-search-form .half .actions input[type="submit"],
+.property-search-form .half .actions body #ContactForm_ContactForm .Actions input[type="submit"], body #ContactForm_ContactForm #main .member-area__content form .Actions input.action, #main .member-area__content form body #ContactForm_ContactForm .Actions input.action, body #ContactForm_ContactForm #main #SignupForm_SignupForm .Actions input.action, #main #SignupForm_SignupForm body #ContactForm_ContactForm .Actions input.action,
+body #ContactForm_ContactForm #main #SigninForm_SigninForm .Actions input.action,
+#main #SigninForm_SigninForm body #ContactForm_ContactForm .Actions input.action {
+  display: inline-block;
 }
 
 /**

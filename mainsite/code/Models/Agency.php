@@ -57,7 +57,7 @@ class Agency extends DataObject
     {
         parent::onAfterWrite();
         if ($member = Member::currentUser()) {
-            if ($member->inGroup('tradesmen')) {
+            if ($member->inGroup('realtors')) {
                 if ($this->Members()->filter(array('MemberID' => Member::currentUserID()))->count() == 0) {
                     $this->Members()->add(Member::currentUserID());
                 }

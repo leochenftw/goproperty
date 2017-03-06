@@ -11,6 +11,57 @@ $(document).ready(function(e)
         }
     );
 
+    if ($('#ContactForm_ContactForm_error').length == 1 && $('#ContactForm_ContactForm_error').hasClass('good')) {
+        $('#ContactForm_ContactForm_error').prependTo($('.section.property'));
+        var withDrawMessage = function(e)
+        {
+            if (tick) {
+                clearTimeout(tick);
+                tick = null;
+                TweenMax.to($('#ContactForm_ContactForm_error'), 0.5, {opacity: 0, onComplete:function()
+                {
+                    $('#ContactForm_ContactForm_error').remove();
+                }});
+            }
+        };
+        var tick = setTimeout(withDrawMessage, 3000);
+        $('#ContactForm_ContactForm_error').click(withDrawMessage);
+    }
+
+    if ($('#PropertyForm_Message').length == 1) {
+        var withDrawMessage = function(e)
+        {
+            if (e) {
+                e.preventDefault();
+            }
+
+            if (tick) {
+                clearTimeout(tick);
+                tick = null;
+                TweenMax.to($('#PropertyForm_Message'), 0.5, {opacity: 0, onComplete:function()
+                {
+                    $('#PropertyForm_Message').remove();
+                }});
+            }
+        };
+        var tick = setTimeout(withDrawMessage, 3000);
+        $('#PropertyForm_Message button').click(withDrawMessage);
+    }
+
+    $('#btn-contact-form').click(function(e)
+    {
+        e.preventDefault();
+        var overlay =   $('<div />');
+        overlay.attr('id', 'overlay');
+        $('body').append(overlay);
+        $('#ContactForm_ContactForm').removeClass('hide');
+        overlay.mousedown(function(e)
+        {
+            $('#ContactForm_ContactForm').addClass('hide');
+            overlay.remove();
+        });
+    });
+
     $('.filter-form button').click(function(e)
     {
         e.preventDefault();
@@ -82,6 +133,7 @@ $(document).ready(function(e)
     $('.tab-ish.search-tab').click(function(e)
     {
         e.preventDefault();
+        $('#form-description span').html($(this).data('description'));
         $(this).siblings().removeClass('active');
         $(this).addClass('active');
         var show    =   $(this).data('show'),
@@ -96,7 +148,15 @@ $(document).ready(function(e)
             $(this).find('input.text').val('');
             $(this).find('select option').prop('selected', false);
             $(this).find('input.radio').prop('checked', false);
-        })
+        });
+
+        if ($(this).attr('href').replace('/#', '#') == '#PropertySearchForm_PropertySearchForm') {
+            if ($(this).data('show') == 'for-sale') {
+                $('#PropertySearchForm_PropertySearchForm_RentOrSale_sale').prop('checked', true);
+            } else {
+                $('#PropertySearchForm_PropertySearchForm_RentOrSale_rent').prop('checked', true);
+            }
+        }
 
     });
 

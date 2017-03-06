@@ -1,16 +1,16 @@
 <div class="search-forms">
     <div class="container">
         <div class="as-flex horizontal-centred fake-tabs">
-            <a class="tab-ish search-tab active" href="#PropertySearchForm_PropertySearchForm" data-show="for-rent" data-hide="for-sale">Find a <span>Rental Property</span></a>
-            <a class="tab-ish search-tab" href="#PropertySearchForm_PropertySearchForm" data-show="for-sale" data-hide="for-rent">Properties <span>For Sale</span></a>
-            <a class="tab-ish search-tab" href="#TradesmenSearchForm_TradesmenSearchForm">Find a <span>Tradesperson</span></a>
+            <a data-description="Rental Property" class="tab-ish search-tab active" href="#PropertySearchForm_PropertySearchForm" data-show="for-rent" data-hide="for-sale">Find a <span>Rental Property</span></a>
+            <a data-description="Property for Sale" class="tab-ish search-tab" href="#PropertySearchForm_PropertySearchForm" data-show="for-sale" data-hide="for-rent">Properties <span>For Sale</span></a>
+            <a data-description="Tradesperson" class="tab-ish search-tab" href="#TradesmenSearchForm_TradesmenSearchForm">Find a <span>Tradesperson</span></a>
             <a class="tab-ish" href="/member/action/list-property-for-rent">List a <span>property</span></a>
             <a class="tab-ish" href="/resources"><span>Resources</span></a>
         </div>
         <% with $PropertySearchForm %>
         <form $FormAttributes>
             <h2 class="form-title">Search</h2>
-            <div id="form-description" class="form-description">Search for a Rental Property</div>
+            <div id="form-description" class="form-description">Search for a <span>Rental Property</span></div>
             <div class="as-flex wrap Fields">
                 <div class="left-half half">
                     <div class="fields-wrapper location">

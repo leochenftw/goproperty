@@ -1,5 +1,6 @@
 #main {
     padding-bottom: rem(60);
+    @import 'elements/messages';
     .page-propertylister & {
         padding-bottom: 0;
     }
@@ -179,6 +180,9 @@
                         width: 30%;
                         color: $blue;
                         text-align: right;
+                        .page-tradesmenlister & {
+                            text-align: left;
+                        }
                     }
 
                     dd {

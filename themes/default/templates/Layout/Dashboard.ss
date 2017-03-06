@@ -5,7 +5,7 @@
             <ul class="neat-ul">
                 <% if not $isAgent || not $isLandlord || not $isTradesperson %>
                 <li>
-                    <a data-title="Dashboard | Upgrade account" href="/member/action/upgrade" class="icon-promote ajax-routed<% if $tab == 'upgrade' %> active<% end_if %>"><span>Account upgrade</span></a>
+                <a title="<% if $NeedsToPay %>Account<% else %>Account upgrade<% end_if %>" data-title="Dashboard | Upgrade account" href="/member/action/upgrade" class="icon-promote ajax-routed<% if $tab == 'upgrade' %> active<% end_if %>"><span><% if $NeedsToPay %>Account<% else %>Account upgrade<% end_if %></span></a>
                 </li>
                 <% end_if %>
                 <li><a title="My profile" data-title="Dashboard | My profile" href="/member/action/profile" class="icon-user ajax-routed<% if $tab == 'profile' || not $tab || $tab == 'email-update' %> active<% end_if %>"><span>My profile</span></a></li>
@@ -22,7 +22,7 @@
                 <li><a title="My business" data-title="Dashboard | My business" href="/member/action/my-business" class="icon-wrench ajax-routed<% if $tab == 'my-business' %> active<% end_if %>"><span>My Business</span></a></li>
                 <% end_if %>
                 <li><a title="Payment history" data-title="Dashboard | Payment history" href="/member/action/payment-history" class="icon-dollar ajax-routed<% if $tab == 'payment-history' %> active<% end_if %>"><span>Payment history</span></a></li>
-                <li><a title="My creditcards" data-title="Dashboard | My creditcards" href="/member/action/creditcards" class="icon-creditcard ajax-routed<% if $tab == 'creditcards' %> active<% end_if %>"><span>My creditcards</span></a></li>
+                <li><a title="My credit card" data-title="Dashboard | My credit card" href="/member/action/creditcards" class="icon-creditcard ajax-routed<% if $tab == 'creditcards' %> active<% end_if %>"><span>My credit card</span></a></li>
                 <li><a title="" href="/member/signout" class="icon-logout"><span>Sign out</span></a></li>
             </ul>
         </aside>
