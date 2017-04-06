@@ -30,8 +30,10 @@
                         $Fields.fieldByName('AllowPet').FieldHolder
                         $Fields.fieldByName('AllowSmoker').FieldHolder
                     </div>
+                    $Fields.fieldByName('Content').FieldHolder
+                    $Fields.fieldByName('Insulation').FieldHolder
                     <% loop $Fields %>
-                        <% if $Name != ListingCloseOn && $Name != 'IdealTenants' && $Name != 'AllowPet' && $Name != 'AllowSmoker' && $Name != 'NumBathrooms' && $Name != 'NumBedrooms' && $Name != 'MaxCapacity' && $Name != 'DateAvailable' && $Name != 'PropertyType' && $Name != 'UnitNumber' && $Name != 'FullAddress' && $Name != 'WeeklyRent' && $Name != 'Gallery' && $Name != 'ContactNumber' && $Name != 'ListerAgencyID' && $Name != 'AgencyReference'  %>
+                        <% if $Name != 'ListTilGone' && $Name != 'Insulation' && $Name != 'Content' && $Name != 'ListingCloseOn' && $Name != 'IdealTenants' && $Name != 'AllowPet' && $Name != 'AllowSmoker' && $Name != 'NumBathrooms' && $Name != 'NumBedrooms' && $Name != 'MaxCapacity' && $Name != 'DateAvailable' && $Name != 'PropertyType' && $Name != 'UnitNumber' && $Name != 'FullAddress' && $Name != 'WeeklyRent' && $Name != 'Gallery' && $Name != 'ContactNumber' && $Name != 'ListerAgencyID' && $Name != 'AgencyReference'  %>
                             $FieldHolder
                         <% end_if %>
                     <% end_loop %>
@@ -44,6 +46,13 @@
                     $Fields.fieldByName('ListerAgencyID').FieldHolder
                     $Fields.fieldByName('AgencyReference').FieldHolder
                     $Fields.fieldByName('ContactNumber').FieldHolder
+                </div>
+            </div>
+
+            <div class="fields__main__section listing-options">
+                <h3 class="fields__main__section__title">Listing options</h3>
+                <div class="fields__main__section__content">
+                    $Fields.fieldByName('ListTilGone').FieldHolder
                 </div>
             </div>
 

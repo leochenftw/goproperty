@@ -7,7 +7,18 @@
         <% end_if %>
     </div>
     <div class="member-tile__details">
-        <div class="member-tile__details__name">$Member.FirstName<% if  $Member.Surname %> $Member.Surname<% end_if %></div>
+        <div class="member-tile__details__name">
+            <% if $Member.Nickname && $Member.NameToUse == 'Nickname' %>
+                $Member.Nickname
+            <% else %>
+                $Member.FirstName<% if  $Member.Surname %> $Member.Surname<% end_if %>
+            <% end_if %>
+        </div>
+        <% if $Member.DisplayPhonenumber %>
+        <div class="member-tile__details__phonenumber">
+            $Member.ContactNumber
+        </div>
+        <% end_if %>
         <ul class="rating" data-sid="$SecurityID" data-uid="$Member.ID">
             $Member.getRating(1)
         </ul>

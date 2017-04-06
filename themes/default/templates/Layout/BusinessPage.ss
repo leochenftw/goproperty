@@ -34,6 +34,9 @@
             <div class="content">
                 <h2>Introduction</h2>
                 $Business.Friendlify($Business.Content)
+                <div class="social">
+                    <div class="addthis_inline_share_toolbox"></div>
+                </div>
             </div>
             <% include MemberTile Member=$Business.BusinessOwner %>
             <div class="property__content-area__testimonial">

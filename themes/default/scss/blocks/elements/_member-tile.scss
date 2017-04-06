@@ -17,4 +17,13 @@
     .blue-button {
         display: inline-block;
     }
+    &__name {
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    &__phonenumber {
+        font-size: rem(18);
+        margin-bottom: rem(10);
+    }
 }

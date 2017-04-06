@@ -42,15 +42,22 @@ class TradesmenLister extends Page_Controller
         }
 
         $business = $business->filter($filters);
+        $data = array(
+            'BodyClass' =>  '',
+            'Business'  =>  null
+        );
 
         if (!empty($slug)) {
+            $data['BodyClass'] = 'Business';
             $business = $business->first();
         } else {
             $business = new PaginatedList($business, $request);
             $business->setPageLength(12);
         }
 
-        return $this->customise(array('Business' => $business))->renderWith(array(!empty($slug) ? 'BusinessPage' : 'TradesmenList', 'Page'));
+        $data['Business'] = $business;
+
+        return $this->customise($data)->renderWith(array(!empty($slug) ? 'BusinessPage' : 'TradesmenList', 'Page'));
     }
 
     public function getTitle()

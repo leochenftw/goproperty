@@ -1,4 +1,6 @@
-<?php use SaltedHerring\Debugger as Debugger;
+<?php
+use SaltedHerring\Debugger;
+use SaltedHerring\Utilities;
 
 class MemberProfileForm extends Form {
 
@@ -10,8 +12,11 @@ class MemberProfileForm extends Form {
         $fields->push($email = EmailField::create('Email', 'Email')->setValue($member->Email)->setDescription('<a data-title="My profile | Change email address" href="/member/action/email-update" class="ajax-routed">Change email address</a>')->performReadonlyTransformation());
         $fields->push($first = TextField::create('FirstName', 'First name')->setValue($member->FirstName));
         $fields->push($last = TextField::create('Surname', 'Surname')->setValue($member->Surname));
+        $fields->push($nickname = TextField::create('Nickname', 'Avatar/Nickname')->setValue($member->Nickname)->setDescription('Spaces and symbols will be omitted when save'));
+        $fields->push(OptionsetField::create('NameToUse', 'Which name to display', array('Real name' => 'Real name', 'Nickname' => 'Nickname'), $member->NameToUse));
         $fields->push($addr = TextField::create('FullAddress', 'Address')->setValue($member->FullAddress));
         $fields->push($first = TextField::create('ContactNumber', 'Landline/Mobile')->setValue($member->ContactNumber));
+        $fields->push($showPhone = CheckboxField::create('DisplayPhonenumber', 'Show phone number on listing pages')->setValue($member->DisplayPhonenumber));
 
         $fields->push(HiddenField::create('StreetNumber','StreetNumber', $member->StreetNumber));
         $fields->push(HiddenField::create('StreetName','StreetName', $member->StreetName));
@@ -61,6 +66,24 @@ class MemberProfileForm extends Form {
         }
 
         return 0;
+    }
+
+    public function validate()
+    {
+        $result = parent::validate();
+
+        $data = $this->getData();
+
+        if ($nickname = $data['Nickname']) {
+            $nickname = Utilities::sanitise($nickname, '', '');
+            $test = Member::get()->filter(array('Nickname' => $nickname));
+            if ($test->count() > 0 && empty($test->byID(Member::currentUserID()))) {
+                $this->addErrorMessage('Nickname', '<strong><em>' . $data['Nickname'] . '</em></strong> has been taken. Please choose a different one. ', "bad", false);
+                return false;
+            }
+        }
+
+        return $result;
     }
 
     public function doUpdate($data, $form) {

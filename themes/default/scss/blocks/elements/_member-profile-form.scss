@@ -106,8 +106,15 @@ form {
                 margin-bottom: rem(10);
             }
 
+            &.checkbox {
+                label {
+                    margin-left: 0.5em;
+                    display: inline-block;
+                }
+            }
 
 
+            &#RentForm_RentForm_Insulation_Holder,
             &#RentForm_RentForm_SmokeAlarm_Holder {
                 margin-bottom: rem(40);
             }

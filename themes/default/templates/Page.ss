@@ -28,5 +28,8 @@
 		</main>
 
 		<% include Footer %>
+        <% if $BodyClass.LowerCase == 'property-page' || $BodyClass.LowerCase == 'business' %>
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e5d87b19265d9e"></script>
+        <% end_if %>
 	</body>
 </html>

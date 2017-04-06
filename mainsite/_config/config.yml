@@ -68,6 +68,8 @@ TradesPerson:
     'mover': 'Mover'
 PropertyPage:
   DailyCharge: 2
+  TilSold: 39.95
+  TilRented: 29.95
   MaxBedroom: 10
   MaxBathroom: 5
   MaxCapacity: 20

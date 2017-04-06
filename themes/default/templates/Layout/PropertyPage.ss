@@ -34,6 +34,10 @@
                     <dt>Smoker OK</dt>
                     <dd>$AllowSmoker</dd>
                 <% end_if %>
+                <dt>Smoke alarm</dt>
+                <dd><% if $SmokeAlarm %>Yes<% else %>No<% end_if %></dd>
+                <dt>Insulation</dt>
+                <dd><% if $Insulation %>Yes<% else %>No<% end_if %></dd>
                 <dt>Parking</dt>
                 <dd>$ParkingOption</dd>
                 <% if $IdealTenants %>
@@ -48,8 +52,13 @@
         <article class="property__content-area__content">
             <div class="content">
                 $Friendlify($Content)
+                <div class="social">
+                    <div class="addthis_inline_share_toolbox"></div>
+                </div>
             </div>
+
             <% include MemberTile %>
+
             <div class="property__content-area__testimonial">
                 <h2 class="title">Testimonial</h2>
                 $Friendlify($Testimonial)

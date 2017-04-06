@@ -1,6 +1,16 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+    $('input[name="ListTilGone"]').change(function(e)
+    {
+        if ($(this).val() == 1) {
+            $('.fields__main__section.listing').addClass('hide');
+            $('#RentForm_RentForm_ListingCloseOn').val('');
+        } else {
+            $('.fields__main__section.listing').removeClass('hide');
+        }
+    }).change();
+
     $('.owl-carousel').owlCarousel(
         {
             loop: false,

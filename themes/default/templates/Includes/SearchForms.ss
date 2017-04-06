@@ -10,6 +10,9 @@
         <% with $PropertySearchForm %>
         <form $FormAttributes>
             <h2 class="form-title">Search</h2>
+            <div class="ads" style="margin-bottom: 10px;">
+                <img src="http://placehold.it/1200x150" width="1200" height="150" />
+            </div>
             <div id="form-description" class="form-description">Search for a <span>Rental Property</span></div>
             <div class="as-flex wrap Fields">
                 <div class="left-half half">
@@ -91,6 +94,9 @@
         <% with $TradesmenSearchForm %>
         <form $FormAttributes>
             <h2 class="form-title">Search</h2>
+            <div class="ads" style="margin-bottom: 10px;">
+                <img src="http://placehold.it/1200x150" width="1200" height="150" />
+            </div>
             <div id="form-description" class="form-description">Search for a Rental Property</div>
             <div class="as-flex wrap Fields">
                 <div class="left-half half">

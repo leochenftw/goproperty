@@ -1,5 +1,6 @@
 <?php
 use SaltedHerring\Debugger;
+use SaltedHerring\Utilities;
 use SaltedHerring\Grid;
 use SaltedHerring\SaltedPayment;
 
@@ -10,6 +11,9 @@ class MemberExtension extends DataExtension
      * @var array
      */
     private static $db = array(
+        'Nickname'              =>  'Varchar(32)',
+        'NameToUse'             =>  'Enum("Real name,Nickname")',
+        'DisplayPhonenumber'    =>  'Boolean',
         'ValidationKey'  	 	=>	'Varchar(40)',
         'ContactNumber'         =>  'Varchar(24)',
         'beLandlords'           =>  'Boolean',
@@ -87,6 +91,11 @@ class MemberExtension extends DataExtension
             $portrait = new Portrait();
             $id = $portrait->write();
             $this->owner->PortraitID = $id;
+        }
+
+        if (!empty($this->owner->Nickname)) {
+            $purified = Utilities::sanitise($this->owner->Nickname, '', '');
+            $this->owner->Nickname = $purified;
         }
     }
 

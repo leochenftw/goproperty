@@ -3592,7 +3592,11 @@ textarea {
   font-size: 0.875rem;
   margin-bottom: 0.625rem;
 }
-#main .member-area__content form fieldset .field#RentForm_RentForm_SmokeAlarm_Holder {
+#main .member-area__content form fieldset .field.checkbox label {
+  margin-left: 0.5em;
+  display: inline-block;
+}
+#main .member-area__content form fieldset .field#RentForm_RentForm_Insulation_Holder, #main .member-area__content form fieldset .field#RentForm_RentForm_SmokeAlarm_Holder {
   margin-bottom: 2.5rem;
 }
 #main .member-area__content form fieldset .field .textarea,
@@ -3673,7 +3677,7 @@ textarea {
 #main .member-area__content .property-form fieldset .fields .field.textarea {
   margin-bottom: 2.5rem;
 }
-#main .member-area__content .property-form fieldset .fields .field.textarea#Furnishings_Holder {
+#main .member-area__content .property-form fieldset .fields .field.textarea#RentForm_RentForm_Content_Holder, #main .member-area__content .property-form fieldset .fields .field.textarea#Furnishings_Holder {
   margin-bottom: 0.625rem;
 }
 #main .member-area__content .property-form fieldset .fields .field.textarea .middleColumn {
@@ -4120,7 +4124,13 @@ textarea {
 #main .signin-form-wrapper__content-area__content .content,
 #main .signup-form-wrapper__content-area__content .content,
 #main .property__content-area__content .content {
-  margin-bottom: 3.75rem;
+  margin-bottom: 1.875rem;
+}
+#main .signin-form-wrapper__content-area__content .content .social,
+#main .signup-form-wrapper__content-area__content .content .social,
+#main .property__content-area__content .content .social {
+  min-height: 3rem;
+  margin-top: 1.875rem;
 }
 #main .signin-form-wrapper__content-area__content p, #main .signin-form-wrapper__content-area__content ul, #main .signin-form-wrapper__content-area__content li, #main .signin-form-wrapper__content-area__content td,
 #main .signup-form-wrapper__content-area__content p,
@@ -4212,6 +4222,18 @@ textarea {
 #main .property__content-area .member-tile__details #SigninForm_SigninForm .Actions input.action,
 #main #SigninForm_SigninForm .Actions .property__content-area .member-tile__details input.action {
   display: inline-block;
+}
+#main .signin-form-wrapper__content-area .member-tile__details__name,
+#main .signup-form-wrapper__content-area .member-tile__details__name,
+#main .property__content-area .member-tile__details__name {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+#main .signin-form-wrapper__content-area .member-tile__details__phonenumber,
+#main .signup-form-wrapper__content-area .member-tile__details__phonenumber,
+#main .property__content-area .member-tile__details__phonenumber {
+  font-size: 1.125rem;
+  margin-bottom: 0.625rem;
 }
 #main .message-wrapper {
   text-align: center;

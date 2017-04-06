@@ -61,7 +61,7 @@ class PropertyForm extends Form
 
         $fields->push(TextField::create('ContactNumber', 'Contact number', !empty($prop) ? $prop->ContactNumber : (!empty(Member::currentUser()->ContactNumber) ? Member::currentUser()->ContactNumber : null)));
 
-        $fields->push($details = TextareaField::create('Content', 'Details')->setAttribute('placeholder', 'The property has features such as termsheet facebook focus product management customer partner network business-to-consumer.')->setDescription('Provide details such as heating, insulation, flooring, whiteware etc.'));
+        $fields->push($details = TextareaField::create('Content', 'Details')->setAttribute('placeholder', 'Provide details such as heating, flooring, whiteware etc. e.g. The property has features such as termsheet facebook focus product management customer partner network business-to-consumer.'));//->setDescription('Provide details such as heating, insulation, flooring, whiteware etc.'));
 
         $fields->push(DropdownField::create(
             'NumBedrooms',
@@ -94,6 +94,12 @@ class PropertyForm extends Form
             !empty($prop) ? $prop->SmokeAlarm : 1
         ));
 
+        $fields->push(CheckboxField::create(
+            'Insulation',
+            'Insulation',
+            !empty($prop) ? $prop->Insulation : 1
+        ));
+
         $fields->push($gallery = UploadField::create('Gallery', 'Gallery'));
 
         $gallery->setFolderName('members/' . Member::CurrentUserID() . '/propertyimages')
@@ -114,7 +120,7 @@ class PropertyForm extends Form
                 'List as',
                 $member->MemberOf()->map('ID', 'Title'),
                 !empty($prop) ? $prop->ListerAgencyID : null
-            )->setEmptyString('Myself'));
+            )->setEmptyString($name == 'RentForm' ? 'Myself' : 'Private Sale'));
         }
 
         if (!empty($prop)) {
@@ -137,8 +143,21 @@ class PropertyForm extends Form
         }
 
         $daily_charge = Config::inst()->get('PropertyPage', 'DailyCharge');
+        $til_charge = $this->Name == 'RentForm' ? Config::inst()->get('PropertyPage', 'TilRented') : Config::inst()->get('PropertyPage', 'TilSold');
 
         $listing_desc = 'Rate: $' . $daily_charge . ' per day. ';
+
+        $listingOption = OptionsetField::create(
+            'ListTilGone',
+            'Listing options',
+            array(
+                'By length: $' . $daily_charge .' per day',
+                'List until ' . ($name == 'RentForm' ? 'rented' : 'sold') . ': $' . $til_charge
+            ),
+            !empty($prop) ? $prop->ListTilGone : null
+        );
+
+        $fields->push($listingOption);
 
         $list_until = DateField::create('ListingCloseOn','Listing ends', !empty($prop) ? $prop->ListingCloseOn : null);
 

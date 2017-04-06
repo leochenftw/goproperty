@@ -231,8 +231,14 @@
                 }
 
                 .content {
-                    margin-bottom: rem(60);
+                    margin-bottom: rem(30);
+
+                    .social {
+                        min-height: rem(48);
+                        margin-top: rem(30);
+                    }
                 }
+
                 p, ul, li, td {
                     font-size: rem(22);
                 }
