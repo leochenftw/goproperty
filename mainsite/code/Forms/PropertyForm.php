@@ -143,7 +143,7 @@ class PropertyForm extends Form
         }
 
         $daily_charge = Config::inst()->get('PropertyPage', 'DailyCharge');
-        $til_charge = $this->Name == 'RentForm' ? Config::inst()->get('PropertyPage', 'TilRented') : Config::inst()->get('PropertyPage', 'TilSold');
+        $til_charge = $name == 'RentForm' ? Config::inst()->get('PropertyPage', 'TilRented') : Config::inst()->get('PropertyPage', 'TilSold');
 
         $listing_desc = 'Rate: $' . $daily_charge . ' per day. ';
 
@@ -168,6 +168,7 @@ class PropertyForm extends Form
 
             if ($prop->hasPaid()) {
                 $this->ListFree = true;
+                $this->ListTilGone = $prop->ListTilGone;
                 $this->ListUntil = $prop->ListingCloseOn;
             } elseif (!empty($prop->ListingCloseOn)) {
                 // Debugger::inspect();
@@ -254,8 +255,13 @@ class PropertyForm extends Form
                     $property->writeToStage('Live');
                     return Controller::curr()->redirect('/member/action/' . ($this->Name == 'RentForm' ? 'list-property-for-rent' : 'list-property-for-sale') . '?property_id=' . $property->ID);
                 } else {
-                    $daily_charge = Config::inst()->get('PropertyPage', 'DailyCharge');
-                    $amount = $daily_charge * $property->ListingDuration;
+                    if ($property->ListTilGone) {
+                        $amount = ($property->RentOrSale == 'rent') ? Config::inst()->get('PropertyPage', 'TilRented') : Config::inst()->get('PropertyPage', 'TilSold');
+                    } else {
+                        $daily_charge = Config::inst()->get('PropertyPage', 'DailyCharge');
+                        $amount = $daily_charge * $property->ListingDuration;
+                    }
+
                     $order = SaltedOrder::prepare_order();
                     $order->Amount->Amount = $amount;
 

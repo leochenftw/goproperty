@@ -38,9 +38,13 @@ class Order extends SaltedOrder
 
     public function onSaltedPaymentUpdate($success)
     {
-        if ($success) {
+        if ($success == 'Success') {
             if ($this->PaidToClass == 'PropertyPage') {
                 $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($this->PaidToClassID);
+                if ($property->ListTilGone) {
+                    $property->isPaid = true;
+                    $property->writeToStage('Stage');
+                }
                 $property->writeToStage('Live');
             }
 

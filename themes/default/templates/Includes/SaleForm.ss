@@ -84,7 +84,11 @@
             <p>You are going to list this property for <strong>$Duration</strong> day<% if $Duration > 1 %>s<% end_if %>. This is going to cost you: <span>${$AmountToPay}</span></p>
         <% end_if %>
         <% if $ListFree %>
-            <p>You have paid for listing til the end of $ListUntil. It means before the duration has run out, you may list and withdraw this particular propety without incurring additional charges.</p>
+            <% if $ListTilGone %>
+                <p>You have paid for the listing until it gets sold. It means you may list and withdraw this particular propety without incurring additional charges before it's rented.</p>
+            <% else %>
+                <p>You have paid for listing til the end of $ListUntil. It means before the duration has run out, you may list and withdraw this particular propety without incurring additional charges.</p>
+            <% end_if %>
         <% end_if %>
         $Actions
     </div>

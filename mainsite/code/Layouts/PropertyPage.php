@@ -48,7 +48,9 @@ class PropertyPage extends Page
         'ListingCloseOn'        =>  'Date',
         'LandArea'              =>  'Int',
         'FloorArea'             =>  'Int',
-        'BeenRented'            =>  'Boolean'
+        'BeenRented'            =>  'Boolean',
+        'isGone'                =>  'Boolean',
+        'isPaid'                =>  'Boolean'
     );
 
     public function getPrice()
@@ -228,9 +230,13 @@ class PropertyPage extends Page
     {
         if ($orders = $this->Orders()) {
             if ($last_successful = $orders->filter(array('isOpen' => false))->first()) {
-                $today  =   date_create(date("Y-m-d"));
-                $until  =   date_create($last_successful->ValidUntil);
-                if ($until >= $today) {
+                if (!$this->ListTilGone) {
+                    $today  =   date_create(date("Y-m-d"));
+                    $until  =   date_create($last_successful->ValidUntil);
+                    if ($until >= $today) {
+                        return true;
+                    }
+                } elseif (!$this->isGone && $this->isPaid) {
                     return true;
                 }
             }

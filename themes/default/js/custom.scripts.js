@@ -1,13 +1,30 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+    $('#BusinessForm_BusinessForm_ServicesInput').change(function(e)
+    {
+        if ($(this).val()) {
+            var idx         =   $(this).val(),
+                newService  =   $('<div />').addClass('field dropdown nolabel'),
+                newItem     =   $(this).clone();
+            newItem.attr('name', 'Services[]');
+            newItem.find('option[value="' + idx+ '"]').prop('selected', true);
+            newService.html('<div class="middleColumn is-new"></div>');
+            newService.find('.middleColumn').append(newItem);
+            newService.insertAfter($('#BusinessForm_BusinessForm_ServicesInput_Holder'));
+            $(this).find('option:eq(0)').prop('selected', true);
+        }
+    });
+
     $('input[name="ListTilGone"]').change(function(e)
     {
-        if ($(this).val() == 1) {
-            $('.fields__main__section.listing').addClass('hide');
-            $('#RentForm_RentForm_ListingCloseOn').val('');
-        } else {
-            $('.fields__main__section.listing').removeClass('hide');
+        if ($(this).prop('checked')) {
+            if ($(this).val() == 1) {
+                $('.fields__main__section.listing').addClass('hide');
+                $('#RentForm_RentForm_ListingCloseOn').val('');
+            } else {
+                $('.fields__main__section.listing').removeClass('hide');
+            }
         }
     }).change();
 

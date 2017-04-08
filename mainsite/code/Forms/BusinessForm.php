@@ -32,26 +32,49 @@ class BusinessForm extends Form
         $fields->push($addr = TextField::create('FullAddress', 'Address', !empty($business) ? $business->FullAddress : null));
         $fields->push($first = TextField::create('ContactNumber', 'Landline/Mobile', !empty($business) ? $business->ContactNumber : null));
 
-        $fields->push(TextField::create(
-                            'ServicesInput',
-                            'Services'
-                        )
-                        ->setAttribute('placeholder', 'e.g. Plumber')
-                        ->setAttribute('data-endpoint', '/api/v1/service/')
-                        ->setDescription('type and add services that your businss offers')
-                    );
+        // $fields->push(TextField::create(
+        //                     'ServicesInput',
+        //                     'Services'
+        //                 )
+        //                 ->setAttribute('placeholder', 'e.g. Plumber')
+        //                 ->setAttribute('data-endpoint', '/api/v1/service/')
+        //                 ->setDescription('type and add services that your businss offers')
+        //             );
         // $fields->push(HiddenField::create('Services[]','Services[]'));
-        $strServices = '';
+
+        // $strServices = '';
+
+        $items = array();
+        $items[] = DropdownField::create(
+            'ServicesInput',
+            'Add service...',
+            Service::get()->map()
+        )->setEmptyString('- select one -');
         if (!empty($business) && $business->Services()->exists()) {
-            $services = $business->Services();
+            $services = $business->Services()->sort(array('Title' => 'ASC'));
+            $n = 1;
             foreach ($services as $service)
             {
-                $strServices .= '<button data-service-id="' . $service->ID . '">' . $service->Title . '</button>' . "\n";
-                $strServices .= '<input type="hidden" name="Services[]" value="' . $service->ID . '" />' . "\n";
+                // $strServices .= '<button data-service-id="' . $service->ID . '">' . $service->Title . '</button>' . "\n";
+                // $strServices .= '<input type="hidden" name="Services[]" value="' . $service->ID . '" />' . "\n";
+
+                // $fields->push();
+                $items[] = DropdownField::create(
+                    'Services' . '_' . $n,
+                    '',
+                    Service::get()->map(),
+                    $service->ID
+                )->setEmptyString('- select one -')->setAttribute('name', 'Services[]');
+                $n++;
             }
         }
 
-        $fields->push(LiteralField::create('ServicesHolder', '<div id="tagged-services">' . $strServices . '</div>'));
+        $group = CompositeField::create($items);
+        $group->setLegend('Services');
+        $group->setTitle('Services');
+        $fields->push($group);
+
+        // $fields->push(LiteralField::create('ServicesHolder', '<div id="tagged-services">' . $strServices . '</div>'));
 
         $fields->push(TextareaField::create(
             'Content',
@@ -80,6 +103,7 @@ class BusinessForm extends Form
 
     public function saveBusiness($data, $form)
     {
+        // Debugger::inspect($data);
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
             if ($id = $data['BusinessID']) {
                 $business = Business::get()->byID($id);

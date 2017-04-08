@@ -10,7 +10,7 @@ class  GatewayController extends Page_Controller
         if ($orderID = $request->getVar('order_id')) {
             $order = Order::get()->byID($orderID);
             $classname = $order->PaidToClass;
-            $goods = $classname::get()->byID($order->PaidToClassID);
+            $goods = Versioned::get_by_stage($classname, 'Stage')->byID($order->PaidToClassID);
             $payment = PaystationPayment::get()->filter(array('MerchantReference' => $order->MerchantReference))->first();
 
             if ($status == 'success') {
@@ -25,6 +25,7 @@ class  GatewayController extends Page_Controller
                 $this->Title = 'Your payment didn\'t succeed.';
                 $url = '#';
                 if ($classname == 'PropertyPage') {
+
                     $url = '/member/action/list-property-for-' . $goods->RentOrSale . '?property_id=' . $goods->ID;
                 } else {
                     $url = '/member/action/upgrade';

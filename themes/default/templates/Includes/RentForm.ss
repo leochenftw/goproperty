@@ -77,7 +77,11 @@
     </fieldset>
     <div class="Actions">
         <% if $ListFree %>
-            <p>You have paid for listing til the end of $ListUntil. It means before the duration has run out, you may list and withdraw this particular propety without incurring additional charges.</p>
+            <% if $ListTilGone %>
+                <p>You have paid for the listing until it gets rented. It means you may list and withdraw this particular propety without incurring additional charges before it's rented.</p>
+            <% else %>
+                <p>You have paid for listing til the end of $ListUntil. It means before the duration has run out, you may list and withdraw this particular propety without incurring additional charges.</p>
+            <% end_if %>
         <% end_if %>
         $Actions
     </div>
