@@ -1540,6 +1540,22 @@ h3 {
   font-size: 1.75rem;
 }
 
+.content h2 {
+  font-size: 1.5rem;
+}
+.content h3 {
+  font-size: 1.25rem;
+}
+.content h4 {
+  font-size: 1.125rem;
+}
+.content h5 {
+  font-size: 1rem;
+}
+.content h6 {
+  font-size: 0.875rem;
+}
+
 /**
  * Import Sprite sheet.
  * */
@@ -3312,8 +3328,12 @@ textarea {
 }
 
 #main {
+  padding-top: 3.75rem;
   padding-bottom: 3.75rem;
   background-color: #fff;
+}
+.page-type-home-page #main, .page-propertylister #main, .page-type-property-page #main, .page-dashboard #main, .page-tradesmenlister #main {
+  padding-top: 0;
 }
 #main #PropertyForm_Message,
 #main #ContactForm_ContactForm_error {

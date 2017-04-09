@@ -1,4 +1,13 @@
 #main {
+    padding-top: rem(60);
+    .page-type-home-page &,
+    .page-propertylister &,
+    .page-type-property-page &,
+    .page-dashboard &,
+    .page-tradesmenlister & {
+        padding-top: 0;
+    }
+
     padding-bottom: rem(60);
     @import 'elements/messages';
     .page-propertylister & {
