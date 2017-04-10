@@ -7,6 +7,7 @@ Director:
     'signup': 'Signup'
     'signin': 'Signin'
     'member': 'Dashboard'
+    'api/v1/fav': 'FavAPI'
     'api/v1/payment/$ID': 'PaymentAPI'
     'api/v1/creditcard/$ID': 'CreditcardAPI'
     'api/v1/agency/$ID': 'AgencyAPI'

@@ -72,7 +72,9 @@ $icons: (
     check:              '\e80b',
     check-empty:        '\f096',
     wrench:             '\e80c',
-    promote:            '\f102'
+    promote:            '\f102',
+    heart-empty:        '\e80d',
+    heart:              '\e80e'
 );
 
 @mixin icon($icon: dashboard, $font-size: rem(14), $position: before, $hide-font: true) {

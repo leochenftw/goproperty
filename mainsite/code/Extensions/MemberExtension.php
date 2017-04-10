@@ -36,7 +36,8 @@ class MemberExtension extends DataExtension
      */
     private static $has_many = array(
         'Rate'                  =>  'Rating.Giver',
-        'BeingRated'            =>  'Rating.Taker'
+        'BeingRated'            =>  'Rating.Taker',
+        'Wishlist'              =>  'WishlistItem'
     );
 
     /**
@@ -71,7 +72,7 @@ class MemberExtension extends DataExtension
             )
         );
 
-        if ($this->Orders()->count() > 0) {
+        if (!empty($this->Orders()) && $this->Orders()->count() > 0) {
             $fields->addFieldToTab(
                 'Root.Orders',
                 // Grid::make('Payments', 'Payments', $this->Payments(), false, 'GridFieldConfig_RecordViewer')

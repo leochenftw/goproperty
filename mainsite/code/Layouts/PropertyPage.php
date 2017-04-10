@@ -260,6 +260,14 @@ class PropertyPage extends Page
     {
         return $this->Lister();
     }
+
+    public function isWished()
+    {
+        if ($member = Member::currentUser()) {
+            return $member->Wishlist()->filter(array('TargetClass' => $this->ClassName, 'TargetID' => $this->ID))->count() > 0;
+        }
+        return false;
+    }
 }
 
 class PropertyPage_Controller extends Page_Controller

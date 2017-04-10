@@ -35,7 +35,10 @@
                 <h2>Introduction</h2>
                 $Business.Friendlify($Business.Content)
                 <div class="social">
-                    <div class="addthis_inline_share_toolbox"></div>
+                    <% if $CurrentMember %>
+                        <div class="as-inline-block wishlist-holder"><a class="icon-heart<% if not $Business.isWished %>-empty<% end_if %> btn-fav" href="/api/v1/fav" data-class="$Business.ClassName" data-id="$Business.ID">Wishlist<% if $Business.isWished %>ed<% end_if %></a></div>
+                    <% end_if %>
+                    <div class="<% if $CurrentMember %>as-inline-block <% end_if %>addthis_inline_share_toolbox"></div>
                 </div>
             </div>
             <% include MemberTile Member=$Business.BusinessOwner %>

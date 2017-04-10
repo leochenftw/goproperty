@@ -4,7 +4,9 @@
     .page-propertylister &,
     .page-type-property-page &,
     .page-dashboard &,
-    .page-tradesmenlister & {
+    .page-tradesmenlister &,
+    .page-signin &,
+    .page-signup & {
         padding-top: 0;
     }
 
@@ -245,6 +247,33 @@
                     .social {
                         min-height: rem(48);
                         margin-top: rem(30);
+                        .as-inline-block {
+                            vertical-align: top;
+                        }
+                        .wishlist-holder {
+                            &:hover {
+                                .btn-fav {
+                                    @include transform(translateY(-5px));
+                                }
+                            }
+                            .btn-fav {
+                                vertical-align: top;
+                                background-color: #ED4337;
+                                color: #fff;
+                                padding: rem(10) rem(20) rem(10) rem(15);
+                                text-indent: 0;
+                                font-size: 11.4px;
+                                line-height: 1.2;
+                                display: inline-block;
+                                @include transition(all ease 0.3s);
+
+                                &:before {
+                                    vertical-align: middle;
+                                    font-size: 1.4rem;
+                                    margin-right: rem(10);
+                                }
+                            }
+                        }
                     }
                 }
 

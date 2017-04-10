@@ -1,6 +1,25 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+    $('.btn-fav').click(function(e)
+    {
+        e.preventDefault();
+        var thisLink    =   $(this),
+            url         =   $(this).attr('href'),
+            classname   =   $(this).data('class'),
+            id          =   $(this).data('id'),
+            data        =   {
+                                'class' :   classname,
+                                'id'    :   id
+                            };
+        $.post(url, data, function(response)
+        {
+            thisLink.removeClass('icon-heart').removeClass('icon-heart-empty');
+            thisLink.addClass(response.css_class);
+            thisLink.html(response.html);
+        });
+    });
+
     $('#BusinessForm_BusinessForm_ServicesInput').change(function(e)
     {
         if ($(this).val()) {

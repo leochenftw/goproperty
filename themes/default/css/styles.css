@@ -447,8 +447,8 @@
  * */
 @font-face {
   font-family: "go-property";
-  src: url('../fonts/go-property.eot?1488086453');
-  src: url('../fonts/go-property.eot?&1488086453#iefix') format('embedded-opentype'), url('../fonts/go-property.woff?1488086453') format('woff'), url('../fonts/go-property.woff2?1488086453') format('woff2'), url('../fonts/go-property.ttf?1488086453') format('truetype'), url('../fonts/go-property.svg?1488086453') format('svg');
+  src: url('../fonts/go-property.eot?1491794723');
+  src: url('../fonts/go-property.eot?&1491794723#iefix') format('embedded-opentype'), url('../fonts/go-property.woff?1491794723') format('woff'), url('../fonts/go-property.woff2?1491794723') format('woff2'), url('../fonts/go-property.ttf?1491794723') format('truetype'), url('../fonts/go-property.svg?1491794723') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -1131,6 +1131,52 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "";
+}
+
+.icon-heart-empty {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-heart-empty:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+
+.icon-heart {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-heart:before {
+  font-family: "go-property";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
 }
 
 /**
@@ -3332,7 +3378,7 @@ textarea {
   padding-bottom: 3.75rem;
   background-color: #fff;
 }
-.page-type-home-page #main, .page-propertylister #main, .page-type-property-page #main, .page-dashboard #main, .page-tradesmenlister #main {
+.page-type-home-page #main, .page-propertylister #main, .page-type-property-page #main, .page-dashboard #main, .page-tradesmenlister #main, .page-signin #main, .page-signup #main {
   padding-top: 0;
 }
 #main #PropertyForm_Message,
@@ -4151,6 +4197,42 @@ textarea {
 #main .property__content-area__content .content .social {
   min-height: 3rem;
   margin-top: 1.875rem;
+}
+#main .signin-form-wrapper__content-area__content .content .social .as-inline-block,
+#main .signup-form-wrapper__content-area__content .content .social .as-inline-block,
+#main .property__content-area__content .content .social .as-inline-block {
+  vertical-align: top;
+}
+#main .signin-form-wrapper__content-area__content .content .social .wishlist-holder:hover .btn-fav,
+#main .signup-form-wrapper__content-area__content .content .social .wishlist-holder:hover .btn-fav,
+#main .property__content-area__content .content .social .wishlist-holder:hover .btn-fav {
+  -moz-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+#main .signin-form-wrapper__content-area__content .content .social .wishlist-holder .btn-fav,
+#main .signup-form-wrapper__content-area__content .content .social .wishlist-holder .btn-fav,
+#main .property__content-area__content .content .social .wishlist-holder .btn-fav {
+  vertical-align: top;
+  background-color: #ED4337;
+  color: #fff;
+  padding: 0.625rem 1.25rem 0.625rem 0.9375rem;
+  text-indent: 0;
+  font-size: 11.4px;
+  line-height: 1.2;
+  display: inline-block;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#main .signin-form-wrapper__content-area__content .content .social .wishlist-holder .btn-fav:before,
+#main .signup-form-wrapper__content-area__content .content .social .wishlist-holder .btn-fav:before,
+#main .property__content-area__content .content .social .wishlist-holder .btn-fav:before {
+  vertical-align: middle;
+  font-size: 1.4rem;
+  margin-right: 0.625rem;
 }
 #main .signin-form-wrapper__content-area__content p, #main .signin-form-wrapper__content-area__content ul, #main .signin-form-wrapper__content-area__content li, #main .signin-form-wrapper__content-area__content td,
 #main .signup-form-wrapper__content-area__content p,

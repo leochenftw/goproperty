@@ -1,4 +1,5 @@
 <?php
+use SaltedHerring\Debugger;
 use Cocur\Slugify\Slugify;
 
 class Business extends DataObject
@@ -93,5 +94,15 @@ class Business extends DataObject
     {
         $slugify = new Slugify();
         return Director::baseURL() . 'tradesmen/' . (!empty($this->Region) ? $slugify->slugify($this->Region) . '/' : '') . (!empty($this->City) ? $slugify->slugify($this->City) . '/' : '') . (!empty($this->Suburb) ? $slugify->slugify($this->Suburb) . '/' : '') . $this->Slug;
+    }
+
+    public function isWished()
+    {
+        if ($member = Member::currentUser()) {
+            $wtf = $member->Wishlist()->filter(array('TargetClass' => $this->ClassName, 'TargetID' => $this->ID))->count() > 0;
+            // Debugger::inspect($wtf ? 'yes' : 'no');
+            return $wtf;
+        }
+        return false;
     }
 }

@@ -53,7 +53,10 @@
             <div class="content">
                 $Friendlify($Content)
                 <div class="social">
-                    <div class="addthis_inline_share_toolbox"></div>
+                    <% if $CurrentMember %>
+                        <div class="as-inline-block wishlist-holder"><a class="icon-heart<% if not $isWished %>-empty<% end_if %> btn-fav" href="/api/v1/fav" data-class="$ClassName" data-id="$ID">Wishlist<% if $isWished %>ed<% end_if %></a></div>
+                    <% end_if %>
+                    <div class="<% if $CurrentMember %>as-inline-block <% end_if %>addthis_inline_share_toolbox"></div>
                 </div>
             </div>
 
