@@ -24,6 +24,8 @@ class TradesmenLister extends Page_Controller
             $business = Business::get();
         }
 
+        $business = $business->filter(array('Listed' => true));
+
         $filters = array();
         if ($region = $request->param('region')) {
             $filters['RegionSlug'] = $region;

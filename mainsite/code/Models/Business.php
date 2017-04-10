@@ -1,5 +1,7 @@
 <?php
 use SaltedHerring\Debugger;
+use SaltedHerring\SaltedPayment;
+use SaltedHerring\Grid;
 use Cocur\Slugify\Slugify;
 
 class Business extends DataObject
@@ -11,7 +13,9 @@ class Business extends DataObject
     private static $db = array(
         'Title'         =>  'Varchar(256)',
         'ContactNumber' =>  'Varchar(24)',
-        'Content'       =>  'Text'
+        'Content'       =>  'Text',
+        'ListLength'    =>  'Enum(array("6 months","1 year"), "6 months")',
+        'Listed'        =>  'Boolean'
     );
 
     private static $extensions = array(
@@ -68,7 +72,48 @@ class Business extends DataObject
                 TextField::create('Lng', 'Longitude')
             )
         );
+
+        if (!empty($this->Orders())) {
+            $fields->addFieldToTab(
+                'Root.Orders',
+                Grid::make('Orders', 'Orders', $this->Orders(), false)
+            );
+        }
         return $fields;
+    }
+
+    public function hasPaid()
+    {
+        if ($orders = $this->Orders()) {
+            if ($last_successful = $orders->filter(array('isOpen' => false))->first()) {
+                $today  =   date_create(date("Y-m-d"));
+                $until  =   date_create($last_successful->ValidUntil);
+                if ($until >= $today) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public function Orders()
+    {
+        if (empty($this->ID)) {
+            return null;
+        }
+
+        $OrderClass = SaltedPayment::get_default_order_class();
+        return $OrderClass::get()->filter(array('PaidToClass' => 'Business', 'PaidToClassID' => $this->ID));
+    }
+
+    public function ValidUntil()
+    {
+        if ($orders = $this->Orders()) {
+            if ($last_successful = $orders->filter(array('isOpen' => false))->first()) {
+                return $last_successful->ValidUntil;
+            }
+        }
     }
 
     public function onBeforeWrite()

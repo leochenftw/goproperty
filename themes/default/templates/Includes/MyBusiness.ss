@@ -17,7 +17,7 @@
         </div>
     </fieldset>
     <div class="Actions">
-        $Actions.First
+        $Actions
     </div>
 </form>
 <% end_with %>

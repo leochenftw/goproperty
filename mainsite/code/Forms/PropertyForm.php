@@ -137,7 +137,7 @@ class PropertyForm extends Form
                 )
             );
 
-            $fields->push(HiddenField::create('ExistingGallery', 'ExistingGallery', implode(',' ,$prop->Gallery()->Column())));
+            $fields->push(HiddenField::create('ExistingGallery', 'ExistingGallery', implode(',', $prop->Gallery()->Column())));
             $fields->push(HiddenField::create('toDelete', 'toDelete'));
             $fields->push(HiddenField::create('PropertyID', 'PropertyID', $prop->ID));
         }

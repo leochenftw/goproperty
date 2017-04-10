@@ -253,7 +253,7 @@ class PropertyPage extends Page
         }
 
         $OrderClass = SaltedPayment::get_default_order_class();
-        return $OrderClass::get()->filter(array('PaidToClassID' => $this->ID));
+        return $OrderClass::get()->filter(array('PaidToClass' => 'PropertyPage', 'PaidToClassID' => $this->ID));
     }
 
     public function Member()

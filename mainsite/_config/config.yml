@@ -66,6 +66,13 @@ TradesPerson:
     'carpenter': 'Carpenter'
     'plumber': 'Plumber'
     'mover': 'Mover'
+Business:
+  Subscriptions:
+    '6 months': 45
+    '1 year': 79.95
+  Length:
+    '6 months': 183
+    '1 year': 365
 PropertyPage:
   DailyCharge: 2
   TilSold: 39.95

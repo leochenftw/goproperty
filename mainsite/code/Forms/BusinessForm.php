@@ -49,7 +49,7 @@ class BusinessForm extends Form
             'ServicesInput',
             'Add service...',
             Service::get()->map()
-        )->setEmptyString('- select one -');
+        )->setEmptyString('- select to add -');
         if (!empty($business) && $business->Services()->exists()) {
             $services = $business->Services()->sort(array('Title' => 'ASC'));
             $n = 1;
@@ -93,12 +93,109 @@ class BusinessForm extends Form
         $fields->push(HiddenField::create('Lng','Lng', !empty($business) ? $business->Lng : null));
         $fields->push(HiddenField::create('BusinessID','BusinessID', !empty($business) ? $business->ID : null));
 
+        if (!empty($business)) {
+            $prices = Config::inst()->get('Business', 'Subscriptions');
+            $options = array();
+            foreach($prices as $key => $value)
+            {
+                $options[$key] = $key . ': $' . $value;
+            }
+
+            $osf = OptionsetField::create(
+                'ListLength',
+                'List length',
+                $options,
+                $business->ListLength
+            );
+
+            if ($business->hasPaid()) {
+                $osf = $osf->performReadonlyTransformation();
+                $osf->setDescription('<div id="list-valid-until" style="margin-top: 1em;">You may withdraw and list this buiness freely before the end of <strong>' . $business->ValidUntil() . '</strong></div>');
+            }
+
+            $fields->push($osf);
+        }
+
         $actions = new FieldList();
-        $actions->push(FormAction::create('saveBusiness', !empty($business) ? 'Update' : 'Create'));
+        $actions->push($btnList = FormAction::create('listBusiness', 'List it'));
+        $actions->push($btnWithdraw = FormAction::create('withDrawBusiness', 'Withdraw'));
+        $actions->push($btnSave = FormAction::create('saveBusiness', !empty($business) ? 'Update' : 'Create'));
+
+        if (empty($business)) {
+            $btnList->addExtraClass('hide');
+            $btnWithdraw->addExtraClass('hide');
+        } else {
+            if ($business->Listed) {
+                $btnList->addExtraClass('hide');
+                $btnSave->addExtraClass('hide');
+            } else {
+                $btnWithdraw->addExtraClass('hide');
+            }
+        }
 
         parent::__construct($controller, 'BusinessForm', $fields, $actions);
         $this->setFormMethod('POST', true)
              ->setFormAction(Controller::join_links(BASE_URL, 'member', 'BusinessForm'))->addExtraClass('business-form');
+    }
+
+    public function withDrawBusiness($data, $form)
+    {
+        if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
+            if ($id = $data['BusinessID']) {
+                $business = Business::get()->byID($id);
+                if ($business->Member()->ID == Member::currentUserID()) {
+                    $business->Listed = false;
+                    $business->write();
+                }
+            }
+
+            return $this->controller->redirectBack();
+        }
+
+        return Controller::curr()->httpError(400, 'not matching');
+    }
+
+    public function listBusiness($data, $form)
+    {
+        if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
+            if ($id = $data['BusinessID']) {
+                $business = Business::get()->byID($id);
+                if ($business->Member()->ID == Member::currentUserID()) {
+                    if (empty($data['Logo']['type']['Uploads'][0])) {
+                        if ($business->Logo()->exists()) {
+                            $LogoID = $business->LogoID;
+                        }
+                    }
+                    $form->saveInto($business);
+                    if (!empty($LogoID)) {
+                        $business->LogoID = $LogoID;
+                    }
+
+                    if ($business->hasPaid()) {
+                        $business->Listed = true;
+                        $business->write();
+                    } else {
+                        $business->write();
+                        $prices = Config::inst()->get('Business', 'Subscriptions');
+                        $length = Config::inst()->get('Business', 'Length');
+                        $amount = $prices[$business->ListLength];
+                        $order = SaltedOrder::prepare_order();
+                        $order->Amount->Amount = $amount;
+                        $order->RecursiveFrequency = $length[$business->ListLength];
+
+                        $order->PaidToClass = 'Business';
+                        $order->PaidToClassID = $business->ID;
+                        $order->Pay('Paystation', true);
+
+                        return;
+                    }
+                }
+            }
+
+            return $this->controller->redirectBack();
+        }
+
+        return Controller::curr()->httpError(400, 'not matching');
     }
 
     public function saveBusiness($data, $form)
@@ -107,6 +204,10 @@ class BusinessForm extends Form
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
             if ($id = $data['BusinessID']) {
                 $business = Business::get()->byID($id);
+                if ($business->Member()->ID != Member::currentUserID()) {
+                    $this->sessionMessage('You can only edit your own business', 'bad');
+                    return $this->controller->redirectBack();
+                }
             } else {
                 $business = new Business();
             }

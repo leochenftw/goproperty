@@ -48,6 +48,12 @@ class Order extends SaltedOrder
                 $property->writeToStage('Live');
             }
 
+            if ($this->PaidToClass == 'Business') {
+                $business = Business::get()->byID($this->PaidToClassID);
+                $business->Listed = true;
+                $business->write();
+            }
+
             if ($this->PaidToClass == 'Member') {
                 $member = Member::get()->byID($this->PaidToClassID);
                 if ($this->Landlords) {
