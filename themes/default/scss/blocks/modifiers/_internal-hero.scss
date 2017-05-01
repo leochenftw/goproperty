@@ -1,0 +1,46 @@
+&.internal-hero {
+    position: relative;
+    background-color: whitesmoke;
+    padding-top: 230px;
+    padding-bottom: 161px;
+    header {
+        .title {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+        margin-bottom: 50px;
+    }
+
+    .content {
+        .title {
+            font-weight: bold;
+        }
+
+        .description {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        margin-bottom: 70px;
+    }
+
+    .columns {
+        .column {
+            border-left: 1px solid #e6e6e6;
+            margin-bottom: 16px;
+            @include mobile {
+                border: none;
+            }
+            .title {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            &:first-child {
+                border: none;
+            }
+        }
+    }
+
+}

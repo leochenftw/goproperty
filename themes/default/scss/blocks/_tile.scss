@@ -3,19 +3,19 @@
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-    max-width: rem(380);
     position: relative;
     text-decoration: none;
     color: #fff;
     text-align: center;
-    font-size: rem(36);
-    margin: rem(10);
+    font-size: 36px;
     line-height: 1.4;
+    display: block;
     &__content {
         width: 100%;
         padding-top: 59.7%;
         &__title {
-            max-width: rem(225);
+            position: absolute;
+            max-width: 225px;
             width: 100%;
             @include transform(translate(-50%, -50%));
             top: 50%;

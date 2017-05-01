@@ -14,12 +14,12 @@ class TradesmenSearchForm extends Form
             'Region',
             'Region',
             Config::inst()->get('NewZealand', 'Regions')
-        )->setEmptyString('All New Zealand')->setAttribute('data-direct-child', 'TradesmenSearchForm_TradesmenSearchForm_City'));
+        )->setEmptyString('All New Zealand')->setAttribute('data-direct-child', 'TradesmenSearchForm_TradesmenSearchForm_City')->setValue('Wellington')->addExtraClass('hide'));
 
         $fields->push(DropdownField::create(
             'City',
             'District'
-        )->setEmptyString('All districts')->setAttribute('data-direct-child', 'TradesmenSearchForm_TradesmenSearchForm_Suburb'));
+        )->setEmptyString('All Wellington districts')->setAttribute('data-direct-child', 'TradesmenSearchForm_TradesmenSearchForm_Suburb'));
 
         $fields->push(DropdownField::create(
             'Suburb',
@@ -36,7 +36,7 @@ class TradesmenSearchForm extends Form
         $actions->push(FormAction::create('doSearch', 'Search'));
 
         parent::__construct($controller, 'TradesmenSearchForm', $fields, $actions);
-        $this->setFormMethod('POST', true)->addExtraClass('tradesmen-search-form')->addExtraClass('hide');
+        $this->setFormMethod('POST', true)->addExtraClass('tradesmen-search-form column is-12')->addExtraClass('hide');
     }
 
     public function validate()

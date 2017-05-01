@@ -1,0 +1,157 @@
+&__nav {
+    @include justify-content(flex-end);
+    background-color: transparent;
+    @include mobile {
+        ul {
+            &.columns.column.is-9 {
+                position: fixed;
+                visibility: hidden;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                padding-top: 63px !important;
+                display: block;
+                .expose-menu & {
+                    visibility: visible;
+                }
+            }
+        }
+
+        .columns & {
+            display: block;
+            .column {
+                height: auto;
+            }
+        }
+    }
+
+    ul {
+        li {
+            visibility: hidden;
+            opacity: 0;
+            @include transition(all ease-in-out 0.2s);
+            $cap: 10;
+            @for $i from 1 through $cap {
+                @include transform(translateX(10px));
+                &:nth-child(#{$i}) {
+                    @include transition-delay(#{$i * 0.05}s);
+                }
+            }
+            .expose-menu & {
+                visibility: visible;
+                opacity: 1;
+
+                @for $i from 1 through $cap {
+                    @include transform(translateX(0px));
+                    &:nth-child(#{$i}) {
+                        @include transition-delay(#{($cap - $i) * 0.05}s);
+                    }
+                }
+            }
+            a {
+                line-height: 39px;
+                display: block;
+                color: #fff;
+                font-size: 16px;
+                white-space: nowrap;
+                outline: none;
+
+                text-shadow: 0 0 10px rgba(0,0,0,1);
+
+                &:active,
+                &:focus,
+                &.active,
+                &.current,
+                &:hover {
+                    color: $turquoise;
+                }
+
+                @include mobile {
+                    .expose-menu & {
+                        color: #888;
+                        text-shadow: 0 0 0px rgba(0,0,0,0);
+                        &:active,
+                        &:focus,
+                        &.active,
+                        &.current,
+                        &:hover {
+                            color: $turquoise;
+                        }
+                    }
+                }
+
+                .page-type-work &,
+                .appear & {
+                    color: #888;
+                    text-shadow: 0 0 0px rgba(0,0,0,0);
+                    &:active,
+                    &:focus,
+                    &.active,
+                    &.current,
+                    &:hover {
+                        color: $turquoise;
+                    }
+                }
+            }
+        }
+    }
+
+    .column {
+        &.is-1 {
+            width: 50px;
+            @include mobile {
+                width: auto;
+            }
+        }
+    }
+
+    &__menu-toggler {
+        cursor: pointer;
+        outline: none;
+        margin-top: 15px;
+        @include mobile {
+            margin-top: 7px;
+        }
+        display: inline-block;
+        background-color: transparent;
+        transition: all ease 0.3s;
+        border: none;
+        span {
+            background-color: $grey-darker;
+            .page-type-home-page & {
+                background-color: #fff;
+            }
+            border-radius: 2px;
+            display: block;
+            height: 6px;
+            margin-bottom: 5px;
+            transition: all ease 0.3s;
+            width: 34px;
+            .expose-menu &,
+            .appear & {
+                background-color: $grey-darker;
+            }
+            &.t3 {
+                margin-bottom: 0;
+            }
+        }
+
+        &.active {
+            @include transform(rotate(-45deg));
+            span {
+                &.t1 {
+                    @include transform(translateY(8px));
+                }
+
+                &.t2 {
+                    opacity: 0;
+                }
+
+                &.t3 {
+                    @include transform(rotate(-90deg) translateX(14px));
+                }
+            }
+        }
+    }
+}

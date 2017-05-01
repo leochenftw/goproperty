@@ -47,9 +47,9 @@
         }
 
         &__main {
-            @include breakpoint(max-width 959px) {
-                order: 2;
-            }
+            // @include breakpoint(max-width 959px) {
+            //     order: 2;
+            // }
             min-width: rem(320);
             width: calc(100% - 500px);
             padding-right: rem(50);
@@ -140,9 +140,9 @@
         }
 
         &__aside {
-            @include breakpoint(max-width 959px) {
-                order: 1;
-            }
+            // @include breakpoint(max-width 959px) {
+            //     order: 1;
+            // }
             max-width: rem(500);
             #location-on-map {
                 position: relative;

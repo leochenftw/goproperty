@@ -4,26 +4,36 @@
     top: 0;
     left: 0;
     z-index: 10;
-    height: rem(60);
+    height: 60px;
     background-color: $green;
-    padding: rem(15) rem(40);
+    padding: 15px 40px;
     @include display-flex;
     @include justify-content(space-between);
     #logo {
-        @include retina-sprite(logo_mini, icons, $dimensions: true, $nonRetina: true);
-        display: block;
-        overflow: hidden;
-        text-indent: rem(-9999);
+        color: #fff;
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .logo-image {
+            @include retina-sprite(logo_mini, spritesheet, $dimensions: true, $nonRetina: true);
+            overflow: hidden;
+            text-indent: -9999px;
+            margin-right: 0.25em;
+        }
     }
 
     #top_side_menu {
         a {
             color: #fff;
-            font-size: rem(18);
-            line-height: rem(30);
-            &:before {
-                font-size: rem(18);
-                margin-right: .5em;
+            font-size: 18px;
+            line-height: 30px;
+            .icon {
+                font-size: 18px;
+                line-height: 30px;
+                margin-right: 0.5em;
             }
         }
     }

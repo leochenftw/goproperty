@@ -16,6 +16,7 @@ class MemberExtension extends DataExtension
         'DisplayPhonenumber'    =>  'Boolean',
         'ValidationKey'  	 	=>	'Varchar(40)',
         'ContactNumber'         =>  'Varchar(24)',
+        'MobileNumber'          =>  'Varchar(24)',
         'beLandlords'           =>  'Boolean',
         'beTradesmen'           =>  'Boolean',
         'beRealtors'            =>  'Boolean'
@@ -172,10 +173,19 @@ class MemberExtension extends DataExtension
         return $this->getTitle();
     }
 
-    public function getRating($asHTML = false)
+    public function getRating()
     {
+        $data = array(
+            'Rated'     =>  $this->owner->Rate()->filter(array('GiverID' => Member::currentUserID()))->first() ? true : false,
+            'Count'     =>  0,
+            'HTML'      =>  ''
+        );
+
+        $n = 0;
+
         if ($this->owner->BeingRated()->exists()) {
             $received = $this->owner->BeingRated();
+            $data['Count'] = $received->count();
             $total = $received->count() * 5;
             $actual = 0;
             foreach ($received as $rating) {
@@ -183,28 +193,46 @@ class MemberExtension extends DataExtension
             }
 
             $n = ($actual / $total) * 5;
-            if ($asHTML) {
-                return $this->ratingHTML($n);
-            }
-
-            return $n;
         }
 
-        return !$asHTML ? 0 : $this->ratingHTML(0);
+        $data['HTML'] = $this->ratingHTML($n);
+
+        return new ArrayData($data);
     }
+    //
+    // public function getRating($asHTML = false)
+    // {
+    //     if ($this->owner->BeingRated()->exists()) {
+    //         $received = $this->owner->BeingRated();
+    //         $total = $received->count() * 5;
+    //         $actual = 0;
+    //         foreach ($received as $rating) {
+    //             $actual += $rating->Stars;
+    //         }
+    //
+    //         $n = ($actual / $total) * 5;
+    //         if ($asHTML) {
+    //             return $this->ratingHTML($n);
+    //         }
+    //
+    //         return $n;
+    //     }
+    //
+    //     return !$asHTML ? 0 : $this->ratingHTML(0);
+    // }
 
     private function ratingHTML($n)
     {
         $arr = array();
         $i = floor($n);
         for ($j = 0; $j < 5; $j++) {
-            $arr[] = '<li data-stars="' . ($j+1) . '" class="' . ($j < $i ? 'icon-star' : 'icon-star-empty') . '"></li>';
+            $arr[] = '<li data-stars="' . ($j+1) . '" class="icon"><i class="fa fa-' . ($j < $i ? 'star' : 'star-o') . '"></i></li>';
         }
 
         if ($n == 0) {
-            $arr[0] = '<li data-stars="1" class="icon-star-empty"></li>';
+            $arr[0] = '<li data-stars="1" class="icon"><i class="fa fa-star-o"></i></li>';
         } elseif ($n - $i > 0 ) {
-            $arr[$i] = '<li data-stars="' . $i . '" class="icon-star-half"></li>';
+            $arr[$i] = '<li data-stars="' . $i . '" class="icon"><i class="fa fa-half-o"></li>';
         }
 
         return implode("\n", $arr);

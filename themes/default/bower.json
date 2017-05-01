@@ -30,6 +30,7 @@
     "cropperjs": "^0.8.1",
     "jquery.scrollTo": "^2.1.2",
     "datetimepicker": "^2.5.4",
-    "owl.carousel": "owl-carousel2#^2.2.0"
+    "owl.carousel": "owl-carousel2#^2.2.0",
+    "jquery-sticky": "^1.0.4"
   }
 }

@@ -1,6 +1,36 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+    if ($('body').hasClass('page-dashboard')) {
+        $(".member-area__sidebar ul.neat-ul").sticky({topSpacing: $('#header').outerHeight()});
+        if ($(".member-area__content .fields__aside .uploader").length > 0) {
+            $(".member-area__content .fields__aside .uploader").sticky({topSpacing: $('#header').outerHeight() + 10});
+        }
+    }
+
+    $('.btn-rm-fav').click(function(e)
+    {
+        e.preventDefault();
+        if (confirm('You are removing this wishlist item. Click "OK" to proceed.')) {
+            var thisLink    =   $(this),
+                url         =   $(this).attr('href'),
+                classname   =   $(this).data('class'),
+                id          =   $(this).data('id'),
+                li          =   $(this).parents('li.member-area__content__property-list__item:eq(0)'),
+                data        =   {
+                                    'class' :   classname,
+                                    'id'    :   id
+                                };
+            $.post(url, data, function(response)
+            {
+                console.log(response);
+                if (response.html == 'Wishlist') {
+                    li.remove();
+                }
+            });
+        }
+    });
+
     $('.btn-fav').click(function(e)
     {
         e.preventDefault();
@@ -90,7 +120,7 @@ $(document).ready(function(e)
                 }});
             }
         };
-        var tick = setTimeout(withDrawMessage, 3000);
+        var tick = setTimeout(withDrawMessage, 5000);
         $('#PropertyForm_Message button').click(withDrawMessage);
     }
 
@@ -231,12 +261,12 @@ $(document).ready(function(e)
 
     $('#PropertySearchForm_PropertySearchForm .location select:not("#PropertySearchForm_PropertySearchForm_Suburb")').each(function(i, el)
     {
-        $(this).locationSelect();
+        $(this).locationSelect().change();
     });
 
     $('#TradesmenSearchForm_TradesmenSearchForm .location select:not("#TradesmenSearchForm_TradesmenSearchForm_Suburb")').each(function(i, el)
     {
-        $(this).locationSelect();
+        $(this).locationSelect().change();
     });
 
     if ($('#PropertySearchForm_PropertySearchForm_Availability').length == 1) {

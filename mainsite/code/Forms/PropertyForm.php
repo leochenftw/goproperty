@@ -157,6 +157,10 @@ class PropertyForm extends Form
             !empty($prop) ? $prop->ListTilGone : null
         );
 
+        if (!empty($prop) && $prop->hasPaid()) {
+            $listingOption = $listingOption->performReadonlyTransformation();
+        }
+
         $fields->push($listingOption);
 
         $list_until = DateField::create('ListingCloseOn','Listing ends', !empty($prop) ? $prop->ListingCloseOn : null);
@@ -184,14 +188,24 @@ class PropertyForm extends Form
             }
         }
 
+        if (!empty($prop) && $prop->hasPaid()) {
+            $list_until = $list_until->performReadonlyTransformation();
+        }
+
         $fields->push($list_until);
 
         // ACTIONS -------------------------------------------------------------------------------------------------------------------
         $actions = new FieldList();
 
         $actions->push($btnWithdraw = FormAction::create('doWithdraw', 'Withdraw')->addExtraClass('red'));
+
+        if (!empty($prop) && $prop->isPublished()) {
+
+        } else {
+            $actions->push(FormAction::create('doSubmit', !empty($prop) ? 'Save changes' : 'Create'));
+        }
+
         $actions->push($btnList = FormAction::create('doList', 'List it')->addExtraClass('green'));
-        $actions->push(FormAction::create('doSubmit', !empty($prop) ? 'Save changes' : 'Create'));
 
         if (!empty($prop)) {
             if ($prop->isPublished()) {
@@ -248,8 +262,9 @@ class PropertyForm extends Form
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
             if (!empty($data['PropertyID'])) {
                 $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($data['PropertyID']);
-                $property->ListingCloseOn = $data['ListingCloseOn'];
-                $property->writeToStage('Stage');
+                // $property->ListingCloseOn = $data['ListingCloseOn'];
+                // $property->writeToStage('Stage');
+                $this->doSubmit($data, $form, true);
 
                 if ($property->hasPaid()) {
                     $property->writeToStage('Live');
@@ -289,7 +304,7 @@ class PropertyForm extends Form
         return Controller::curr()->httpError(400);
     }
 
-    public function doSubmit($data, $form)
+    public function doSubmit($data, $form, $noredirect = false)
     {
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
 
@@ -298,6 +313,9 @@ class PropertyForm extends Form
             } else {
                 $property = new PropertyPage();
             }
+
+            $ListUntil = $property->ListingCloseOn;
+            $ListTilGone = $property->ListTilGone;
 
             $form->saveInto($property);
             if (!empty($data['ExistingGallery'])) {
@@ -319,10 +337,19 @@ class PropertyForm extends Form
                 $property->ListerID = Member::currentUserID();
             }
 
+            if ($property->hasPaid()) {
+                $property->ListingCloseOn = $ListUntil;
+                $property->ListTilGone = $ListTilGone;
+            }
+
+
             $property->writeToStage('Stage');
             $this->sessionMessage('Property saved. Do you want to <a href="/member/action/list-property-for-rent">create another one</a>?', 'good', false);
-
             //return Controller::curr()->redirectBack();
+            if ($noredirect === true) {
+                return true;
+            }
+
             return Controller::curr()->redirect('/member/action/' . ($this->Name == 'RentForm' ? 'list-property-for-rent' : 'list-property-for-sale') . '?property_id=' . $property->ID);
         }
 

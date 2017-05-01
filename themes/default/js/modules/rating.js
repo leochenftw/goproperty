@@ -2,24 +2,32 @@
 {
 	$.fn.rating = function()
     {
-        var self        =   $(this),
-            endpoint    =   '/api/v1/rating/',
-            uid         =   $(this).data('uid'),
-            sid         =   $(this).data('sid');
+        var self            =   $(this),
+            type            =   $(this).data('type'),
+            id             =   $(this).data('id'),
+            sid             =   $(this).data('sid');
 
         $(this).find('li').click(function(e)
         {
-            var stars = $(this).data('stars');
+            var stars       =   $(this).data('stars'),
+                endpoint    =   '/api/v1/rating/' + type + '/';
             $.post(
-                endpoint + uid,
+                endpoint + id,
                 {
                     stars: stars,
                     sid: sid
                 },
                 function(data)
                 {
-                    $('ul.rating[data-uid="' + uid + '"]').html(data.html);
-                    $('ul.rating[data-uid="' + uid + '"]').rating();
+                    var ul = $('ul.rating[data-id="' + id + '"][data-type="' + type + '"]');
+                    if (data.message == 'rated') {
+                        ul.addClass('rated');
+                    } else {
+                        ul.removeClass('rated');
+                    }
+                    ul.parent().find('.rating-count').html('(' + data.count + ' rating' + (data.count > 1 ? 's' : '') + ')');
+                    ul.html(data.html);
+                    ul.rating();
                 }
             );
         });

@@ -6,8 +6,8 @@ After: 'framework/*','cms/*'
 # See http://doc.silverstripe.org/framework/en/topics/configuration
 # Caution: Indentation through two spaces, not tabs
 Email:
-  admin_email: 'goProperty <admin@goproperty.co.nz>'
-  noreply_email: 'goProperty <no-reply@goproperty.co.nz>'
+  admin_email: 'GoProperty <admin@goproperty.co.nz>'
+  noreply_email: 'GoProperty <no-reply@goproperty.co.nz>'
 SiteVersion:
   version: 1.0
 SSViewer:

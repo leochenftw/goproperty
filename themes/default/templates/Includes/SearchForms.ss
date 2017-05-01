@@ -1,84 +1,94 @@
 <div class="search-forms">
     <div class="container">
-        <div class="as-flex horizontal-centred fake-tabs">
-            <a data-description="Rental Property" class="tab-ish search-tab active" href="#PropertySearchForm_PropertySearchForm" data-show="for-rent" data-hide="for-sale">Find a <span>Rental Property</span></a>
-            <a data-description="Property for Sale" class="tab-ish search-tab" href="#PropertySearchForm_PropertySearchForm" data-show="for-sale" data-hide="for-rent">Properties <span>For Sale</span></a>
-            <a data-description="Tradesperson" class="tab-ish search-tab" href="#TradesmenSearchForm_TradesmenSearchForm">Find a <span>Tradesperson</span></a>
-            <a class="tab-ish" href="/member/action/list-property-for-rent">List a <span>property</span></a>
-            <a class="tab-ish" href="/resources"><span>Resources</span></a>
+        <div class="columns has-text-centered fake-tabs">
+            <a data-description="Rental Property" class="column is-2 tab-ish search-tab active" href="#PropertySearchForm_PropertySearchForm" data-show="for-rent" data-hide="for-sale">Find a <span>Rental Property</span></a>
+            <a data-description="Property for Sale" class="column is-2 tab-ish search-tab" href="#PropertySearchForm_PropertySearchForm" data-show="for-sale" data-hide="for-rent">Properties <span>For Sale</span></a>
+            <a data-description="Tradesperson" class="column is-2 tab-ish search-tab" href="#TradesmenSearchForm_TradesmenSearchForm">Find a <span>Tradesperson</span></a>
+            <a class="column is-2 tab-ish" href="/member/action/list-property-for-rent">List a <span>property</span></a>
+            <a class="column is-2 tab-ish" href="/resources"><span>Resources</span></a>
         </div>
         <% with $PropertySearchForm %>
         <form $FormAttributes>
-            <h2 class="form-title">Search</h2>
+            <h2 class="form-title title is-2">Search</h2>
             <div class="ads" style="margin-bottom: 10px;">
-                <img src="http://placehold.it/1200x150" width="1200" height="150" />
+                <img src="https://placehold.it/1200x150" width="1200" height="150" />
             </div>
             <div id="form-description" class="form-description">Search for a <span>Rental Property</span></div>
-            <div class="as-flex wrap Fields">
-                <div class="left-half half">
-                    <div class="fields-wrapper location">
-                        <label class="label">Location</label>
-                        <div class="fields">
+            <div class="columns Fields">
+                <div class="column is-half left-half half">
+                    <div class="fields-wrapper columns location">
+                        <label class="label is-3 column">Location</label>
+                        <div class="fields column">
                             <div class="field">$Fields.fieldByName('Region')</div>
                             <div class="field">$Fields.fieldByName('City')</div>
                             <div class="field">$Fields.fieldByName('Suburb')</div>
                         </div>
                     </div>
-                    <div class="fields-wrapper type for-rent">
-                        <label class="label">Property type</label>
-                        <div class="fields">
+                    <div class="fields-wrapper columns type for-rent">
+                        <label class="label is-3 column">Property type</label>
+                        <div class="fields column">
                             <div class="field">$Fields.fieldByName('RentalPropertyType')</div>
                         </div>
                     </div>
-                    <div class="fields-wrapper type for-sale hide">
-                        <label class="label">Property type</label>
-                        <div class="fields">
+                    <div class="fields-wrapper columns type for-sale hide">
+                        <label class="label is-3 column">Property type</label>
+                        <div class="fields column">
                             <div class="field">$Fields.fieldByName('SalePropertyType')</div>
                         </div>
                     </div>
-                    <div class="fields-wrapper bedroom">
-                        <label class="label">Bedrooms</label>
-                        <div class="fields">
-                            <div class="field">$Fields.fieldByName('BedroomFrom')</div>
-                            <span>To</span>
-                            <div class="field">$Fields.fieldByName('BedroomTo')</div>
+                    <div class="fields-wrapper columns bedroom">
+                        <label class="label is-3 column">Bedrooms</label>
+                        <div class="fields column columns is-marginless">
+                            <div class="field is-paddingless column">$Fields.fieldByName('BedroomFrom')</div>
+                            <span class="column is-auto-width">To</span>
+                            <div class="field is-paddingless column">$Fields.fieldByName('BedroomTo')</div>
                         </div>
                     </div>
-                    <div class="fields-wrapper bathroom">
-                        <label class="label">Bathrooms</label>
-                        <div class="fields">
-                            <div class="field">$Fields.fieldByName('BathroomFrom')</div>
-                            <span>To</span>
-                            <div class="field">$Fields.fieldByName('BathroomTo')</div>
+                    <div class="fields-wrapper columns bathroom">
+                        <label class="label is-3 column">Bathrooms</label>
+                        <div class="fields column columns is-marginless">
+                            <div class="field is-paddingless column">$Fields.fieldByName('BathroomFrom')</div>
+                            <span class="column is-auto-width">To</span>
+                            <div class="field is-paddingless column">$Fields.fieldByName('BathroomTo')</div>
                         </div>
                     </div>
                 </div>
-                <div class="right-half half">
-                    <div class="fields-wrapper price for-rent">
-                        <label class="label">Rent range</label>
-                        <div class="fields">
-                            <div class="field">$Fields.fieldByName('RentFrom')</div>
-                            <span>To</span>
-                            <div class="field">$Fields.fieldByName('RentTo')</div>
+                <div class="column is-half right-half half">
+                    <div class="fields-wrapper columns price for-rent">
+                        <label class="label is-3 column">Rent range</label>
+                        <div class="fields column columns is-marginless">
+                            <div class="field is-paddingless column">$Fields.fieldByName('RentFrom')</div>
+                            <span class="column is-auto-width">To</span>
+                            <div class="field is-paddingless column">$Fields.fieldByName('RentTo')</div>
                         </div>
                     </div>
-                    <div class="fields-wrapper price for-sale hide">
-                        <label class="label">Price range</label>
-                        <div class="fields">
-                            <div class="field">$Fields.fieldByName('PriceFrom')</div>
-                            <span>To</span>
-                            <div class="field">$Fields.fieldByName('PriceTo')</div>
+                    <div class="fields-wrapper columns price for-sale hide">
+                        <label class="label is-3 column">Price range</label>
+                        <div class="fields column columns is-marginless">
+                            <div class="field is-paddingless column">$Fields.fieldByName('PriceFrom')</div>
+                            <span class="column is-auto-width">To</span>
+                            <div class="field is-paddingless column">$Fields.fieldByName('PriceTo')</div>
                         </div>
                     </div>
-                    <div class="fields-wrapper availability for-rent">
-                        <label class="label">Available from</label>
-                        <div class="fields">
+                    <div class="fields-wrapper columns availability for-rent">
+                        <label class="label is-3 column">Available from</label>
+                        <div class="fields column">
                             <div class="field">$Fields.fieldByName('Availability')</div>
                         </div>
                     </div>
                     <div class="for-rent">
-                        $Fields.fieldByName('AllowPet').FieldHolder
-                        $Fields.fieldByName('AllowSmoker').FieldHolder
+                        <div id="AllowPet" class="fields-wrapper columns pet-ok for-rent optionset">
+                            <label class="label is-3 column">Pet OK</label>
+                            <div class="fields column">
+                                <div class="field">$Fields.fieldByName('AllowPet')</div>
+                            </div>
+                        </div>
+                        <div id="AllowSmoker" class="fields-wrapper columns smoker-ok for-rent optionset">
+                            <label class="label is-3 column">Smoker OK</label>
+                            <div class="fields column">
+                                <div class="field">$Fields.fieldByName('AllowSmoker')</div>
+                            </div>
+                        </div>
                     </div>
                     $Fields.fieldByName('SecurityID').FieldHolder
                     <div class="actions">
@@ -93,26 +103,26 @@
         <% end_with %>
         <% with $TradesmenSearchForm %>
         <form $FormAttributes>
-            <h2 class="form-title">Search</h2>
+            <h2 class="form-title title is-2">Search</h2>
             <div class="ads" style="margin-bottom: 10px;">
-                <img src="http://placehold.it/1200x150" width="1200" height="150" />
+                <img src="https://placehold.it/1200x150" width="1200" height="150" />
             </div>
             <div id="form-description" class="form-description">Search for a Rental Property</div>
-            <div class="as-flex wrap Fields">
-                <div class="left-half half">
-                    <div class="fields-wrapper location">
-                        <label class="label">Location</label>
-                        <div class="fields">
+            <div class="columns Fields">
+                <div class="column is-half left-half half">
+                    <div class="fields-wrapper columns location">
+                        <label class="label column is-3">Location</label>
+                        <div class="fields column">
                             <div class="field">$Fields.fieldByName('Region')</div>
                             <div class="field">$Fields.fieldByName('City')</div>
                             <div class="field">$Fields.fieldByName('Suburb')</div>
                         </div>
                     </div>
                 </div>
-                <div class="right-half half">
-                    <div class="fields-wrapper work-type">
-                        <label class="label">Work type</label>
-                        <div class="fields">
+                <div class="column is-half right-half half">
+                    <div class="fields-wrapper columns work-type">
+                        <label class="label column is-3">Work type</label>
+                        <div class="fields column">
                             <div class="field">$Fields.fieldByName('WorkType')</div>
                         </div>
                     </div>

@@ -1,7 +1,8 @@
 # Require any additional compass plugins here.
-require "susy"
-require 'compass-h5bp'
-require 'breakpoint'
+# require "susy"
+# require 'compass-h5bp'
+# require 'breakpoint'
+require 'font-awesome-sass'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
@@ -9,6 +10,7 @@ css_dir = "css"
 sass_dir = "scss"
 images_dir = "images"
 javascripts_dir = "js"
+fonts_dir = "fonts"
 
 environment = :development
 sourcemap = true

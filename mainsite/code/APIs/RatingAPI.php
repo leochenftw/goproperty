@@ -27,34 +27,85 @@ class RatingAPI extends BaseRestController {
     }
 
     public function post($request) {
-        if ($id = $request->param('memberID')) {
-            if ($stars = $request->postVar('stars')) {
-                $member = Member::get()->byID($id);
-
-                $rating = Rating::get()->filter(array('GiverID' => Member::currentUserID(), 'TakerID' => $id))->first();
-                if (!empty($rating)) {
-                    if ($rating->Stars == $stars) {
-                        $rating->delete();
-                        return array(
-                                        'message'   =>  'rating withdrawn',
-                                        'stars'     =>  $member->getRating(),
-                                        'html'      =>  $member->getRating(true)
-                                    );
+        if ($type = $request->param('Type')) {
+            if ($id = $request->param('ID')) {
+                if ($stars = $request->postVar('stars')) {
+                    if ($type == 'Member') {
+                        return $this->handleMemberRating($id, $stars);
+                    } elseif ($type == 'PropertyPage') {
+                        return $this->handlePropertyRating($id, $stars);
                     }
-                } else {
-                    $rating = new Rating();
                 }
-                $rating->Stars = $stars;
-                $rating->TakerID = $id;
-                $rating->write();
-                return array(
-                                'message'   =>  'rated',
-                                'stars'     =>  $member->getRating(),
-                                'html'      =>  $member->getRating(true)
-                            );
             }
         }
 
         return $this->httpError(400);
+    }
+
+    private function handlePropertyRating($id, $stars)
+    {
+        if ($property = PropertyPage::get()->byID($id)) {
+            $rating = Rating::get()->filter(array('GiverID' => Member::currentUserID(), 'PropertyID' => $id))->first();
+
+            if (!empty($rating)) {
+                if ($rating->Stars == $stars) {
+                    $rating->delete();
+                    $PropertyRatings = $property->getRating();
+                    return array(
+                                'message'   =>  'rating withdrawn',
+                                'count'     =>  $PropertyRatings->Count,
+                                'html'      =>  $PropertyRatings->HTML
+                            );
+                }
+            } else {
+                $rating = new Rating();
+                $rating->PropertyID = $id;
+            }
+
+            $rating->Stars = $stars;
+
+            $rating->write();
+
+            $PropertyRatings = $property->getRating();
+
+            return array(
+                        'message'   =>  'rated',
+                        'count'     =>  $PropertyRatings->Count,
+                        'html'      =>  $PropertyRatings->HTML
+                    );
+        }
+
+        return array();
+    }
+
+    private function handleMemberRating($id, $stars)
+    {
+        $member = Member::get()->byID($id);
+        $rating = Rating::get()->filter(array('GiverID' => Member::currentUserID(), 'TakerID' => $id))->first();
+
+        if (!empty($rating)) {
+            if ($rating->Stars == $stars) {
+                $rating->delete();
+                $MemberRatings = $member->getRating();
+                return array(
+                            'message'   =>  'rating withdrawn',
+                            'count'     =>  $MemberRatings->Count,
+                            'html'      =>  $MemberRatings->HTML
+                        );
+            }
+        } else {
+            $rating = new Rating();
+            $rating->TakerID = $id;
+        }
+
+        $rating->Stars = $stars;
+
+        $rating->write();
+        $MemberRatings = $member->getRating();
+        return array(
+                    'message'   =>  'rated',
+                    'count'     =>  $MemberRatings->Count,
+                    'html'      =>  $MemberRatings->HTML
+                );
     }
 }

@@ -223,7 +223,10 @@ class PropertyPage extends Page
      * @var array
      */
     private static $has_many = array(
-        'Gallery'           =>  'Image'
+        'Gallery'           =>  'Image',
+        'Rentals'           =>  'Rental',
+        'Ratings'           =>  'Rating',
+        'Interests'         =>  'Interest'
     );
 
     public function hasPaid()
@@ -267,6 +270,51 @@ class PropertyPage extends Page
             return $member->Wishlist()->filter(array('TargetClass' => $this->ClassName, 'TargetID' => $this->ID))->count() > 0;
         }
         return false;
+    }
+
+    public function getRating()
+    {
+        $data = array(
+            'Rated'     =>  $this->Ratings()->filter(array('GiverID' => Member::currentUserID()))->first() ? true : false,
+            'Count'     =>  0,
+            'HTML'      =>  ''
+        );
+
+        $n = 0;
+
+        if ($this->Ratings()->exists()) {
+            $received = $this->Ratings();
+            $data['Count'] = $received->count();
+            $total = $received->count() * 5;
+            $actual = 0;
+            foreach ($received as $rating) {
+                $actual += $rating->Stars;
+            }
+
+            $n = ($actual / $total) * 5;
+        }
+
+        $data['HTML'] = $this->ratingHTML($n);
+
+        return new ArrayData($data);
+    }
+
+
+    private function ratingHTML($n)
+    {
+        $arr = array();
+        $i = floor($n);
+        for ($j = 0; $j < 5; $j++) {
+            $arr[] = '<li data-stars="' . ($j+1) . '" class="icon"><i class="fa fa-' . ($j < $i ? 'star' : 'star-o') . '"></i></li>';
+        }
+
+        if ($n == 0) {
+            $arr[0] = '<li data-stars="1" class="icon"><i class="fa fa-star-o"></i></li>';
+        } elseif ($n - $i > 0 ) {
+            $arr[$i] = '<li data-stars="' . $i . '" class="icon"><i class="fa fa-half-o"></li>';
+        }
+
+        return implode("\n", $arr);
     }
 }
 

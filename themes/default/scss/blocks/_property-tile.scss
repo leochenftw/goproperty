@@ -1,28 +1,26 @@
 .tradesmen-list,
 .property-list {
-    border-top: rem(10) solid $green;
-    padding-top: rem(30);
+    border-top: 10px solid $green;
+    padding-top: 30px;
     header {
         h1 {
-            font-size: rem(36);
-            margin-bottom: rem(15);
+            font-size: 36px;
+            margin-bottom: 15px;
         }
     }
     .criteria {
         h2 {
             color: $grey;
-            font-size: rem(16);
+            font-size: 16px;
             font-weight: normal;
         }
     }
     .tiles {
-        padding-bottom: rem(60);
+        padding-bottom: 60px;
     }
     &__tile {
-        width: 50%;
-        min-width: rem(320);
-        padding: 0 rem(10);
-        margin-bottom: rem(50);
+        min-width: 320px;
+        margin-bottom: 40px;
         &__cover {
             display: block;
             position: relative;
@@ -59,19 +57,24 @@
 
             &__bath-bed {
                 position: absolute;
-                left: rem(20);
-                bottom: rem(20);
-                span {
+                left: 20px;
+                bottom: 20px;
+                .icon {
                     display: inline-block;
                     text-indent: 0;
-                    font-size: rem(26);
-                    line-height: 1;
-                    margin-right: rem(20);
+                    font-size: 26px;
+                    line-height: 1.4;
+                    margin-right: 20px;
                     color: #fff;
-                    &:before {
-                        font-size: rem(36);
+                    vertical-align: bottom;
+                    height: auto;
+                    .fa {
+                        font-size: 36px;
                         line-height: 1;
-                        margin-right: rem(10);
+                        margin-right: 10px;
+                        &-bed {
+                            @include transform(translateY(5px));
+                        }
                     }
 
                     &.icon-bed {
@@ -84,31 +87,43 @@
         }
 
         &__details {
-            padding: rem(16) 0 rem(24);;
+            padding: 16px 0 24px;;
             color: $grey;
             line-height: 1.4;
             &__price {
                 width: 45%;
-                font-size: rem(20);
-                padding-right: rem(20);
+                font-size: 20px;
+                padding-left: 0;
+                padding-right: 20px;
                 &.business-detail {
-                    font-size: rem(16);
+                    font-size: 16px;
                     h2 {
-                        font-size: rem(20);
-                        margin-bottom: rem(16);
+                        font-size: 20px;
+                        margin-bottom: 16px;
                     }
                     .iconed {
-                        font-size: rem(16);
+                        @extend .icon;
+                        font-size: 16px;
                         text-indent: 0;
                         line-height: 1.4;
                         position: relative;
                         padding-left: 1.5em;
                         margin-bottom: 0.5em;
+                        text-align: left;
+                        height: auto;
                         &:before {
-                            font-size: rem(16);
+                            @extend .fa;
+                            @extend .fa-address-book-o;
+                            font-size: 16px;
                             position: absolute;
                             top: 0.25em;
                             left: 0;
+                        }
+
+                        &.icon-wrench {
+                            &:before {
+                                @extend .fa-phone;
+                            }
                         }
                     }
                 }
@@ -116,16 +131,17 @@
 
             &__location-lister {
                 position: relative;
-                font-size: rem(16);
+                font-size: 16px;
                 width: 55%;
                 &.business-services {
-                    padding-left: rem(20);
+                    padding-right: 0;
+                    padding-left: 20px;
                 }
 
                 &__location {
                     h3 {
-                        font-size: rem(20);
-                        margin-bottom: rem(16);
+                        font-size: 20px;
+                        margin-bottom: 16px;
                     }
 
                     .services {
@@ -135,18 +151,18 @@
                     &__service {
                         display: inline-block;
                         padding: 0.1em 0.5em;
-                        border-radius: rem(2);
+                        border-radius: 2px;
                         background-color: $light;
                         color: $grey;
-                        font-size: rem(16);
-                        margin-right: rem(5);
-                        margin-bottom: rem(5);
+                        font-size: 16px;
+                        margin-right: 5px;
+                        margin-bottom: 5px;
                     }
                 }
                 &__lister {
                     position: absolute;
                     top: -50%;
-                    right: rem(30);
+                    right: 30px;
                     @include transform(translateY(-16px));
                     img {
                         border-radius: 50%;
@@ -156,15 +172,16 @@
         }
 
         &__actions {
-            padding: 0 rem(30);
+            @include align-items(center);
+            .page-tradesmenlister & {
+                padding-left: 24px;
+                padding-right: 30px;
+            }
             a.blue-button {
                 padding-left: 2em;
                 padding-right: 2em;
             }
             ul.rating {
-                padding-left: 0;
-                margin: 0 0 rem(10);
-                width: 50%;
                 text-align: right;
                 @import 'elements/rating';
             }

@@ -1,0 +1,11 @@
+&__logo {
+    text-decoration: none;
+    display: block;
+    text-indent: -9999px;
+    overflow: hidden;
+    // @include retina-sprite(logo, spritesheet, $dimensions: true, $nonRetina: false);
+    @include mobile {
+        @include transform(scale(0.7));
+        @include transform-origin(0,0);
+    }
+}

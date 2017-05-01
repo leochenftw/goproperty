@@ -1,5 +1,4 @@
-<h2>My business</h2>
-
+<h2 class="title is-3 is-bold">My trade</h2>
 <% with $BusinessForm %>
 <form $FormAttributes>
     <fieldset>

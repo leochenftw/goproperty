@@ -1,8 +1,8 @@
-<div class="tradesmen-list__tile">
+<div class="tradesmen-list__tile column is-half">
     <a href="$Link" class="tradesmen-list__tile__cover business-logo">
         <% if $Logo %>$Logo.FillMax(580, 338)<% else %>https://placehold.it/580x338<% end_if %>
     </a>
-    <div class="tradesmen-list__tile__details as-flex wrap space-between relative">
+    <div class="tradesmen-list__tile__details columns is-marginless relative">
         <div class="tradesmen-list__tile__details__price business-detail">
             <% if $Title %><h2>$Title</h2><% end_if %>
             <% if $FullAddress %><div class="iconed icon-property">$FullAddress</div><% end_if %>
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="tradesmen-list__tile__actions as-flex wrap space-between">
+    <div class="tradesmen-list__tile__actions columns space-between is-marginless">
         <a class="blue-button inline-block" href="$Link">More details</a>
         <ul class="rating" data-sid="$SecurityID" data-uid="$Member.ID">
             $Member.getRating(1)

@@ -17,16 +17,18 @@ class PropertySearchForm extends Form
             ),
             'rent'
         ));
-        $fields->push(DropdownField::create(
+        $fields->push($RegionSelector = DropdownField::create(
             'Region',
             'Region',
             Config::inst()->get('NewZealand', 'Regions')
         )->setEmptyString('All New Zealand')->setAttribute('data-direct-child', 'PropertySearchForm_PropertySearchForm_City'));
 
+        $RegionSelector->setValue('Wellington')->addExtraClass('hide');
+
         $fields->push(DropdownField::create(
             'City',
             'District'
-        )->setEmptyString('All districts')->setAttribute('data-direct-child', 'PropertySearchForm_PropertySearchForm_Suburb'));
+        )->setEmptyString('All Wellington districts')->setAttribute('data-direct-child', 'PropertySearchForm_PropertySearchForm_Suburb'));
 
         $fields->push(DropdownField::create(
             'Suburb',
@@ -110,7 +112,7 @@ class PropertySearchForm extends Form
         $actions->push(FormAction::create('doSearch', 'Search'));
 
         parent::__construct($controller, 'PropertySearchForm', $fields, $actions);
-        $this->setFormMethod('POST', true)->addExtraClass('property-search-form');
+        $this->setFormMethod('POST', true)->addExtraClass('property-search-form column is-12');
     }
 
     public function validate()

@@ -1,4 +1,4 @@
-<h2 class="title">Payment history</h2>
+<h2 class="title is-3 is-bold">Payment history</h2>
 <% if $CurrentMember.PaymentHistory %>
     <table class="as-table full-width">
         <thead>

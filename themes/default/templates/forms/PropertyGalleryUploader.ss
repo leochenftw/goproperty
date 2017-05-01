@@ -3,7 +3,9 @@
         <% if $Existings %>
             <% loop $Existings %>
             <div class="previewable-uploader__previewable__thumbnail relative">
-                $FillMax(92, 92)
+                <div class="thumbnail-core show image-as-block">
+                    $FillMax(91, 91)
+                </div>
                 <button class="btn-remove-thumbnail solid icon-close" data-id="$ID">remove</button>
             </div>
             <% end_loop %>

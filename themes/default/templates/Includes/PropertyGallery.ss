@@ -1,4 +1,4 @@
-<div id="property-gallery" class="property__gallery">
+<div id="property-gallery" class="property__gallery column is-12">
     <div id="property-image-viewer" class="property__gallery__image-viewer">
         <% with $Gallery.First.FillMax(1200, 680) %>
             <img src="$URL" width="$Width" height="$Height" />

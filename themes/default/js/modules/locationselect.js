@@ -3,6 +3,7 @@
         var endpoint        =   '/api/v1/location/',
             childName       =   '#' + $(this).data('direct-child'),
             form            =   $(this).parents('form:eq(0)');
+
         $(this).change(function(e)
         {
             var first       =   $(childName).find('option:eq(0)').remove();
@@ -11,9 +12,16 @@
             $(childName).change();
             var region      =   form.find('select[name="Region"] option:selected').val().replace(/\//g, "-"),
                 district    =   form.find('select[name="City"] option:selected').val(),
-                url         =   endpoint + region + (district.length > 0 ? ('/' + district) : '');
+                url         =   endpoint + region + (district.length > 0 ? ('/' + district) : ''),
+                levelCond   =   '';
 
-            if (region.length > 0) {
+            if ($(this).attr('name') == 'Region') {
+                levelCond = region;
+            } else if ($(this).attr('name') == 'City') {
+                levelCond = district;
+            }
+
+            if (levelCond.length > 0) {
                 $.get(url, function(data)
                 {
                     var to      =   form.find('select[name="' + data.to + '"]'),
@@ -28,7 +36,7 @@
                 });
             }
 
-        }).change();
-
+        });
+        return this;
     };
 })(jQuery);

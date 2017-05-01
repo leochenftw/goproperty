@@ -9,17 +9,17 @@ class SignupForm extends Form {
         $fields = new FieldList();
         $fields->push($email = EmailField::create('Email', 'Email'));
         $fields->push($pass = ConfirmedPasswordField::create('Password', 'Password'));
-        $fields->push($type = CheckboxSetField::create(
-            'SignupToBe',
-            'Account type',
-            array(
-                'beLandlords'           =>  'Landlords',
-                'beTradesmen'           =>  'Tradesmen',
-                'beRealtors'            =>  'Realtors'
-            )
-        ));
+        // $fields->push($type = CheckboxSetField::create(
+        //     'SignupToBe',
+        //     'Account type',
+        //     array(
+        //         'beLandlords'           =>  'Landlords',
+        //         'beTradesmen'           =>  'Tradesmen',
+        //         'beRealtors'            =>  'Realtors'
+        //     )
+        // ));
 
-        $type->addExtraClass('hide');
+        // $type->addExtraClass('hide');
 
         $fields->push($tnc = CheckboxField::create('AgreeToTnC', 'I have read and accept the <a target="_blank" href="/terms-and-conditions">terms and conditions</a> and the <a target="_blank" href="/privacy-policy">privacy policy</a>'));
 
@@ -64,12 +64,12 @@ class SignupForm extends Form {
                     if ($check['status']) {
                         $member = new Member();
                         $form->saveInto($member);
-                        if ($wannabe = $data['SignupToBe']) {
-
-                            foreach ($wannabe as $key => $value) {
-                                $member->$key = true;
-                            }
-                        }
+                        // if ($wannabe = $data['SignupToBe']) {
+                        //
+                        //     foreach ($wannabe as $key => $value) {
+                        //         $member->$key = true;
+                        //     }
+                        // }
                         $member->write();
                         $email = new ConfirmationEmail($member);
                         $email->send();

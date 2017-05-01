@@ -1,55 +1,47 @@
 .footer {
-    background-color: #7f8184;
-    border-top: rem(10) solid $green;
-    padding: rem(60) 0 rem(84);
-
-    &__col {
-        padding: 0 rem(10);
-        width: 100%;
-        max-width: rem(400);
-        ul {
-            padding: 0;
-            margin: 0;
-            li {
-                list-style: none;
-                font-size: rem(20);
-                margin-bottom: rem(16);
-                &:last-child {
-                    margin-bottom: 0;
-                }
-                a {
-                    color: #fff;
-                    text-decoration: none;
+    background-color: transparent;
+    border-top: 0.625rem solid #b8e81e;
+    padding: 3.75rem 0 5.25rem;
+    ul {
+        li {
+            list-style: none;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            a {
+                color: #fff;
+                text-decoration: none;
+                &.icon {
+                    height: auto;
+                    line-height: 1;
+                    i {
+                        display: block;
+                        font-size: 32px;
+                        color: #fff;
+                        text-indent: 0;
+                    }
                 }
             }
         }
+    }
 
+    &__col {
         &.social {
-            ul {
-                font-size: 0;
-                li {
-                    display: inline-block;
-                    margin-right: rem(20);
-                    margin-bottom: 0;
-                    &:last-child {
-                        margin-right: 0;
-                    }
-                    a {
-                        &:before {
-                            font-size: rem(32);
-                        }
-                    }
+            ul li {
+                display: inline-block;
+                margin-right: 20px;
+                &:last-child {
+                    margin-right: 0;
                 }
             }
         }
 
         &__logo-holder {
-            margin-bottom: rem(16);
+            margin-bottom: 16px;
             a {
                 display: block;
                 overflow: hidden;
-                text-indent: rem(-9999);
-                @include retina-sprite(logo_white, icons, $dimensions: true, $nonRetina: true);
+                text-indent: -9999px;
+                @include retina-sprite(logo_white, spritesheet, $dimensions: true, $nonRetina: true);
             }
         }
     }

@@ -1,7 +1,7 @@
 &__image-viewer {
     position: relative;
     padding-top: 56.6667%;
-    margin-bottom: rem(20);
+    margin-bottom: 20px;
     overflow: hidden;
     background-color: #f7f7f7;
     img {
@@ -15,11 +15,11 @@
 }
 
 &__thumbnails {
-    padding: 0 rem(125);
+    padding: 0 125px;
     &__thumbnail {
         display: block;
-        width: rem(150);
-        height: rem(90);
+        width: 150px;
+        height: 90px;
     }
 
     .owl-nav {
@@ -33,30 +33,47 @@
             @include transform(translateY(-50%));
             position: absolute;
             border-radius: 50%;
-            width: rem(25);
-            height: rem(25);
+            width: 25px;
+            height: 25px;
             background-color: $green;
+
+            &.owl-prev,
+            &.owl-next {
+                width: 25px;
+                height: 25px;
+                overflow: hidden;
+                text-indent: -9999px;
+                &:before {
+                    text-indent: 0;
+                    display: block;
+                }
+            }
+
             &.owl-prev {
-                @extend .icon-arrow-left;
-                text-indent: 0;
+                // @extend .icon-arrow-left;
+                @extend .icon;
                 text-align: center;
                 color: #fff;
-                left: rem(75);
+                left: 75px;
                 &:before {
-                    font-size: rem(20);
-                    line-height: rem(25);
+                    @extend .fa;
+                    @extend .fa-angle-left;
+                    font-size: 20px;
+                    line-height: 25px;
                 }
             }
 
             &.owl-next {
-                @extend .icon-arrow-right;
-                text-indent: 0;
+                // @extend .icon-arrow-right;
                 text-align: center;
                 color: #fff;
-                right: rem(75);
+                right: 75px;
+                @extend .icon;
                 &:before {
-                    font-size: rem(20);
-                    line-height: rem(25);
+                    @extend .fa;
+                    @extend .fa-angle-right;
+                    font-size: 20px;
+                    line-height: 25px;
                 }
             }
         }

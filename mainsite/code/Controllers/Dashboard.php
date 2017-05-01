@@ -217,6 +217,29 @@ class Dashboard extends Page_Controller {
         return $properties;
     }
 
+    public function getMyWishlist()
+    {
+        if ($member = Member::currentUser()) {
+            $list = new ArrayList();
+
+            $wishlist = $member->Wishlist();
+            foreach ($wishlist as $wishlistitem)
+            {
+                $classname = $wishlistitem->TargetClass;
+                $id = $wishlistitem->TargetID;
+
+                $item = $classname::get()->byID($id);
+                if ($item) {
+                    $list->add($item);
+                }
+            }
+
+            return $list;
+        }
+
+        return null;
+    }
+
     public function isAgent()
     {
         if ($member = Member::currentUser()) {

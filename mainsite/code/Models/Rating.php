@@ -16,7 +16,8 @@ class Rating extends DataObject
      */
     private static $has_one = array(
         'Giver'         =>  'Member',
-        'Taker'         =>  'Member'
+        'Taker'         =>  'Member',
+        'Property'      =>  'PropertyPage'
     );
 
     public function canCreate($member = null)

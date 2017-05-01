@@ -1,8 +1,8 @@
 .account-types-holder {
     h3 {
-        font-size: rem(14);
+        font-size: 14px;
         color: $grey;
-        margin-bottom: rem(10);
+        margin-bottom: 10px;
         font-weight: normal;
     }
 }
@@ -10,37 +10,39 @@
 .account-types {
     padding-left: 0;
     li {
-        @extend .icon-check-empty;
+
         list-style: none;
-        padding-left: rem(40);
-        font-size: rem(20);
+        padding-left: 40px;
+        font-size: 20px;
         line-height: 1.4;
         text-indent: 0;
         position: relative;
         cursor: pointer;
-        margin-bottom: rem(30);
+        margin-bottom: 30px;
         &:before {
+            @extend .fa;
+            @extend .fa-square-o;
             position: absolute;
             top: 0;
             left: 0;
-            font-size: rem(24);
-            margin-top: rem(3);
+            font-size: 24px;
+            margin-top: 3px;
         }
 
         &.checked {
-            @extend .icon-check;
-            font-size: rem(20);
+            @extend .fa-check-square-o;
+            font-size: 20px;
             line-height: 1.4;
             text-indent: 0;
             &:before {
-                font-size: rem(24);
-                margin-top: rem(3);
+                font-size: 24px;
+                margin-top: 3px;
             }
         }
 
         h4 {
-            font-size: rem(20);
-            margin-bottom: rem(10);
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
         p {
@@ -50,7 +52,7 @@
 }
 
 .already {
-    margin-bottom: rem(40);
+    margin-bottom: 40px;
     .account-types {
         li {
             cursor: default;
@@ -61,16 +63,16 @@
 .detailed-account-types {
     li {
         margin-right: 1.5em;
-        font-size: rem(16);
+        font-size: 16px;
         line-height: 1.4;
         text-indent: 0;
         position: relative;
         &:before {
             margin-right: 0.25em;
-            font-size: rem(16);
+            font-size: 16px;
         }
         h4 {
-            font-size: rem(16);
+            font-size: 16px;
             font-weight: normal;
             display: inline-block;
         }

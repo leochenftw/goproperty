@@ -13,3 +13,47 @@ input.text {
 input.action {
     @extend .button;
 }
+
+.is-maxheight {
+    height: 100%;
+}
+
+.is-absolute {
+    position: absolute;
+}
+
+.is-relative {
+    position: relative;
+}
+
+.icon {
+    width: auto;
+}
+
+.column {
+    &.is-auto-width {
+        width: auto;
+        @include flex(none);
+    }
+}
+
+.text-centered {
+    @extend .has-text-centered;
+}
+
+div.field.textarea {
+    max-height: none;
+    max-width: none;
+    min-height: 0;
+    min-width: 0;
+    padding: inherit;
+    position: relative;
+    vertical-align: top;
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    box-shadow: none;
+    font-size: inherit;
+    height: auto;
+    border-radius: 0;
+}

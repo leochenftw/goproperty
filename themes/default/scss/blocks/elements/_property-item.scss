@@ -1,0 +1,27 @@
+&__property-list {
+    &__item {
+        // &__image {
+        //
+        // }
+
+        &__info {
+            .type {
+                display: inline-block;
+                background-color: #001d58;
+                color: #fff;
+                font-size: 14px;
+                padding: 0.25em 0.5em 0.4em;
+                border-radius: 3px;
+                margin-right: 0.25em;
+            }
+        }
+
+        &__actions {
+            @include align-self(center);
+            .button {
+                font-size: 12px;
+                padding: 2px 1em;
+            }
+        }
+    }
+}

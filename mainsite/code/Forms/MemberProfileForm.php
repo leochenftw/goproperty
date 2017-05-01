@@ -15,7 +15,8 @@ class MemberProfileForm extends Form {
         $fields->push($nickname = TextField::create('Nickname', 'Avatar/Nickname')->setValue($member->Nickname)->setDescription('Spaces and symbols will be omitted when save'));
         $fields->push(OptionsetField::create('NameToUse', 'Which name to display', array('Real name' => 'Real name', 'Nickname' => 'Nickname'), $member->NameToUse));
         $fields->push($addr = TextField::create('FullAddress', 'Address')->setValue($member->FullAddress));
-        $fields->push($first = TextField::create('ContactNumber', 'Landline/Mobile')->setValue($member->ContactNumber));
+        $fields->push($first = TextField::create('ContactNumber', 'Landline')->setValue($member->ContactNumber));
+        $fields->push($first = TextField::create('MobileNumber', 'Mobile')->setValue($member->MobileNumber));
         $fields->push($showPhone = CheckboxField::create('DisplayPhonenumber', 'Show phone number on listing pages')->setValue($member->DisplayPhonenumber));
 
         $fields->push(HiddenField::create('StreetNumber','StreetNumber', $member->StreetNumber));
