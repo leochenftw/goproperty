@@ -10100,6 +10100,7 @@ div.field.textarea {
   padding-left: 0;
 }
 #main .member-area__content .account-types li {
+  text-align: left;
   width: 100%;
   height: auto;
   list-style: none;

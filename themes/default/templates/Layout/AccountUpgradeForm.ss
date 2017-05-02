@@ -1,4 +1,4 @@
-<h2 class="title"><% if $CurrentMember.NeedsToPay %>Account<% else %>Upgrade your account<% end_if %></h2>
+<h2 class="title">Account fees</h2>
 <div class="content">
     <% if $CurrentMember.NeedsToPay %>
         <p>Please proceed the payment, and finalise your account activation.</p>
@@ -12,7 +12,7 @@
     </div>
     <% end_if %>
 </div>
-<div class="about-to">
+<div class="about-to content">
     <% if not $CurrentMember.beLandlords && not $CurrentMember.beTradesmen && not $CurrentMember.beRealtors %>
     <h3>Available types</h3>
     <% end_if %>
@@ -40,5 +40,5 @@
         <% end_if %>
     </ul>
 </div>
-<p>Amount due: <strong id="amount-due">$0.00</strong><br /></p>
+<p>Amount due: <strong id="amount-due">$0.00</strong></p>
 $AccountUpgradeForm
