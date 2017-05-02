@@ -40,5 +40,7 @@
         <% end_if %>
     </ul>
 </div>
-<p>Amount due: <strong id="amount-due">$0.00</strong></p>
+<div class="content">
+    <p>Amount due: <strong id="amount-due">$0.00</strong></p>
+</div>
 $AccountUpgradeForm
