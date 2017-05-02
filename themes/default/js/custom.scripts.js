@@ -8,6 +8,26 @@ $(document).ready(function(e)
         }
     }
 
+    $('.btn-view-applicants').click(function(e)
+    {
+        e.preventDefault();
+        var sid             =   $(this).data('sid'),
+            propertyid      =   $(this).data('id');
+
+        $.get(
+            '/api/v1/eoi/' + propertyid,
+            {
+                SecurityID: sid
+            },
+            function(data)
+            {
+                var list = new InterestList('Applicants', data);
+                $('html').addClass('locked');
+                $('body').addClass('overlayed fixed').append(list);
+            }
+        );
+    });
+
     $('.btn-rm-fav').click(function(e)
     {
         e.preventDefault();
@@ -124,18 +144,20 @@ $(document).ready(function(e)
         $('#PropertyForm_Message button').click(withDrawMessage);
     }
 
+    $('#contact-form-holder button.delete').click(function(e)
+    {
+        e.preventDefault();
+        $('html').removeClass('locked');
+        $('body').removeClass('overlayed fixed');
+        $('#contact-form-holder').addClass('hide').insertAfter('.member-tile');
+    });
+
     $('#btn-contact-form').click(function(e)
     {
         e.preventDefault();
-        var overlay =   $('<div />');
-        overlay.attr('id', 'overlay');
-        $('body').append(overlay);
-        $('#ContactForm_ContactForm').removeClass('hide');
-        overlay.mousedown(function(e)
-        {
-            $('#ContactForm_ContactForm').addClass('hide');
-            overlay.remove();
-        });
+        $('html').addClass('locked');
+        $('body').addClass('overlayed fixed');
+        $('#contact-form-holder').removeClass('hide').appendTo('body');
     });
 
     $('.filter-form button').click(function(e)

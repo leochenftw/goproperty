@@ -1,0 +1,108 @@
+#contact-form-holder,
+.overlay-element {
+    position: fixed;
+    z-index: 9998;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+    width: calc(100% - 20px);
+    max-width: 600px;
+
+    #ContactForm_ContactForm {
+        #ContactForm_ContactForm_Content_Holder {
+            margin-bottom: 20px;
+        }
+        .Actions {
+            text-align: right;
+        }
+    }
+
+    &.sunken {
+        z-index: 9995;
+        -webkit-filter: blur(5px);
+    }
+
+    .message-body {
+        height: auto;
+        max-height: calc(80vh - 36px);
+        overflow: hidden;
+        overflow-y: auto; /* has to be scroll, not auto */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .interest-item {
+        margin-bottom: 20px;
+        .portrait {
+            img {
+                display: block;
+                width: 100px;
+            }
+        }
+
+        .ratings {
+            margin: 5px 0 10px;
+        }
+
+        .title {
+            display: block !important;
+            text-align: left !important;
+            .email {
+                font-style: italic;
+                font-size: 14px;
+            }
+        }
+
+        .actions {
+            .button {
+                margin-right: 0.5em;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .ratings,
+        .content,
+        .actions {
+            display: block;
+        }
+
+        &[data-foldable="1"] {
+            .title {
+                position: relative;
+                padding-right: 16px;
+                cursor: pointer;
+                @extend .fa;
+                &:before {
+                    position: absolute;
+                    right: 0;
+                    @extend .fa-angle-double-up;
+                }
+            }
+
+            &.fold {
+                .title {
+                    &:before {
+                        @extend .fa-angle-double-down;
+                    }
+                }
+            }
+        }
+
+        &.fold {
+            margin-bottom: 0;
+            opacity: 0.5;
+
+            .portrait {
+                img {
+                    width: 30px;
+                }
+            }
+            .ratings,
+            .content,
+            .actions {
+                display: none;
+            }
+        }
+    }
+}

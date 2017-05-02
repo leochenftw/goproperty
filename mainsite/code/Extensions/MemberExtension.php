@@ -232,7 +232,7 @@ class MemberExtension extends DataExtension
         if ($n == 0) {
             $arr[0] = '<li data-stars="1" class="icon"><i class="fa fa-star-o"></i></li>';
         } elseif ($n - $i > 0 ) {
-            $arr[$i] = '<li data-stars="' . $i . '" class="icon"><i class="fa fa-half-o"></li>';
+            $arr[$i] = '<li data-stars="' . $i . '" class="icon"><i class="fa fa-star-half-o"></i></li>';
         }
 
         return implode("\n", $arr);
@@ -245,6 +245,15 @@ class MemberExtension extends DataExtension
         }
 
         return false;
+    }
+
+    public function getDisplayName()
+    {
+        if ( !empty($this->owner->Nickname) && $this->owner->NameToUse == 'Nickname' ) {
+            return $this->owner->Nickname;
+        }
+
+        return $this->owner->FirstName . (!empty($this->owner->Surname) ? (' ' . $this->owner->Surname) : '');
     }
 
 }

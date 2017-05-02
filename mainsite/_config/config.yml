@@ -18,6 +18,9 @@ Page:
     - TwitterCardExtension
     - SeoObjectExtension
     - SEOExtension
+DataList:
+  extensions:
+    - DataListExt
 NewZealand:
   Regions:
     'Northland': 'Northland'

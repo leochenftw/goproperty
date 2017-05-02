@@ -8,11 +8,7 @@
     </div>
     <div class="member-tile__details column">
         <div class="member-tile__details__name">
-            <% if $Member.Nickname && $Member.NameToUse == 'Nickname' %>
-                $Member.Nickname
-            <% else %>
-                $Member.FirstName<% if  $Member.Surname %> $Member.Surname<% end_if %>
-            <% end_if %>
+            $Member.DisplayName
         </div>
         <% if $Member.DisplayPhonenumber %>
         <div class="member-tile__details__phonenumber">
@@ -46,4 +42,12 @@
         <% end_if %>
     </div>
 </div>
-$ContactForm
+<div id="contact-form-holder" class="message is-info hide">
+    <div class="message-header">
+        <p>Express your interest</p>
+        <button class="delete"></button>
+    </div>
+    <div class="message-body">
+        $ContactForm
+    </div>
+</div>

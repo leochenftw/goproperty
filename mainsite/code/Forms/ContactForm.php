@@ -8,7 +8,7 @@ class ContactForm extends Form
         $fields = new FieldList();
         $fields->push(TextareaField::create(
             'Content',
-            'Express your interest'
+            ''
         ));
 
         if (!empty($memberID)) {
@@ -32,19 +32,47 @@ class ContactForm extends Form
 
         parent::__construct($controller, 'ContactForm', $fields, $actions);
         $this->setFormMethod('POST', true)
-             ->setFormAction($controller->Link() . 'ContactForm')->addExtraClass('contact-form hide');
+             ->setFormAction($controller->Link() . 'ContactForm')->addExtraClass('contact-form');
     }
 
     public function doContact($data, $form)
     {
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
+            $type = $this->controller->ClassName;
+            $content = trim($data['Content']);
+            if ($type == 'PropertyPage') {
+                $targetID = $this->controller->ID;
+                $target = PropertyPage::get()->byID($targetID);
+                $interest = $target->Interests()->filter(array('MemberID' => Member::currentUserID()))->first();
+                if (empty($interest)) {
+                    $interest = new Interest();
+                    $interest->PropertyID = $targetID;
+                    $interest->MemberID = Member::currentUserID();
+                    $interest->Message = $content;
+                    $interest->write();
+                    $this->sessionMessage('You application has been sent to the landlord.', 'good');
+                    return $this->controller->redirectBack();
+                }
+
+                $this->sessionMessage('You have already applied previously', 'bad');
+                return $this->controller->redirectBack();
+
+            }
+
             $email = new Email();
             $email->To = Member::get()->byID($data['MemberID'])->Email;
             $email->From = Member::currentUser()->Email;
-            $email->Subject = 'Enquiry via goProperty';
-            $email->Body = str_replace("\n", '<br /><br />', strip_tags($data['Content']));
-            $email->send();
+            $email->Subject = 'Enquiry via GoProperty';
+            if (!empty($content)) {
+                $content = str_replace("\n", '<br /><br />', $content);
+            } else {
+                $content = 'Someone is interested in the property that you are renting.';
+            }
 
+            $content .= '<br /><br />You may want to <a href="' . Director::absoluteBaseURL() . 'member/action/my-properties">jump on your dashboard</a> and check out the property list.';
+
+            $email->Body = $content;
+            $email->send();
             $this->sessionMessage('Message sent', 'good');
 
             if (!empty($data['businessID'])) {

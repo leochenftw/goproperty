@@ -7,13 +7,14 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url(../fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0&1488400626);
-  src: url(../fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0&1488400626#iefix) format("embedded-opentype"), url(../fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0&1488400626) format("woff2"), url(../fonts/font-awesome/fontawesome-webfont.woff?v=4.7.0&1488400626) format("woff"), url(../fonts/font-awesome/fontawesome-webfont.ttf?v=4.7.0&1488400626) format("truetype"), url(../fonts/font-awesome/fontawesome-webfont.svg?v=4.7.0&1488400626#fontawesomeregular) format("svg");
+  src: url(../fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0&1493679106);
+  src: url(../fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0&1493679106#iefix) format("embedded-opentype"), url(../fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0&1493679106) format("woff2"), url(../fonts/font-awesome/fontawesome-webfont.woff?v=4.7.0&1493679106) format("woff"), url(../fonts/font-awesome/fontawesome-webfont.ttf?v=4.7.0&1493679106) format("truetype"), url(../fonts/font-awesome/fontawesome-webfont.svg?v=4.7.0&1493679106#fontawesomeregular) format("svg");
   font-weight: normal;
   font-style: normal;
 }
 .fa, #main .property__gallery__thumbnails .owl-nav div.owl-prev:before, #main .property__gallery__thumbnails .owl-nav div.owl-next:before, #main .member-area__sidebar ul li a:before, #main .member-area__content .account-types li:before, .section.property .property__content-area__content .social .wishlist-holder .btn-fav:before, .tradesmen-list__tile__details__price.business-detail .iconed:before,
-.property-list__tile__details__price.business-detail .iconed:before {
+.property-list__tile__details__price.business-detail .iconed:before, #contact-form-holder .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .title {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -85,11 +86,13 @@
 }
 
 .fa.fa-pull-left, #main .property__gallery__thumbnails .owl-nav div.fa-pull-left.owl-prev:before, #main .property__gallery__thumbnails .owl-nav div.fa-pull-left.owl-next:before, #main .member-area__sidebar ul li a.fa-pull-left:before, #main .member-area__content .account-types li.fa-pull-left:before, .section.property .property__content-area__content .social .wishlist-holder .fa-pull-left.btn-fav:before, .tradesmen-list__tile__details__price.business-detail .fa-pull-left.iconed:before,
-.property-list__tile__details__price.business-detail .fa-pull-left.iconed:before {
+.property-list__tile__details__price.business-detail .fa-pull-left.iconed:before, #contact-form-holder .interest-item[data-foldable="1"] .fa-pull-left.title,
+.overlay-element .interest-item[data-foldable="1"] .fa-pull-left.title {
   margin-right: .3em;
 }
 .fa.fa-pull-right, #main .property__gallery__thumbnails .owl-nav div.fa-pull-right.owl-prev:before, #main .property__gallery__thumbnails .owl-nav div.fa-pull-right.owl-next:before, #main .member-area__sidebar ul li a.fa-pull-right:before, #main .member-area__content .account-types li.fa-pull-right:before, .section.property .property__content-area__content .social .wishlist-holder .fa-pull-right.btn-fav:before, .tradesmen-list__tile__details__price.business-detail .fa-pull-right.iconed:before,
-.property-list__tile__details__price.business-detail .fa-pull-right.iconed:before {
+.property-list__tile__details__price.business-detail .fa-pull-right.iconed:before, #contact-form-holder .interest-item[data-foldable="1"] .fa-pull-right.title,
+.overlay-element .interest-item[data-foldable="1"] .fa-pull-right.title {
   margin-left: .3em;
 }
 
@@ -103,11 +106,13 @@
 }
 
 .fa.pull-left, #main .property__gallery__thumbnails .owl-nav div.pull-left.owl-prev:before, #main .property__gallery__thumbnails .owl-nav div.pull-left.owl-next:before, #main .member-area__sidebar ul li a.pull-left:before, #main .member-area__content .account-types li.pull-left:before, .section.property .property__content-area__content .social .wishlist-holder .pull-left.btn-fav:before, .tradesmen-list__tile__details__price.business-detail .pull-left.iconed:before,
-.property-list__tile__details__price.business-detail .pull-left.iconed:before {
+.property-list__tile__details__price.business-detail .pull-left.iconed:before, #contact-form-holder .interest-item[data-foldable="1"] .pull-left.title,
+.overlay-element .interest-item[data-foldable="1"] .pull-left.title {
   margin-right: .3em;
 }
 .fa.pull-right, #main .property__gallery__thumbnails .owl-nav div.pull-right.owl-prev:before, #main .property__gallery__thumbnails .owl-nav div.pull-right.owl-next:before, #main .member-area__sidebar ul li a.pull-right:before, #main .member-area__content .account-types li.pull-right:before, .section.property .property__content-area__content .social .wishlist-holder .pull-right.btn-fav:before, .tradesmen-list__tile__details__price.business-detail .pull-right.iconed:before,
-.property-list__tile__details__price.business-detail .pull-right.iconed:before {
+.property-list__tile__details__price.business-detail .pull-right.iconed:before, #contact-form-holder .interest-item[data-foldable="1"] .pull-right.title,
+.overlay-element .interest-item[data-foldable="1"] .pull-right.title {
   margin-left: .3em;
 }
 
@@ -1164,11 +1169,13 @@
   content: "";
 }
 
-.fa-angle-double-up:before {
+.fa-angle-double-up:before, #contact-form-holder .interest-item[data-foldable="1"] .title:before,
+.overlay-element .interest-item[data-foldable="1"] .title:before {
   content: "";
 }
 
-.fa-angle-double-down:before {
+.fa-angle-double-down:before, #contact-form-holder .interest-item[data-foldable="1"].fold .title:before,
+.overlay-element .interest-item[data-foldable="1"].fold .title:before {
   content: "";
 }
 
@@ -3509,7 +3516,7 @@ table th {
   overflow: hidden !important;
 }
 
-.is-overlay {
+.is-overlay, html body.overlayed:after {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -5259,7 +5266,23 @@ input.is-large.action .property-list__tile__details__price.business-detail .is-l
 .property-list__tile__details__price.business-detail #main .member-area__sidebar ul li a .iconed:before,
 .section.property .property__content-area__content .social .wishlist-holder .btn-fav .property-list__tile__details__price.business-detail .iconed:before,
 .property-list__tile__details__price.business-detail .section.property .property__content-area__content .social .wishlist-holder .btn-fav .iconed:before,
-.property-list__tile__details__price.business-detail .iconed .iconed:before {
+.property-list__tile__details__price.business-detail .iconed .iconed:before, .icon #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .icon .title, #main .property__gallery__thumbnails .owl-nav div.owl-prev #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav div.owl-prev .title, #main .property__gallery__thumbnails .owl-nav div.owl-next #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav div.owl-next .title, #main .member-area__sidebar ul li a #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] #main .member-area__sidebar ul li a .title, .section.property .property__content-area__content .social .wishlist-holder .btn-fav #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .section.property .property__content-area__content .social .wishlist-holder .btn-fav .title, .tradesmen-list__tile__details__price.business-detail .iconed #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .tradesmen-list__tile__details__price.business-detail .iconed .title,
+.property-list__tile__details__price.business-detail .iconed #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .property-list__tile__details__price.business-detail .iconed .title,
+.icon .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .icon .title,
+#main .property__gallery__thumbnails .owl-nav div.owl-prev .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav div.owl-prev .title,
+#main .property__gallery__thumbnails .owl-nav div.owl-next .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav div.owl-next .title,
+#main .member-area__sidebar ul li a .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] #main .member-area__sidebar ul li a .title,
+.section.property .property__content-area__content .social .wishlist-holder .btn-fav .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .section.property .property__content-area__content .social .wishlist-holder .btn-fav .title,
+.tradesmen-list__tile__details__price.business-detail .iconed .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .tradesmen-list__tile__details__price.business-detail .iconed .title,
+.property-list__tile__details__price.business-detail .iconed .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .property-list__tile__details__price.business-detail .iconed .title {
   font-size: inherit;
   line-height: inherit;
 }
@@ -5796,7 +5819,8 @@ input.is-large.action .property-list__tile__details__price.business-detail .is-l
 }
 
 .fa, #main .property__gallery__thumbnails .owl-nav div.owl-prev:before, #main .property__gallery__thumbnails .owl-nav div.owl-next:before, #main .member-area__sidebar ul li a:before, #main .member-area__content .account-types li:before, .section.property .property__content-area__content .social .wishlist-holder .btn-fav:before, .tradesmen-list__tile__details__price.business-detail .iconed:before,
-.property-list__tile__details__price.business-detail .iconed:before {
+.property-list__tile__details__price.business-detail .iconed:before, #contact-form-holder .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .title {
   font-size: 21px;
   text-align: center;
   vertical-align: top;
@@ -6905,7 +6929,9 @@ label.panel-block:hover {
 }
 .panel-icon .fa, .panel-icon #main .property__gallery__thumbnails .owl-nav div.owl-prev:before, #main .property__gallery__thumbnails .owl-nav .panel-icon div.owl-prev:before, .panel-icon #main .property__gallery__thumbnails .owl-nav div.owl-next:before, #main .property__gallery__thumbnails .owl-nav .panel-icon div.owl-next:before, .panel-icon #main .member-area__sidebar ul li a:before, #main .member-area__sidebar ul li .panel-icon a:before, .panel-icon #main .member-area__content .account-types li:before, #main .member-area__content .account-types .panel-icon li:before, .panel-icon .section.property .property__content-area__content .social .wishlist-holder .btn-fav:before, .section.property .property__content-area__content .social .wishlist-holder .panel-icon .btn-fav:before, .panel-icon .tradesmen-list__tile__details__price.business-detail .iconed:before, .tradesmen-list__tile__details__price.business-detail .panel-icon .iconed:before,
 .panel-icon .property-list__tile__details__price.business-detail .iconed:before,
-.property-list__tile__details__price.business-detail .panel-icon .iconed:before {
+.property-list__tile__details__price.business-detail .panel-icon .iconed:before, .panel-icon #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .panel-icon .title,
+.panel-icon .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .panel-icon .title {
   font-size: inherit;
   line-height: inherit;
 }
@@ -9192,6 +9218,10 @@ div.field.textarea {
   border-radius: 0;
 }
 
+.is-overlay.fixed, html body.fixed.overlayed:after {
+  position: fixed;
+}
+
 /**
  * @file _sprites.scss
  *
@@ -10047,6 +10077,10 @@ div.field.textarea {
   padding: 0.25em 0.5em 0.4em;
   border-radius: 3px;
   margin-right: 0.25em;
+}
+#main .member-area__content__property-list__item__info__controls .button, #main .member-area__content__property-list__item__info__controls input.action {
+  padding: 0.25em 1em 0.35em;
+  margin-right: 0.5em;
 }
 #main .member-area__content__property-list__item__actions {
   -webkit-align-self: center;
@@ -11327,7 +11361,37 @@ div.field.textarea {
 .section.property .property__content-area__content .social .wishlist-holder .tradesmen-list__tile__cover__bath-bed .btn-fav .property-list__tile__details__price.business-detail .iconed:before,
 .property-list__tile__details__price.business-detail .section.property .property__content-area__content .social .wishlist-holder .tradesmen-list__tile__cover__bath-bed .btn-fav .iconed:before,
 .tradesmen-list__tile__cover__bath-bed .property-list__tile__details__price.business-detail .iconed .iconed:before,
-.property-list__tile__details__price.business-detail .tradesmen-list__tile__cover__bath-bed .iconed .iconed:before,
+.property-list__tile__details__price.business-detail .tradesmen-list__tile__cover__bath-bed .iconed .iconed:before, .tradesmen-list__tile__cover__bath-bed .icon #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed .icon .title, .tradesmen-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-prev #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-prev .title, #main .property__gallery__thumbnails .owl-nav .tradesmen-list__tile__cover__bath-bed div.owl-prev #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav .tradesmen-list__tile__cover__bath-bed div.owl-prev .title, .tradesmen-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-next #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-next .title, #main .property__gallery__thumbnails .owl-nav .tradesmen-list__tile__cover__bath-bed div.owl-next #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav .tradesmen-list__tile__cover__bath-bed div.owl-next .title, .tradesmen-list__tile__cover__bath-bed #main .member-area__sidebar ul li a #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed #main .member-area__sidebar ul li a .title, #main .member-area__sidebar ul li .tradesmen-list__tile__cover__bath-bed a #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] #main .member-area__sidebar ul li .tradesmen-list__tile__cover__bath-bed a .title, .tradesmen-list__tile__cover__bath-bed .section.property .property__content-area__content .social .wishlist-holder .btn-fav #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed .section.property .property__content-area__content .social .wishlist-holder .btn-fav .title, .section.property .property__content-area__content .social .wishlist-holder .tradesmen-list__tile__cover__bath-bed .btn-fav #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .section.property .property__content-area__content .social .wishlist-holder .tradesmen-list__tile__cover__bath-bed .btn-fav .title, .tradesmen-list__tile__cover__bath-bed .tradesmen-list__tile__details__price.business-detail .iconed #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed .tradesmen-list__tile__details__price.business-detail .iconed .title, .tradesmen-list__tile__details__price.business-detail .tradesmen-list__tile__cover__bath-bed .iconed #contact-form-holder .interest-item[data-foldable="1"] .title, #contact-form-holder .interest-item[data-foldable="1"] .tradesmen-list__tile__details__price.business-detail .tradesmen-list__tile__cover__bath-bed .iconed .title,
+.tradesmen-list__tile__cover__bath-bed .property-list__tile__details__price.business-detail .iconed #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed .property-list__tile__details__price.business-detail .iconed .title,
+.property-list__tile__details__price.business-detail .tradesmen-list__tile__cover__bath-bed .iconed #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .property-list__tile__details__price.business-detail .tradesmen-list__tile__cover__bath-bed .iconed .title,
+.tradesmen-list__tile__cover__bath-bed .icon .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed .icon .title,
+.tradesmen-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-prev .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-prev .title,
+#main .property__gallery__thumbnails .owl-nav .tradesmen-list__tile__cover__bath-bed div.owl-prev .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav .tradesmen-list__tile__cover__bath-bed div.owl-prev .title,
+.tradesmen-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-next .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-next .title,
+#main .property__gallery__thumbnails .owl-nav .tradesmen-list__tile__cover__bath-bed div.owl-next .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav .tradesmen-list__tile__cover__bath-bed div.owl-next .title,
+.tradesmen-list__tile__cover__bath-bed #main .member-area__sidebar ul li a .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed #main .member-area__sidebar ul li a .title,
+#main .member-area__sidebar ul li .tradesmen-list__tile__cover__bath-bed a .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] #main .member-area__sidebar ul li .tradesmen-list__tile__cover__bath-bed a .title,
+.tradesmen-list__tile__cover__bath-bed .section.property .property__content-area__content .social .wishlist-holder .btn-fav .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed .section.property .property__content-area__content .social .wishlist-holder .btn-fav .title,
+.section.property .property__content-area__content .social .wishlist-holder .tradesmen-list__tile__cover__bath-bed .btn-fav .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .section.property .property__content-area__content .social .wishlist-holder .tradesmen-list__tile__cover__bath-bed .btn-fav .title,
+.tradesmen-list__tile__cover__bath-bed .tradesmen-list__tile__details__price.business-detail .iconed .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed .tradesmen-list__tile__details__price.business-detail .iconed .title,
+.tradesmen-list__tile__details__price.business-detail .tradesmen-list__tile__cover__bath-bed .iconed .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .tradesmen-list__tile__details__price.business-detail .tradesmen-list__tile__cover__bath-bed .iconed .title,
+.tradesmen-list__tile__cover__bath-bed .property-list__tile__details__price.business-detail .iconed .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .tradesmen-list__tile__cover__bath-bed .property-list__tile__details__price.business-detail .iconed .title,
+.property-list__tile__details__price.business-detail .tradesmen-list__tile__cover__bath-bed .iconed .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .property-list__tile__details__price.business-detail .tradesmen-list__tile__cover__bath-bed .iconed .title,
 .property-list__tile__cover__bath-bed .icon .fa,
 .property-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-prev .fa,
 #main .property__gallery__thumbnails .owl-nav .property-list__tile__cover__bath-bed div.owl-prev .fa,
@@ -11498,7 +11562,59 @@ div.field.textarea {
 .section.property .property__content-area__content .social .wishlist-holder .property-list__tile__cover__bath-bed .btn-fav .property-list__tile__details__price.business-detail .iconed:before,
 .property-list__tile__details__price.business-detail .section.property .property__content-area__content .social .wishlist-holder .property-list__tile__cover__bath-bed .btn-fav .iconed:before,
 .property-list__tile__cover__bath-bed .property-list__tile__details__price.business-detail .iconed .iconed:before,
-.property-list__tile__details__price.business-detail .property-list__tile__cover__bath-bed .iconed .iconed:before {
+.property-list__tile__details__price.business-detail .property-list__tile__cover__bath-bed .iconed .iconed:before,
+.property-list__tile__cover__bath-bed .icon #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed .icon .title,
+.property-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-prev #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-prev .title,
+#main .property__gallery__thumbnails .owl-nav .property-list__tile__cover__bath-bed div.owl-prev #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav .property-list__tile__cover__bath-bed div.owl-prev .title,
+.property-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-next #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-next .title,
+#main .property__gallery__thumbnails .owl-nav .property-list__tile__cover__bath-bed div.owl-next #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav .property-list__tile__cover__bath-bed div.owl-next .title,
+.property-list__tile__cover__bath-bed #main .member-area__sidebar ul li a #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed #main .member-area__sidebar ul li a .title,
+#main .member-area__sidebar ul li .property-list__tile__cover__bath-bed a #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] #main .member-area__sidebar ul li .property-list__tile__cover__bath-bed a .title,
+.property-list__tile__cover__bath-bed .section.property .property__content-area__content .social .wishlist-holder .btn-fav #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed .section.property .property__content-area__content .social .wishlist-holder .btn-fav .title,
+.section.property .property__content-area__content .social .wishlist-holder .property-list__tile__cover__bath-bed .btn-fav #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .section.property .property__content-area__content .social .wishlist-holder .property-list__tile__cover__bath-bed .btn-fav .title,
+.property-list__tile__cover__bath-bed .tradesmen-list__tile__details__price.business-detail .iconed #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed .tradesmen-list__tile__details__price.business-detail .iconed .title,
+.tradesmen-list__tile__details__price.business-detail .property-list__tile__cover__bath-bed .iconed #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .tradesmen-list__tile__details__price.business-detail .property-list__tile__cover__bath-bed .iconed .title,
+.property-list__tile__cover__bath-bed .property-list__tile__details__price.business-detail .iconed #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed .property-list__tile__details__price.business-detail .iconed .title,
+.property-list__tile__details__price.business-detail .property-list__tile__cover__bath-bed .iconed #contact-form-holder .interest-item[data-foldable="1"] .title,
+#contact-form-holder .interest-item[data-foldable="1"] .property-list__tile__details__price.business-detail .property-list__tile__cover__bath-bed .iconed .title,
+.property-list__tile__cover__bath-bed .icon .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed .icon .title,
+.property-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-prev .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-prev .title,
+#main .property__gallery__thumbnails .owl-nav .property-list__tile__cover__bath-bed div.owl-prev .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav .property-list__tile__cover__bath-bed div.owl-prev .title,
+.property-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-next .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed #main .property__gallery__thumbnails .owl-nav div.owl-next .title,
+#main .property__gallery__thumbnails .owl-nav .property-list__tile__cover__bath-bed div.owl-next .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] #main .property__gallery__thumbnails .owl-nav .property-list__tile__cover__bath-bed div.owl-next .title,
+.property-list__tile__cover__bath-bed #main .member-area__sidebar ul li a .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed #main .member-area__sidebar ul li a .title,
+#main .member-area__sidebar ul li .property-list__tile__cover__bath-bed a .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] #main .member-area__sidebar ul li .property-list__tile__cover__bath-bed a .title,
+.property-list__tile__cover__bath-bed .section.property .property__content-area__content .social .wishlist-holder .btn-fav .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed .section.property .property__content-area__content .social .wishlist-holder .btn-fav .title,
+.section.property .property__content-area__content .social .wishlist-holder .property-list__tile__cover__bath-bed .btn-fav .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .section.property .property__content-area__content .social .wishlist-holder .property-list__tile__cover__bath-bed .btn-fav .title,
+.property-list__tile__cover__bath-bed .tradesmen-list__tile__details__price.business-detail .iconed .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed .tradesmen-list__tile__details__price.business-detail .iconed .title,
+.tradesmen-list__tile__details__price.business-detail .property-list__tile__cover__bath-bed .iconed .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .tradesmen-list__tile__details__price.business-detail .property-list__tile__cover__bath-bed .iconed .title,
+.property-list__tile__cover__bath-bed .property-list__tile__details__price.business-detail .iconed .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .property-list__tile__cover__bath-bed .property-list__tile__details__price.business-detail .iconed .title,
+.property-list__tile__details__price.business-detail .property-list__tile__cover__bath-bed .iconed .overlay-element .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .property-list__tile__details__price.business-detail .property-list__tile__cover__bath-bed .iconed .title {
   font-size: 36px;
   line-height: 1;
   margin-right: 10px;
@@ -11863,9 +11979,117 @@ div.field.textarea {
   width: 100%;
 }
 
+#contact-form-holder,
+.overlay-element {
+  position: fixed;
+  z-index: 9998;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: calc(100% - 20px);
+  max-width: 600px;
+}
+#contact-form-holder #ContactForm_ContactForm #ContactForm_ContactForm_Content_Holder,
+.overlay-element #ContactForm_ContactForm #ContactForm_ContactForm_Content_Holder {
+  margin-bottom: 20px;
+}
+#contact-form-holder #ContactForm_ContactForm .Actions,
+.overlay-element #ContactForm_ContactForm .Actions {
+  text-align: right;
+}
+#contact-form-holder.sunken,
+.overlay-element.sunken {
+  z-index: 9995;
+  -webkit-filter: blur(5px);
+}
+#contact-form-holder .message-body,
+.overlay-element .message-body {
+  height: auto;
+  max-height: calc(80vh - 36px);
+  overflow: hidden;
+  overflow-y: auto;
+  /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+}
+#contact-form-holder .interest-item,
+.overlay-element .interest-item {
+  margin-bottom: 20px;
+}
+#contact-form-holder .interest-item .portrait img,
+.overlay-element .interest-item .portrait img {
+  display: block;
+  width: 100px;
+}
+#contact-form-holder .interest-item .ratings,
+.overlay-element .interest-item .ratings {
+  margin: 5px 0 10px;
+}
+#contact-form-holder .interest-item .title,
+.overlay-element .interest-item .title {
+  display: block !important;
+  text-align: left !important;
+}
+#contact-form-holder .interest-item .title .email,
+.overlay-element .interest-item .title .email {
+  font-style: italic;
+  font-size: 14px;
+}
+#contact-form-holder .interest-item .actions .button, #contact-form-holder .interest-item .actions input.action,
+.overlay-element .interest-item .actions .button,
+.overlay-element .interest-item .actions input.action {
+  margin-right: 0.5em;
+}
+#contact-form-holder .interest-item .actions .button:last-child, #contact-form-holder .interest-item .actions input.action:last-child,
+.overlay-element .interest-item .actions .button:last-child,
+.overlay-element .interest-item .actions input.action:last-child {
+  margin-right: 0;
+}
+#contact-form-holder .interest-item .ratings,
+#contact-form-holder .interest-item .content,
+#contact-form-holder .interest-item .actions,
+.overlay-element .interest-item .ratings,
+.overlay-element .interest-item .content,
+.overlay-element .interest-item .actions {
+  display: block;
+}
+#contact-form-holder .interest-item[data-foldable="1"] .title,
+.overlay-element .interest-item[data-foldable="1"] .title {
+  position: relative;
+  padding-right: 16px;
+  cursor: pointer;
+}
+#contact-form-holder .interest-item[data-foldable="1"] .title:before,
+.overlay-element .interest-item[data-foldable="1"] .title:before {
+  position: absolute;
+  right: 0;
+}
+#contact-form-holder .interest-item.fold,
+.overlay-element .interest-item.fold {
+  margin-bottom: 0;
+  opacity: 0.5;
+}
+#contact-form-holder .interest-item.fold .portrait img,
+.overlay-element .interest-item.fold .portrait img {
+  width: 30px;
+}
+#contact-form-holder .interest-item.fold .ratings,
+#contact-form-holder .interest-item.fold .content,
+#contact-form-holder .interest-item.fold .actions,
+.overlay-element .interest-item.fold .ratings,
+.overlay-element .interest-item.fold .content,
+.overlay-element .interest-item.fold .actions {
+  display: none;
+}
+
 html {
   background-color: #7f8184;
   font-size: 16px;
+}
+html.locked {
+  overflow: hidden;
 }
 html body {
   font-size: 16px;
@@ -11879,12 +12103,27 @@ html body #main {
 html body h1.is-bold, html body h2.is-bold, html body h3.is-bold, html body h4.is-bold, html body h5.is-bold, html body h6.is-bold {
   font-weight: bold;
 }
+html body.overlayed:after {
+  content: '';
+  display: block;
+  z-index: 9996;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+html body.overlayed #header,
+html body.overlayed #main,
+html body.overlayed #footer {
+  -webkit-filter: blur(5px);
+}
 
-.columns .space-between, #main .search-forms .Fields .fields-wrapper.optionset ul .space-between, .section.property .property__content-area__aside dl .space-between {
+.columns.space-between, #main .search-forms .Fields .fields-wrapper.optionset ul.space-between, .section.property .property__content-area__aside dl.space-between {
   -webkit-justify-content: space-between;
   justify-content: space-between;
 }
-.columns .vertical-bottom, #main .search-forms .Fields .fields-wrapper.optionset ul .vertical-bottom, .section.property .property__content-area__aside dl .vertical-bottom {
+.columns.vertical-center, #main .search-forms .Fields .fields-wrapper.optionset ul.vertical-center, .section.property .property__content-area__aside dl.vertical-center {
+  -webkit-align-items: center;
+  align-items: center;
+}
+.columns.vertical-bottom, #main .search-forms .Fields .fields-wrapper.optionset ul.vertical-bottom, .section.property .property__content-area__aside dl.vertical-bottom {
   -webkit-align-items: flex-end;
   align-items: flex-end;
 }
@@ -11932,15 +12171,46 @@ a.button:visited {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-.blue-button:hover,
+.blue-button:focus, .blue-button:hover,
+.inline-mini-button:focus,
 .inline-mini-button:hover,
+.button:focus,
+input.action:focus,
 .button:hover,
 input.action:hover,
+a.button:link:focus,
 a.button:link:hover,
+a.button:visited:focus,
 a.button:visited:hover {
   color: #fff;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
+}
+.blue-button.outlined,
+.inline-mini-button.outlined,
+.button.outlined,
+input.outlined.action,
+a.button:link.outlined,
+a.button:visited.outlined {
+  background-color: transparent;
+  border: 1px solid #001d58;
+  color: #001d58;
+}
+.blue-button.outlined:hover, .blue-button.outlined:focus,
+.inline-mini-button.outlined:hover,
+.inline-mini-button.outlined:focus,
+.button.outlined:hover,
+input.outlined.action:hover,
+.button.outlined:focus,
+input.outlined.action:focus,
+a.button:link.outlined:hover,
+a.button:link.outlined:focus,
+a.button:visited.outlined:hover,
+a.button:visited.outlined:focus {
+  background-color: #001d58;
+  color: #fff;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
 }
 .blue-button.red,
 .inline-mini-button.red,
@@ -11958,13 +12228,22 @@ a.button:link.green,
 a.button:visited.green {
   background-color: #b8e81e;
 }
+.blue-button.yellow,
+.inline-mini-button.yellow,
+.button.yellow,
+input.yellow.action,
+a.button:link.yellow,
+a.button:visited.yellow {
+  color: rgba(0, 0, 0, 0.7);
+  background-color: #ffdd57;
+}
 .blue-button.inline,
 .inline-mini-button.inline,
 .button.inline,
 input.inline.action,
 a.button:link.inline,
 a.button:visited.inline {
-  padding: 0 1em;
+  padding: 2px 1em 4px;
   font-size: 14px;
 }
 

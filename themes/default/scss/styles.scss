@@ -30,11 +30,15 @@ $grey: #7f8184;
         'blocks/datetimepicker',
         'blocks/footer',
         'blocks/property-tile',
-        'blocks/owl-carousel';
+        'blocks/owl-carousel',
+        'blocks/interest-list';
 
 html {
     background-color: #7f8184;
     font-size: 16px;
+    &.locked {
+        overflow: hidden;
+    }
     body {
         font-size: 16px;
         font-family: "Lato", sans-serif;
@@ -48,15 +52,35 @@ html {
                 font-weight: bold;
             }
         }
+
+        &.overlayed {
+            &:after {
+                content: '';
+                display: block;
+                @extend .is-overlay;
+                z-index: 9996;
+                background-color: rgba(255,255,255,0.8);
+            }
+
+            #header,
+            #main,
+            #footer {
+                -webkit-filter: blur(5px);
+            }
+        }
     }
 }
 
 .columns {
-    .space-between {
+    &.space-between {
         @include justify-content(space-between);
     }
 
-    .vertical-bottom {
+    &.vertical-center {
+        @include align-items(center);
+    }
+
+    &.vertical-bottom {
         @include align-items(flex-end);
     }
 }
@@ -98,10 +122,23 @@ a.button:visited {
 	background-color: $blue;
 	@include transition(all ease-in-out 0.25s);
 	@include opacity(1);
+    &:focus,
 	&:hover {
         color: #fff;
 		@include opacity(0.8);
 	}
+
+    &.outlined {
+        background-color: transparent;
+        border: 1px solid $blue;
+        color: $blue;
+        &:hover,
+        &:focus {
+            background-color: $blue;
+            color: #fff;
+            @include opacity(1);
+        }
+    }
 
     &.red {
         background-color: $red;
@@ -111,8 +148,13 @@ a.button:visited {
         background-color: $green;
     }
 
+    &.yellow {
+        color: rgba(0, 0, 0, 0.7);
+        background-color: $yellow;
+    }
+
     &.inline {
-        padding: 0 1em;
+        padding: 2px 1em 4px;
         font-size: 14px;
     }
 }

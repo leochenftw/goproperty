@@ -35,13 +35,22 @@
             </h3>
             <div class="is-marginless member-area__content__property-list__item__info__controls">
                 <% if $isGone %>
-                    Rented
+                    <% loop $Occupants %>
+                        <div class="columns">
+                            <div class="column is-auto-width">
+                                <% if $Renter.Portrait.Image %>$Renter.Portrait.Image.Cropped.FillMax(30,30)<% else %><img style="width: 30px;" src="/themes/default/images/default-portrait.png" /><% end_if %>
+                            </div>
+                            <div class="column"><em><strong>$Renter.DisplayName</strong></em>, $Start to $End</div>
+                        </div>
+                    <% end_loop %>
                 <% else %>
                     <% if $isPublished %>
-                        Listed
+                        <a class="button outlined inline" href="$Link">View</a>
+                        <a class="button outlined inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID#RentForm_RentForm_action_doWithdraw">Withdraw</a>
+                        <a class="button outlined inline btn-view-applicants" href="#" data-sid="$SecurityID" data-id="$ID">Applicants <span class="bubble">($Interests.Count)</span></a>
                     <% else %>
-                            <a class="button inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID">Edit</a>
-                            <a class="button inline" href="$Link">List</a>
+                        <a class="button outlined inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID">Edit</a>
+                        <a class="button outlined inline" href="$Link">List</a>
                     <% end_if %>
                 <% end_if %>
             </div>

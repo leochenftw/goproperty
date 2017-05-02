@@ -311,10 +311,16 @@ class PropertyPage extends Page
         if ($n == 0) {
             $arr[0] = '<li data-stars="1" class="icon"><i class="fa fa-star-o"></i></li>';
         } elseif ($n - $i > 0 ) {
-            $arr[$i] = '<li data-stars="' . $i . '" class="icon"><i class="fa fa-half-o"></li>';
+            $arr[$i] = '<li data-stars="' . $i . '" class="icon"><i class="fa fa-star-half-o"></i></li>';
         }
 
         return implode("\n", $arr);
+    }
+
+    public function getOccupants()
+    {
+        $renters = $this->Rentals()->filter(array('End:GreaterThanOrEqual' => date('Y-m-d')))->sort(array('ID' => 'DESC'));
+        return $renters;
     }
 }
 
