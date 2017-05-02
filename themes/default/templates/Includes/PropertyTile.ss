@@ -24,7 +24,12 @@
             <a class="blue-button inline-block" href="$Link">More details</a>
         </div>
         <ul class="rating column" data-sid="$SecurityID" data-uid="$Member.ID">
-            $Member.getRating(1)
+            <% with $Rating %>
+                <ul class="rating<% if $Rated %> rated<% end_if %>" data-sid="$SecurityID" data-type="PropertyPage" data-id="$Top.ID">
+                    $HTML
+                </ul>
+                <span class="rating-count">($Count rating<% if $Count > 1 %>s<% end_if %>)</span>
+            <% end_with %>
         </ul>
     </div>
 </div>
