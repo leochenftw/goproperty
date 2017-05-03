@@ -9651,6 +9651,7 @@ div.field.textarea {
 }
 .page-home .hero-region {
   padding: 55px 0 125px;
+  min-height: 40vh;
 }
 .hero-region#g-map-hero-wrapper {
   min-height: 20vh;
