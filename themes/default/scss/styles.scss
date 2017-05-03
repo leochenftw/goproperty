@@ -14,6 +14,8 @@ $grey-dark: #95a5a6;
 $blue: #001d58;
 $light: #d8d8d8;
 $grey: #7f8184;
+$header-height: 123px;
+$short-header-height: 60px;
 
 @import "bulma/bulma";
 @import 'config/ss-shim',
@@ -42,7 +44,12 @@ html {
     body {
         font-size: 16px;
         font-family: "Lato", sans-serif;
-        padding-top: 60px;
+        padding-top: $header-height;
+        @include transition(padding-top 0.5s);
+        &.short-header {
+            padding-top: $short-header-height;
+            @include transition-duration(0.2s);
+        }
         background-color: #7f8184;
         #main {
             background-color: white;
@@ -68,6 +75,12 @@ html {
                 -webkit-filter: blur(5px);
             }
         }
+    }
+}
+
+.fixy {
+    @include mobile {
+        @include transform(translateY(0) !important);
     }
 }
 

@@ -2,11 +2,24 @@ window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
     if ($('body').hasClass('page-dashboard')) {
-        $(".member-area__sidebar ul.neat-ul").sticky({topSpacing: $('#header').outerHeight()});
+        $(".member-area__sidebar ul.neat-ul").fixy($('#header').outerHeight());
         if ($(".member-area__content .fields__aside .uploader").length > 0) {
-            $(".member-area__content .fields__aside .uploader").sticky({topSpacing: $('#header').outerHeight() + 10});
+            $(".member-area__content .fields__aside .uploader").fixy($('#header').outerHeight());
         }
     }
+
+    $(window).scroll(function(e)
+    {
+        if ($(this).scrollTop() >= 100) {
+            if (!$('body').hasClass('short-header')) {
+                $('body').addClass('short-header');
+            }
+        } else if ($(this).scrollTop() <= 50) {
+            if ($('body').hasClass('short-header')) {
+                $('body').removeClass('short-header');
+            }
+        }
+    }).scroll();
 
     $('.btn-view-applicants').click(function(e)
     {

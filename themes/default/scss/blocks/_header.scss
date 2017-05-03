@@ -4,11 +4,13 @@
     top: 0;
     left: 0;
     z-index: 10;
-    height: 60px;
+    height: $header-height;
     background-color: $green;
-    padding: 15px 40px;
+    padding: 15px 12px;
     @include display-flex;
     @include justify-content(space-between);
+    @include align-items(center);
+    @include transition(height 0.3s);
     #logo {
         color: #fff;
 
@@ -22,6 +24,21 @@
             overflow: hidden;
             text-indent: -9999px;
             margin-right: 0.25em;
+        }
+    }
+
+    #mid-logo {
+        opacity: 1;
+        visibility: visible;
+        @include transition(all 0.15s);
+        @include retina-sprite(logo_blue, spritesheet, $dimensions: true);
+    }
+
+    .short-header & {
+        height: $short-header-height;
+        #mid-logo {
+            visibility: hidden;
+            opacity: 0;
         }
     }
 

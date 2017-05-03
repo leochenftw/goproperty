@@ -9557,13 +9557,19 @@ div.field.textarea {
   top: 0;
   left: 0;
   z-index: 10;
-  height: 60px;
+  height: 123px;
   background-color: #b8e81e;
-  padding: 15px 40px;
+  padding: 15px 12px;
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: center;
+  align-items: center;
+  -moz-transition: height 0.3s;
+  -o-transition: height 0.3s;
+  -webkit-transition: height 0.3s;
+  transition: height 0.3s;
 }
 #header #logo {
   color: #fff;
@@ -9573,8 +9579,8 @@ div.field.textarea {
   vertical-align: middle;
 }
 #header #logo .logo-image {
-  background-image: url('../images/sprites-s9e7de5c2eb.png');
-  background-position: 0 -299px;
+  background-image: url('../images/sprites-s791868b259.png');
+  background-position: 0 -392px;
   -moz-background-size: auto;
   -o-background-size: auto;
   -webkit-background-size: auto;
@@ -9585,6 +9591,43 @@ div.field.textarea {
   overflow: hidden;
   text-indent: -9999px;
   margin-right: 0.25em;
+}
+#header #mid-logo {
+  opacity: 1;
+  visibility: visible;
+  -moz-transition: all 0.15s;
+  -o-transition: all 0.15s;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+  background-image: url('../images/sprites-s791868b259.png');
+  background-position: 0 -86px;
+  background-repeat: repeat-y;
+  height: 93px;
+  width: 196px;
+  /**
+   * Option variable to turn on/off IE8 support.
+   *
+   * This requires Modernizr's test for `css-mediaqueries` and RespondJS
+   *
+   * Set to `1` to turn on support.
+   */
+}
+@media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3 / 2), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+  #header #mid-logo {
+    background-image: url('../images/retina_sprites-s86ebb48afd.png');
+    -moz-background-size: 232px 327px;
+    -o-background-size: 232px 327px;
+    -webkit-background-size: 232px 327px;
+    background-size: 232px 327px;
+    background-position: 0 -43px;
+  }
+}
+.short-header #header {
+  height: 60px;
+}
+.short-header #header #mid-logo {
+  visibility: hidden;
+  opacity: 0;
 }
 #header #top_side_menu a {
   color: #fff;
@@ -9616,8 +9659,8 @@ div.field.textarea {
 .hero-region#g-map-hero-wrapper:before {
   content: '';
   display: block;
-  background-image: url('../images/sprites-s9e7de5c2eb.png');
-  background-position: 0 -329px;
+  background-image: url('../images/sprites-s791868b259.png');
+  background-position: 0 -422px;
   -moz-background-size: auto;
   -o-background-size: auto;
   -webkit-background-size: auto;
@@ -9645,8 +9688,8 @@ div.field.textarea {
   z-index: 1;
 }
 .hero-region__logo-full {
-  background-image: url('../images/sprites-s9e7de5c2eb.png');
-  background-position: 0 -86px;
+  background-image: url('../images/sprites-s791868b259.png');
+  background-position: 0 -179px;
   -moz-background-size: auto;
   -o-background-size: auto;
   -webkit-background-size: auto;
@@ -11214,8 +11257,8 @@ div.field.textarea {
   display: block;
   overflow: hidden;
   text-indent: -9999px;
-  background-image: url('../images/sprites-s9e7de5c2eb.png');
-  background-position: 0 -329px;
+  background-image: url('../images/sprites-s791868b259.png');
+  background-position: 0 -422px;
   -moz-background-size: auto;
   -o-background-size: auto;
   -webkit-background-size: auto;
@@ -12097,8 +12140,19 @@ html.locked {
 html body {
   font-size: 16px;
   font-family: "Lato", sans-serif;
-  padding-top: 60px;
+  padding-top: 123px;
+  -moz-transition: padding-top 0.5s;
+  -o-transition: padding-top 0.5s;
+  -webkit-transition: padding-top 0.5s;
+  transition: padding-top 0.5s;
   background-color: #7f8184;
+}
+html body.short-header {
+  padding-top: 60px;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 html body #main {
   background-color: white;
@@ -12116,6 +12170,15 @@ html body.overlayed #header,
 html body.overlayed #main,
 html body.overlayed #footer {
   -webkit-filter: blur(5px);
+}
+
+@media screen and (max-width: 768px) {
+  .fixy {
+    -moz-transform: translateY(0) !important;
+    -ms-transform: translateY(0) !important;
+    -webkit-transform: translateY(0) !important;
+    transform: translateY(0) !important;
+  }
 }
 
 .columns.space-between, #main .search-forms .Fields .fields-wrapper.optionset ul.space-between, .section.property .property__content-area__aside dl.space-between {
