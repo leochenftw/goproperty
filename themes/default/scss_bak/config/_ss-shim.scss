@@ -1,0 +1,15 @@
+fieldset {
+    border: none;
+}
+
+label {
+    @extend .label;
+}
+
+input.text {
+    @extend .input;
+}
+
+input.action {
+    @extend .button;
+}

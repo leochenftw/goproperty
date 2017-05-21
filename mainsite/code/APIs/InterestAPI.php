@@ -2,7 +2,7 @@
 use Ntb\RestAPI\BaseRestController as BaseRestController;
 use SaltedHerring\Debugger as Debugger;
 /**
- * @file SiteAppController.php
+ * @file InterestAPI.php
  *
  * Controller to present the data from forms.
  * */

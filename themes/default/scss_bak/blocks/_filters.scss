@@ -1,0 +1,28 @@
+.filter-form {
+    font-size: 0;
+    button {
+        margin-right: rem(10);
+        font-size: rem(16);
+        border: 1px solid $grey;
+        background-color: $light;
+        padding: rem(5) rem(35) rem(5) rem(10);
+        border-radius: rem(3);
+        margin-bottom: rem(10);
+        position: relative;
+        &:after {
+            position: absolute;
+            height: 100%;
+            top: 0;
+            right: 0;
+            font-family: "go-property";
+            font-style: normal;
+            font-weight: normal;
+            content: '\e806';
+            padding: rem(5) rem(10);
+            border-left: 1px solid $grey;
+        }
+    }
+    p {
+        margin-top: 0;
+    }
+}

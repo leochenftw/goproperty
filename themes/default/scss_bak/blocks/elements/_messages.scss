@@ -1,0 +1,62 @@
+#PropertyForm_Message,
+#ContactForm_ContactForm_error {
+    position: absolute;
+    z-index: 9;
+    width: 96%;
+    max-width: rem(480);
+    left: 50%;
+    @include transform(translateX(-50%));
+
+    a {
+        text-decoration: underline;
+        color: #000;
+    }
+
+    &.good {
+        background-color: $green;
+        color: $blue;
+        border-radius: rem(5);
+        padding: rem(10) rem(20);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+    &:after {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        right: 0;
+        font-family: "go-property";
+        font-style: normal;
+        font-weight: normal;
+        content: '\e806';
+        padding: rem(5) rem(10);
+        border: none;
+        line-height: rem(26);
+    }
+}
+
+#ContactForm_ContactForm_error {
+    cursor: pointer;
+}
+
+#PropertyForm_Message {
+    &:after {
+        content: none;
+    }
+
+    button {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        right: 0;
+        padding: rem(5) rem(10);
+        background-color: transparent;
+        border: none;
+        &:before {
+            font-family: "go-property";
+            font-style: normal;
+            font-weight: normal;
+            content: '\e806';
+            line-height: rem(26);
+        }
+    }
+}

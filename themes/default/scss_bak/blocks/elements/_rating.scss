@@ -1,0 +1,11 @@
+li {
+    display: inline-block;
+    text-indent: 0;
+    margin-right: rem(10);
+    color: $green;
+    cursor: pointer;
+    &:before {
+        line-height: 1;
+        font-size: rem(24);
+    }
+}

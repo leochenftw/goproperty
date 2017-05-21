@@ -10477,6 +10477,32 @@ div.field.textarea {
   width: 100%;
   max-width: 400px;
 }
+.page-feedbackinvitationcontroller #main {
+  padding-top: 0;
+}
+.page-feedbackinvitationcontroller #main .form-container {
+  padding: 3rem 12px;
+}
+.page-feedbackinvitationcontroller #main .form-container .feedback-form select.dropdown {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+}
+.page-feedbackinvitationcontroller #main .form-container .feedback-form .field.textarea {
+  margin-bottom: 1rem;
+}
+.page-feedbackinvitationcontroller #main .form-container .feedback-form .rating {
+  color: #b8e81e;
+}
+.page-feedbackinvitationcontroller #main .form-container .feedback-form .rating li.icon, .page-feedbackinvitationcontroller #main .form-container .feedback-form .rating .section.property .property__content-area__content .social .wishlist-holder li.btn-fav, .section.property .property__content-area__content .social .wishlist-holder .page-feedbackinvitationcontroller #main .form-container .feedback-form .rating li.btn-fav, .page-feedbackinvitationcontroller #main .form-container .feedback-form .rating .tradesmen-list__tile__details__price.business-detail li.iconed, .tradesmen-list__tile__details__price.business-detail .page-feedbackinvitationcontroller #main .form-container .feedback-form .rating li.iconed,
+.page-feedbackinvitationcontroller #main .form-container .feedback-form .rating .property-list__tile__details__price.business-detail li.iconed,
+.property-list__tile__details__price.business-detail .page-feedbackinvitationcontroller #main .form-container .feedback-form .rating li.iconed {
+  font-size: 24px;
+  margin-left: 6px;
+  line-height: 1;
+}
 
 .docking-bay {
   width: 300px;
@@ -10534,6 +10560,22 @@ div.field.textarea {
 }
 .section.property .property__content-area__testimonial .title {
   font-weight: bold;
+}
+.section.property .property__content-area__testimonial .comments .comment {
+  padding-bottom: 1rem;
+}
+.section.property .property__content-area__testimonial .comments .comment:not(:last-child) {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #d8d8d8;
+}
+.section.property .property__content-area__testimonial .comments .comment .ratings {
+  margin-bottom: 0.5em;
+  line-height: 1;
+}
+.section.property .property__content-area__testimonial .comments .comment .ratings .icon, .section.property .property__content-area__testimonial .comments .comment .ratings #main .property__gallery__thumbnails .owl-nav div.owl-prev, #main .property__gallery__thumbnails .owl-nav .section.property .property__content-area__testimonial .comments .comment .ratings div.owl-prev, .section.property .property__content-area__testimonial .comments .comment .ratings #main .property__gallery__thumbnails .owl-nav div.owl-next, #main .property__gallery__thumbnails .owl-nav .section.property .property__content-area__testimonial .comments .comment .ratings div.owl-next, .section.property .property__content-area__testimonial .comments .comment .ratings #main .member-area__sidebar ul li a, #main .member-area__sidebar ul li .section.property .property__content-area__testimonial .comments .comment .ratings a, .section.property .property__content-area__testimonial .comments .comment .ratings .property__content-area__content .social .wishlist-holder .btn-fav, .section.property .property__content-area__content .social .wishlist-holder .property__content-area__testimonial .comments .comment .ratings .btn-fav, .section.property .property__content-area__testimonial .comments .comment .ratings .tradesmen-list__tile__details__price.business-detail .iconed, .tradesmen-list__tile__details__price.business-detail .section.property .property__content-area__testimonial .comments .comment .ratings .iconed,
+.section.property .property__content-area__testimonial .comments .comment .ratings .property-list__tile__details__price.business-detail .iconed,
+.property-list__tile__details__price.business-detail .section.property .property__content-area__testimonial .comments .comment .ratings .iconed {
+  color: #b8e81e;
 }
 .section.property .property__content-area__content {
   padding-left: 20px;

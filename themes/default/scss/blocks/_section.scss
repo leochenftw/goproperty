@@ -54,6 +54,23 @@
                 .title {
                     font-weight: bold;
                 }
+
+                .comments {
+                    .comment {
+                        &:not(:last-child ) {
+                            margin-bottom: 2rem;
+                            border-bottom: 1px solid #d8d8d8;
+                        }
+                        padding-bottom: 1rem;
+                        .ratings {
+                            margin-bottom: 0.5em;
+                            line-height: 1;
+                            .icon {
+                                color: $green;
+                            }
+                        }
+                    }
+                }
             }
 
             &__content {

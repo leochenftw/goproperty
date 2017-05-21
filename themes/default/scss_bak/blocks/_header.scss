@@ -1,0 +1,30 @@
+#header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: rem(60);
+    background-color: $green;
+    padding: rem(15) rem(40);
+    @include display-flex;
+    @include justify-content(space-between);
+    #logo {
+        @include retina-sprite(logo_mini, icons, $dimensions: true, $nonRetina: true);
+        display: block;
+        overflow: hidden;
+        text-indent: rem(-9999);
+    }
+
+    #top_side_menu {
+        a {
+            color: #fff;
+            font-size: rem(18);
+            line-height: rem(30);
+            &:before {
+                font-size: rem(18);
+                margin-right: .5em;
+            }
+        }
+    }
+}

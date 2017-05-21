@@ -100,4 +100,37 @@
     }
 
     @import 'member-area';
+
+    .page-feedbackinvitationcontroller & {
+        padding-top: 0;
+
+        .form-container {
+            padding: 3rem 12px;
+
+            .feedback-form {
+                select.dropdown {
+                    display: block;
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #dbdbdb;
+                    border-radius: 3px;
+                }
+
+                .field {
+                    &.textarea {
+                        margin-bottom: 1rem;
+                    }
+                }
+
+                .rating {
+                    color: $green;
+                    li.icon {
+                        font-size: 24px;
+                        margin-left: 6px;
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+    }
 }

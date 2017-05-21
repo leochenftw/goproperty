@@ -64,7 +64,25 @@
 
                 <div class="property__content-area__testimonial">
                     <h2 class="title is-4">Testimonial</h2>
-                    $Friendlify($Testimonial)
+                    <%-- $Friendlify($Testimonial) --%>
+                    <% if $Comments %>
+                        <div class="comments">
+                        <% loop $Comments %>
+                            <div class="comment">
+                                <h3 class="title is-5">$Member.FirstName $Member.Surname</h3>
+                                <p class="subtitle is-6">$When</p>
+                                <p class="ratings" data-id="$ID" data-stars="$Stars">
+                                    <span class="icon"><i class="fa fa-star-o"></i></span>
+                                    <span class="icon"><i class="fa fa-star-o"></i></span>
+                                    <span class="icon"><i class="fa fa-star-o"></i></span>
+                                    <span class="icon"><i class="fa fa-star-o"></i></span>
+                                    <span class="icon"><i class="fa fa-star-o"></i></span>
+                                </p>
+                                <p>$Comment</p>
+                            </div>
+                        <% end_loop %>
+                        </div>
+                    <% end_if %>
                 </div>
             </article>
         </div>

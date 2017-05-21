@@ -40,7 +40,7 @@
                             <div class="column is-auto-width">
                                 <% if $Renter.Portrait.Image %>$Renter.Portrait.Image.Cropped.FillMax(30,30)<% else %><img style="width: 30px;" src="/themes/default/images/default-portrait.png" /><% end_if %>
                             </div>
-                            <div class="column"><em><strong>$Renter.DisplayName</strong></em>, $Start to $End</div>
+                            <div class="column"><em><strong>$Renter.DisplayName</strong></em>, $Start to $End <button data-property-id="$Up.ID" data-rental-id="$ID" data-sid="$SecurityID" class="btn-terminate button is-small is-danger">Terminate</button></div>
                         </div>
                     <% end_loop %>
                 <% else %>

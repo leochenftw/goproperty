@@ -1,0 +1,131 @@
+/**
+ * @file styles.scss
+ *
+ * Main stylesheet.
+ * */
+
+/**
+ * Import external libraries.
+ * */
+@import 'compass';
+@import 'susy';
+@import 'breakpoint';
+@import 'h5bp';
+
+/**
+ * import config.
+ * */
+@import 'config/variables-1200px',
+        'config/colours',
+        'config/mixins',
+        'config/grid-1200px',
+        'config/fonts',
+        'config/sprite',
+        'config/modifiers',
+        'config/typography';
+
+/**
+ * Import Sprite sheet.
+ * */
+@include retina-sprite-add(icons, 'sprites/*.png', 'retina_sprites/*.png');
+
+@include h5bp-normalize;
+@include h5bp-base-styles;
+@include h5bp-helpers;
+@include h5bp-media;
+
+/**
+ * Blocks.
+ * */
+@import 'blocks/cropperjs',
+        'blocks/cropperjs-override',
+        'blocks/docking-bay',
+        'blocks/owl-carousel',
+        'blocks/datetimepicker',
+        'blocks/header',
+        'blocks/hero-region',
+        'blocks/search-form',
+        'blocks/main',
+        'blocks/mid-page-banner',
+        'blocks/tiles',
+        'blocks/property-tile',
+        'blocks/pagination',
+        'blocks/account-selectors',
+        'blocks/footer',
+        'blocks/filters';
+/**
+ * Plugins.
+ * */
+
+/**
+ * Pages.
+ * */
+
+/**
+ * Element overrides.
+ * */
+html {
+    @include box-sizing(border-box);
+}
+
+*,
+*:before,
+*:after {
+  @include box-sizing(inherit);
+}
+
+body {
+    padding-top: rem(60);
+    background-color: #7f8184;
+    #overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 9999;
+    }
+
+    #ContactForm_ContactForm {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 96%;
+        max-width: rem(480);
+        background-color: #fff;
+        border-radius: rem(5);
+        padding: rem(15);
+        @include transform(translate(-50%, -50%));
+        z-index: 10000;
+        label {
+            font-size: rem(16);
+            margin-bottom: rem(10);
+        }
+
+        textarea.textarea {
+            display: block;
+            width: 100%;
+            font-size: rem(14);
+            margin-bottom: rem(20);
+            height: rem(400);
+        }
+
+        .Actions {
+            text-align: right;
+            .blue-button {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+/**
+ * Generic breakpoint.
+ * */
+@include breakpoint($container) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,13 @@
+.docking-bay {
+    width: rem(300);
+    height: rem(300);
+    overflow: hidden;
+}
+
+#businessform-logo-uploader {
+    .docking-bay {
+        width: rem(580);
+        height: rem(338);
+        overflow: hidden;
+    }
+}

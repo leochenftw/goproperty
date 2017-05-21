@@ -1,0 +1,78 @@
+.account-types-holder {
+    h3 {
+        font-size: rem(14);
+        color: $grey;
+        margin-bottom: rem(10);
+        font-weight: normal;
+    }
+}
+
+.account-types {
+    padding-left: 0;
+    li {
+        @extend .icon-check-empty;
+        list-style: none;
+        padding-left: rem(40);
+        font-size: rem(20);
+        line-height: 1.4;
+        text-indent: 0;
+        position: relative;
+        cursor: pointer;
+        margin-bottom: rem(30);
+        &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: rem(24);
+            margin-top: rem(3);
+        }
+
+        &.checked {
+            @extend .icon-check;
+            font-size: rem(20);
+            line-height: 1.4;
+            text-indent: 0;
+            &:before {
+                font-size: rem(24);
+                margin-top: rem(3);
+            }
+        }
+
+        h4 {
+            font-size: rem(20);
+            margin-bottom: rem(10);
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+.already {
+    margin-bottom: rem(40);
+    .account-types {
+        li {
+            cursor: default;
+        }
+    }
+}
+
+.detailed-account-types {
+    li {
+        margin-right: 1.5em;
+        font-size: rem(16);
+        line-height: 1.4;
+        text-indent: 0;
+        position: relative;
+        &:before {
+            margin-right: 0.25em;
+            font-size: rem(16);
+        }
+        h4 {
+            font-size: rem(16);
+            font-weight: normal;
+            display: inline-block;
+        }
+    }
+}

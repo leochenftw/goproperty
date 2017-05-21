@@ -7,7 +7,9 @@ class Rating extends DataObject
      * @var array
      */
     private static $db = array(
-        'Stars'         =>  'Int'
+        'Stars'         =>  'Int',
+        'Comment'       =>  'Text',
+        'Key'           =>  'Varchar(40)'
     );
 
     /**
@@ -43,8 +45,9 @@ class Rating extends DataObject
             $this->Stars = 0;
         }
 
-        if (!$this->exists()) {
+        if (!$this->exists() && empty($this->GiverID)) {
             $this->GiverID = Member::currentUserID();
         }
     }
+
 }

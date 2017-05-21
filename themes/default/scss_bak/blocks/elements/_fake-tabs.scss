@@ -1,0 +1,40 @@
+$tabHeight: 60;
+
+.fake-tabs {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: rem(-$tabHeight);
+    a {
+        display: block;
+        height: rem($tabHeight);
+        line-height: rem($tabHeight);
+        padding: 0 rem(35);
+        font-size: rem(20);
+        background-color: $blue;
+        color: #fff;
+        @include transition(all 0.25s);
+        &.active,
+        &:hover,
+        &:focus {
+            background-color: #fff;
+            color: $grey;
+        }
+        border-radius: rem(5) rem(5) 0 0;
+        &:first-child {
+            border-radius: rem(10) rem(5) 0 0;
+        }
+
+        &:last-child {
+            border-radius: rem(5) rem(10) 0 0;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        margin-right: rem(1);
+        border: 1px solid #fff;
+        border-bottom: none;
+    }
+}

@@ -8,6 +8,18 @@ $(document).ready(function(e)
         }
     }
 
+    $('#FeedbackForm_FeedbackForm_Stars').change(function(e)
+    {
+        var n = $(this).val().toFloat();
+        $('ul.rating .fa').removeClass('fa-star').addClass('fa-star-o');
+        $('ul.rating .fa:lt(' + n + ')').removeClass('fa-star-o').addClass('fa-star');
+    }).change();
+
+    $('.property__content-area__testimonial .comments .comment .ratings').each(function(i, el)
+    {
+        $(this).find('.fa:lt(' + $(this).data('stars') + ')').removeClass('fa-star-o').addClass('fa-star');
+    });
+
     $(window).scroll(function(e)
     {
         if ($(this).scrollTop() >= 100) {
@@ -20,6 +32,28 @@ $(document).ready(function(e)
             }
         }
     }).scroll();
+
+    $('.btn-terminate').click(function(e)
+    {
+        e.preventDefault();
+        var rentalID        =   $(this).data('rental-id'),
+            propertyID      =   $(this).data('property-id'),
+            SessionID       =   $(this).data('sid');
+
+        $(this).addClass('is-loading');
+        
+        $.post(
+            '/api/v1/rental/' + rentalID + '/' + propertyID,
+            {
+                'SecurityID': SessionID
+            },
+            function(data)
+            {
+                console.log(data);
+                location.reload();
+            }
+        );
+    });
 
     $('.btn-view-applicants').click(function(e)
     {

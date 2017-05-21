@@ -5,7 +5,9 @@ use SaltedHerring\SaltedPayment;
 
 class PropertyPage extends Page
 {
-    private static $extensions = array(
+    private $comments           =   array();
+
+    private static $extensions  =   array(
         'AddressProperties'
     );
 
@@ -122,6 +124,13 @@ class PropertyPage extends Page
                 'Gallery'
             )
         );
+
+        if ($this->exists()) {
+            $fields->addFieldToTab(
+                'Root.Rentals',
+                Grid::make('Rentals', 'Rentals', $this->Rentals(), false)
+            );
+        }
 
         if (!empty($this->Orders())) {
             $fields->addFieldToTab(
@@ -283,12 +292,23 @@ class PropertyPage extends Page
         $n = 0;
 
         if ($this->Ratings()->exists()) {
-            $received = $this->Ratings();
+            $received = $this->Ratings()->where('"Rating"."Key" IS NULL')->distinct('"Rating"."ID"');
             $data['Count'] = $received->count();
             $total = $received->count() * 5;
             $actual = 0;
             foreach ($received as $rating) {
+
                 $actual += $rating->Stars;
+                if (!$this->searchArray($rating->ID)) {
+                    $comment_item = array(
+                        'ID'        =>  $rating->ID,
+                        'Member'    =>  $rating->Giver(),
+                        'Comment'   =>  $rating->Comment,
+                        'When'      =>  $rating->Created,
+                        'Stars'     =>  $rating->Stars
+                    );
+                    $this->comments[] = $comment_item;
+                }
             }
 
             $n = ($actual / $total) * 5;
@@ -299,6 +319,22 @@ class PropertyPage extends Page
         return new ArrayData($data);
     }
 
+    public function searchArray($ID)
+    {
+        foreach ($this->comments as $comment)
+        {
+            if ($comment['ID'] == $ID) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function getComments()
+    {
+        return new ArrayList($this->comments);
+    }
 
     private function ratingHTML($n)
     {
@@ -319,7 +355,7 @@ class PropertyPage extends Page
 
     public function getOccupants()
     {
-        $renters = $this->Rentals()->filter(array('End:GreaterThanOrEqual' => date('Y-m-d')))->sort(array('ID' => 'DESC'));
+        $renters = $this->Rentals()->filter(array('End:GreaterThanOrEqual' => date('Y-m-d'), 'Terminated' => false))->sort(array('ID' => 'DESC'));
         return $renters;
     }
 }

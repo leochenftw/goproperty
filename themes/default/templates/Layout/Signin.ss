@@ -3,7 +3,7 @@
     <div class="container">
         <% with $SigninForm %>
             <% if $Message %>
-            <div class="message-wrapper $Message.MessageType">$Message</div>
+            <div class="message-wrapper has-text-centered $Message.MessageType">$Message</div>
             <% end_if %>
             <form $FormAttributes>
                 <div class="fields">
