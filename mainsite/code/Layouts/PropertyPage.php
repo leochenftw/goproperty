@@ -192,7 +192,6 @@ class PropertyPage extends Page
                 $this->ListingDuration = $diff->days + 1;
             }
         }
-
         /*
         'Amenities'             =>  'Text',
         'Testimonial'           =>  'Text',
@@ -357,6 +356,11 @@ class PropertyPage extends Page
     {
         $renters = $this->Rentals()->filter(array('End:GreaterThanOrEqual' => date('Y-m-d'), 'Terminated' => false))->sort(array('ID' => 'DESC'));
         return $renters;
+    }
+
+    public function getApplicantsCount()
+    {
+        return $this->Interests()->filter(array('Expired:not' => true))->count();
     }
 }
 

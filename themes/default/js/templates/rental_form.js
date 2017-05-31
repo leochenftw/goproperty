@@ -70,6 +70,7 @@ var RentalForm = function(data)
                         $('#interest-list').remove();
                         $('body').removeClass('overlayed');
                         $('html').removeClass('locked');
+                        location.reload();
                     });
                 }
             }

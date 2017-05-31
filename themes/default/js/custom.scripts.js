@@ -36,23 +36,25 @@ $(document).ready(function(e)
     $('.btn-terminate').click(function(e)
     {
         e.preventDefault();
-        var rentalID        =   $(this).data('rental-id'),
-            propertyID      =   $(this).data('property-id'),
-            SessionID       =   $(this).data('sid');
+        if (confirm('Are you sure you want to terminate the lease?')) {
+            var rentalID        =   $(this).data('rental-id'),
+                propertyID      =   $(this).data('property-id'),
+                SessionID       =   $(this).data('sid');
 
-        $(this).addClass('is-loading');
-        
-        $.post(
-            '/api/v1/rental/' + rentalID + '/' + propertyID,
-            {
-                'SecurityID': SessionID
-            },
-            function(data)
-            {
-                console.log(data);
-                location.reload();
-            }
-        );
+            $(this).addClass('is-loading');
+
+            $.post(
+                '/api/v1/rental/' + rentalID + '/' + propertyID,
+                {
+                    'SecurityID': SessionID
+                },
+                function(data)
+                {
+                    console.log(data);
+                    location.reload();
+                }
+            );
+        }
     });
 
     $('.btn-view-applicants').click(function(e)

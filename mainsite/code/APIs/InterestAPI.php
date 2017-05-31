@@ -61,10 +61,19 @@ class InterestAPI extends BaseRestController {
             $rental->RenterID = $this->interest->MemberID;
             $rental->PropertyID  = $this->interest->PropertyID;
             $rental->write();
-            $this->property->doUnpublish();
+
+            $interests = $this->property->Interests()->filter(array('Expired:not' => true));
+
+            foreach ($interests as $interest)
+            {
+                $interest->Expired = true;
+                $interest->write();
+            }
+            
             $this->property->isGone = true;
             $this->property->isPaid = false;
             $this->property->writeToStage('Stage');
+            $this->property->doUnpublish();
             return true;
         }
 
@@ -74,7 +83,7 @@ class InterestAPI extends BaseRestController {
     public function get($request)
     {
         $list = array();
-        if ($interests = $this->property->Interests()) {
+        if ($interests = $this->property->Interests()->filter(array('Expired:not' => true))) {
             $interests = $interests->sort(array('ID' => 'DESC'));
             foreach ($interests as $interest)
             {

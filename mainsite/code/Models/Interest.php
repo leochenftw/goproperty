@@ -4,7 +4,8 @@ class Interest extends DataObject
 {
     private static $db = array(
         'Message'   =>  'Text',
-        'hasRead'   =>  'Boolean'
+        'hasRead'   =>  'Boolean',
+        'Expired'   =>  'Boolean'
     );
 
     private static $has_one = array(
