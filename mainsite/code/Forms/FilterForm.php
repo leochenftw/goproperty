@@ -10,17 +10,17 @@ class FilterForm extends Form
         $hasLocationParam = false;
 
         if ($region = $request->param('region')) {
-            $fields->push(LiteralField::create('Region', '<button name="region">' . $region . '<span class="icon"><i class="fa fa-close"></i></span></button>'));
+            $fields->push(LiteralField::create('Region', '<div class="is-inline-block relative"><button name="region">' . $region . '</button><span class="icon"><i class="fa fa-close"></i></span></div>'));
             $hasLocationParam = true;
         }
 
         if ($district = $request->param('district')) {
-            $fields->push(LiteralField::create('City', '<button name="district">' . $district . '<span class="icon"><i class="fa fa-close"></i></span></button>'));
+            $fields->push(LiteralField::create('City', '<div class="is-inline-block relative"><button name="district">' . $district . '</button><span class="icon"><i class="fa fa-close"></i></span></div>'));
             $hasLocationParam = true;
         }
 
         if ($suburb = $request->param('suburb')) {
-            $fields->push(LiteralField::create('Suburb', '<button name="suburb">' . $suburb . '<span class="icon"><i class="fa fa-close"></i></span></button>'));
+            $fields->push(LiteralField::create('Suburb', '<div class="is-inline-block relative"><button name="suburb">' . $suburb . '</button><span class="icon"><i class="fa fa-close"></i></span></div>'));
             $hasLocationParam = true;
         }
 
@@ -37,7 +37,7 @@ class FilterForm extends Form
                     $value = PropertyPage_Controller::translateType($value, $key == 'RentalPropertyType' ? 'RentForm' : 'SaleForm');
                 }
 
-                $fields->push(LiteralField::create($key, '<button name="' . $key . '">' . $this->friendlify($key) . $value . '<span class="icon"><i class="fa fa-close"></i></span></button>'));
+                $fields->push(LiteralField::create($key, '<div class="is-inline-block relative"><button name="' . $key . '">' . $this->friendlify($key) . $value . '</button><span class="icon"><i class="fa fa-close"></i></span></div>'));
                 $fields->push(HiddenField::create(
                     $key,
                     $key,

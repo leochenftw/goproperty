@@ -294,23 +294,26 @@ class PropertyPage extends Page
             $received = $this->Ratings()->where('"Rating"."Key" IS NULL')->distinct('"Rating"."ID"');
             $data['Count'] = $received->count();
             $total = $received->count() * 5;
-            $actual = 0;
-            foreach ($received as $rating) {
 
-                $actual += $rating->Stars;
-                if (!$this->searchArray($rating->ID)) {
-                    $comment_item = array(
-                        'ID'        =>  $rating->ID,
-                        'Member'    =>  $rating->Giver(),
-                        'Comment'   =>  $rating->Comment,
-                        'When'      =>  $rating->Created,
-                        'Stars'     =>  $rating->Stars
-                    );
-                    $this->comments[] = $comment_item;
+            if ($total > 0) {
+                $actual = 0;
+                foreach ($received as $rating) {
+
+                    $actual += $rating->Stars;
+                    if (!$this->searchArray($rating->ID)) {
+                        $comment_item = array(
+                            'ID'        =>  $rating->ID,
+                            'Member'    =>  $rating->Giver(),
+                            'Comment'   =>  $rating->Comment,
+                            'When'      =>  $rating->Created,
+                            'Stars'     =>  $rating->Stars
+                        );
+                        $this->comments[] = $comment_item;
+                    }
                 }
-            }
 
-            $n = ($actual / $total) * 5;
+                $n = ($actual / $total) * 5;
+            }
         }
 
         $data['HTML'] = $this->ratingHTML($n);

@@ -21,7 +21,7 @@ class SignupForm extends Form {
 
         // $type->addExtraClass('hide');
 
-        $fields->push($tnc = CheckboxField::create('AgreeToTnC', 'I have read and accept the <a target="_blank" href="/terms-and-conditions">terms and conditions</a> and the <a target="_blank" href="/privacy-policy">privacy policy</a>'));
+        $fields->push($tnc = CheckboxField::create('AgreeToTnC', 'I have read and accept the <a target="_blank" href="/terms-and-conditions">terms and conditions</a> and the <a target="_blank" href="/trust-and-safety">privacy policy</a>'));
 
         $fields->push(CheckboxField::create('Subscribe', 'Subcribe to the newsletter')->setValue(true));
         $actions = new FieldList(

@@ -9952,28 +9952,35 @@ div.field.textarea {
 #main .filter-form {
   font-size: 0;
 }
-#main .filter-form button {
+#main .filter-form div.is-inline-block {
   margin-right: 10px;
+  margin-bottom: 10px;
+}
+#main .filter-form div.is-inline-block .icon, #main .filter-form div.is-inline-block .property__gallery__thumbnails .owl-nav div.owl-prev, #main .property__gallery__thumbnails .owl-nav .filter-form div.is-inline-block div.owl-prev, #main .filter-form div.is-inline-block .property__gallery__thumbnails .owl-nav div.owl-next, #main .property__gallery__thumbnails .owl-nav .filter-form div.is-inline-block div.owl-next, #main .filter-form div.is-inline-block .member-area__sidebar ul li a, #main .member-area__sidebar ul li .filter-form div.is-inline-block a, #main .filter-form div.is-inline-block .section.property .property__content-area__content .social .wishlist-holder .btn-fav, .section.property .property__content-area__content .social .wishlist-holder #main .filter-form div.is-inline-block .btn-fav, #main .filter-form div.is-inline-block .tradesmen-list__tile__details__price.business-detail .iconed, .tradesmen-list__tile__details__price.business-detail #main .filter-form div.is-inline-block .iconed,
+#main .filter-form div.is-inline-block .property-list__tile__details__price.business-detail .iconed,
+.property-list__tile__details__price.business-detail #main .filter-form div.is-inline-block .iconed {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 2px 10px;
+  border-left: 1px solid #7f8184;
+  color: #363636;
+  pointer-events: none;
+}
+#main .filter-form div.is-inline-block .icon i, #main .filter-form div.is-inline-block .property__gallery__thumbnails .owl-nav div.owl-prev i, #main .property__gallery__thumbnails .owl-nav .filter-form div.is-inline-block div.owl-prev i, #main .filter-form div.is-inline-block .property__gallery__thumbnails .owl-nav div.owl-next i, #main .property__gallery__thumbnails .owl-nav .filter-form div.is-inline-block div.owl-next i, #main .filter-form div.is-inline-block .member-area__sidebar ul li a i, #main .member-area__sidebar ul li .filter-form div.is-inline-block a i, #main .filter-form div.is-inline-block .section.property .property__content-area__content .social .wishlist-holder .btn-fav i, .section.property .property__content-area__content .social .wishlist-holder #main .filter-form div.is-inline-block .btn-fav i, #main .filter-form div.is-inline-block .tradesmen-list__tile__details__price.business-detail .iconed i, .tradesmen-list__tile__details__price.business-detail #main .filter-form div.is-inline-block .iconed i,
+#main .filter-form div.is-inline-block .property-list__tile__details__price.business-detail .iconed i,
+.property-list__tile__details__price.business-detail #main .filter-form div.is-inline-block .iconed i {
+  font-size: 16px;
+}
+#main .filter-form button {
   font-size: 16px;
   border: 1px solid #7f8184;
   background-color: #d8d8d8;
   padding: 5px 45px 5px 10px;
   border-radius: 3px;
-  margin-bottom: 10px;
-  position: relative;
   cursor: pointer;
   outline: none;
-}
-#main .filter-form button span {
-  position: absolute;
-  height: 100%;
-  top: 0;
-  right: 0;
-  padding: 5px 10px;
-  border-left: 1px solid #7f8184;
-}
-#main .filter-form button span i {
-  font-size: 16px;
 }
 #main .filter-form p {
   margin-top: 0;
