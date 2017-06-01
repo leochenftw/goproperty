@@ -213,9 +213,10 @@ $(document).ready(function(e)
     {
         e.preventDefault();
         var form    =   $(this).parents('.filter-form:eq(0)'),
-            name    =   $(this).attr('name');
-        // form.find('[name="'+name+'"]').remove();
-        $(this).parent().remove();
+            name    =   $(this).attr('name'),
+            me      =   form.find('[name="'+name+'"]');
+        me.remove();
+        me.parent().remove();
         if (name == 'region') {
             form.find('[name="district"], [name="suburb"]').remove();
         }
