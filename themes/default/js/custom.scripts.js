@@ -220,10 +220,18 @@ $(document).ready(function(e)
         prt.hide();
         me.remove();
         if (name == 'region') {
+            form.find('[name="district"], [name="suburb"]').each(function(i, el)
+            {
+                $(this).parent().hide();
+            });
             form.find('[name="district"], [name="suburb"]').remove();
         }
 
         if (name == 'district') {
+            form.find('[name="suburb"]').each(function(i, el)
+            {
+                $(this).parent().hide();
+            });
             form.find('[name="suburb"]').remove();
         }
 
