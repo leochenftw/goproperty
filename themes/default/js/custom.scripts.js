@@ -214,7 +214,8 @@ $(document).ready(function(e)
         e.preventDefault();
         var form    =   $(this).parents('.filter-form:eq(0)'),
             name    =   $(this).attr('name');
-        form.find('[name="'+name+'"]').remove();
+        // form.find('[name="'+name+'"]').remove();
+        $(this).parent().remove();
         if (name == 'region') {
             form.find('[name="district"], [name="suburb"]').remove();
         }
