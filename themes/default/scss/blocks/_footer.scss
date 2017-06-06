@@ -3,10 +3,10 @@
     border-top: 0.625rem solid #b8e81e;
     padding: 3.75rem 0 5.25rem;
     ul {
+        margin-bottom: 16px;
         li {
             list-style: none;
             font-size: 1.25rem;
-            margin-bottom: 1rem;
             a {
                 color: #fff;
                 text-decoration: none;
@@ -22,6 +22,25 @@
                 }
             }
         }
+    }
+
+    .payment-methods {
+        margin: 0 0 12px;
+        .icon {
+            font-size: 48px;
+            color: white;
+            height: auto;
+            width: auto;
+            line-height: 1;
+            margin-right: 12px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .payment-disclaimer {
+        font-size: 10px;
     }
 
     &__col {

@@ -29,6 +29,11 @@
                         <li><a href="$Link"<% if $IsNewWindow %> target="_blank"<% end_if %> class="$LinkingMode icon"><i class="fa fa-$MenuTitle.LowerCase"></i><span class="hide">$MenuTitle</span></a></li>
                     <% end_loop %>
                     </ul>
+                    <div class="payment-methods">
+                        <span class="icon"><i class="fa fa-cc-visa"></i></span>
+                        <span class="icon"><i class="fa fa-cc-mastercard"></i></span>
+                    </div>
+                    <p class="payment-disclaimer">Your payment details have the security offered by Paystation Limited, a fully AIS PCI DSS compliant Paymark Certified Solutions Provider (CSP), using 128-bit SSL encryption. Credit Card details will be sent directly to the acquiring institution for processing. Full card data is not available to or used by the merchant. You will be issued with a receipt number at the end of your transaction.</p>
                 </div>
             <% end_if %>
         </div>

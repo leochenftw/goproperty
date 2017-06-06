@@ -11270,10 +11270,12 @@ div.field.textarea {
   border-top: 0.625rem solid #b8e81e;
   padding: 3.75rem 0 5.25rem;
 }
+.footer ul {
+  margin-bottom: 16px;
+}
 .footer ul li {
   list-style: none;
   font-size: 1.25rem;
-  margin-bottom: 1rem;
 }
 .footer ul li a {
   color: #fff;
@@ -11292,6 +11294,27 @@ div.field.textarea {
   font-size: 32px;
   color: #fff;
   text-indent: 0;
+}
+.footer .payment-methods {
+  margin: 0 0 12px;
+}
+.footer .payment-methods .icon, .footer .payment-methods #main .property__gallery__thumbnails .owl-nav div.owl-prev, #main .property__gallery__thumbnails .owl-nav .footer .payment-methods div.owl-prev, .footer .payment-methods #main .property__gallery__thumbnails .owl-nav div.owl-next, #main .property__gallery__thumbnails .owl-nav .footer .payment-methods div.owl-next, .footer .payment-methods #main .member-area__sidebar ul li a, #main .member-area__sidebar ul li .footer .payment-methods a, .footer .payment-methods .section.property .property__content-area__content .social .wishlist-holder .btn-fav, .section.property .property__content-area__content .social .wishlist-holder .footer .payment-methods .btn-fav, .footer .payment-methods .tradesmen-list__tile__details__price.business-detail .iconed, .tradesmen-list__tile__details__price.business-detail .footer .payment-methods .iconed,
+.footer .payment-methods .property-list__tile__details__price.business-detail .iconed,
+.property-list__tile__details__price.business-detail .footer .payment-methods .iconed {
+  font-size: 48px;
+  color: white;
+  height: auto;
+  width: auto;
+  line-height: 1;
+  margin-right: 12px;
+}
+.footer .payment-methods .icon:last-child, .footer .payment-methods #main .property__gallery__thumbnails .owl-nav div.owl-prev:last-child, #main .property__gallery__thumbnails .owl-nav .footer .payment-methods div.owl-prev:last-child, .footer .payment-methods #main .property__gallery__thumbnails .owl-nav div.owl-next:last-child, #main .property__gallery__thumbnails .owl-nav .footer .payment-methods div.owl-next:last-child, .footer .payment-methods #main .member-area__sidebar ul li a:last-child, #main .member-area__sidebar ul li .footer .payment-methods a:last-child, .footer .payment-methods .section.property .property__content-area__content .social .wishlist-holder .btn-fav:last-child, .section.property .property__content-area__content .social .wishlist-holder .footer .payment-methods .btn-fav:last-child, .footer .payment-methods .tradesmen-list__tile__details__price.business-detail .iconed:last-child, .tradesmen-list__tile__details__price.business-detail .footer .payment-methods .iconed:last-child,
+.footer .payment-methods .property-list__tile__details__price.business-detail .iconed:last-child,
+.property-list__tile__details__price.business-detail .footer .payment-methods .iconed:last-child {
+  margin-right: 0;
+}
+.footer .payment-disclaimer {
+  font-size: 10px;
 }
 .footer__col.social ul li {
   display: inline-block;
