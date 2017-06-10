@@ -62,22 +62,29 @@ class AccountUpgradeForm extends Form
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
             if ($accountTypes = $data['AccountType']) {
                 if ($member = Member::currentUser()) {
-                    $order = SaltedOrder::prepare_order();
-                    $order->Landlords = false;
-                    $order->Realtors = false;
-                    $order->Tradesmens = false;
-                    $n = 0;
-                    foreach ($accountTypes as $accountType => $value) {
-                        $n += $this->getSubscription($accountType);
-                        $order->$accountType = true;
-                    }
+                    if ($member->inFreeTrial()) {
+                        foreach ($accountTypes as $accountType => $value) {
+                            $member->addToGroupByCode(strtolower($accountType), $accountType);
+                        }
+                        return $this->controller->redirect('/member/action/upgrade');
+                    } else {
+                        $order = SaltedOrder::prepare_order();
+                        $order->Landlords = false;
+                        $order->Realtors = false;
+                        $order->Tradesmens = false;
+                        $n = 0;
+                        foreach ($accountTypes as $accountType => $value) {
+                            $n += $this->getSubscription($accountType);
+                            $order->$accountType = true;
+                        }
 
-                    $order->Amount->Amount = $n;
-                    $order->RecursiveFrequency = 30;
-                    $order->PaidToClass = 'Member';
-                    $order->PaidToClassID = $member->ID;
-                    $order->Pay('Paystation', true);
-                    return;
+                        $order->Amount->Amount = $n;
+                        // $order->RecursiveFrequency = 30;
+                        $order->PaidToClass = 'Member';
+                        $order->PaidToClassID = $member->ID;
+                        $order->Pay('Paystation');
+                        return;
+                    }
                 }
                 $this->sessionMessage('Session expired', 'bad');
             }

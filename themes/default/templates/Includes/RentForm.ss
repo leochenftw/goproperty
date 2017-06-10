@@ -52,7 +52,7 @@
                     $Fields.fieldByName('ContactNumber').FieldHolder
                 </div>
             </div>
-
+            <% if not $CurrentMember.inFreeTrial %>
             <div class="fields__main__section listing-options column is-12">
                 <h3 class="fields__main__section__title title is-4 is-bold">Listing options</h3>
                 <div class="fields__main__section__content">
@@ -66,6 +66,7 @@
                     $Fields.fieldByName('ListingCloseOn').FieldHolder
                 </div>
             </div>
+            <% end_if %>
         </div>
         <div class="fields__aside column is-half">
             <h3 class="title is-4 is-bold">Property on map</h3>
@@ -80,14 +81,20 @@
     </div>
     </fieldset>
     <div class="Actions column is-12">
-        <% if $ListFree %>
+        <% if $CurrentMember.inFreeTrial %>
             <div class="content">
-            <% if $ListTilGone %>
-                <p>You have paid for the listing until it gets rented. It means you may list and withdraw this particular propety without incurring additional charges before it's rented.</p>
-            <% else %>
-                <p>You have paid for listing til the end of $ListUntil. It means before the duration has run out, you may list and withdraw this particular propety without incurring additional charges.</p>
-            <% end_if %>
+                <p>You are in 2-month free trial period. <br />You may list property for free before <strong>$CurrentMember.FreeUntil.Nice</strong>.</p>
             </div>
+        <% else %>
+            <% if $ListFree %>
+                <div class="content">
+                <% if $ListTilGone %>
+                    <p>You have paid for the listing until it gets rented. It means you may list and withdraw this particular propety without incurring additional charges before it's rented.</p>
+                <% else %>
+                    <p>You have paid for listing til the end of $ListUntil. It means before the duration has run out, you may list and withdraw this particular propety without incurring additional charges.</p>
+                <% end_if %>
+                </div>
+            <% end_if %>
         <% end_if %>
         $Actions
     </div>

@@ -17,9 +17,10 @@ class MemberExtension extends DataExtension
         'ValidationKey'  	 	=>	'Varchar(40)',
         'ContactNumber'         =>  'Varchar(24)',
         'MobileNumber'          =>  'Varchar(24)',
-        'beLandlords'           =>  'Boolean',
-        'beTradesmen'           =>  'Boolean',
-        'beRealtors'            =>  'Boolean'
+        // 'beLandlords'           =>  'Boolean',
+        // 'beTradesmen'           =>  'Boolean',
+        // 'beRealtors'            =>  'Boolean',
+        'FreeUntil'             =>  'Date'
     );
 
     /**
@@ -99,6 +100,14 @@ class MemberExtension extends DataExtension
             $purified = Utilities::sanitise($this->owner->Nickname, '', '');
             $this->owner->Nickname = $purified;
         }
+    }
+
+    public function AccountRelatedOrders()
+    {
+        if ($payment = $this->owner->Orders()) {
+            return $payment->filter(array('isOpen' => false, 'PaidToClass' => 'Member'));
+        }
+        return null;
     }
 
     public function Orders()
@@ -254,6 +263,25 @@ class MemberExtension extends DataExtension
         }
 
         return $this->owner->FirstName . (!empty($this->owner->Surname) ? (' ' . $this->owner->Surname) : '');
+    }
+
+    public function TrialExpired()
+    {
+        if (!empty($this->owner->FreeUntil)) {
+            $freeUntil = strtotime($this->owner->FreeUntil);
+            return $freeUntil < time();
+        }
+
+        return true;
+    }
+
+    public function inFreeTrial()
+    {
+        if (!empty($this->owner->FreeUntil)) {
+            $freeUntil = strtotime($this->owner->FreeUntil);
+            return $freeUntil >= time();
+        }
+        return false;
     }
 
 }

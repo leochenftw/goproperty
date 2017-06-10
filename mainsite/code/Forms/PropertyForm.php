@@ -157,7 +157,7 @@ class PropertyForm extends Form
             !empty($prop) ? $prop->ListTilGone : null
         );
 
-        if (!empty($prop) && $prop->hasPaid()) {
+        if ((!empty($prop) && $prop->hasPaid()) || ($member->inFreeTrial() && !empty($prop) && $prop->isPublished())) {
             $listingOption = $listingOption->performReadonlyTransformation();
         }
 
@@ -265,6 +265,13 @@ class PropertyForm extends Form
                 // $property->ListingCloseOn = $data['ListingCloseOn'];
                 // $property->writeToStage('Stage');
                 $this->doSubmit($data, $form, true);
+
+                if ($member = Member::currentUser()) {
+                    if ($member->inFreeTrial()) {
+                        $property->writeToStage('Live');
+                        return Controller::curr()->redirect('/member/action/' . ($this->Name == 'RentForm' ? 'list-property-for-rent' : 'list-property-for-sale') . '?property_id=' . $property->ID);
+                    }
+                }
 
                 if ($property->hasPaid()) {
                     $property->writeToStage('Live');

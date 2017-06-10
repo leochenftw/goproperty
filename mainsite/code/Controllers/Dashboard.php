@@ -19,7 +19,8 @@ class Dashboard extends Page_Controller {
         'MembershipExtendingForm',
         'addCreditcardForm',
         'AgencyForm',
-        'BusinessForm'
+        'BusinessForm',
+        'VoucherForm'
     );
 
     public function index($request) {
@@ -320,5 +321,19 @@ class Dashboard extends Page_Controller {
         }
 
         return false;
+    }
+
+    public function VoucherForm()
+    {
+        return new VoucherForm($this);
+    }
+
+    public function canUseVoucher()
+    {
+        $member = Member::currentUser();
+        if (!empty($member->FreeUntil)) {
+            return false;
+        }
+        return empty(Voucher::get()->filter(array('MemberID' => $member->ID))->first()) ? true : false;
     }
 }
