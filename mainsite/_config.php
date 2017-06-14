@@ -6,6 +6,8 @@ $project = 'mainsite';
 global $database;
 $database = SS_DATABASE_NAME;
 
+Email::mailer()->setMessageEncoding('base64');
+
 // Use _ss_environment.php file for configuration
 require_once("conf/ConfigureFromEnv.php");
 
