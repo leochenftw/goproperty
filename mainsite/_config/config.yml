@@ -107,6 +107,33 @@ PropertyPage:
   IdealTenants:
     - 'Student'
     - 'Professional'
+Property:
+  DailyCharge: 2
+  TilSold: 39.95
+  TilRented: 30
+  MaxBedroom: 10
+  MaxBathroom: 5
+  MaxCapacity: 20
+  Basic:
+    'Apartment': 'Apartment'
+    'House': 'House'
+    'Townhouse': 'Townhouse'
+    'Unit': 'Unit'
+  Advanced:
+    'Section': 'Section'
+    'Lifestyle bare land': 'Lifestyle bare land'
+    'Lifestyle dwelling': 'Lifestyle dwelling'
+  Parking:
+    'No carpark': 'No carpark'
+    'On-street': 'On-street'
+    'Off-street': 'Off-street'
+    'Garage': 'Garage'
+    'Carport': 'Carport'
+    'Residential parking': 'Residential parking'
+    'Coupon parking': 'Coupon parking'
+  IdealTenants:
+    'Student': 'Student'
+    'Professional': 'Professional'
 Image:
   extensions:
     - ImageExt

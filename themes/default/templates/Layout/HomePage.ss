@@ -3,14 +3,8 @@
 <section class="section tiles">
     <div class="container">
         <header class="column is-12"><h2 class="tiles__title title is-2">Browse listings</h2></header>
-        <div class="column is-12">
-            <img src="http://placehold.it/1180x150" width="1180" height="150" />
-        </div>
         <div class="tiles__tiles columns is-marginless">
             <% include HomeTiles %>
-        </div>
-        <div class="column is-12">
-            <img src="http://placehold.it/1180x150" width="1180" height="150" />
         </div>
     </div>
 </section>

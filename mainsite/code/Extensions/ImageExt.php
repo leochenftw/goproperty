@@ -2,6 +2,7 @@
 
 class ImageExt extends DataExtension {
     protected static $has_one = array(
-        'PropertyPage'      =>  'PropertyPage'
+        'PropertyPage'      =>  'PropertyPage',
+        'Property'          =>  'Property'
     );
 }

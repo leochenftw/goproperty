@@ -12,7 +12,8 @@ class Rental extends DataObject
 
     private static $has_one = array(
         'Renter'        =>  'Member',
-        'Property'      =>  'PropertyPage'
+        'Property'      =>  'PropertyPage', // <- this needs to go
+        'inProperty'    =>  'Property'
     );
 
     /**

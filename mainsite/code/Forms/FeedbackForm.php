@@ -23,7 +23,7 @@ class FeedbackForm extends Form
         );
 
         $fields->push(HiddenField::create('RatingID', 'RatingID', $ID));
-        $fields->push(TextareaField::create('Comment', 'Comment'));
+        $fields->push(TextareaField::create('Comment', 'Comment')->setAttribute('maxlength', 150));
 
         $actions = new FieldList();
         $actions->push(FormAction::create('doFeedback', 'Submit'));

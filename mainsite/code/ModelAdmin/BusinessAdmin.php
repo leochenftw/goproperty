@@ -5,7 +5,7 @@
  * */
 
 class BusinessAdmin extends ModelAdmin {
-	private static $managed_models = array('Business');
+	private static $managed_models = array('Business', 'Property');
 	private static $url_segment = 'business';
 	private static $menu_title = 'Business';
 	//private static $menu_icon = 'mainsite/images/category.png';
