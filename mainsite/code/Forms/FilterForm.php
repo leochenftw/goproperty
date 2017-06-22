@@ -34,6 +34,8 @@ class FilterForm extends Form
             foreach ($terms as $key => $value) {
 
                 if ($key == 'RentalPropertyType' || $key == 'SalePropertyType') {
+                    // Debugger::inspect($value);
+                    $raw_value = $value;
                     $value = PropertyPage_Controller::translateType($value, $key == 'RentalPropertyType' ? 'RentForm' : 'SaleForm');
                 }
 
@@ -41,7 +43,7 @@ class FilterForm extends Form
                 $fields->push(HiddenField::create(
                     $key,
                     $key,
-                    $value
+                    ($key == 'RentalPropertyType' || $key == 'SalePropertyType') ? $raw_value : $value
                 ));
             }
 
