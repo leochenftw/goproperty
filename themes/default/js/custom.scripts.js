@@ -247,12 +247,12 @@ $(document).ready(function(e)
         form.submit();
     });
 
-    if ($('body').hasClass('page-type-property-page') || $('body').hasClass('page-type-business')) {
-        $('ul.rating').each(function(i, el)
-        {
-            $(this).rating();
-        });
-    }
+    // if ($('body').hasClass('page-type-property-page') || $('body').hasClass('page-type-business')) {
+    //     $('ul.rating').each(function(i, el)
+    //     {
+    //         $(this).rating();
+    //     });
+    // }
 
     if ($('body').hasClass('activation')) {
         setTimeout(function()
