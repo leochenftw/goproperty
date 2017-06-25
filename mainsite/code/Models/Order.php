@@ -14,6 +14,10 @@ class Order extends SaltedOrder
         'Tradesmen'             =>  'Boolean'
     );
 
+    protected static $has_one = array(
+        'Listing'               =>  'Listing'
+    );
+
     public function PaidFor()
     {
         if ($this->Landlords) {

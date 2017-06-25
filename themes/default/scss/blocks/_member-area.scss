@@ -119,6 +119,22 @@
             }
         }
 
+        &__property-list {
+            &__item {
+                &__info {
+                    .forms {
+                        .all-listings,
+                        form {
+                            margin: 21px 0 14px;
+                            padding: 1em 0 1.5em;
+                            border-top: 1px solid $light;
+                            border-bottom: 1px solid $light;
+                        }
+                    }
+                }
+            }
+        }
+
         #MemberProfileForm_MemberProfileForm_Email_Holder {
             .middleColumn,
             .description {

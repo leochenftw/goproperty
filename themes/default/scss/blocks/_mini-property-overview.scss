@@ -1,0 +1,15 @@
+.mini-property-overview {
+    p.link-row {
+        margin-top: 0.25em;
+    }
+
+    .columns {
+        .column {
+            a {
+                font-size: 12px;
+                border-bottom: 1px solid rgba($blue, 0.2);
+            }
+        }
+    }
+    padding-bottom: 30px;
+}

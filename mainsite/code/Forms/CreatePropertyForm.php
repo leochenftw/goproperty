@@ -6,232 +6,223 @@ use SaltedHerring\SaltedPayment\API\Paystation;
 class CreatePropertyForm extends Form
 {
     protected $FormTitle = '';
+    protected $FormSubtitle = '';
+    protected $steps = 5;
+    protected $step = 0;
+    protected $property = null;
 
-    public function __construct($controller, $name, $prop = null)
+    public function __construct($controller)
     {
-        if (!empty($prop) && !empty($prop->Title)) {
-            $this->FormTitle = $prop->Title;
+        Session::clear('FormInfo');
+
+        $propertyID     =   $controller->request->getVar('id');
+        if (!empty($propertyID)) {
+            Session::set('WorkingPropertyID', $propertyID);
+        } elseif ($controller->request->isGet()) {
+            Session::clear('WorkingPropertyID');
         }
+
+        $this->step     =   $controller->request->getVar('step');
+
+        if (empty($this->step) && $controller->request->isPost()) {
+            $this->step =   Session::get('PropertyStep');
+        }
+
+        $modifying      =   $controller->request->getVar('editing');
+        // Debugger::inspect($this->step);
+        $this->step     =   !empty($this->step) ? $this->step : 0;
+
+        if (empty($propertyID) && $controller->request->isPost()) {
+            $propertyID =   Session::get('WorkingPropertyID');
+        }
+
+        Session::set('PropertyStep', $this->step);
+
+        // Debugger::inspect($propertyID);
+        // Debugger::inspect($this->step);
+        // Debugger::inspect(Session::get_all());
+
+        $this->property =   !empty($propertyID) ? Property::get()->byID($propertyID) : null;
+        $property       =   $this->property;
+
+        // if (!empty($propertyID) && empty($property)) {
+        //     Session::clear('WorkingPropertyID');
+        // }
 
         $fields = new FieldList();
-        $fields->push(HiddenField::create(
-            'RentOrSale',
-            'RentOrSale',
-            $name == 'RentForm' ? 'rent' : 'sale'
-        ));
 
-        $fields->push(DropdownField::create(
-            'PropertyType',
-            'Property type',
-            Config::inst()->get('PropertyPage', $name),
-            !empty($prop) ? $prop->PropertyType : null
-        )->setEmptyString('- select one -'));
+        switch ($this->step) {
+            case 0:
+                // Debugger::inspect(!empty($property) ? $property->FullAddress : null);
+                $this->FormTitle = 'Where is your property?';
+                $this->FormSubtitle = 'This will help us quickly locate your property';
 
-        $fields->push($unit = TextField::create(
-            'UnitNumber',
-            'Unit/Room/Apartment/Flat number',
-            !empty($prop) ? $prop->UnitNumber : null
-        )->setAttribute('placeholder', 'e.g. Level 5 | Flat 6 | Unit 4'));
+                $fields->push(TextField::create('FullAddress', 'Street address', !empty($property) ? $property->FullAddress : null)->addExtraClass('google-placed'));
+                $fields->push(TextField::create('StreetNumber', 'Street number', !empty($property) ? $property->StreetNumber : null));
+                $fields->push(TextField::create('StreetName', 'Street name', !empty($property) ? $property->StreetName : null));
+                $fields->push(TextField::create('Suburb','Suburb', !empty($property) ? $property->Suburb : null));
+                $fields->push(TextField::create('City','City', !empty($property) ? $property->City : null));
+                $fields->push(TextField::create('Region','Region', !empty($property) ? $property->Region : null));
+                $fields->push(TextField::create('Country','Country', !empty($property) ? $property->Country : null));
+                $fields->push(TextField::create('PostCode','PostCode', !empty($property) ? $property->PostCode : null));
 
-        $fields->push($addr = TextField::create('FullAddress', 'Street address')->addExtraClass('google-placed'));
+                $fields->push(HiddenField::create('Lat','Lat', !empty($property) ? $property->Lat : null));
+                $fields->push(HiddenField::create('Lng','Lng', !empty($property) ? $property->Lng : null));
+                break;
+            case 1:
+                $this->FormTitle = 'What your property is like?';
+                $this->FormSubtitle = 'This will help on the search result.';
 
-        if (!empty($prop)) {
-            $addr->setValue($prop->FullAddress);
+                $fields->push(
+                    DropdownField::create(
+                        'PropertyType',
+                        'What\'s your property type?',
+                        Config::inst()->get('Property', 'Basic'),
+                        !empty($property) ? $property->PropertyType : null
+                    )->setEmptyString('- select one -')
+                );
+
+                $fields->push(
+                    TextField::create(
+                        'UnitNumber',
+                        'Does it have an unit/flat number?',
+                        !empty($property) ? $property->UnitNumber : null
+                    )->setAttribute('placeholder', 'e.g. Level 5 | Flat 6 | Unit 4')
+                     ->setDescription('Leave empty if it doesn\'t')
+                );
+
+                break;
+            case 2:
+                $this->FormTitle = 'Can you describe your property a bit more?';
+                $this->FormSubtitle = 'This will help on the search result.';
+
+                $fields->push(DropdownField::create(
+                    'NumBedrooms',
+                    'How many bedrooms in your property?',
+                    $this->makeList('MaxBedroom'),
+                    !empty($property) ? $property->NumBedrooms : null
+                )->setEmptyString('- select one -'));
+
+                $fields->push(DropdownField::create(
+                    'NumBathrooms',
+                    'How many bathrooms in your property?',
+                    $this->makeList('MaxBathroom'),
+                    !empty($property) ? $property->NumBathrooms : null
+                )->setEmptyString('- select one -'));
+
+                $fields->push(DropdownField::create(
+                    'MaxCapacity',
+                    'Up to how many people can your property allow',
+                    $this->makeList('MaxCapacity'),
+                    !empty($property) ? $property->MaxCapacity : null
+                )->setEmptyString('- I don\'t know -'));
+
+                $fields->push(DropdownField::create(
+                    'Parking',
+                    'Parking option',
+                    Config::inst()->get('Property', 'Parking'),
+                    !empty($property) ? $property->Parking : null
+                )->setEmptyString('- select one -'));
+
+                $fields->push(CheckboxField::create(
+                    'SmokeAlarm',
+                    'Smoke alarm(s) installed',
+                    !empty($property) ? $property->SmokeAlarm : 1
+                ));
+
+                $fields->push(CheckboxField::create(
+                    'Insulation',
+                    'Insulation included',
+                    !empty($property) ? $property->Insulation : 1
+                ));
+
+                break;
+
+            case 3:
+                $this->FormTitle = 'How does your property look like?';
+                $this->FormSubtitle = 'Time to upload some photos of your property.';
+
+                $fields->push($gallery = UploadField::create('Gallery', 'Gallery'));
+
+                $gallery->setFolderName('members/' . Member::CurrentUserID() . '/propertyimages')
+                        ->setCanAttachExisting(false)
+                        // ->setAllowedMaxFileNumber(10)
+                        ->setAllowedExtensions(array('jpg', 'jpeg', 'png'))
+                        ->setPreviewMaxWidth(400)
+                        ->setPreviewMaxHeight(400)
+                        ->setCanPreviewFolder(false)
+                        ->setAutoUpload(false)
+                        ->setFieldHolderTemplate('PropertyGalleryUploader')
+                        ->addExtraClass('viewable-gallery');
+
+                $gallery->customise(
+                    array(
+                        'Existings' => $property->Gallery()->sort('ID', 'ASC')
+                    )
+                );
+
+                $fields->push(HiddenField::create('ExistingGallery', 'ExistingGallery', implode(',', $property->Gallery()->Column())));
+                $fields->push(HiddenField::create('toDelete', 'toDelete'));
+                break;
+
+            case 4:
+                $this->FormTitle = 'Do we miss anything?';
+                $this->FormSubtitle = 'Anything eles you wish to add?';
+
+                $fields->push($details = TextareaField::create('Content', 'Details')->setAttribute('placeholder', 'Provide details such as heating, flooring, whiteware etc. e.g. The property has features such as termsheet facebook focus product management customer partner network business-to-consumer.'));
+
+                $fields->push($amenities = TextareaField::create('Amenities', 'Amenities')->setAttribute('placeholder', 'Amentities in the area such as ...'));
+
+                $details->setValue(!empty($property) ? $property->Content : null);
+                $amenities->setValue(!empty($property) ? $property->Amenities : null);
+
+                break;
+
+            case 5:
+                $this->FormTitle = 'Overview';
+                $this->FormSubtitle = 'Please approve your inputs.';
+                break;
         }
 
-        $fields->push(HiddenField::create('StreetNumber','StreetNumber', !empty($prop) ? $prop->StreetNumber : null));
-        $fields->push(HiddenField::create('StreetName','StreetName', !empty($prop) ? $prop->StreetName : null));
-        $fields->push(HiddenField::create('Suburb','Suburb', !empty($prop) ? $prop->Suburb : null));
-        $fields->push(HiddenField::create('City','City', !empty($prop) ? $prop->City : null));
-        $fields->push(HiddenField::create('Region','Region', !empty($prop) ? $prop->Region : null));
-        $fields->push(HiddenField::create('Country','Country', !empty($prop) ? $prop->Country : null));
-        $fields->push(HiddenField::create('PostCode','PostCode', !empty($prop) ? $prop->PostCode : null));
-        $fields->push(HiddenField::create('Lat','Lat', !empty($prop) ? $prop->Lat : null));
-        $fields->push(HiddenField::create('Lng','Lng', !empty($prop) ? $prop->Lng : null));
+        //
 
-        $fields->push($agent = TextField::create(
-            'AgencyReference',
-            'Agency reference #',
-            !empty($prop) ? $prop->AgencyReference : null
-        )->addExtraClass('hide'));
-
-        if (!empty($prop) && !empty($prop->ListerAgencyID)) {
-            $agent->removeExtraClass('hide');
-        }
-
-        $fields->push(TextField::create('ContactNumber', 'Contact number', !empty($prop) ? $prop->ContactNumber : (!empty(Member::currentUser()->ContactNumber) ? Member::currentUser()->ContactNumber : null)));
-
-        $fields->push($details = TextareaField::create('Content', 'Details')->setAttribute('placeholder', 'Provide details such as heating, flooring, whiteware etc. e.g. The property has features such as termsheet facebook focus product management customer partner network business-to-consumer.'));//->setDescription('Provide details such as heating, insulation, flooring, whiteware etc.'));
-
-        $fields->push(DropdownField::create(
-            'NumBedrooms',
-            'Bedrooms',
-            $this->makeList('MaxBedroom'),
-            !empty($prop) ? $prop->NumBedrooms : null
-        )->setEmptyString('- select one -'));
-
-        $fields->push(DropdownField::create(
-            'NumBathrooms',
-            'Bathrooms',
-            $this->makeList('MaxBathroom'),
-            !empty($prop) ? $prop->NumBathrooms : null
-        )->setEmptyString('- select one -'));
-
-        $fields->push($amenities = TextareaField::create('Amenities', 'Amenities')->setAttribute('placeholder', 'Amentities in the area such as termsheet facebook focus product management partner network termsheet facebook focus product management.'));
-
-        $fields->push(DropdownField::create(
-            'Parking',
-            'Parking option',
-            Config::inst()->get('PropertyPage', 'Parking'),
-            !empty($prop) ? $prop->Parking : null
-        )->setEmptyString('- select one -'));
-
-
-
-        $fields->push(CheckboxField::create(
-            'SmokeAlarm',
-            'Smoke alarm',
-            !empty($prop) ? $prop->SmokeAlarm : 1
-        ));
-
-        $fields->push(CheckboxField::create(
-            'Insulation',
-            'Insulation',
-            !empty($prop) ? $prop->Insulation : 1
-        ));
-
-        $fields->push($gallery = UploadField::create('Gallery', 'Gallery'));
-
-        $gallery->setFolderName('members/' . Member::CurrentUserID() . '/propertyimages')
-                ->setCanAttachExisting(false)
-                // ->setAllowedMaxFileNumber(10)
-                ->setAllowedExtensions(array('jpg', 'jpeg', 'png'))
-                ->setPreviewMaxWidth(400)
-                ->setPreviewMaxHeight(400)
-                ->setCanPreviewFolder(false)
-                ->setAutoUpload(false)
-                ->setFieldHolderTemplate('PropertyGalleryUploader')
-                ->addExtraClass('viewable-gallery');
-
-        $member = Member::currentUser();
-        if ($member->MemberOf()->exists()) {
-            $fields->push(DropdownField::create(
-                'ListerAgencyID',
-                'List as',
-                $member->MemberOf()->map('ID', 'Title'),
-                !empty($prop) ? $prop->ListerAgencyID : null
-            )->setEmptyString($name == 'RentForm' ? 'Myself' : 'Private Sale'));
-        }
-
-        if (!empty($prop)) {
-            $addr->setValue($prop->FullAddress);
-            $details->setValue(strip_tags(str_replace('</p>', "\n", $prop->Content)));
-
-            $amenities->setValue($prop->Amenities);
-
-            //$gallery->setItems($prop->Gallery());
-            //Debugger::inspect($prop->Gallery()->Column());
-            $gallery->customise(
-                array(
-                    'Existings' => $prop->Gallery()->sort('ID', 'ASC')
-                )
-            );
-
-            $fields->push(HiddenField::create('ExistingGallery', 'ExistingGallery', implode(',', $prop->Gallery()->Column())));
-            $fields->push(HiddenField::create('toDelete', 'toDelete'));
-            $fields->push(HiddenField::create('PropertyID', 'PropertyID', $prop->ID));
-        }
-
-        $daily_charge = Config::inst()->get('PropertyPage', 'DailyCharge');
-        $til_charge = $name == 'RentForm' ? Config::inst()->get('PropertyPage', 'TilRented') : Config::inst()->get('PropertyPage', 'TilSold');
-
-        $listing_desc = 'Rate: $' . $daily_charge . ' per day. ';
-
-        $listingOption = OptionsetField::create(
-            'ListTilGone',
-            'Listing options',
-            array(
-                'By length: $' . $daily_charge .' per day',
-                'List until ' . ($name == 'RentForm' ? 'rented' : 'sold') . ': $' . $til_charge
-            ),
-            !empty($prop) ? $prop->ListTilGone : null
-        );
-
-        if ((!empty($prop) && $prop->hasPaid()) || ($member->inFreeTrial() && !empty($prop) && $prop->isPublished())) {
-            $listingOption = $listingOption->performReadonlyTransformation();
-        }
-
-        $fields->push($listingOption);
-
-        $list_until = DateField::create('ListingCloseOn','Listing ends', !empty($prop) ? $prop->ListingCloseOn : null);
-
-        if (!empty($prop)) {
-            if ($prop->isPublished()) {
-                $list_until = $list_until->setDescription(null)->performReadonlyTransformation();
-            }
-
-            if ($prop->hasPaid()) {
-                $this->ListFree = true;
-                $this->ListTilGone = $prop->ListTilGone;
-                $this->ListUntil = $prop->ListingCloseOn;
-            } elseif (!empty($prop->ListingCloseOn)) {
-                // Debugger::inspect();
-                $today  =   date_create(date("Y-m-d"));
-                $until  =   date_create($prop->ListingCloseOn);
-                if ($until >= $today) {
-                    $diff   =   date_diff($today,$until);
-                    $prop->ListingDuration = $this->Duration = $diff->days + 1;
-                    $this->AmountToPay = $daily_charge * $prop->ListingDuration;
-                    $listing_desc .= 'You are going to list this property for <strong>' . $prop->ListingDuration . '</strong> day(s). This is going to cost you: <span>$' . $this->AmountToPay . '</span>';
-                    $list_until->setDescription($listing_desc);
-                }
-            }
-        }
-
-        if (!empty($prop) && $prop->hasPaid()) {
-            $list_until = $list_until->performReadonlyTransformation();
-        }
-
-        $fields->push($list_until);
 
         // ACTIONS -------------------------------------------------------------------------------------------------------------------
+
+        $next_label = $this->step < $this->steps ? 'Next' : 'Complete';
+
+        if (!empty($modifying)) {
+            $next_label = 'Save';
+            $fields->push(HiddenField::create('Editing', 'Editing', 1));
+        }
+
         $actions = new FieldList();
-
-        $actions->push($btnWithdraw = FormAction::create('doWithdraw', 'Withdraw')->addExtraClass('red'));
-
-        if (!empty($prop) && $prop->isPublished()) {
-
-        } else {
-            $actions->push(FormAction::create('doSubmit', !empty($prop) ? 'Save changes' : 'Create'));
+        $actions->push($prev = FormAction::create('doReverse', 'Prev')->addExtraClass('pagination-previous'));
+        if ($this->step == 0 || !empty($modifying)) {
+            $prev->disabled = true;
         }
 
-        $actions->push($btnList = FormAction::create('doList', 'List it')->addExtraClass('green'));
+        $actions->push(FormAction::create('doSubmit', $next_label)->addExtraClass('pagination-next'));
 
-        if (!empty($prop)) {
-            if ($prop->isPublished()) {
-                $btnList->addExtraClass('hide');
-            } else {
-                $btnWithdraw->addExtraClass('hide');
-            }
-        } else {
-            $btnList->addExtraClass('hide');
-            $btnWithdraw->addExtraClass('hide');
-        }
+        // $required_fields = array(
+        //     // 'FullAddress',
+        //     // 'ListingCloseOn'
+        // );
+        //
+        // if ($this->step == 0) {
+        //     $required_fields[] = 'FullAddress';
+        // }
 
-        $required_fields = array(
-            'FullAddress',
-            // 'ListingCloseOn'
-        );
-
-        $required = new RequiredFields($required_fields);
-        parent::__construct($controller, $name, $fields, $actions, $required);
+        // $required = new RequiredFields($required_fields);
+        // parent::__construct($controller, 'CreatePropertyForm', $fields, $actions, $required);
+        parent::__construct($controller, 'CreatePropertyForm', $fields, $actions);
         $this->setFormMethod('POST', true)
-             ->setFormAction(Controller::join_links(BASE_URL, 'member', $name))->addExtraClass('property-form');
+             ->setFormAction(Controller::join_links(BASE_URL, 'member', 'CreatePropertyForm'))->addExtraClass('property-form');
     }
 
-    protected function makeList($list_of)
+    private function makeList($list_of)
     {
-        $max = Config::inst()->get('PropertyPage', $list_of);
+        $max = Config::inst()->get('Property', $list_of);
         $arr = array();
         for ($i = 1; $i <= $max; $i++)
         {
@@ -241,90 +232,41 @@ class CreatePropertyForm extends Form
         return $arr;
     }
 
-    public function validate()
+    public function doReverse($data, $form)
     {
-        $result = parent::validate();
-        $data = $this->getData();
+        $this->step     =   Session::get('PropertyStep');
+        // Debugger::inspect($this->step);
+        $this->step     =   !empty($this->step) ? $this->step : 0;
+        $this->step--;
 
-        if (!empty($data['ListingCloseOn'])) {
-            $today  =   date_create(date("Y-m-d"));
-            $until  =   date_create($data['ListingCloseOn']);
-            if ($until < $today) {
-                $this->addErrorMessage('ListingCloseOn', 'Listing end date cannot be earlier than today!', 'bad');
-                return false;
-            }
-        }
-        return $result;
+        $propertyID     =   Session::get('WorkingPropertyID');
+
+        Session::set('PropertyStep', $this->step);
+
+        return $this->controller->redirect('/member/action/manage-property?id=' . $propertyID . '&step=' . $this->step);
     }
 
-    public function doList($data, $form)
+    public function doSubmit($data, $form)
     {
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
-            if (!empty($data['PropertyID'])) {
-                $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($data['PropertyID']);
-                // $property->ListingCloseOn = $data['ListingCloseOn'];
-                // $property->writeToStage('Stage');
-                $this->doSubmit($data, $form, true);
-
-                if ($member = Member::currentUser()) {
-                    if ($member->inFreeTrial()) {
-                        $property->writeToStage('Live');
-                        return Controller::curr()->redirect('/member/action/' . ($this->Name == 'RentForm' ? 'list-property-for-rent' : 'list-property-for-sale') . '?property_id=' . $property->ID);
-                    }
-                }
-
-                if ($property->hasPaid()) {
-                    $property->writeToStage('Live');
-                    return Controller::curr()->redirect('/member/action/' . ($this->Name == 'RentForm' ? 'list-property-for-rent' : 'list-property-for-sale') . '?property_id=' . $property->ID);
-                } else {
-                    if ($property->ListTilGone) {
-                        $amount = ($property->RentOrSale == 'rent') ? Config::inst()->get('PropertyPage', 'TilRented') : Config::inst()->get('PropertyPage', 'TilSold');
-                    } else {
-                        $daily_charge = Config::inst()->get('PropertyPage', 'DailyCharge');
-                        $amount = $daily_charge * $property->ListingDuration;
-                    }
-
-                    $order = SaltedOrder::prepare_order();
-                    $order->Amount->Amount = $amount;
-
-                    $order->PaidToClass = 'PropertyPage';
-                    $order->PaidToClassID = $property->ID;
-                    $order->Pay('Paystation');
-                    return;
-                }
-            }
-        }
-
-        return Controller::curr()->httpError(400, 'missing token');
-    }
-
-    public function doWithdraw($data, $form)
-    {
-        if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
-            if (!empty($data['PropertyID'])) {
-                $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($data['PropertyID']);
-                $property->deleteFromStage('Live');
-                return Controller::curr()->redirect('/member/action/' . ($this->Name == 'RentForm' ? 'list-property-for-rent' : 'list-property-for-sale') . '?property_id=' . $property->ID);
-            }
-        }
-
-        return Controller::curr()->httpError(400);
-    }
-
-    public function doSubmit($data, $form, $noredirect = false)
-    {
-        if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
-
-            if (!empty($data['PropertyID'])) {
-                $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($data['PropertyID']);
+            $this->step     =   Session::get('PropertyStep');
+            // Debugger::inspect($this->step);
+            $propertyID     =   Session::get('WorkingPropertyID');
+            if (empty($data['Editing'])) {
+                $this->step     =   !empty($this->step) ? $this->step : 0;
+                $this->step++;
             } else {
-                $property = new PropertyPage();
+                $this->step = 5;
             }
 
-            $ListUntil = $property->ListingCloseOn;
-            $ListTilGone = $property->ListTilGone;
+            if (empty($propertyID)) {
+                $property   =   new Property();
+            } else {
+                $property   =   Property::get()->byID($propertyID);
+            }
 
             $form->saveInto($property);
+
             if (!empty($data['ExistingGallery'])) {
                 $gallery = explode(',' , $data['ExistingGallery']);
                 foreach ($gallery as $item) {
@@ -340,24 +282,18 @@ class CreatePropertyForm extends Form
                 }
             }
 
-            if (empty($property->ListerID)) {
-                $property->ListerID = Member::currentUserID();
+            $property->write();
+
+            if (empty($propertyID)) {
+                Session::set('WorkingPropertyID', $property->ID);
             }
 
-            if ($property->hasPaid()) {
-                $property->ListingCloseOn = $ListUntil;
-                $property->ListTilGone = $ListTilGone;
+            if ($this->step <= 5) {
+                Session::set('PropertyStep', $this->step);
+                return $this->controller->redirect('/member/action/manage-property?id=' . $property->ID . '&step=' . $this->step);
             }
 
-
-            $property->writeToStage('Stage');
-            $this->sessionMessage('Property saved. Do you want to <a href="/member/action/list-property-for-rent">create another one</a>?', 'good', false);
-            //return Controller::curr()->redirectBack();
-            if ($noredirect === true) {
-                return true;
-            }
-
-            return Controller::curr()->redirect('/member/action/' . ($this->Name == 'RentForm' ? 'list-property-for-rent' : 'list-property-for-sale') . '?property_id=' . $property->ID);
+            return $this->controller->redirect('/member/action/properties');
         }
 
         return Controller::curr()->httpError(400);

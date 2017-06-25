@@ -14,7 +14,7 @@
             auto_idx    =   0,
             existings   =   $(this).find('input[name="ExistingGallery"]').val(),
             todelete    =   [],
-            gplace      =   new autoAddress(gplaceapi, function()
+            gplace      =   gplaceid ? new autoAddress(gplaceapi, function()
             {
                 var txt     =   gplace.gplacised(gplaceid),
                     form    =   self;
@@ -36,11 +36,11 @@
                     trace(self.find('input[name="Lat"]').val().toFloat() +', '+ self.find('input[name="Lng"]').val().toFloat());
                     map.update(self.find('input[name="Lat"]').val().toFloat(), self.find('input[name="Lng"]').val().toFloat());
                 });
-            }),
-            _lat       =    self.find('input[name="Lat"]').val().toFloat(),
-            _lng       =    self.find('input[name="Lng"]').val().toFloat(),
+            }) : null,
+            _lat       =    self.find('input[name="Lat"]').length > 0 ? self.find('input[name="Lat"]').val().toFloat() : null,
+            _lng       =    self.find('input[name="Lng"]').length > 0 ? self.find('input[name="Lng"]').val().toFloat() : null,
             //-41.3993353,173.0164209
-            map        =    new gmap(gplaceapi, 'location-on-map', [{lat: (_lat == 0 ? -41.3993353 : _lat), lng: (_lng == 0 ? 173.0164209 : _lng)}]),
+            map        =    gplace ? new gmap(gplaceapi, 'location-on-map', [{lat: (_lat == 0 ? -41.3993353 : _lat), lng: (_lng == 0 ? 173.0164209 : _lng)}]) : null,
             scrollThumbnail = function()
             {
                 $('.previewable-uploader__previewable').scrollTo($('.previewable-uploader__previewable .previewable-uploader__previewable__thumbnail:last'), 500, {axis: 'x'});

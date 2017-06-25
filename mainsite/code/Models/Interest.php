@@ -10,7 +10,8 @@ class Interest extends DataObject
 
     private static $has_one = array(
         'Member'    =>  'Member',
-        'Property'  =>  'PropertyPage'
+        'Property'  =>  'PropertyPage',
+        'Listing'   =>  'Listing'
     );
 
     public function getData()

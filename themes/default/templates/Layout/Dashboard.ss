@@ -4,6 +4,9 @@
         <div class="columns is-marginless">
             <aside class="member-area__sidebar column <% if $tab == 'list-property-for-rent' || $tab == 'list-property-for-sale' %>is-1<% else %>is-3<% end_if %>">
                 <ul class="neat-ul">
+                    <% if $CurrentMember.inGroup('administrators') %>
+                        <li><a href="/member/action/properties" class="icon-property ajax-routed<% if $tab == 'properties' %> active<% end_if %>"><span>Manage properties</span></a></li>
+                    <% end_if %>
 
                     <li>
                     <a title="Account fees" data-title="Dashboard | Upgrade account" href="/member/action/upgrade" class="icon-promote ajax-routed<% if $tab == 'upgrade' %> active<% end_if %>"><span>Account fees</span></a>
@@ -40,6 +43,22 @@
                         <% include UserAccountTypes ShowDetails=1 %>
                     </div>
                     $MemberProfileForm
+                <% end_if %>
+
+                <% if $tab == 'properties' %>
+                    <% include NeoProperties %>
+                <% end_if %>
+
+                <% if $tab == 'manage-property' %>
+                    <% include NeoPropertyForm %>
+                <% end_if %>
+
+                <% if $tab == 'rental-listing' %>
+                    <% include RentalListingForm %>
+                <% end_if %>
+
+                <% if $tab == 'rental-listings' %>
+                    <% include RentalListings %>
                 <% end_if %>
 
                 <% if $tab == 'my-business' %>

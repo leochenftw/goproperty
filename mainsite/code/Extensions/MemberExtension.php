@@ -39,7 +39,8 @@ class MemberExtension extends DataExtension
     private static $has_many = array(
         'Rate'                  =>  'Rating.Giver',
         'BeingRated'            =>  'Rating.Taker',
-        'Wishlist'              =>  'WishlistItem'
+        'Wishlist'              =>  'WishlistItem',
+        'Properties'            =>  'Property'
     );
 
     /**

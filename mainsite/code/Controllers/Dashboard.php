@@ -1,6 +1,9 @@
 <?php use SaltedHerring\Debugger as Debugger;
 
 class Dashboard extends Page_Controller {
+
+    protected $Member = null;
+
     private static $url_handlers = array(
         ''				=>	'index',
         'action/$tab'	=>	'index'
@@ -20,7 +23,9 @@ class Dashboard extends Page_Controller {
         'addCreditcardForm',
         'AgencyForm',
         'BusinessForm',
-        'VoucherForm'
+        'VoucherForm',
+        'CreatePropertyForm',
+        'RentalListingForm'
     );
 
     public function index($request) {
@@ -29,6 +34,7 @@ class Dashboard extends Page_Controller {
         }
 
         $member = Member::currentUser();
+        $this->Member = $member;
         $tab = $request->param('tab');
 
         if (($member->beLandlords || $member->beTradesmen || $member->beRealtors) && $tab != 'upgrade' && $tab != 'signout'){
@@ -49,6 +55,27 @@ class Dashboard extends Page_Controller {
 
         if ($request->isAjax()) {
             switch ($tab) {
+                case 'properties':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('NeoProperties'));
+                    break;
+
+                case 'rental-listing':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('RentalListingForm'));
+                    break;
+
+                case 'rental-listings':
+
+                    $id = $request->getVar('id');
+
+                    $property = Property::get()->byID($id);
+
+                    return $this->customise(array('tab' => $tab, 'Property' => $property))->renderWith(array('RentalListings'));
+                    break;
+
+                case 'manage-property':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('NeoPropertyForm'));
+                    break;
+
                 case 'my-business':
                     return $this->customise(array('tab' => $tab))->renderWith(array('MyBusiness'));
                     break;
@@ -211,6 +238,15 @@ class Dashboard extends Page_Controller {
         return null;
     }
 
+    public function getProperties()
+    {
+        if (!empty($this->Member)) {
+            return $this->Member->Properties();
+        }
+
+        return null;
+    }
+
     public function getMyProperties()
     {
         $properties = Versioned::get_by_stage('PropertyPage', 'Stage')->filter(array('ListerID' => Member::currentUserID()));
@@ -328,6 +364,16 @@ class Dashboard extends Page_Controller {
         return new VoucherForm($this);
     }
 
+    public function RentalListingForm()
+    {
+        return new RentalListingForm($this);
+    }
+
+    public function CreatePropertyForm()
+    {
+        return new CreatePropertyForm($this);
+    }
+
     public function canUseVoucher()
     {
         $member = Member::currentUser();
@@ -335,5 +381,10 @@ class Dashboard extends Page_Controller {
             return false;
         }
         return empty(Voucher::get()->filter(array('MemberID' => $member->ID))->first()) ? true : false;
+    }
+
+    public function isCreatingProperty()
+    {
+        return $this->request->getURL() == 'member/action/manage-property' && empty($this->request->getVar('id'));
     }
 }

@@ -22,6 +22,11 @@ class Property extends DataObject
         'FloorArea'             =>  'Int'
     );
 
+    private static $defaults    =   array(
+        'SmokeAlarm'            =>  true,
+        'Insulation'            =>  true
+    );
+
     private static $has_one = array(
         'Member'                =>  'Member'
     );
@@ -29,12 +34,26 @@ class Property extends DataObject
     private static $has_many = array(
         'Gallery'               =>  'Image',
         'Rentals'               =>  'Rental',
-        'Ratings'               =>  'Rating'
+        'Ratings'               =>  'Rating',
+        'Listings'              =>  'Listing'
     );
 
     private static $extensions  =   array(
         'AddressProperties'
     );
+
+    /**
+     * Event handler called before writing to the database.
+     */
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        if (empty($this->ID) && !empty(Member::currentUserID())) {
+            $this->MemberID = Member::currentUserID();
+        }
+
+        $this->Title = $this->FullAddress;
+    }
 
     public function getRating()
     {
@@ -109,5 +128,22 @@ class Property extends DataObject
         }
 
         return implode("\n", $arr);
+    }
+
+    public function getRentalListings()
+    {
+        $origMode = Versioned::get_reading_mode(); // save current mode
+        Versioned::set_reading_mode('Stage.Stage'); // temporarily overwrite mode
+        $listings = $this->Listings();
+        $listings = $listings->filter(array('ClassName' => 'RentalListing'));
+        Versioned::set_reading_mode($origMode); // reset current mode
+        return $listings;
+    }
+
+    public function getSaleListings()
+    {
+        $listings = $this->Listings();
+
+        return $listings->filter(array('ClassName' => 'SaleListing'));
     }
 }

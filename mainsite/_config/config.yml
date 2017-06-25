@@ -110,7 +110,7 @@ PropertyPage:
 Property:
   DailyCharge: 2
   TilSold: 39.95
-  TilRented: 30
+  TilRented: 39.95
   MaxBedroom: 10
   MaxBathroom: 5
   MaxCapacity: 20
@@ -134,6 +134,9 @@ Property:
   IdealTenants:
     'Student': 'Student'
     'Professional': 'Professional'
+Listing:
+  extensions:
+    - Versioned("Stage","Live")
 Image:
   extensions:
     - ImageExt
