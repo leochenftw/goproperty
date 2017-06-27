@@ -1,8 +1,9 @@
 (function($)
 {
-	$.fn.propertyAction = function()
+    $.fn.propertyAction = function()
     {
-        var ajaxing = null;
+        var ajaxing         =   null,
+            self            =   $(this);
 
         $(this).click(function(e)
         {
@@ -13,17 +14,19 @@
             }
 
             if ($(this).hasClass('is-active')) {
-
-                $(this).removeClass('is-active');
+                $(this).removeClass('is-active')
                 $(this).parents('.member-area__content__property-list__item__info:eq(0)').find('.forms').html('');
-
                 return false;
             }
 
+            $(this).parent().find('.btn-listing.is-active').removeClass('is-active');
+
             $(this).addClass('is-loading');
+
             var formContainer   =   $(this).parents('.member-area__content__property-list__item__info:eq(0)').find('.forms'),
                 me              =   $(this),
                 row             =   $(this).parents('.member-area__content__property-list__item:eq(0)');
+
             formContainer.html('');
             ajaxing = $.get($(this).attr('href'), function(data)
             {
@@ -59,12 +62,12 @@
                         }
                     }
                 });
-                formContainer.find('input[name="action_doCancel"]').click(function(e)
+                formContainer.find('input[name="action_doCancel"], .do-cancel').click(function(e)
                 {
                     e.preventDefault();
                     row.find('.btn-listing.is-active').removeClass('is-active');
                     formContainer.html('');
-                    $.scrollTo(row, 500, {axis: 'y', offset: -60});
+                    $.scrollTo(row, 500, {axis: 'y', offset: -$('#header').outerHeight()});
                 });
 
                 formContainer.find('input[name="ListTilGone"]').change(function(e)
@@ -80,9 +83,132 @@
                     }
                 }).change();
 
+                formContainer.find('a.btn-end-listing').click(function(e)
+                {
+                    e.preventDefault();
+                    if (confirm('You are going to end this listing. Are you sure?')) {
+                        var columns = $(this).parents('.columns:eq(0)');
+                        $.post(
+                            $(this).attr('href'),
+                            function(data)
+                            {
+                                if (typeof(data) == 'object') {
+                                    if (data.code == 200) {
+                                        columns.find('.listing-status').html(data.message);
+                                        columns.find('.actions').html('');
+                                    } else {
+                                        alert(data.message);
+                                    }
+                                } else {
+                                    alert(data);
+                                }
+                            }
+                        );
+                    }
+                });
+
+                formContainer.find('a.btn-delete-listing').click(function(e)
+                {
+                    e.preventDefault();
+                    if (confirm('You are going to delete this listing. Are you sure?')) {
+                        var columns = $(this).parents('.columns:eq(0)');
+                        $.post(
+                            $(this).attr('href'),
+                            function(data)
+                            {
+                                if (typeof(data) == 'object') {
+                                    if (data.code == 200) {
+                                        columns.remove();
+                                        if (row.find('.all-listings .columns').length == 0) {
+                                            row.find('.all-listings').html('<p>No listing</p>');
+                                        }
+                                    } else {
+                                        alert(data.message);
+                                    }
+                                } else {
+                                    alert(data);
+                                }
+                            }
+                        );
+                    }
+                });
+
                 formContainer.find('a.btn-listing').propertyAction();
+                ajaxForm(formContainer, me.data('expect-form'));
+
                 $.scrollTo(row, 500, {axis: 'y', offset: -$('#header').outerHeight()});
             });
         });
+
+        function ajaxForm(formContainer, expectForm)
+        {
+            var row             =   formContainer.parents('.member-area__content__property-list__item:eq(0)');
+            if (formContainer.find('form').length > 0) {
+                formContainer.find('form a:not(".do-cancel")').unbind('click').click(ajaxGet);
+                formContainer.find('input[name="action_doCancel"], .do-cancel').click(function(e)
+                {
+                    e.preventDefault();
+                    formContainer.html('');
+                    formContainer.parent().find('.btn-listing.is-active').removeClass('is-active');
+                    $.scrollTo(row, 500, {axis: 'y', offset: -$('#header').outerHeight()});
+                });
+                formContainer.find('form').formWork().ajaxSubmit(
+                {
+                    onstart: function()
+                    {
+                        formContainer.find('form input[type="submit"]').prop('disabled', true)
+                    },
+                    success: function(response)
+                    {
+                        var newForm = $(response).find('form');
+                        newForm.find('a:not(".do-cancel")').unbind('click').click(ajaxGet);
+                        formContainer.find('form').replaceWith(newForm);
+                        ajaxForm(formContainer, expectForm);
+
+                    },
+                    fail: function(response)
+                    {
+                        alert('Something went wrong');
+                    }
+                });
+            } else if (expectForm) {
+                formContainer.html('');
+                row.find('.btn-listing.is-active').removeClass('is-active');
+                $.scrollTo(row, 500, {axis: 'y', offset: -$('#header').outerHeight()});
+            }
+        }
+
+        function ajaxGet(e)
+        {
+            e.preventDefault();
+            var me  =   $(this),
+                row =   $(this).parents('.member-area__content__property-list__item:eq(0)');
+            if (ajaxing) {
+                ajaxing.abort();
+                ajaxing = null;
+            }
+
+            ajaxing = $.get(
+                $(this).attr('href'),
+                function(response)
+                {
+                    $.scrollTo(row, 500, {axis: 'y', offset: -$('#header').outerHeight()});
+                    var formContainer = me.parents('div.forms:eq(0)');
+                    var newForm = $(response).find('form');
+                    newForm.find('a:not(".do-cancel")').unbind('click').click(ajaxGet);
+                    formContainer.find('input[name="action_doCancel"], .do-cancel').click(function(e)
+                    {
+                        e.preventDefault();
+                        formContainer.html('');
+                        formContainer.parent().find('.btn-listing.is-active').removeClass('is-active');
+                        $.scrollTo(row, 500, {axis: 'y', offset: -$('#header').outerHeight()});
+                    });
+                    formContainer.find('form').replaceWith(newForm);
+                    ajaxForm(formContainer, true);
+                }
+            );
+        }
+
+        return self;
     };
  })(jQuery);

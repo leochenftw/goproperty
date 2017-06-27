@@ -14,20 +14,68 @@ input.action {
     @extend .button;
 }
 
-.is-maxheight {
-    height: 100%;
-}
+.is {
+    &-maxheight {
+        height: 100%;
+    }
 
-.is-absolute {
-    position: absolute;
-}
+    &-absolute {
+        position: absolute;
+    }
 
-.is-relative {
-    position: relative;
+    &-relative {
+        position: relative;
+    }
+    &-marginless {
+        &-vertical {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        &-top {
+            margin-top: 0 !important;
+        }
+
+        &-bottom {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    &-paddingless {
+        &-vertical {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        &-top {
+            padding-top: 0 !important;
+        }
+
+        &-bottom {
+            padding-bottom: 0 !important;
+        }
+    }
 }
 
 .icon {
     width: auto;
+}
+
+.columns {
+    &.vertical-centre,
+    &.vertical-centred,
+    &.vertical-centered,
+    &.vertical-center {
+        @include align-items(center);
+    }
+
+    &.vertical-top {
+        @include align-items(flex-start);
+    }
+
+    &.vertical-bottom {
+        @include align-items(flex-end);
+    }
 }
 
 .column {

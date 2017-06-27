@@ -197,9 +197,11 @@ class CreatePropertyForm extends Form
         }
 
         $actions = new FieldList();
-        $actions->push($prev = FormAction::create('doReverse', 'Prev')->addExtraClass('pagination-previous'));
-        if ($this->step == 0 || !empty($modifying)) {
-            $prev->disabled = true;
+        if (!$controller->request->isAjax()) {
+            $actions->push($prev = FormAction::create('doReverse', 'Prev')->addExtraClass('pagination-previous'));
+            if ($this->step == 0 || !empty($modifying)) {
+                $prev->disabled = true;
+            }
         }
 
         $actions->push(FormAction::create('doSubmit', $next_label)->addExtraClass('pagination-next'));
@@ -299,6 +301,46 @@ class CreatePropertyForm extends Form
         return Controller::curr()->httpError(400);
     }
 
+    public function getNav()
+    {
+        $nav = array();
+        for ($i = 0; $i <= $this->steps; $i++)
+        {
+            $item = array(
+                'URL'   =>  '/member/action/manage-property?id=' . $this->property->ID . '&step=' . $i,
+                'HTML'  =>  $i + 1,
+                'Title' =>  $this->titleMaker($i),
+                'Step'  =>  $this->step + 1
+            );
+            $nav[] = new ArrayData($item);
+        }
 
+        return new ArrayList($nav);
+    }
 
+    private function titleMaker($step)
+    {
+        switch ($step) {
+            case 0:
+                $FormTitle = 'Where is your property?';
+                break;
+            case 1:
+                $FormTitle = 'What your property is like?';
+                break;
+            case 2:
+                $FormTitle = 'Can you describe your property a bit more?';
+                break;
+            case 3:
+                $FormTitle = 'How does your property look like?';
+                break;
+            case 4:
+                $FormTitle = 'Do we miss anything?';
+                break;
+            default:
+                $FormTitle = 'Overview';
+                break;
+        }
+
+        return $FormTitle;
+    }
 }

@@ -9179,18 +9179,49 @@ fieldset {
 .is-maxheight {
   height: 100%;
 }
-
 .is-absolute {
   position: absolute;
 }
-
 .is-relative {
   position: relative;
+}
+.is-marginless-vertical {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.is-marginless-top {
+  margin-top: 0 !important;
+}
+.is-marginless-bottom {
+  margin-bottom: 0 !important;
+}
+.is-paddingless-vertical {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.is-paddingless-top {
+  padding-top: 0 !important;
+}
+.is-paddingless-bottom {
+  padding-bottom: 0 !important;
 }
 
 .icon, #main .property__gallery__thumbnails .owl-nav div.owl-prev, #main .property__gallery__thumbnails .owl-nav div.owl-next, #main .member-area__sidebar ul li a, .section.property .property__content-area__content .social .wishlist-holder .btn-fav, .tradesmen-list__tile__details__price.business-detail .iconed,
 .property-list__tile__details__price.business-detail .iconed {
   width: auto;
+}
+
+.columns.vertical-centre, #main .search-forms .Fields .fields-wrapper.optionset ul.vertical-centre, .section.property .property__content-area__aside dl.vertical-centre, .columns.vertical-centred, #main .search-forms .Fields .fields-wrapper.optionset ul.vertical-centred, .section.property .property__content-area__aside dl.vertical-centred, .columns.vertical-centered, #main .search-forms .Fields .fields-wrapper.optionset ul.vertical-centered, .section.property .property__content-area__aside dl.vertical-centered, .columns.vertical-center, #main .search-forms .Fields .fields-wrapper.optionset ul.vertical-center, .section.property .property__content-area__aside dl.vertical-center {
+  -webkit-align-items: center;
+  align-items: center;
+}
+.columns.vertical-top, #main .search-forms .Fields .fields-wrapper.optionset ul.vertical-top, .section.property .property__content-area__aside dl.vertical-top {
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+.columns.vertical-bottom, #main .search-forms .Fields .fields-wrapper.optionset ul.vertical-bottom, .section.property .property__content-area__aside dl.vertical-bottom {
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
 }
 
 .column.is-auto-width, #main .search-forms .Fields .fields-wrapper.optionset ul li, #main .filter-form fieldset.is-auto-width, #main .is-auto-width#SignupForm_SignupForm, #main .search-forms .Fields .fields-wrapper.optionset ul li#SignupForm_SignupForm,
@@ -10214,6 +10245,13 @@ div.field.textarea {
 #main .member-area__content .detailed-account-types li {
   display: inline-block;
   margin-right: 0.5em;
+}
+#main .member-area__content__property-list__item__info a.button.is-active {
+  background-color: #001d58 !important;
+  color: white !important;
+}
+#main .member-area__content__property-list__item__info .forms .ajax-content {
+  padding: 24px 0 16px;
 }
 #main .member-area__content__property-list__item__info .forms .all-listings,
 #main .member-area__content__property-list__item__info .forms form {

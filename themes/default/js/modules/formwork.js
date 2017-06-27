@@ -179,5 +179,7 @@
                 return false;
             }
         });
+
+        return $(this);
     };
 })(jQuery);

@@ -122,7 +122,16 @@
         &__property-list {
             &__item {
                 &__info {
+                    a.button.is-active {
+                        background-color: $blue !important;
+                        color: white !important;
+                    }
                     .forms {
+                        .ajax-content {
+                            padding: 24px 0 16px;
+
+                        }
+
                         .all-listings,
                         form {
                             margin: 21px 0 14px;

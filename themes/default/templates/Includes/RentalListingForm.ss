@@ -1,3 +1,7 @@
+<div class="ajax-content">
+    <div class="columns is-marginless vertical-bottom">
+        <div class="column is-paddingless"><h4 class="title">Create new listing</h4></div>
+    </div>
 <% with $RentalListingForm %>
     <form $FormAttributes>
         <fieldset>
@@ -10,3 +14,4 @@
         </div>
     </form>
 <% end_with %>
+</div>

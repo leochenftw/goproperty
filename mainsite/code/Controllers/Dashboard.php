@@ -73,7 +73,7 @@ class Dashboard extends Page_Controller {
                     break;
 
                 case 'manage-property':
-                    return $this->customise(array('tab' => $tab))->renderWith(array('NeoPropertyForm'));
+                    return $this->customise(array('tab' => $tab, 'isAjax' => true))->renderWith(array('NeoPropertyForm'));
                     break;
 
                 case 'my-business':

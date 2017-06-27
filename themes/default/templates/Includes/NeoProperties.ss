@@ -6,7 +6,7 @@
 <% loop $Properties %>
     <li class="columns member-area__content__property-list__item">
 
-        <a href="/member/action/manage-property?id=$ID&step=5" class="column is-auto-width member-area__content__property-list__item__image">
+        <a href="/member/action/manage-property?id=$ID&step=5" data-expect-form="1" class="column is-auto-width member-area__content__property-list__item__image">
             <% if $Gallery.Count > 0 %>
                 <% with $Gallery.First.FillMax(100, 100) %>
                     <img class="as-block" src="$URL" width="100" height="100" alt="$Title" />
@@ -18,7 +18,7 @@
         <div class="column member-area__content__property-list__item__info">
             <h3 class="title is-5">$Title</h3>
             <div class="is-marginless member-area__content__property-list__item__info__controls">
-                <a class="button outlined inline" href="/member/action/manage-property?id=$ID">Edit property</a>
+                <a class="btn-listing button outlined inline" data-expect-form="1" href="/member/action/manage-property?id=$ID&step=5">Edit property</a>
                 <% if $RentalListings.Count > 0 %>
                     <a class="btn-listing button outlined inline" href="/member/action/rental-listings?id=$ID">Rental listings</a>
                 <% else %>
