@@ -296,7 +296,6 @@ $(document).ready(function(e)
 
     $('#AccountType .optionset input.checkbox, #SignupToBe  .optionset input.checkbox').each(function(i, el)
     {
-        trace('wtf');
         var id = $(this).attr('id');
         if ($(this).prop('checked')) {
             $('#account-types li[data-target="' + id + '"]').addClass('checked');
