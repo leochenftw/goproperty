@@ -32,10 +32,12 @@
                     {
                         var opt =   $('<option />');
                         opt.val(options[i]);
-                        opt.html(options[i]);console.log(options[i].toLowerCase() + ':' + preset);
-                        if (options[i].toLowerCase().replace(/ /gi, '-') == preset) {
-                            opt.prop('selected', true);
-                            trigger = true;
+                        opt.html(options[i]);
+                        if (preset) {
+                            if (options[i] == preset || options[i].toLowerCase().replace(/ /gi, '-') == preset || options[i].toLowerCase() == preset) {
+                                opt.prop('selected', true);
+                                trigger = true;
+                            }
                         }
                         to.append(opt);
                     }
