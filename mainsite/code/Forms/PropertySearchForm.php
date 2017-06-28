@@ -6,8 +6,9 @@ class PropertySearchForm extends Form
 {
     public function __construct($controller)
     {
-        $agency = null;
-        $fields = new FieldList();
+        $gets   =   $controller->request->getVars();
+        // Debugger::inspect($controller->request->params());
+        $fields =   new FieldList();
         $fields->push(OptionsetField::create(
             'RentOrSale',
             'Rent / Sale',
@@ -25,87 +26,113 @@ class PropertySearchForm extends Form
 
         $RegionSelector->setValue('Wellington')->addExtraClass('hide');
 
-        $fields->push(DropdownField::create(
-            'City',
-            'District'
-        )->setEmptyString('All Wellington districts')->setAttribute('data-direct-child', 'PropertySearchForm_PropertySearchForm_Suburb'));
+        $fields->push(
+            DropdownField::create(
+                'City',
+                'District'
+            )->setEmptyString('All Wellington districts')
+             ->setAttribute('data-direct-child', 'PropertySearchForm_PropertySearchForm_Suburb')
+             ->setAttribute('data-option', !empty($controller->request->param('district')) ? $controller->request->param('district') : null)
+        );
 
-        $fields->push(DropdownField::create(
-            'Suburb',
-            'Suburb'
-        )->setEmptyString('All suburbs'));
+        $fields->push(
+            DropdownField::create(
+                'Suburb',
+                'Suburb'
+            )->setEmptyString('All suburbs')
+             ->setAttribute('data-option', !empty($controller->request->param('suburb')) ? $controller->request->param('suburb') : null)
+        );
 
         $fields->push(DropdownField::create(
             'RentalPropertyType',
             'Property Type',
-            Config::inst()->get('PropertyPage', 'RentForm')
+            Config::inst()->get('PropertyPage', 'RentForm'),
+            isset($gets['RentalPropertyType']) ? $gets['RentalPropertyType'] : null
         )->setEmptyString('All types'));
 
         $fields->push(DropdownField::create(
             'SalePropertyType',
             'Property Type',
-            Config::inst()->get('PropertyPage', 'SaleForm')
+            Config::inst()->get('PropertyPage', 'SaleForm'),
+            isset($gets['SalePropertyType']) ? $gets['SalePropertyType'] : null
         )->setEmptyString('All types'));
 
         $fields->push(DropdownField::create(
             'BedroomFrom',
             'Bedroom from',
-            $this->makeList(Config::inst()->get('PropertyPage', 'MaxBedroom'))
+            $this->makeList(Config::inst()->get('PropertyPage', 'MaxBedroom')),
+            isset($gets['BedroomFrom']) ? $gets['BedroomFrom'] : null
         )->setEmptyString('Any'));
 
         $fields->push(DropdownField::create(
             'BedroomTo',
             'Bedroom to',
-            $this->makeList(Config::inst()->get('PropertyPage', 'MaxBedroom'))
+            $this->makeList(Config::inst()->get('PropertyPage', 'MaxBedroom')),
+            isset($gets['BedroomTo']) ? $gets['BedroomTo'] : null
         )->setEmptyString('Any'));
 
         $fields->push(DropdownField::create(
             'BathroomFrom',
             'Bathroom from',
-            $this->makeList(Config::inst()->get('PropertyPage', 'MaxBathroom'))
+            $this->makeList(Config::inst()->get('PropertyPage', 'MaxBathroom')),
+            isset($gets['BathroomFrom']) ? $gets['BathroomFrom'] : null
         )->setEmptyString('Any'));
 
         $fields->push(DropdownField::create(
             'BathroomTo',
             'Bathroom to',
-            $this->makeList(Config::inst()->get('PropertyPage', 'MaxBathroom'))
+            $this->makeList(Config::inst()->get('PropertyPage', 'MaxBathroom')),
+            isset($gets['BathroomTo']) ? $gets['BathroomTo'] : null
         )->setEmptyString('Any'));
 
         $fields->push(TextField::create(
             'RentFrom',
-            'Rent from'
+            'Rent from',
+            isset($gets['RentFrom']) ? $gets['RentFrom'] : null
         )->setAttribute('placeholder', 'Any'));
 
-        $fields->push(TextField::create(
-            'RentTo',
-            'Rent to'
-        )->setAttribute('placeholder', 'Any'));
+        $fields->push(
+            TextField::create(
+                'RentTo',
+                'Rent to',
+                isset($gets['RentTo']) ? $gets['RentTo'] : null
+            )->setAttribute('placeholder', 'Any')
+        );
 
         $fields->push(TextField::create(
             'PriceFrom',
-            'Price from'
+            'Price from',
+            isset($gets['PriceFrom']) ? $gets['PriceFrom'] : null
         )->setAttribute('placeholder', 'Any'));
 
         $fields->push(TextField::create(
             'PriceTo',
-            'Price to'
+            'Price to',
+            isset($gets['PriceTo']) ? $gets['PriceTo'] : null
         )->setAttribute('placeholder', 'Any'));
 
         $fields->push(TextField::create(
             'Availability',
-            'Available from'
+            'Available from',
+            isset($gets['Availability']) ? $gets['Availability'] : null
         ));
 
         $fields->push(OptionsetField::create(
             'AllowPet',
             'Pet OK',
-            array('No' => 'No', 'Yes' => 'Yes', 'Negotiable' => 'Negotiable')
+            array(
+                'No' => 'No',
+                'Yes' => 'Yes',
+                'Negotiable' => 'Negotiable'
+            ),
+            isset($gets['AllowPet']) ? $gets['AllowPet'] : null
         ));
 
         $fields->push(OptionsetField::create(
             'AllowSmoker',
             'Smoker OK',
-            array('No' => 'No', 'Yes' => 'Yes')
+            array('No' => 'No', 'Yes' => 'Yes'),
+            isset($gets['AllowSmoker']) ? $gets['AllowSmoker'] : null
         ));
 
         $actions = new FieldList();
@@ -123,6 +150,8 @@ class PropertySearchForm extends Form
 
     public function doSearch($data, $form)
     {
+        // Debugger::inspect($data);
+
         /*
         [Region] => Northland
         [City] =>

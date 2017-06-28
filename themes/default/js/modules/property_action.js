@@ -144,7 +144,7 @@
         {
             var row             =   formContainer.parents('.member-area__content__property-list__item:eq(0)');
             if (formContainer.find('form').length > 0) {
-                formContainer.find('form a:not(".do-cancel")').unbind('click').click(ajaxGet);
+                formContainer.find('form a:not(".do-cancel, .btn-file-browser")').unbind('click').click(ajaxGet);
                 formContainer.find('input[name="action_doCancel"], .do-cancel').click(function(e)
                 {
                     e.preventDefault();
@@ -152,6 +152,16 @@
                     formContainer.parent().find('.btn-listing.is-active').removeClass('is-active');
                     $.scrollTo(row, 500, {axis: 'y', offset: -$('#header').outerHeight()});
                 });
+
+                formContainer.find('form .btn-file-browser').click(function(e)
+                {
+                    e.preventDefault();
+                    var theBtn = $(this).parents('form:eq(0)').find('input[type="file"]');
+                    theBtn.click();
+                });
+
+                formContainer.find('form .simple-previewable').previewable();
+
                 formContainer.find('form').formWork().ajaxSubmit(
                 {
                     onstart: function()
@@ -160,10 +170,32 @@
                     },
                     success: function(response)
                     {
-                        var newForm = $(response).find('form');
-                        newForm.find('a:not(".do-cancel")').unbind('click').click(ajaxGet);
-                        formContainer.find('form').replaceWith(newForm);
-                        ajaxForm(formContainer, expectForm);
+                        var isJSON = false;
+                        try {
+                            response = JSON.parse(response);
+                            isJSON = true;
+                        } catch (e) {
+
+                        }
+
+                        if (!isJSON) {
+                            var newForm = $(response).find('form');
+                            newForm.find('a:not(".do-cancel, .btn-file-browser")').unbind('click').click(ajaxGet);
+                            formContainer.find('form').replaceWith(newForm);
+                            ajaxForm(formContainer, expectForm);
+                        } else {
+                            row.find('.title').html(response.title);
+                            if (response.thumbnail.length > 0) {
+                                row.find('.member-area__content__property-list__item__image img').attr('src', response.thumbnail);
+                            }
+                            switch (response.then) {
+                                case 'close_form':
+                                    formContainer.html('');
+                                    row.find('.btn-listing.is-active').removeClass('is-active');
+                                    $.scrollTo(row, 500, {axis: 'y', offset: -$('#header').outerHeight()});
+                                    break;
+                            }
+                        }
 
                     },
                     fail: function(response)
@@ -195,7 +227,7 @@
                     $.scrollTo(row, 500, {axis: 'y', offset: -$('#header').outerHeight()});
                     var formContainer = me.parents('div.forms:eq(0)');
                     var newForm = $(response).find('form');
-                    newForm.find('a:not(".do-cancel")').unbind('click').click(ajaxGet);
+                    newForm.find('a:not(".do-cancel, .btn-file-browser")').unbind('click').click(ajaxGet);
                     formContainer.find('input[name="action_doCancel"], .do-cancel').click(function(e)
                     {
                         e.preventDefault();

@@ -1,6 +1,26 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+    $('.show-search-form').click(function(e)
+    {
+        e.preventDefault();
+        if ($(this).hasClass('flipped')) {
+            $(this).removeClass('flipped');
+            $('.search-forms').addClass('hide');
+            $('.criteria').removeClass('hide');
+            if ($(this).is('.button')) {
+                $(this).html('Refine the result');
+            }
+        } else {
+            $(this).addClass('flipped');
+            $('.search-forms').removeClass('hide');
+            $('.criteria').addClass('hide');
+            if ($(this).is('.button')) {
+                $(this).html('Close');
+            }
+        }
+    });
+
     $('.btn-listing').propertyAction();
 
     if ($('body').hasClass('page-dashboard')) {

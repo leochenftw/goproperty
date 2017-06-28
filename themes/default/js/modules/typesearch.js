@@ -1,6 +1,6 @@
 (function($)
 {
-	$.fn.typeSearch = function(cbf)
+    $.fn.typeSearch = function(cbf)
     {
         var self        =   $(this),
             callback    =   cbf,

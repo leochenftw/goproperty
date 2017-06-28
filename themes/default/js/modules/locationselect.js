@@ -1,5 +1,5 @@
 (function($) {
-	$.fn.locationSelect = function() {
+    $.fn.locationSelect = function() {
         var endpoint        =   '/api/v1/location/',
             childName       =   '#' + $(this).data('direct-child'),
             form            =   $(this).parents('form:eq(0)');
@@ -25,13 +25,23 @@
                 $.get(url, function(data)
                 {
                     var to      =   form.find('select[name="' + data.to + '"]'),
-                        options =   data.options;
+                        options =   data.options,
+                        preset  =   to.data('option'),
+                        trigger =   false;
                     for (var i = 0; i < options.length; i++)
                     {
                         var opt =   $('<option />');
                         opt.val(options[i]);
-                        opt.html(options[i]);
+                        opt.html(options[i]);console.log(options[i].toLowerCase() + ':' + preset);
+                        if (options[i].toLowerCase().replace(/ /gi, '-') == preset) {
+                            opt.prop('selected', true);
+                            trigger = true;
+                        }
                         to.append(opt);
+                    }
+
+                    if (trigger) {
+                        to.change();
                     }
                 });
             }

@@ -111,6 +111,17 @@ class BusinessForm extends Form
             if ($business->hasPaid()) {
                 $osf = $osf->performReadonlyTransformation();
                 $osf->setDescription('<div id="list-valid-until" style="margin-top: 1em;">You may withdraw and list this buiness freely before the end of <strong>' . $business->ValidUntil() . '</strong></div>');
+            } elseif ($business->Member()->inFreeTrial()) {
+                $osf = OptionsetField::create(
+                    'ListLength',
+                    'List length',
+                    array(
+                        "no payment"    =>  '2 months. FREE TO GO'
+                    ),
+                    "no payment"
+                );
+
+                $osf = $osf->performReadonlyTransformation();
             }
 
             $fields->push($osf);
@@ -161,17 +172,19 @@ class BusinessForm extends Form
             if ($id = $data['BusinessID']) {
                 $business = Business::get()->byID($id);
                 if ($business->Member()->ID == Member::currentUserID()) {
+
                     if (empty($data['Logo']['type']['Uploads'][0])) {
                         if ($business->Logo()->exists()) {
                             $LogoID = $business->LogoID;
                         }
                     }
+
                     $form->saveInto($business);
                     if (!empty($LogoID)) {
                         $business->LogoID = $LogoID;
                     }
 
-                    if ($business->hasPaid()) {
+                    if ($business->hasPaid() || $business->Member()->inFreeTrial()) {
                         $business->Listed = true;
                         $business->write();
                     } else {

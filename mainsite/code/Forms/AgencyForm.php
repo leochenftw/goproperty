@@ -4,7 +4,7 @@ use SaltedHerring\Debugger;
 
 class AgencyForm extends Form
 {
-	public function __construct($controller)
+    public function __construct($controller)
     {
         $agency = null;
         $fields = new FieldList();
@@ -35,12 +35,12 @@ class AgencyForm extends Form
         $fields->push($logo = UploadField::create('Logo', 'Logo'));
 
         $logo->setFolderName('agencylogos')
-				->setCanAttachExisting(false)
-				->setAllowedExtensions(array('jpg', 'jpeg', 'png'))
-				->setPreviewMaxWidth(400)
-				->setPreviewMaxHeight(400)
-				->setCanPreviewFolder(false)
-				->setAutoUpload(false)
+                ->setCanAttachExisting(false)
+                ->setAllowedExtensions(array('jpg', 'jpeg', 'png'))
+                ->setPreviewMaxWidth(400)
+                ->setPreviewMaxHeight(400)
+                ->setCanPreviewFolder(false)
+                ->setAutoUpload(false)
                 ->setFieldHolderTemplate('LogoUploadField');
 
 
@@ -111,6 +111,14 @@ class AgencyForm extends Form
                 $logo->CropperHeight = (int) $data['CropperHeight'];
             }
             $logo->write();
+
+            if ($this->controller->request->isAjax()) {
+                return  json_encode(array(
+                            'title'     =>  $agency->Title,
+                            'thumbnail' =>  !empty($agency->LogoID) ? $agency->Logo()->FillMax(100, 100)->URL : 'https://placehold.it/100x100',
+                            'then'      =>  'close_form'
+                        ));
+            }
 
             return $this->controller->redirect('/member/action/agencies');
         }
