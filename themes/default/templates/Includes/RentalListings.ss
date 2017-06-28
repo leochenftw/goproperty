@@ -4,7 +4,8 @@
         <div class="column is-paddingless is-auto-width has-text-right"><a class="btn-listing button outlined inline" href="/member/action/rental-listing?id=$Property.ID">New...</a></div>
     </div>
     <div class="all-listings">
-    <% loop $Property.RentalListings %>
+    <% if $Property.RentalListings.Count > 0 %>
+        <% loop $Property.RentalListings %>
         <div class="columns">
             <div class="column">
                 <p class="subtitle is-6"><em>Created</em></p>
@@ -22,7 +23,7 @@
             <div class="column actions">
                 <p class="subtitle is-6"><em>Action</em></p>
                 <h4 class="title is-5">
-                    <a class="btn-listing button inline" href="/member/action/rental-listing?id=$Up.ID&listing-id=$ID">Pay</a>
+                    <a class="btn-listing button inline" href="/api/v1/listing/$ID/pay">Pay</a>
                     <a class="btn-delete-listing button inline" href="/api/v1/listing/$ID/delete">Delete</a>
                 </h4>
             </div>
@@ -43,6 +44,9 @@
             </div>
             <% end_if %>
         </div>
-    <% end_loop %>
+        <% end_loop %>
+    <% else %>
+        <p>No listing</p>
+    <% end_if %>
     </div>
 </div>

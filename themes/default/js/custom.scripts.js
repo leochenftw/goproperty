@@ -21,7 +21,9 @@ $(document).ready(function(e)
         }
     });
 
-    $('.btn-listing').propertyAction();
+    if ($('.btn-listing').length > 0) {
+        $('.btn-listing').propertyAction();
+    }
 
     if ($('body').hasClass('page-dashboard')) {
         $(".member-area__sidebar ul.neat-ul").fixy($('#header').outerHeight());

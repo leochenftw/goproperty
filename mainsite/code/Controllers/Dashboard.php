@@ -54,6 +54,7 @@ class Dashboard extends Page_Controller {
         }
 
         if ($request->isAjax()) {
+
             switch ($tab) {
                 case 'properties':
                     return $this->customise(array('tab' => $tab))->renderWith(array('NeoProperties'));

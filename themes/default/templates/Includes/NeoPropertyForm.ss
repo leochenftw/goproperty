@@ -75,7 +75,7 @@
                                 <div class="column">
                                     <div class="photos-row">
                                         <% loop $Gallery %>
-                                        <a href="$URL" target="_blank">$FillMax(100, 100)</a>
+                                        <a href="$URL" target="_blank" data-lightbox="$Up.Title">$FillMax(100, 100)</a>
                                         <% end_loop %>
                                     </div>
                                     <div class="link-row"><a href="/member/action/manage-property?id=$ID&step=3&editing=1">Add more</a></div>

@@ -295,6 +295,14 @@ class CreatePropertyForm extends Form
                 return $this->controller->redirect('/member/action/manage-property?id=' . $property->ID . '&step=' . $this->step);
             }
 
+            if ($this->controller->request->isAjax()) {
+                return  json_encode(array(
+                            'title'     =>  $property->Title,
+                            'thumbnail' =>  $property->Gallery()->count() > 0 ? $property->Gallery()->first()->FillMax(100, 100)->URL : 'https://placehold.it/100x100',
+                            'then'      =>  'close_form'
+                        ));
+            }
+
             return $this->controller->redirect('/member/action/properties');
         }
 
@@ -307,7 +315,7 @@ class CreatePropertyForm extends Form
         for ($i = 0; $i <= $this->steps; $i++)
         {
             $item = array(
-                'URL'   =>  '/member/action/manage-property?id=' . $this->property->ID . '&step=' . $i,
+                'URL'   =>  '/member/action/manage-property?id=' . $this->property->ID . '&step=' . $i . ($i < $this->steps ? '&editing=1' : ''),
                 'HTML'  =>  $i + 1,
                 'Title' =>  $this->titleMaker($i),
                 'Step'  =>  $this->step + 1

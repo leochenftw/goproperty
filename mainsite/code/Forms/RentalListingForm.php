@@ -86,19 +86,19 @@ class RentalListingForm extends Form
             'PropertyID',
             $propertyID
         ));
-
-        $fields->changeFieldOrder(array(
-            'AgencyID',
-            'AgencyReference',
-            'ContactNumber',
-			'WeeklyRent',
-            'DateAvailable',
-			'IdealTenants',
-			'Furnishings',
-			'AllowPet',
-			'AllowSmoker',
-			'SmokeAlarm'
-        ));
+        //
+        // $fields->changeFieldOrder(array(
+        //     'AgencyID',
+        //     'AgencyReference',
+        //     'ContactNumber',
+		// 	'WeeklyRent',
+        //     'DateAvailable',
+		// 	'IdealTenants',
+		// 	'Furnishings',
+		// 	'AllowPet',
+		// 	'AllowSmoker',
+		// 	'SmokeAlarm'
+        // ));
 
         $daily_charge   =   Config::inst()->get('Property', 'DailyCharge');
         $til_charge     =   Config::inst()->get('Property', 'TilRented');
@@ -138,9 +138,11 @@ class RentalListingForm extends Form
             $fields->push($list_until);
         }
 
-        $actions->push(
-            FormAction::create('doCancel', 'Cancel')->addExtraClass('pagination-previous is-warning')
-        );
+        if (!$request->isAjax()) {
+            $actions->push(
+                FormAction::create('doCancel', 'Cancel')->addExtraClass('pagination-previous is-warning')
+            );
+        }
 
         $list_label = 'List';
 
@@ -177,6 +179,20 @@ class RentalListingForm extends Form
 
         if ($listing->isPaid) {
             $listing->writeToStage('Live');
+        }
+
+        if ($this->controller->request->isAjax()) {
+            $order = SaltedOrder::prepare_order();
+            $order->Amount->Amount = $listing->getAmount();
+
+            $order->ListingID   =   $listing->ID;
+            $link = $order->Pay('Paystation');
+
+            return  json_encode(array(
+                        'code'      =>  200,
+                        'url'       =>  $link,
+                        'then'      =>  'redirect'
+                    ));
         }
 
         return $this->controller->redirectBack();

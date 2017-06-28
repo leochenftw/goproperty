@@ -1,11 +1,4 @@
-/**
- * - callbacks: null | {
-        onstart: function | null,
-        sucess: function | null,
-        fail: function | null,
-        done: function | null
-     }
- * */
+
 (function($) {
     $.fn.formWork = function() {
         if ($('#AccountUpgradeForm_AccountUpgradeForm').length > 0) return;
@@ -115,6 +108,9 @@
                 }
             };
 
+        if (gplace && window.google) {
+            gplace.activate();
+        }
         self.find('input.viewable-gallery').removeAttr('id').change(function(e)
         {
             if (this.value.length > 0) {

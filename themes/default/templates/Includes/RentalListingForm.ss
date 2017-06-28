@@ -9,6 +9,9 @@
         </fieldset>
         <div class="Actions">
             <nav class="pagination is-centered">
+                <% if $Actions.Count == 1 %>
+                <a href="#" class="pagination-previous do-cancel">Cancel</a>
+                <% end_if %>
                 $Actions
             </nav>
         </div>

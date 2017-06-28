@@ -14,7 +14,7 @@ class ListingAPI extends BaseRestController {
 
     private static $allowed_actions = array (
         'post'          =>  "->isAuthenticated",
-        'get'			=>	false
+        'get'			=>	"->isAuthenticated"
     );
 
     public function isAuthenticated() {
@@ -36,9 +36,41 @@ class ListingAPI extends BaseRestController {
         return false;
     }
 
+    public function get($request)
+    {
+        $action = $request->param('Action');
+
+        if ($action == 'pay') {
+            if (!$this->listing->isPaid) {
+
+                $order = SaltedOrder::prepare_order();
+                $order->Amount->Amount = $this->listing->getAmount();
+
+                $order->ListingID   =   $this->listing->ID;
+                $link = $order->Pay('Paystation');
+
+                return  array(
+                            'code'      =>  200,
+                            'url'       =>  $link
+                        );
+            }
+
+            return  array(
+                        'code'          =>  403,
+                        'message'       =>  'It\'s already been paid!'
+                    );
+        }
+
+        return  array(
+                    'code'          =>  400,
+                    'message'       =>  'action not allowed'
+                );
+    }
+
     public function post($request)
     {
-        if ($request->param('Action') == 'end') {
+        $action = $request->param('Action');
+        if ($action == 'end') {
             $this->listing->deleteFromStage('Live');
             return  array(
                         'code'      =>  200,
@@ -46,7 +78,30 @@ class ListingAPI extends BaseRestController {
                     );
         }
 
-        if ($request->param('Action') == 'delete') {
+        if ($action == 'pay') {
+            if (!$this->listing->isPaid) {
+                $this->listing->deleteFromStage('Live');
+                $this->listing->deleteFromStage('Stage');
+
+                $order = SaltedOrder::prepare_order();
+                $order->Amount->Amount = $this->listing->getAmount();
+
+                $order->ListingID   =   $this->listing->ID;
+                $order->Pay('Paystation');
+
+                return  array(
+                            'code'      =>  200,
+                            'url'       =>  ''
+                        );
+            }
+
+            return  array(
+                        'code'          =>  403,
+                        'message'       =>  'It\'s already been paid!'
+                    );
+        }
+
+        if ($action == 'delete') {
             if (!$this->listing->isPaid) {
                 $this->listing->deleteFromStage('Live');
                 $this->listing->deleteFromStage('Stage');

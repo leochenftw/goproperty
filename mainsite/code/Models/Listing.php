@@ -47,6 +47,27 @@ class Listing extends DataObject
         }
     }
 
+    //  this returns number for payment
+    public function getAmount()
+    {
+        if (!empty($this->ListTilGone)) {
+            return Config::inst()->get('Property', 'TilRented');
+        } elseif (!empty($this->ListTilDate)) {
+            $today          =   date_create(date("Y-m-d"));
+            $until          =   date_create($this->ListTilDate);
+            $daily_charge   =   Config::inst()->get('Property', 'DailyCharge');
+            if ($until >= $today) {
+                $diff       =   date_diff($today,$until);
+                $diff       =   $diff->days + 1;
+
+                return $daily_charge * $diff;
+            }
+        }
+
+        return 0;
+    }
+
+    // this returns dollar format for humans
     public function getAmountdue()
     {
         if (!empty($this->ListTilGone)) {
@@ -64,7 +85,7 @@ class Listing extends DataObject
             }
         }
 
-        return '$-.--';
+        return '-.--';
     }
 
     public function getCMSFields()
