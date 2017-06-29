@@ -11,6 +11,20 @@ class Page extends SiteTree {
 
     private static $has_one = array(
     );
+
+    public function getCMSFields()
+    {
+        $fields             =   parent::getCMSFields();
+        $fields->addFieldToTab(
+            'Root.Main',
+            CheckboxField::create(
+                'NarrowContainer',
+                'Narrow the page width to 600px'
+            ),
+            'Title'
+        );
+        return $fields;
+    }
 }
 class Page_Controller extends ContentController {
     protected static $extensions = array(
