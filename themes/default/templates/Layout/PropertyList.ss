@@ -1,7 +1,17 @@
 <% include GooglemapsHero Lat=-41.1093769, Lng=174.88356010000007 %>
 <section class="section property-list">
     <div class="container">
-        <header class="columns is-12 vertical-centred">
+        <nav class="breadcrumb">
+        <% loop $LocationBreadcrumbs %>
+            <% if $URL %>
+            <a href="$URL" class="breadcrumb-item">$Title</a>
+            <% else %>
+                <span class="breadcrumb-item is-active">$Title</span>
+            <% end_if %>
+        <% end_loop %>
+        </nav>
+
+        <header class="columns is-12 vertical-centred is-marginless">
             <div class="column"><h1 class="title is-2 is-marginless">Search result</h1></div>
             <div class="column is-auto-width"><a href="#" class="button inline show-search-form">Refine the result</a></div>
         </header>
@@ -98,7 +108,7 @@
         <% end_with %>
         </div>
         <div class="criteria">
-            <h2 class="column is-12">Search criteria:</h2>
+            <h2 class="column is-12 is-paddingless-vertical">Search criteria:</h2>
             $FilterForm
         </div>
         <% if $Properties.Count > 0 %>

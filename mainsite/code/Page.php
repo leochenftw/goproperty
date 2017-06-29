@@ -6,6 +6,7 @@ use SaltedHerring\SaltedPayment\API\Paystation;
 class Page extends SiteTree {
 
     private static $db = array(
+        'NarrowContainer'   =>  'Boolean'
     );
 
     private static $has_one = array(
@@ -147,6 +148,49 @@ Requirements::themedCSS('reset');
     public function TradesmenSearchForm()
     {
         return new TradesmenSearchForm($this);
+    }
+
+    public function getLocationBreadcrumbs()
+    {
+        $request        =   $this->request;
+        $breadcrumbs    =   array(array(
+            'Title'     =>  'All properties',
+            'URL'       =>  '/list'
+        ));
+
+        if ($region = $request->param('region')) {
+            $item_region    =   array(
+                                'Title'     =>  $region,
+                                'URL'       =>  '/list/' . $region
+                            );
+            $breadcrumbs[] = $item_region;
+
+            if ($district = $request->param('district')) {
+                $item_city  =   array(
+                                    'Title'     =>  $district,
+                                    'URL'       =>  '/list/' . $region . '/' . $district
+                                );
+                $breadcrumbs[] = $item_city;
+
+                if ($suburb = $request->param('suburb')) {
+                    $item_sub   =   array(
+                                        'Title'     =>  $suburb,
+                                        'URL'       =>  '/list/' . $region . '/' . $district . '/' . $suburb
+                                    );
+                    $breadcrumbs[] = $item_sub;
+                }
+            }
+        }
+
+        unset($breadcrumbs[count($breadcrumbs) - 1]['URL']);
+        // Debugger::inspect($breadcrumbs);
+        $crumbs = array();
+        foreach ($breadcrumbs as $breadcrumb)
+        {
+            $crumbs[] = new ArrayData($breadcrumb);
+        }
+
+        return new ArrayList($crumbs);
     }
 
 }

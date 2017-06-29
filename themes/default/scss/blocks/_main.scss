@@ -16,6 +16,12 @@
         padding-bottom: 0;
     }
 
+    .container {
+        &.narrow {
+            max-width: 600px;
+        }
+    }
+
     #SignupForm_SignupForm {
         div.checkbox {
             margin-bottom: 10px;

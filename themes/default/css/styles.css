@@ -9772,6 +9772,9 @@ div.field.textarea {
 .page-tradesmenlister #main, .page-propertylister #main {
   padding-bottom: 0;
 }
+#main .container.narrow {
+  max-width: 600px;
+}
 #main #SignupForm_SignupForm div.checkbox {
   margin-bottom: 10px;
 }
@@ -10012,6 +10015,15 @@ div.field.textarea {
   border-radius: 3px;
   cursor: pointer;
   outline: none;
+}
+#main .filter-form button.btn-region:before {
+  content: 'Region: ';
+}
+#main .filter-form button.btn-city:before {
+  content: 'District: ';
+}
+#main .filter-form button.btn-suburb:before {
+  content: 'Suburb: ';
 }
 #main .filter-form p {
   margin-top: 0;
@@ -12478,6 +12490,19 @@ body.lb-disable-scrolling {
 .overlay-element .interest-item.fold .content,
 .overlay-element .interest-item.fold .actions {
   display: none;
+}
+
+nav.breadcrumb {
+  display: block;
+  padding: 0 0.75rem 0.75rem;
+}
+nav.breadcrumb a, nav.breadcrumb span {
+  display: inline-block;
+  font-style: italic;
+}
+nav.breadcrumb a:after {
+  padding: 0 5px;
+  content: "/\00a0";
 }
 
 html {

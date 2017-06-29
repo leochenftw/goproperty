@@ -10,17 +10,20 @@ class FilterForm extends Form
         $hasLocationParam = false;
 
         if ($region = $request->param('region')) {
-            $fields->push(LiteralField::create('Region', '<div class="is-inline-block relative"><button name="region">Region: ' . $region . '</button><span class="icon"><i class="fa fa-close"></i></span></div>'));
+            // $region = str_replace('Region: ', '', $region);
+            $fields->push(LiteralField::create('Region', '<div class="is-inline-block relative"><button class="btn-region" name="region">' . $region . '</button><span class="icon"><i class="fa fa-close"></i></span></div>'));
             $hasLocationParam = true;
         }
 
         if ($district = $request->param('district')) {
-            $fields->push(LiteralField::create('City', '<div class="is-inline-block relative"><button name="district">City: ' . $district . '</button><span class="icon"><i class="fa fa-close"></i></span></div>'));
+            // $district = str_replace('City: ', '', $district);
+            $fields->push(LiteralField::create('City', '<div class="is-inline-block relative"><button class="btn-city" name="district">' . $district . '</button><span class="icon"><i class="fa fa-close"></i></span></div>'));
             $hasLocationParam = true;
         }
 
         if ($suburb = $request->param('suburb')) {
-            $fields->push(LiteralField::create('Suburb', '<div class="is-inline-block relative"><button name="suburb">Suburb: ' . $suburb . '</button><span class="icon"><i class="fa fa-close"></i></span></div>'));
+            // $suburb = str_replace('Suburb: ', '', $suburb);
+            $fields->push(LiteralField::create('Suburb', '<div class="is-inline-block relative"><button class="btn-suburb" name="suburb">' . $suburb . '</button><span class="icon"><i class="fa fa-close"></i></span></div>'));
             $hasLocationParam = true;
         }
 
@@ -47,7 +50,8 @@ class FilterForm extends Form
             }
 
         } elseif (!$hasLocationParam) {
-            $fields->push(LiteralField::create('NOFILTER', '<p><em>- no filter given -</em></p>'));
+            // Debugger::inspect('?');
+            $fields->push(LiteralField::create('NOFILTER', '<p style="font-size: 16px;"><em>You are seeing all properties</em></p>'));
         }
 
         $actions = new FieldList();
