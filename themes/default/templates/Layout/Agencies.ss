@@ -20,7 +20,7 @@
         <div class="column member-area__content__property-list__item__info">
             <h3 class="title is-3">$Title</h3>
             <div class="is-marginless member-area__content__property-list__item__info__controls">
-                <a class="btn-listing button outlined inline" data-expect-form="1" href="/member/action/edit-agency?agency_id=$ID&step=5">Edit property</a>
+                <a class="btn-listing button outlined inline" data-expect-form="1" href="/member/action/edit-agency?agency_id=$ID&step=5">Edit agency</a>
             </div>
             <div class="forms"></div>
         </div>

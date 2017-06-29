@@ -6,6 +6,12 @@
     &.property-list {
         border-top: 0.625rem solid #b8e81e;
         padding: 1.875rem 0 0;
+        .pagination {
+            margin-bottom: 45px;
+            a {
+                font-size: 1rem !important;
+            }
+        }
     }
 
     &.property {
@@ -174,7 +180,6 @@
                                 margin-top: 0;
                                 margin-right: 0.625rem;
                                 color: #95a5a6;
-                                cursor: pointer;
                                 @include transition(color 0.3s);
                                 vertical-align: baseline;
                                 i, i:before {

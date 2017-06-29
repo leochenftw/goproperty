@@ -31,6 +31,7 @@ class FilterForm extends Form
         unset($terms['url']);
         unset($terms['SecurityID']);
         unset($terms['action_Filter']);
+        unset($terms['start']);
 
         if (count($terms) > 0) {
 

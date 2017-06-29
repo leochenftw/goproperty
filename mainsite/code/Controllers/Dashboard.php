@@ -34,8 +34,13 @@ class Dashboard extends Page_Controller {
         }
 
         $member = Member::currentUser();
+
         $this->Member = $member;
         $tab = $request->param('tab');
+
+        if ($member->ChangePassOnNextLogin && $tab != 'password') {
+            return $this->redirect('/member/action/password');
+        }
 
         if (($member->beLandlords || $member->beTradesmen || $member->beRealtors) && $tab != 'upgrade' && $tab != 'signout'){
             return $this->redirect('/member/action/upgrade');

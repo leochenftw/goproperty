@@ -1,6 +1,7 @@
 <% include GooglemapsHero Lat=-41.1093769, Lng=174.88356010000007 %>
 <div class="section signin-form-wrapper">
     <div class="container">
+        <h1 class="title is-2 has-text-centered">Sign in</h1>
         <% with $SigninForm %>
             <% if $Message %>
             <div class="message-wrapper has-text-centered $Message.MessageType">$Message</div>

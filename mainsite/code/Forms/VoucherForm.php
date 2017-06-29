@@ -29,12 +29,16 @@ class VoucherForm extends Form
                     if (empty($voucher->MemberID)) {
                         $expiry = strtotime($voucher->ExpiryDate);
                         if ($expiry > time()) {
-                            $member = Member::currentUser();
-                            $voucher->MemberID = $member->ID;
-                            $voucher->write();
+                            if (!empty($voucher->Email) && $voucher->Email == $member->Email) {
+                                $member = Member::currentUser();
+                                $voucher->MemberID = $member->ID;
+                                $voucher->write();
 
-                            $member->FreeUntil = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 2 months"));
-                            $member->write();
+                                $member->FreeUntil = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 28 days"));
+                                $member->write();
+                            }
+
+                            $this->sessionMessage('You can\'t redeem this voucher. It is not for you.', 'is-danger');
                         }
 
                         $this->sessionMessage('Voucher has expired', 'is-danger');

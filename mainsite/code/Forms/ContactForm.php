@@ -3,6 +3,7 @@ use SaltedHerring\Debugger;
 
 class ContactForm extends Form
 {
+    protected $contacted = false;
     public function __construct($controller, $memberID, $businessID = null)
     {
         $fields = new FieldList();
@@ -50,11 +51,24 @@ class ContactForm extends Form
                     $interest->MemberID = Member::currentUserID();
                     $interest->Message = $content;
                     $interest->write();
-                    $this->sessionMessage('You application has been sent to the landlord.', 'good');
+                    if ($this->controller->request->isAjax()) {
+                        return  json_encode(array(
+                                    'codde'     =>  200,
+                                    'message'   =>  'You contact message has been sent to the lister.'
+                                ));
+                    }
+                    $this->sessionMessage('You contact message has been sent to the lister.', 'good');
                     return $this->controller->redirectBack();
                 }
 
-                $this->sessionMessage('You have already applied previously', 'bad');
+                if ($this->controller->request->isAjax()) {
+                    return  json_encode(array(
+                                'codde'     =>  200,
+                                'message'   =>  'You have previously contacted this lister.'
+                            ));
+                }
+
+                $this->sessionMessage('You have previously contacted this lister.', 'bad');
                 return $this->controller->redirectBack();
 
             }

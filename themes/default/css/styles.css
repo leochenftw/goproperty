@@ -3525,11 +3525,12 @@ table th {
 }
 
 .has-text-centered, .text-centered, #main #SignupForm_SignupForm,
-#main #SigninForm_SigninForm {
+#main #SigninForm_SigninForm, .in-promo-season #main #SignupForm_SignupForm .Actions,
+.in-promo-season #main #SignupForm_SignupForm .lnk-signup-wrapper, #main .promo-signup-form .Actions {
   text-align: center;
 }
 
-.has-text-left {
+.has-text-left, .in-promo-season #main #SignupForm_SignupForm {
   text-align: left;
 }
 
@@ -10128,6 +10129,10 @@ div.field.textarea {
 #main #SigninForm_SigninForm a:hover {
   text-decoration: none;
 }
+.in-promo-season #main #SignupForm_SignupForm {
+  margin: 0;
+  width: 100%;
+}
 #main .member-area__sidebar ul li a {
   border-bottom: 1px solid rgba(0, 29, 88, 0.2);
   color: #7f8184;
@@ -10567,6 +10572,20 @@ div.field.textarea {
   margin-left: 6px;
   line-height: 1;
 }
+#main .promo-signup-form div.field {
+  margin-bottom: 20px;
+}
+#main .promo-signup-form div.field ul.optionset li {
+  margin-right: 1em;
+  display: inline-block;
+}
+#main .promo-signup-form div.field ul.optionset li:last-child {
+  margin-right: 0;
+}
+#main .promo-signup-form div.field ul.optionset li label {
+  padding-left: 0.5em;
+  display: inline;
+}
 
 /* Preload images */
 body:after {
@@ -10800,6 +10819,12 @@ body.lb-disable-scrolling {
   border-top: 0.625rem solid #b8e81e;
   padding: 1.875rem 0 0;
 }
+.page-dashboard .section .pagination, .section.property-list .pagination {
+  margin-bottom: 45px;
+}
+.page-dashboard .section .pagination a, .section.property-list .pagination a {
+  font-size: 1rem !important;
+}
 .section.property {
   border-top: 0.625rem solid #b8e81e;
 }
@@ -10941,7 +10966,6 @@ body.lb-disable-scrolling {
   margin-top: 0;
   margin-right: 0.625rem;
   color: #95a5a6;
-  cursor: pointer;
   -moz-transition: color 0.3s;
   -o-transition: color 0.3s;
   -webkit-transition: color 0.3s;
@@ -12179,7 +12203,6 @@ body.lb-disable-scrolling {
   text-indent: 0;
   margin-right: 10px;
   color: #b8e81e;
-  cursor: pointer;
   height: auto;
   line-height: 1;
 }

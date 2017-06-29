@@ -105,6 +105,18 @@
         }
     }
 
+    #SignupForm_SignupForm {
+        .in-promo-season & {
+            margin: 0;
+            width:  100%;
+            @extend .has-text-left;
+            .Actions,
+            .lnk-signup-wrapper {
+                @extend .has-text-centered;
+            }
+        }
+    }
+
     @import 'member-area';
 
     .page-feedbackinvitationcontroller & {
@@ -139,4 +151,28 @@
             }
         }
     }
+
+    .promo-signup-form {
+        div.field {
+            margin-bottom: 20px;
+            ul.optionset {
+                li {
+                    margin-right: 1em;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    display: inline-block;
+                    label {
+                        padding-left: 0.5em;
+                        display: inline;
+                    }
+                }
+            }
+        }
+
+        .Actions {
+            @extend .has-text-centered;
+        }
+    }
+
 }

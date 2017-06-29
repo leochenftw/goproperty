@@ -49,5 +49,7 @@
     </div>
     <div class="message-body">
         $ContactForm
+        <p class="loading-message hide">Submitting...</p>
+        <p class="postback-message hide"></p>
     </div>
 </div>

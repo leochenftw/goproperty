@@ -2,10 +2,11 @@
 class CustomSiteConfig extends DataExtension {
 
 	public static $db = array(
-		'GoogleSiteVerificationCode'  =>  'Varchar(128)',
-		'GoogleAnalyticsCode'         =>  'Varchar(20)',
-		'SiteVersion'                 =>  'Varchar(10)',
-		'GoogleCustomCode'            =>  'HTMLText'
+        'GoogleSiteVerificationCode'    =>  'Varchar(128)',
+        'GoogleAnalyticsCode'           =>  'Varchar(20)',
+        'SiteVersion'                   =>  'Varchar(10)',
+        'GoogleCustomCode'              =>  'HTMLText',
+        'PromoSeason'                   =>  'Boolean'
 	);
 
     public function updateCMSFields(FieldList $fields) {
@@ -14,6 +15,7 @@ class CustomSiteConfig extends DataExtension {
 		$fields->addFieldToTab("Root.Google", new TextareaField('GoogleCustomCode', 'Custom Google Code'));
 
 		$fields->addFieldToTab('Root.Main', new TextField('SiteVersion', 'Site Version'));
+        $fields->addFieldToTab('Root.Main', new CheckboxField('PromoSeason', 'Promo season is on'));
 	}
 
 }

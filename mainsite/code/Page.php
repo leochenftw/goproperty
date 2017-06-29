@@ -52,41 +52,31 @@ class Page_Controller extends ContentController {
     );
 
     public function init() {
-        // Debugger::inspect(SS_ENVIRONMENT_TYPE);
-        // Debugger::inspect(Config::inst()->get('SaltedPayment', 'MerchantSettings'));
+
         parent::init();
-        Requirements::block(THIRDPARTY_DIR . '/jquery-ui-themes/smoothness/jquery-ui.css');
-        Requirements::block('framework/css/UploadField.css');
-        Requirements::block(THIRDPARTY_DIR . '/jquery/jquery.js');
-        Requirements::block(THIRDPARTY_DIR . '/jquery-ui/jquery-ui.js');
-        Requirements::block(THIRDPARTY_DIR . '/jquery-entwine/dist/jquery.entwine-dist.js');
-        Requirements::block('framework/admin/javascript/ssui.core.js');
-        Requirements::block('framework/javascript/i18n.js');
-        Requirements::block('framework/javascript/lang/en.js');
-        Requirements::block('framework/javascript/UploadField_uploadtemplate.js');
-        Requirements::block('framework/javascript/UploadField_downloadtemplate.js');
-        Requirements::block('framework/javascript/UploadField.js');
+        if (!$this->request->isAjax()) {
+            Requirements::block(THIRDPARTY_DIR . '/jquery-ui-themes/smoothness/jquery-ui.css');
+            Requirements::block('framework/css/UploadField.css');
+            Requirements::block(THIRDPARTY_DIR . '/jquery/jquery.js');
+            Requirements::block(THIRDPARTY_DIR . '/jquery-ui/jquery-ui.js');
+            Requirements::block(THIRDPARTY_DIR . '/jquery-entwine/dist/jquery.entwine-dist.js');
+            Requirements::block('framework/admin/javascript/ssui.core.js');
+            Requirements::block('framework/javascript/i18n.js');
+            Requirements::block('framework/javascript/lang/en.js');
+            Requirements::block('framework/javascript/UploadField_uploadtemplate.js');
+            Requirements::block('framework/javascript/UploadField_downloadtemplate.js');
+            Requirements::block('framework/javascript/UploadField.js');
 
 
-        Requirements::block(THIRDPARTY_DIR . '/javascript-templates/tmpl.js');
-        Requirements::block(THIRDPARTY_DIR . '/javascript-loadimage/load-image.js');
-        Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/jquery.iframe-transport.js');
-        Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/cors/jquery.xdr-transport.js');
-        Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/jquery.fileupload.js');
-        Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/jquery.fileupload-ui.js');
+            Requirements::block(THIRDPARTY_DIR . '/javascript-templates/tmpl.js');
+            Requirements::block(THIRDPARTY_DIR . '/javascript-loadimage/load-image.js');
+            Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/jquery.iframe-transport.js');
+            Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/cors/jquery.xdr-transport.js');
+            Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/jquery.fileupload.js');
+            Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/jquery.fileupload-ui.js');
 
-        // Note: you should use SS template require tags inside your templates
-        // instead of putting Requirements calls here.  However these are
-        // included so that our older themes still work
-        /*
-Requirements::themedCSS('reset');
-        Requirements::themedCSS('layout');
-        Requirements::themedCSS('typography');
-        Requirements::themedCSS('form');
-*/
-        $this->initJS();
-        // $pay_link = Paystation::process(10, 'MembershipSubscription', (session_id() . '-' . time()));
-        // Debugger::inspect($pay_link);
+            $this->initJS();
+        }
     }
 
     protected function getSessionID() {
@@ -164,8 +154,51 @@ Requirements::themedCSS('reset');
         return new TradesmenSearchForm($this);
     }
 
+    public function getPromoSeason()
+    {
+        return SiteConfig::current_site_config()->PromoSeason;
+    }
+
+
     public function getLocationBreadcrumbs()
     {
+        if ($this->ClassName == 'PropertyPage') {
+            $region         =   $this->Region;
+            $district       =   $this->City;
+            $suburb         =   $this->Suburb;
+
+            $region_url     =   $this->RegionSlug;
+            $district_url   =   $this->CitySlug;
+            $suburb_url     =   $this->SuburbSlug;
+
+            $item_home      =   array(
+                                    'Title'     =>  'All properties',
+                                    'URL'       =>  '/list'
+                                );
+
+            $item_region    =   new ArrayData(array(
+                                    'Title'     =>  $region,
+                                    'URL'       =>  '/list/' . $region_url
+                                ));
+
+            $item_city      =   new ArrayData(array(
+                                    'Title'     =>  $district,
+                                    'URL'       =>  '/list/' . $region_url . '/' . $district_url
+                                ));
+
+            $item_sub       =   new ArrayData(array(
+                                    'Title'     =>  $suburb,
+                                    'URL'       =>  '/list/' . $region_url . '/' . $district_url . '/' . $suburb_url
+                                ));
+
+            $item           =   new ArrayData(array(
+                                    'Title'     =>  $this->Title,
+                                ));
+
+            return new ArrayList(array($item_home, $item_region, $item_city, $item_sub, $item));
+
+        }
+
         $request        =   $this->request;
         $breadcrumbs    =   array(array(
             'Title'     =>  'All properties',
@@ -173,6 +206,7 @@ Requirements::themedCSS('reset');
         ));
 
         if ($region = $request->param('region')) {
+
             $item_region    =   array(
                                 'Title'     =>  $region,
                                 'URL'       =>  '/list/' . $region

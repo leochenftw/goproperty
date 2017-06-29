@@ -34,7 +34,7 @@
 		<% include GA %>
         <script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
-	<body class="page-$URLSegment.LowerCase<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase<% if $extraBodyClassName %> $extraBodyClassName<% end_if %>">
+	<body class="page-$URLSegment.LowerCase<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase<% if $extraBodyClassName %> $extraBodyClassName<% end_if %><% if $PromoSeason %> in-promo-season<% end_if %>">
 		<% include Header %>
 
 		<main id="main">

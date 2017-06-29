@@ -17,7 +17,9 @@ class Voucher extends DataObject
 {
     private static $db      =   array(
         'Serials'           =>  'Varchar(12)',
-        'ExpiryDate'        =>  'Date'
+        'ExpiryDate'        =>  'Date',
+        'Email'             =>  'Varchar(256)',
+        'AllowGroup'        =>  'Enum("landlords,realtors,tradesmen")'
     );
 
     private static $summary_fields = array(
@@ -58,6 +60,18 @@ class Voucher extends DataObject
         parent::onBeforeWrite();
         if (empty($this->ID)) {
             $this->Serials = $this->testUnique($this->Serials);
+        }
+    }
+
+    /**
+     * Event handler called after writing to the database.
+     */
+    public function onAfterWrite()
+    {
+        parent::onAfterWrite();
+        if (!empty($this->Email)) {
+            $email = new VoucherGiverEmail($this);
+            $email->send();
         }
     }
 

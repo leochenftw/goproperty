@@ -87,6 +87,9 @@
 
                 <% if $tab == 'password' %>
                     <h2 class="title is-3 is-bold">Change password</h2>
+                    <% if $CurrentMember.ChangePassOnNextLogin %>
+                        <p style="margin-bottom: 1.5em;">You need to give your account a password before you can do anything else.</p>
+                    <% end_if %>
                     $UpdatePasswordForm
                 <% end_if %>
 

@@ -4,7 +4,7 @@
             <a data-description="Rental Property" class="column is-2 tab-ish search-tab active" href="#PropertySearchForm_PropertySearchForm" data-show="for-rent" data-hide="for-sale">Find a <span>Rental Property</span></a>
             <a data-description="Property for Sale" class="column is-2 tab-ish search-tab" href="#PropertySearchForm_PropertySearchForm" data-show="for-sale" data-hide="for-rent">Properties <span>For Sale</span></a>
             <a data-description="Tradesperson" class="column is-2 tab-ish search-tab" href="#TradesmenSearchForm_TradesmenSearchForm">Find a <span>Tradesperson</span></a>
-            <a class="column is-2 tab-ish" href="/member/action/list-property-for-rent">List a <span>property</span></a>
+            <%-- <a class="column is-2 tab-ish" href="/member/action/list-property-for-rent">List a <span>property</span></a> --%>
             <a class="column is-2 tab-ish" href="/resources"><span>Resources</span></a>
         </div>
         <% with $PropertySearchForm %>

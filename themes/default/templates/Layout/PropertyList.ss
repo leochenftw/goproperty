@@ -117,28 +117,21 @@
                     <% include PropertyTile %>
                 <% end_loop %>
             </div>
-            <div class="container pagination text-center">
-
-                <% if $Properties.MoreThanOnePage %>
-                    <% if $Properties.NotFirstPage %>
-                        <a class="prev" href="$Properties.PrevLink">‹</a>
+            <% if $Properties.MoreThanOnePage %>
+            <nav class="pagination">
+                <a href="$Properties.PrevLink" class="pagination-previous"<% if not $Properties.NotFirstPage %> disabled<% end_if %>>Prev</a>
+                <a href="$Properties.NextLink" class="pagination-next"<% if not $Properties.NotLastPage %> disabled<% end_if %>>Next</a>
+                <ul class="pagination-list" style="list-style: none; margin: 0;">
+                <% loop $Properties.Pages %>
+                    <% if $Link %>
+                        <li style="margin-top: 0;"><a href="$Link" class="pagination-link<% if $CurrentBool %> is-current<% end_if %>">$PageNum</a></li>
+                    <% else %>
+                        ...
                     <% end_if %>
-                    <% loop $Properties.Pages %>
-                        <% if $CurrentBool %>
-                            <span>$PageNum</span>
-                        <% else %>
-                            <% if $Link %>
-                                <a href="$Link">$PageNum</a>
-                            <% else %>
-                                ...
-                            <% end_if %>
-                        <% end_if %>
-                        <% end_loop %>
-                    <% if $Properties.NotLastPage %>
-                        <a class="next" href="$Properties.NextLink">›</a>
-                    <% end_if %>
-                <% end_if %>
-            </div>
+                <% end_loop %>
+                </ul>
+            </nav>
+            <% end_if %>
         <% else %>
             <div class="column is-12 content"  style="margin: 40px 0 80px;">
                 <p class="title is-4">Unfortunately your search criteria didn’t produce any results please change your criteria, or try <a style="border-bottom: 1px solid #001d58;" href="#" class="show-search-form">refining the result</a>.</p>

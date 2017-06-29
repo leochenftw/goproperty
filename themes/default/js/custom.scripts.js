@@ -217,12 +217,39 @@ $(document).ready(function(e)
         $('#PropertyForm_Message button').click(withDrawMessage);
     }
 
+    $('#ContactForm_ContactForm').ajaxSubmit(
+    {
+        success: function(data)
+        {
+            $('#contact-form-holder .loading-message').removeClass('hide');
+            $('#ContactForm_ContactForm').addClass('hide');
+        },
+
+        done: function(data)
+        {
+            var message = '';
+            try {
+                data = JSON.parse(data);
+                message = data.message;
+            } catch (e) {
+                message = 'something went wrong';
+            }
+
+            $('#contact-form-holder .loading-message').addClass('hide');
+            $('#contact-form-holder .postback-message').removeClass('hide').html(message);
+        }
+    });
+
     $('#contact-form-holder button.delete').click(function(e)
     {
         e.preventDefault();
         $('html').removeClass('locked');
         $('body').removeClass('overlayed fixed');
         $('#contact-form-holder').addClass('hide').insertAfter('.member-tile');
+        $('#contact-form-holder .postback-message').addClass('hide');
+        $('#ContactForm_ContactForm').removeClass('hide');
+        $('#contact-form-holder .postback-message').html('');
+        $('#ContactForm_ContactForm_Content').val('');
     });
 
     $('#btn-contact-form').click(function(e)

@@ -20,6 +20,7 @@ class UpdatePasswordForm extends Form {
 
 			if ($member = Member::currentUser()) {
 				$form->saveInto($member);
+                $member->ChangePassOnNextLogin = false;
 				$member->write();
 			}
 

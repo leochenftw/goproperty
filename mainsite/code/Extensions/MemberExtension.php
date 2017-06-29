@@ -20,7 +20,8 @@ class MemberExtension extends DataExtension
         // 'beLandlords'           =>  'Boolean',
         // 'beTradesmen'           =>  'Boolean',
         // 'beRealtors'            =>  'Boolean',
-        'FreeUntil'             =>  'Date'
+        'FreeUntil'             =>  'Date',
+        'ChangePassOnNextLogin' =>  'Boolean'
     );
 
     /**

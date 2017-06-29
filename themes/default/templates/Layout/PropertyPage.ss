@@ -1,9 +1,24 @@
 <% include GooglemapsHero Lat=$Lat, Lng=$Lng %>
 <section class="section property">
     <div class="container content">
+        <nav class="breadcrumb">
+        <% loop $LocationBreadcrumbs %>
+            <% if $URL %>
+            <a href="$URL" class="breadcrumb-item">$Title</a>
+            <% else %>
+                <span class="breadcrumb-item is-active">$Title</span>
+            <% end_if %>
+        <% end_loop %>
+        </nav>
         <header class="column is-12">
             <h1 class="title is-2">$Title</h1>
-            <p class="subtitle is-5"><strong>${$WeeklyRent} per week</strong><br />Available $DateAvailable.Day, $DateAvailable.Long</p>
+            <p class="subtitle is-5">
+                <% if $RentOrSale == 'rent' %>
+                <strong>${$WeeklyRent} per week</strong><br />Available $DateAvailable.Day, $DateAvailable.Long
+                <% else %>
+                    $Price
+                <% end_if %>
+            </p>
         </header>
         <% include PropertyGallery %>
 

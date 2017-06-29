@@ -9,14 +9,15 @@ class Signup extends Page_Controller
      */
     private static $allowed_actions = array(
         'SignupForm',
+        'PromoSignupForm',
         'activate'
     );
 
     public function index($request)
     {
-		// if ($member = Member::currentUser()) {
-		// 	return $this->redirect('/member');
-		// }
+		if ($member = Member::currentUser()) {
+			return $this->redirect('/member');
+		}
 
 		return $this->renderWith(array('Signup', 'Page'));
 	}
@@ -42,6 +43,11 @@ class Signup extends Page_Controller
 
 		return $this->customise(new ArrayData(array('Title' => 'Activation', 'Content' => $content)))->renderWith(array('Page'));
 	}
+
+    public function PromoSignupForm()
+    {
+        return new PromoSignupForm($this);
+    }
 
     public function SignupForm()
     {
