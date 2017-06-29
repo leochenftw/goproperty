@@ -4,7 +4,7 @@ use SaltedHerring\Debugger;
 class ContactForm extends Form
 {
     protected $contacted = false;
-    public function __construct($controller, $memberID, $businessID = null)
+    public function __construct($controller, $memberID = null, $businessID = null)
     {
         $fields = new FieldList();
         $fields->push(TextareaField::create(
@@ -88,6 +88,14 @@ class ContactForm extends Form
             $email->Body = $content;
             $email->send();
             $this->sessionMessage('Message sent', 'good');
+
+            if ($this->controller->request->isAjax())
+            {
+                return  json_encode(array(
+                            'code'      =>  200,
+                            'message'   =>  'The message has been sent to the business owner.'
+                        ));
+            }
 
             if (!empty($data['businessID'])) {
                 $business = Business::get()->byID($data['businessID']);

@@ -7,9 +7,10 @@
                 <div class="column" style="border-right: 1px solid #ccc;">
                     <h2 class="title is-3 has-text-centered">PROMOTION!</h2>
                     <div class="columns is-marginless">
-                        <div class="column">
-                            <p class="title is-4">Vivamus suscipit tortor eget felis porttitor volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
-                            $PromoSignupForm
+                        <div class="column content">
+                            <p class="title is-4">The promo season is upon us! You feel like to add some content?</p>
+                            <p><strong>This is how it works:</strong></p>
+                            <p>During the promo season, this side of the page will show up, which give the users the idea what this is about. So, if the users sign up during the promo season, their accounts will be <strong>automatically</strong> granted with 28 days free trial.</p>
                         </div>
                     </div>
                 </div>

@@ -138,7 +138,7 @@ class Business extends DataObject
     public function Link()
     {
         $slugify = new Slugify();
-        return Director::baseURL() . 'tradesmen/' . (!empty($this->Region) ? $slugify->slugify($this->Region) . '/' : '') . (!empty($this->City) ? $slugify->slugify($this->City) . '/' : '') . (!empty($this->Suburb) ? $slugify->slugify($this->Suburb) . '/' : '') . $this->Slug;
+        return Director::baseURL() . 'tradesmen/' . (!empty($this->Region) ? $slugify->slugify($this->Region) . '/' : 'all-region/') . (!empty($this->City) ? $slugify->slugify($this->City) . '/' : 'all-district/') . (!empty($this->Suburb) ? $slugify->slugify($this->Suburb) . '/' : 'all-suburb/') . $this->Slug;
     }
 
     public function isWished()

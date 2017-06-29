@@ -18,8 +18,7 @@ class Voucher extends DataObject
     private static $db      =   array(
         'Serials'           =>  'Varchar(12)',
         'ExpiryDate'        =>  'Date',
-        'Email'             =>  'Varchar(256)',
-        'AllowGroup'        =>  'Enum("landlords,realtors,tradesmen")'
+        'Email'             =>  'Varchar(256)'
     );
 
     private static $summary_fields = array(

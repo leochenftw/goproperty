@@ -3,6 +3,7 @@ use SaltedHerring\Debugger;
 
 class TradesmenLister extends Page_Controller
 {
+    private $business = null;
     /**
      * Defines methods that can be called directly
      * @var array
@@ -36,7 +37,9 @@ class TradesmenLister extends Page_Controller
         }
 
         if ($suburb = $request->param('suburb')) {
-            $filters['SuburbSlug'] = $suburb;
+            if ($suburb != 'all-suburb') {
+                $filters['SuburbSlug'] = $suburb;
+            }
         }
 
         if ($slug = $request->param('slug')) {
@@ -44,14 +47,17 @@ class TradesmenLister extends Page_Controller
         }
 
         $business = $business->filter($filters);
+
         $data = array(
             'BodyClass' =>  '',
             'Business'  =>  null
         );
 
+
         if (!empty($slug)) {
             $data['BodyClass'] = 'Business';
             $business = $business->first();
+            $this->business = $business;
         } else {
             $business = new PaginatedList($business, $request);
             $business->setPageLength(12);
@@ -94,36 +100,42 @@ class TradesmenLister extends Page_Controller
 
     public function ContactForm()
     {
-        $request = $this->request;
-        if ($serviceSlug = $request->getVar('WorkType')) {
-            $service = Service::get()->filter(array('Slug' => $serviceSlug))->first();
-            $business = $service->Business();
-        } else {
-            $business = Business::get();
+        // $request = $this->request;
+        // if ($serviceSlug = $request->getVar('WorkType')) {
+        //     $service = Service::get()->filter(array('Slug' => $serviceSlug))->first();
+        //     $business = $service->Business();
+        // } else {
+        //     $business = Business::get();
+        // }
+        //
+        // $filters = array();
+        // if ($region = $request->param('region')) {
+        //     $filters['RegionSlug'] = $region;
+        // }
+        //
+        // if ($district = $request->param('district')) {
+        //     $filters['CitySlug'] = $district;
+        // }
+        //
+        // if ($suburb = $request->param('suburb')) {
+        //     $filters['SuburbSlug'] = $suburb;
+        // }
+        //
+        // if ($slug = $request->param('slug')) {
+        //     $filters['Slug'] = $slug;
+        // }
+        //
+        // $business = $business->filter($filters);
+        //
+        // if (!empty($slug)) {
+        //     $business = $business->first();
+        // }
+
+        if (empty($this->business)) {
+            return new ContactForm($this);
         }
 
-        $filters = array();
-        if ($region = $request->param('region')) {
-            $filters['RegionSlug'] = $region;
-        }
-
-        if ($district = $request->param('district')) {
-            $filters['CitySlug'] = $district;
-        }
-
-        if ($suburb = $request->param('suburb')) {
-            $filters['SuburbSlug'] = $suburb;
-        }
-
-        if ($slug = $request->param('slug')) {
-            $filters['Slug'] = $slug;
-        }
-
-        $business = $business->filter($filters);
-
-        if (!empty($slug)) {
-            $business = $business->first();
-        }
+        $business = $this->business;
 
         return new ContactForm($this, $business->BusinessOwnerID, $business->ID);
     }

@@ -64,13 +64,23 @@ class SignupForm extends Form {
                     if ($check['status']) {
                         $member = new Member();
                         $form->saveInto($member);
+                        if (!empty(SiteConfig::current_site_config()->PromoSeason)) {
+                            $member->FreeUntil = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 28 days"));
+                        }
+
                         // if ($wannabe = $data['SignupToBe']) {
                         //
                         //     foreach ($wannabe as $key => $value) {
                         //         $member->$key = true;
                         //     }
                         // }
+
                         $member->write();
+                        if (!empty(SiteConfig::current_site_config()->PromoSeason)) {
+                            $member->addToGroupByCode('landlords', 'Landlords');
+                            $member->addToGroupByCode('realtors', 'Realtors');
+                            $member->addToGroupByCode('tradesmen', 'Tradesmen');
+                        }
                         $email = new ConfirmationEmail($member);
                         $email->send();
                         $this->sessionMessage('Thank you for signing up! We have sent you an activation email to you. Please follow the instruction and activate your account.', 'good');
