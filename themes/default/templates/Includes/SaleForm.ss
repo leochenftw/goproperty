@@ -96,17 +96,23 @@
     </div>
     </fieldset>
     <div class="Actions column is-12">
-        <% if $AmountToPay %>
-            <div class="content"><p>You are going to list this property for <strong>$Duration</strong> day<% if $Duration > 1 %>s<% end_if %>. This is going to cost you: <span>${$AmountToPay}</span></p></div>
-        <% end_if %>
-        <% if $ListFree %>
+        <% if $CurrentMember.inFreeTrial %>
             <div class="content">
-                <% if $ListTilGone %>
-                    <p>You have paid for the listing until it gets sold. It means you may list and withdraw this particular propety without incurring additional charges before it's rented.</p>
-                <% else %>
-                    <p>You have paid for listing til the end of $ListUntil. It means before the duration has run out, you may list and withdraw this particular propety without incurring additional charges.</p>
-                <% end_if %>
+                <p>You are in 28-day free trial period. <br />You may list property for free before <strong>$CurrentMember.FreeUntil.Nice</strong>.</p>
             </div>
+        <% else %>
+            <% if $AmountToPay %>
+                <div class="content"><p>You are going to list this property for <strong>$Duration</strong> day<% if $Duration > 1 %>s<% end_if %>. This is going to cost you: <span>${$AmountToPay}</span></p></div>
+            <% end_if %>
+            <% if $ListFree %>
+                <div class="content">
+                    <% if $ListTilGone %>
+                        <p>You have paid for the listing until it gets sold. It means you may list and withdraw this particular propety without incurring additional charges before it's rented.</p>
+                    <% else %>
+                        <p>You have paid for listing til the end of $ListUntil. It means before the duration has run out, you may list and withdraw this particular propety without incurring additional charges.</p>
+                    <% end_if %>
+                </div>
+            <% end_if %>
         <% end_if %>
         $Actions
     </div>

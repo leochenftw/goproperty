@@ -69,7 +69,7 @@ class Voucher extends DataObject
     public function onAfterWrite()
     {
         parent::onAfterWrite();
-        if (!empty($this->Email)) {
+        if (!empty($this->Email) && empty($this->MemberID)) {
             $email = new VoucherGiverEmail($this);
             $email->send();
         }

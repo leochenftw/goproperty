@@ -22,6 +22,7 @@ class VoucherForm extends Form
 
     public function doRedeem($data, $form)
     {
+        Session::clear('Message');
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
             if (!empty($data['Serials'])) {
                 $serials = $data['Serials'];
@@ -29,13 +30,27 @@ class VoucherForm extends Form
                     if (empty($voucher->MemberID)) {
                         $expiry = strtotime($voucher->ExpiryDate);
                         if ($expiry > time()) {
-                            if (!empty($voucher->Email) && $voucher->Email == $member->Email) {
-                                $member = Member::currentUser();
+                            $member = Member::currentUser();
+                            if (!empty($voucher->Email)) {
+
+                                if ($voucher->Email == $member->Email) {
+
+                                    $voucher->MemberID = $member->ID;
+                                    $voucher->write();
+
+                                    $member->FreeUntil = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 28 days"));
+                                    $member->write();
+
+                                    return $this->controller->redirectBack();
+                                }
+                            } else {
                                 $voucher->MemberID = $member->ID;
                                 $voucher->write();
 
                                 $member->FreeUntil = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 28 days"));
                                 $member->write();
+
+                                return $this->controller->redirectBack();
                             }
 
                             $this->sessionMessage('You can\'t redeem this voucher. It is not for you.', 'is-danger');

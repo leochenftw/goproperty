@@ -3,14 +3,14 @@
 <% if $canUseVoucher %>
     <div class="content">
         <h3 class="title is-4">Redeem your voucher</h3>
-        <p>Redeem your voucher, get 2 months free trial.</p>
+        <p>Redeem your voucher, get 28 days free trial.</p>
         $VoucherForm
     </div>
 <% else %>
     <div class="content">
         <% if not $CurrentMember.TrialExpired %>
             <h3 class="title is-4">Free trial enabled</h3>
-            <p>You are covered by 2-month <strong>Free Trial</strong> voucher. You may now use all paid services for free.<br />
+            <p>You are covered by 28 days <strong>Free Trial</strong> voucher. You may now use all paid services for free.<br />
             You free trial ends on: <strong>$CurrentMember.FreeUntil.Nice</strong></p>
         <% else %>
             <h3 class="title is-4">Free trial expired</h3>

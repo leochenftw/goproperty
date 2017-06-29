@@ -116,7 +116,7 @@ class BusinessForm extends Form
                     'ListLength',
                     'List length',
                     array(
-                        "no payment"    =>  '2 months. FREE TO GO'
+                        "no payment"    =>  '28 days promotion'
                     ),
                     "no payment"
                 );

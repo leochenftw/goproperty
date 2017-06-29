@@ -83,7 +83,7 @@
     <div class="Actions column is-12">
         <% if $CurrentMember.inFreeTrial %>
             <div class="content">
-                <p>You are in 2-month free trial period. <br />You may list property for free before <strong>$CurrentMember.FreeUntil.Nice</strong>.</p>
+                <p>You are in 28-day free trial period. <br />You may list property for free before <strong>$CurrentMember.FreeUntil.Nice</strong>.</p>
             </div>
         <% else %>
             <% if $ListFree %>
