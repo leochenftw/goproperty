@@ -22,6 +22,14 @@
         }
     }
 
+    .page-type-home-page & {
+        .content-area {
+            .content {
+                color: $dark;
+            }
+        }
+    }
+
     #SignupForm_SignupForm {
         div.checkbox {
             margin-bottom: 10px;

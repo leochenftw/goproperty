@@ -1,4 +1,13 @@
 <% include SearchForms %>
+<% if $Content %>
+<section class="section is-paddingless-top content-area">
+    <div class="container">
+        <div class="has-2-column content">
+            $Content
+        </div>
+    </div>
+</section>
+<% end_if %>
 <% include MidPageBanner Label='To list a Property, Rental or as a Tradesperson' %>
 <section class="section tiles">
     <div class="container">
