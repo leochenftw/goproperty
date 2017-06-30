@@ -2,6 +2,7 @@
 <% if $Content %>
 <section class="section is-paddingless-top content-area">
     <div class="container">
+        <div style="color: #5e5e5e; margin-bottom: 25px;">How to use GoProperty</div>
         <div class="has-2-column content">
             $Content
         </div>

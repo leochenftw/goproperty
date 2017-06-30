@@ -9262,6 +9262,13 @@ div.field.textarea {
   -webkit-column-gap: 2em;
   column-gap: 2em;
 }
+@media screen and (max-width: 768px) {
+  .has-2-column {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+}
 
 /**
  * @file _sprites.scss
@@ -9785,6 +9792,10 @@ div.field.textarea {
 #main .container.narrow {
   max-width: 600px;
 }
+.page-type-home-page #main .content-area {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 .page-type-home-page #main .content-area .content {
   color: #363636;
 }
@@ -9898,8 +9909,18 @@ div.field.textarea {
 #main .search-forms .actions {
   margin-top: 30px;
 }
+@media screen and (max-width: 768px) {
+  #main .search-forms .actions {
+    text-align: center;
+  }
+}
 #main .search-forms .actions .action {
   margin-left: 31%;
+}
+@media screen and (max-width: 768px) {
+  #main .search-forms .actions .action {
+    margin-left: 0;
+  }
 }
 #main .mid-page-banner {
   padding: 36px 0;
