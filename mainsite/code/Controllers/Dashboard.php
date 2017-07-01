@@ -42,6 +42,13 @@ class Dashboard extends Page_Controller {
             return $this->redirect('/member/action/password');
         }
 
+        if (!empty($member->SignupFrom)) {
+            $toURL = $member->SignupFrom;
+            $member->SignupFrom = null;
+            $member->write();
+            return $this->redirect($toURL);
+        }
+
         if (($member->beLandlords || $member->beTradesmen || $member->beRealtors) && $tab != 'upgrade' && $tab != 'signout'){
             return $this->redirect('/member/action/upgrade');
         }

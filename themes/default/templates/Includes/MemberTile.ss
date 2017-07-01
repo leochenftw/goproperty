@@ -38,7 +38,7 @@
         <% if $CurrentMember %>
             <a href="#" id="btn-contact-form" class="blue-button">Contact</a>
         <% else %>
-            <a href="/signin?BackURL=$Top.Link" class="blue-button">Sign in to contact</a>
+            <a href="/signin?BackURL=<% if $Top.fullURL %>$Top.fullURL<% else %>$Top.Link<% end_if %>" class="blue-button">Sign in to contact</a>
         <% end_if %>
     </div>
 </div>
@@ -50,6 +50,11 @@
     <div class="message-body">
         $ContactForm
         <p class="loading-message hide">Submitting...</p>
-        <p class="postback-message hide"></p>
+        <div class="columns hide">
+            <div class="column"><p class="postback-message"></p></div>
+            <div class="column is-auto-width">
+                <a href="#" class="button inline close-this">OK</a>
+            </div>
+        </div>
     </div>
 </div>

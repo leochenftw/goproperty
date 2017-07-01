@@ -74,33 +74,41 @@ class ContactForm extends Form
             }
 
             $email = new Email();
-            $email->To = Member::get()->byID($data['MemberID'])->Email;
-            $email->From = Member::currentUser()->Email;
-            $email->Subject = 'Enquiry via GoProperty';
-            if (!empty($content)) {
-                $content = str_replace("\n", '<br /><br />', $content);
-            } else {
-                $content = 'Someone is interested in the property that you are renting.';
+            if ($thelister = Member::get()->byID($data['MemberID'])) {
+                $email->To = $thelister->Email;
+                $email->From = Member::currentUser()->Email;
+                $email->Subject = 'Enquiry via GoProperty';
+                if (!empty($content)) {
+                    $content = str_replace("\n", '<br /><br />', $content);
+                } else {
+                    $content = 'Someone is interested in the property that you are renting.';
+                }
+
+                $content .= '<br /><br />You may want to <a href="' . Director::absoluteBaseURL() . 'member/action/my-properties">jump on your dashboard</a> and check out the property list.';
+
+                $email->Body = $content;
+                $email->send();
+                $this->sessionMessage('Message sent', 'good');
+
+                if ($this->controller->request->isAjax())
+                {
+                    return  json_encode(array(
+                                'code'      =>  200,
+                                'message'   =>  'The message has been sent to the business owner.'
+                            ));
+                }
+
+                if (!empty($data['businessID'])) {
+                    $business = Business::get()->byID($data['businessID']);
+                    return $this->controller->redirect($business->Link());
+                }
             }
 
-            $content .= '<br /><br />You may want to <a href="' . Director::absoluteBaseURL() . 'member/action/my-properties">jump on your dashboard</a> and check out the property list.';
+            return  json_encode(array(
+                        'code'      =>  404,
+                        'message'   =>  'The lister\'s account has been deleted or terminated.'
+                    ));
 
-            $email->Body = $content;
-            $email->send();
-            $this->sessionMessage('Message sent', 'good');
-
-            if ($this->controller->request->isAjax())
-            {
-                return  json_encode(array(
-                            'code'      =>  200,
-                            'message'   =>  'The message has been sent to the business owner.'
-                        ));
-            }
-
-            if (!empty($data['businessID'])) {
-                $business = Business::get()->byID($data['businessID']);
-                return $this->controller->redirect($business->Link());
-            }
 
             return $this->controller->redirectBack();
         }

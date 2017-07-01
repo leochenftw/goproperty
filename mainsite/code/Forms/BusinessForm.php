@@ -128,10 +128,10 @@ class BusinessForm extends Form
         }
 
         $actions = new FieldList();
-        $actions->push($btnList = FormAction::create('listBusiness', 'List it'));
         $actions->push($btnWithdraw = FormAction::create('withDrawBusiness', 'Withdraw'));
         $actions->push($btnSave = FormAction::create('saveBusiness', !empty($business) ? 'Update' : 'Create'));
-
+        $actions->push($btnList = FormAction::create('listBusiness', 'List it'));
+        $btnList->setAttribute('style', 'background-color: #b8e81e; margin-left: 1em;');
         if (empty($business)) {
             $btnList->addExtraClass('hide');
             $btnWithdraw->addExtraClass('hide');

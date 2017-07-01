@@ -1,6 +1,15 @@
 <% include GooglemapsHero Lat=$Business.Lat, Lng=$Business.Lng %>
 <section class="section property">
     <div class="container">
+        <nav class="breadcrumb">
+        <% loop $LocationBreadcrumbs %>
+            <% if $URL %>
+            <a href="$URL" class="breadcrumb-item">$Title</a>
+            <% else %>
+                <span class="breadcrumb-item is-active">$Title</span>
+            <% end_if %>
+        <% end_loop %>
+        </nav>
         <header class="column is-12">
             <h1 class="title is-2 is-bold is-uppercase">$Business.Title</h1>
         </header>

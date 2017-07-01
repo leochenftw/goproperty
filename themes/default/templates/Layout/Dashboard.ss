@@ -90,7 +90,17 @@
                     <% if $CurrentMember.ChangePassOnNextLogin %>
                         <p style="margin-bottom: 1.5em;">You need to give your account a password before you can do anything else.</p>
                     <% end_if %>
-                    $UpdatePasswordForm
+                    <% with $UpdatePasswordForm %>
+                        <% if $Message %>
+                        <div class="notification $MessageType">$Message</div>
+                        <% end_if %>
+                        <form $FormAttributes>
+                            <fieldset>
+                                $Fields
+                            </fieldset>
+                            <div class="Actions">$Actions</div>
+                        </form>
+                    <% end_with %>
                 <% end_if %>
 
                 <% if $tab == 'email-update' %>

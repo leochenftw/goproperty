@@ -13,11 +13,21 @@
             <div id="form-description" class="form-description">Search for a <span>Rental Property</span></div>
             <div class="columns Fields">
                 <div class="column is-half left-half half">
+                    <div class="fields-wrapper columns location hide">
+                        <label class="label is-3 column">Region</label>
+                        <div class="fields column">
+                            <div class="field">$Fields.fieldByName('Region')</div>
+                        </div>
+                    </div>
                     <div class="fields-wrapper columns location">
                         <label class="label is-3 column">Location</label>
                         <div class="fields column">
-                            <div class="field">$Fields.fieldByName('Region')</div>
                             <div class="field">$Fields.fieldByName('City')</div>
+                        </div>
+                    </div>
+                    <div class="fields-wrapper columns location">
+                        <label class="label is-3 column">Suburb</label>
+                        <div class="fields column">
                             <div class="field">$Fields.fieldByName('Suburb')</div>
                         </div>
                     </div>

@@ -10,7 +10,9 @@ class UpdatePasswordForm extends Form {
 			$btnSubmit = FormAction::create('doUpdate','Update password')
 		);
 
-		parent::__construct($controller, 'UpdatePasswordForm', $fields, $actions);
+        $required_fields = new RequiredFields(array('Password'));
+
+		parent::__construct($controller, 'UpdatePasswordForm', $fields, $actions, $required_fields);
 		$this->setFormMethod('POST', true)
 			 ->setFormAction(Controller::join_links(BASE_URL, 'member', "UpdatePasswordForm"));
 	}
@@ -22,6 +24,7 @@ class UpdatePasswordForm extends Form {
 				$form->saveInto($member);
                 $member->ChangePassOnNextLogin = false;
 				$member->write();
+                $this->sessionMessage('Your password has been updated.', 'is-success notification');
 			}
 
 			return Controller::curr()->redirectBack();

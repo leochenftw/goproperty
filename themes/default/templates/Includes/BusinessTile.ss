@@ -1,6 +1,6 @@
 <div class="tradesmen-list__tile column is-half">
     <a href="$Link" class="tradesmen-list__tile__cover business-logo">
-        <% if $Logo %>$Logo.FillMax(580, 338)<% else %>https://placehold.it/580x338<% end_if %>
+        <% if $Logo %>$Logo.FillMax(580, 338)<% else %><img src="https://placehold.it/580x338" /><% end_if %>
     </a>
     <div class="tradesmen-list__tile__details columns is-marginless relative">
         <div class="tradesmen-list__tile__details__price business-detail">

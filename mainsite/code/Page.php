@@ -99,7 +99,6 @@ class Page_Controller extends ContentController {
 
     public function MetaTags($includeTitle = true) {
         $tags = parent::MetaTags();
-
         /**
          * Find title & replace with MetaTitle (if it exists).
          * */
@@ -162,6 +161,13 @@ class Page_Controller extends ContentController {
 
     public function getLocationBreadcrumbs()
     {
+        $url                =   ltrim($this->request->getVar('url'), '/');
+        $segs               =   explode('/', $url);
+        $first_seg          =   $segs[0];
+        $base_title         =   $first_seg == 'list' ? 'All properties' : 'All business';
+
+        $first_seg          =   '/' . $first_seg . '/';
+
         if ($this->ClassName == 'PropertyPage') {
             $region         =   $this->Region;
             $district       =   $this->City;
@@ -172,23 +178,23 @@ class Page_Controller extends ContentController {
             $suburb_url     =   $this->SuburbSlug;
 
             $item_home      =   array(
-                                    'Title'     =>  'All properties',
-                                    'URL'       =>  '/list'
+                                    'Title'     =>  $base_title,
+                                    'URL'       =>  $first_seg
                                 );
 
             $item_region    =   new ArrayData(array(
                                     'Title'     =>  $region,
-                                    'URL'       =>  '/list/' . $region_url
+                                    'URL'       =>  $first_seg . $region_url
                                 ));
 
             $item_city      =   new ArrayData(array(
                                     'Title'     =>  $district,
-                                    'URL'       =>  '/list/' . $region_url . '/' . $district_url
+                                    'URL'       =>  $first_seg . $region_url . '/' . $district_url
                                 ));
 
             $item_sub       =   new ArrayData(array(
                                     'Title'     =>  $suburb,
-                                    'URL'       =>  '/list/' . $region_url . '/' . $district_url . '/' . $suburb_url
+                                    'URL'       =>  $first_seg . $region_url . '/' . $district_url . '/' . $suburb_url
                                 ));
 
             $item           =   new ArrayData(array(
@@ -201,29 +207,29 @@ class Page_Controller extends ContentController {
 
         $request        =   $this->request;
         $breadcrumbs    =   array(array(
-            'Title'     =>  'All properties',
-            'URL'       =>  '/list'
+            'Title'     =>  $base_title,
+            'URL'       =>  $first_seg
         ));
 
         if ($region = $request->param('region')) {
 
             $item_region    =   array(
                                 'Title'     =>  $region,
-                                'URL'       =>  '/list/' . $region
+                                'URL'       =>  $first_seg . $region
                             );
             $breadcrumbs[] = $item_region;
 
             if ($district = $request->param('district')) {
                 $item_city  =   array(
                                     'Title'     =>  $district,
-                                    'URL'       =>  '/list/' . $region . '/' . $district
+                                    'URL'       =>  $first_seg . $region . '/' . $district
                                 );
                 $breadcrumbs[] = $item_city;
 
                 if ($suburb = $request->param('suburb')) {
                     $item_sub   =   array(
                                         'Title'     =>  $suburb,
-                                        'URL'       =>  '/list/' . $region . '/' . $district . '/' . $suburb
+                                        'URL'       =>  $first_seg . $region . '/' . $district . '/' . $suburb
                                     );
                     $breadcrumbs[] = $item_sub;
                 }
@@ -239,6 +245,11 @@ class Page_Controller extends ContentController {
         }
 
         return new ArrayList($crumbs);
+    }
+
+    public function getBackURL()
+    {
+        return $this->request->getVar('BackURL');
     }
 
 }

@@ -19,7 +19,7 @@
                 <h2 class="title is-3 has-text-centered">CREATE YOUR ACCOUNT</h2>
                 <% with $SignupForm %>
                     <% if $Message %>
-                    <div class="message-wrapper $Message.MessageType">$Message</div>
+                    <div class="notification $MessageType">$Message</div>
                     <% end_if %>
                     <form $FormAttributes>
                         <div class="fields">

@@ -21,7 +21,8 @@ class MemberExtension extends DataExtension
         // 'beTradesmen'           =>  'Boolean',
         // 'beRealtors'            =>  'Boolean',
         'FreeUntil'             =>  'Date',
-        'ChangePassOnNextLogin' =>  'Boolean'
+        'ChangePassOnNextLogin' =>  'Boolean',
+        'SignupFrom'            =>  'Varchar(2048)'
     );
 
     /**

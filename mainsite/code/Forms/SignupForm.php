@@ -21,6 +21,10 @@ class SignupForm extends Form {
 
         // $type->addExtraClass('hide');
 
+        if ($controller->request->getVar('BackURL')) {
+            $fields->push(HiddenField::create('SignupFrom', 'SignupFrom', $controller->request->getVar('BackURL')));
+        }
+
         $fields->push($tnc = CheckboxField::create('AgreeToTnC', 'I have read and accept the <a target="_blank" href="/terms-and-conditions">terms and conditions</a> and the <a target="_blank" href="/trust-and-safety">privacy policy</a>'));
 
         $fields->push(CheckboxField::create('Subscribe', 'Subcribe to the newsletter')->setValue(true));
@@ -53,7 +57,7 @@ class SignupForm extends Form {
             if ($response->success) {
 
                 if (!SaltedHerring\Utilities::valid_email($data['Email'])) {
-                    $form->addErrorMessage('Email', '"' . $data['Email'] . '"Not a valid email address', "bad");
+                    $form->addErrorMessage('Email', '"' . $data['Email'] . '"Not a valid email address', "is-danger");
                     return Controller::curr()->redirectBack();
                 }
 
@@ -66,6 +70,9 @@ class SignupForm extends Form {
                         $form->saveInto($member);
                         if (!empty(SiteConfig::current_site_config()->PromoSeason)) {
                             $member->FreeUntil = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 28 days"));
+                        }
+                        if (!empty($data['SignupFrom'])) {
+                            $member->SignupFrom = $data['SignupFrom'] == '/member' ? '' : $data['SignupFrom'];
                         }
 
                         // if ($wannabe = $data['SignupToBe']) {
@@ -83,20 +90,20 @@ class SignupForm extends Form {
                         }
                         $email = new ConfirmationEmail($member);
                         $email->send();
-                        $this->sessionMessage('Thank you for signing up! We have sent you an activation email to you. Please follow the instruction and activate your account.', 'good');
+                        $this->sessionMessage('Thank you for signing up! We have sent you an activation email to you. Please follow the instruction and activate your account.', 'is-success');
                     } else {
                         $messages = $check['messages'];
                         $refined_message = '';
                         foreach ($messages as $message) {
                             $refined_message .= $message . "; ";
                         }
-                        $this->sessionMessage(rtrim($refined_message, '; '), 'bad');
+                        $this->sessionMessage(rtrim($refined_message, '; '), 'is-danger');
                     }
                 } else {
-                    $form->addErrorMessage('Email', '"' . $data['Email'] . '" already exists. <a href="/Security/lostpassword">Really?</a>', "bad", false);
+                    $form->addErrorMessage('Email', '"' . $data['Email'] . '" already exists. <a href="/Security/lostpassword">Really?</a>', "is-danger", false);
                 }
             } else {
-                $this->sessionMessage('Session validation failed. Please try again.', 'bad');
+                $this->sessionMessage('Session validation failed. Please try again.', 'is-danger');
             }
 
             return Controller::curr()->redirectBack();

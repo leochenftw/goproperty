@@ -14,7 +14,7 @@
                 <div class="Actions">
                     $Actions.First
                 </div>
-                <div class="lnk-signup-wrapper margin-h-10-0-0 text-center"><a href="/signup">Sign up</a></div>
+                <div class="lnk-signup-wrapper margin-h-10-0-0 text-center"><a href="/signup<% if $Top.BackURL %>?BackURL=$Top.BackURL<% end_if %>">Sign up</a></div>
             </form>
             $clearMessage
         <% end_with %>
