@@ -3,7 +3,11 @@
         <% if $Member %>
             <% if $Member.Portrait %>
                 $Member.Portrait.Image.Cropped.FillMax(75,75)
+            <% else %>
+                <img src="/themes/default/images/default-portrait.png" width="75" height="75" />
             <% end_if %>
+        <% else %>
+            <img src="/themes/default/images/default-portrait.png" width="75" height="75" />
         <% end_if %>
     </div>
     <div class="member-tile__details column">

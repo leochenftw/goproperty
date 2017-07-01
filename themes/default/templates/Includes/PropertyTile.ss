@@ -9,7 +9,11 @@
         <div class="property-list__tile__details__price">$Price</div>
         <div class="property-list__tile__details__location-lister">
             <div class="property-list__tile__details__location-lister__lister">
-                $Member.Portrait.Image.Cropped.FillMax(75,75)
+                <% if $Member.Portrait.Image.Cropped %>
+                    $Member.Portrait.Image.Cropped.FillMax(75,75)
+                <% else %>
+                    <img src="/themes/default/images/default-portrait.png" width="75" height="75" />
+                <% end_if %>
             </div>
             <div class="property-list__tile__details__location-lister__location">
                 <% if $UnitNumber %>$UnitNumber, <% end_if %> $StreetNumber $StreetName

@@ -10,7 +10,7 @@
                         <div class="column content">
                             <p class="title is-4">The promo season is upon us! You feel like to add some content?</p>
                             <p><strong>This is how it works:</strong></p>
-                            <p>During the promo season, this side of the page will show up, which give the users the idea what this is about. So, if the users sign up during the promo season, their accounts will be <strong>automatically</strong> granted with 28 days free trial.</p>
+                            <p>During the promo season, this side of the page will show up, which gives the users the idea what this is about. So, if the users sign up during the promo season, their accounts will be <strong>automatically</strong> granted with 28 days free trial.</p>
                         </div>
                     </div>
                 </div>
