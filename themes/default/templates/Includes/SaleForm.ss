@@ -26,7 +26,7 @@
                         $Fields.fieldByName('Parking').FieldHolder
                         $Fields.fieldByName('Content').FieldHolder
                         <% loop $Fields %>
-                            <% if $Name != 'ListTilGone' && $Name != 'PropertyType' && $Name != 'Title' && $Name != 'UnitNumber' && $Name != 'NumBedrooms' && $Name != 'NumBathrooms' && $Name != 'FloorArea' && $Name != 'LandArea' && $Name != 'Parking' && $Name != 'Content' && $Name != 'UnitNumber' && $Name != 'FullAddress' && $Name != 'Gallery' && $Name != 'ContactNumber' && $Name != 'ListerAgencyID' && $Name != 'AgencyReference' && $Name != 'RateableValue' && $Name != 'HideRV' && $Name != 'PriceOption' && $Name != 'AskingPrice' && $Name != 'EnquiriesOver' && $Name != 'AuctionOn' && $Name != 'TenderCloseOn' && $Name != 'PriceByNegotiation' && $Name != 'PrivateTreatyDeadline' && $Name != 'SmokeAlarm' && $Name != 'Insulation' && $Name != 'Amenities' && $Name != 'ListingCloseOn' %>
+                            <% if $Name != 'Suburb' && $Name != 'City' && $Name != 'Region' && $Name != 'ListTilGone' && $Name != 'PropertyType' && $Name != 'Title' && $Name != 'UnitNumber' && $Name != 'NumBedrooms' && $Name != 'NumBathrooms' && $Name != 'FloorArea' && $Name != 'LandArea' && $Name != 'Parking' && $Name != 'Content' && $Name != 'UnitNumber' && $Name != 'FullAddress' && $Name != 'Gallery' && $Name != 'ContactNumber' && $Name != 'ListerAgencyID' && $Name != 'AgencyReference' && $Name != 'RateableValue' && $Name != 'HideRV' && $Name != 'PriceOption' && $Name != 'AskingPrice' && $Name != 'EnquiriesOver' && $Name != 'AuctionOn' && $Name != 'TenderCloseOn' && $Name != 'PriceByNegotiation' && $Name != 'PrivateTreatyDeadline' && $Name != 'SmokeAlarm' && $Name != 'Insulation' && $Name != 'Amenities' && $Name != 'ListingCloseOn' %>
                                 $FieldHolder
                             <% end_if %>
                         <% end_loop %>
@@ -90,6 +90,9 @@
             $Fields.fieldByName('UnitNumber').FieldHolder
             $Fields.fieldByName('FullAddress').FieldHolder
             <div id="location-on-map"></div>
+            $Fields.fieldByName('Region').FieldHolder
+            $Fields.fieldByName('City').FieldHolder
+            $Fields.fieldByName('Suburb').FieldHolder
             <h3 class="title is-4 is-bold">Property photos</h3>
             $Fields.fieldByName('Gallery').FieldHolder
         </div>

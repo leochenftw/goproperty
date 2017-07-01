@@ -394,16 +394,21 @@ $(document).ready(function(e)
         });
     }
 
-
-    $('#PropertySearchForm_PropertySearchForm .location select:not("#PropertySearchForm_PropertySearchForm_Suburb")').each(function(i, el)
+    $('select[name="Region"], select[name="City"]').each(function(i, el)
     {
-        $(this).locationSelect().change();
+         $(this).locationSelect().change();
     });
 
-    $('#TradesmenSearchForm_TradesmenSearchForm .location select:not("#TradesmenSearchForm_TradesmenSearchForm_Suburb")').each(function(i, el)
-    {
-        $(this).locationSelect().change();
-    });
+
+    // $('#PropertySearchForm_PropertySearchForm .location select:not("#PropertySearchForm_PropertySearchForm_Suburb")').each(function(i, el)
+    // {
+    //     $(this).locationSelect().change();
+    // });
+    //
+    // $('#TradesmenSearchForm_TradesmenSearchForm .location select:not("#TradesmenSearchForm_TradesmenSearchForm_Suburb")').each(function(i, el)
+    // {
+    //     $(this).locationSelect().change();
+    // });
 
     if ($('#PropertySearchForm_PropertySearchForm_Availability').length == 1) {
         $('#PropertySearchForm_PropertySearchForm_Availability').datetimepicker(

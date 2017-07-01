@@ -36,7 +36,7 @@
                         $Fields.fieldByName('Content').FieldHolder
                         $Fields.fieldByName('Insulation').FieldHolder
                         <% loop $Fields %>
-                            <% if $Name != 'ListTilGone' && $Name != 'Insulation' && $Name != 'Content' && $Name != 'ListingCloseOn' && $Name != 'IdealTenants' && $Name != 'AllowPet' && $Name != 'AllowSmoker' && $Name != 'NumBathrooms' && $Name != 'NumBedrooms' && $Name != 'MaxCapacity' && $Name != 'DateAvailable' && $Name != 'PropertyType' && $Name != 'UnitNumber' && $Name != 'FullAddress' && $Name != 'WeeklyRent' && $Name != 'Gallery' && $Name != 'ContactNumber' && $Name != 'ListerAgencyID' && $Name != 'AgencyReference'  %>
+                            <% if $Name != 'Suburb' && $Name != 'City' && $Name != 'Region' && $Name != 'ListTilGone' && $Name != 'Insulation' && $Name != 'Content' && $Name != 'ListingCloseOn' && $Name != 'IdealTenants' && $Name != 'AllowPet' && $Name != 'AllowSmoker' && $Name != 'NumBathrooms' && $Name != 'NumBedrooms' && $Name != 'MaxCapacity' && $Name != 'DateAvailable' && $Name != 'PropertyType' && $Name != 'UnitNumber' && $Name != 'FullAddress' && $Name != 'WeeklyRent' && $Name != 'Gallery' && $Name != 'ContactNumber' && $Name != 'ListerAgencyID' && $Name != 'AgencyReference'  %>
                                 $FieldHolder
                             <% end_if %>
                         <% end_loop %>
@@ -73,6 +73,9 @@
             $Fields.fieldByName('UnitNumber').FieldHolder
             $Fields.fieldByName('FullAddress').FieldHolder
             <div id="location-on-map"></div>
+            $Fields.fieldByName('Region').FieldHolder
+            $Fields.fieldByName('City').FieldHolder
+            $Fields.fieldByName('Suburb').FieldHolder
             <div class="field uploader">
                 <h3 class="title is-4 is-bold">Property photos</h3>
                 $Fields.fieldByName('Gallery').FieldHolder

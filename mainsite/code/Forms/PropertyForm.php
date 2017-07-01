@@ -39,11 +39,39 @@ class PropertyForm extends Form
             $addr->setValue($prop->FullAddress);
         }
 
+
+        $fields->push(
+            DropdownField::create(
+                'Region',
+                'Region',
+                Config::inst()->get('NewZealand', 'Regions'),
+                !empty($prop) ? $prop->Region : null
+            )->setEmptyString('- select one -')
+             ->setAttribute('data-direct-child', $name . '_' . $name . '_City')
+        );
+
+        $fields->push(
+            DropdownField::create(
+                'City',
+                'City'
+            )->setEmptyString('- select one -')
+             ->setAttribute('data-direct-child', $name . '_' . $name . 'Suburb')
+             ->setAttribute('data-option', !empty($prop) ? $prop->City : null)
+        );
+
+        $fields->push(
+            DropdownField::create(
+                'Suburb',
+                'Suburb'
+            )->setEmptyString('- select one -')
+             ->setAttribute('data-option', !empty($prop) ? $prop->Suburb : null)
+        );
+
         $fields->push(HiddenField::create('StreetNumber','StreetNumber', !empty($prop) ? $prop->StreetNumber : null));
         $fields->push(HiddenField::create('StreetName','StreetName', !empty($prop) ? $prop->StreetName : null));
-        $fields->push(HiddenField::create('Suburb','Suburb', !empty($prop) ? $prop->Suburb : null));
-        $fields->push(HiddenField::create('City','City', !empty($prop) ? $prop->City : null));
-        $fields->push(HiddenField::create('Region','Region', !empty($prop) ? $prop->Region : null));
+        // $fields->push(HiddenField::create('Suburb','Suburb', !empty($prop) ? $prop->Suburb : null));
+        // $fields->push(HiddenField::create('City','City', !empty($prop) ? $prop->City : null));
+        // $fields->push(HiddenField::create('Region','Region', !empty($prop) ? $prop->Region : null));
         $fields->push(HiddenField::create('Country','Country', !empty($prop) ? $prop->Country : null));
         $fields->push(HiddenField::create('PostCode','PostCode', !empty($prop) ? $prop->PostCode : null));
         $fields->push(HiddenField::create('Lat','Lat', !empty($prop) ? $prop->Lat : null));
@@ -243,7 +271,7 @@ class PropertyForm extends Form
 
     public function validate()
     {
-        $result = parent::validate();
+        $result = true;
         $data = $this->getData();
 
         if (!empty($data['ListingCloseOn'])) {
@@ -254,11 +282,13 @@ class PropertyForm extends Form
                 return false;
             }
         }
+
         return $result;
     }
 
     public function doList($data, $form)
     {
+        Session::clear('Message');
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
             if (!empty($data['PropertyID'])) {
                 $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($data['PropertyID']);

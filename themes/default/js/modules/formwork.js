@@ -22,11 +22,23 @@
                         var addressType = place.address_components[i].types[0];
                         var field = matchField(addressType);
                         if (field.length > 0) {
-                            form.find('input[name="' + field + '"]').val(place.address_components[i].long_name);
+                            var theField = form.find('[name="' + field + '"]');
+                            if (theField.is('input')) {
+                                theField.val(place.address_components[i].long_name);
+                            } else if (theField.is('select')){
+                                if (field == 'Region') {
+                                    theField.find('option[value="' + place.address_components[i].long_name + '"]').prop('selected', true);
+                                } else {
+                                    theField.data('option', place.address_components[i].long_name);
+                                }
+                            }
                         }
-
                     }
-                    trace(self.find('input[name="Lat"]').val().toFloat() +', '+ self.find('input[name="Lng"]').val().toFloat());
+
+                    if (form.find('select[name="Region"]')) {
+                        form.find('select[name="Region"]').change();
+                    }
+                    //trace(self.find('input[name="Lat"]').val().toFloat() +', '+ self.find('input[name="Lng"]').val().toFloat());
                     map.update(self.find('input[name="Lat"]').val().toFloat(), self.find('input[name="Lng"]').val().toFloat());
                 });
             }) : null,
