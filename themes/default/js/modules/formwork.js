@@ -35,7 +35,7 @@
                         }
                     }
 
-                    if (form.find('select[name="Region"]')) {
+                    if (form.find('select[name="Region"]').length > 0) {
                         form.find('select[name="Region"]').change();
                     }
                     //trace(self.find('input[name="Lat"]').val().toFloat() +', '+ self.find('input[name="Lng"]').val().toFloat());

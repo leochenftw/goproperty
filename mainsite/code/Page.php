@@ -164,6 +164,7 @@ class Page_Controller extends ContentController {
         $url                =   ltrim($this->request->getVar('url'), '/');
         $segs               =   explode('/', $url);
         $first_seg          =   $segs[0];
+        $first_seg          =   $first_seg == 'all-properties' ? 'list' : $first_seg;
         $base_title         =   $first_seg == 'list' ? 'All properties' : 'All business';
 
         $first_seg          =   '/' . $first_seg . '/';
