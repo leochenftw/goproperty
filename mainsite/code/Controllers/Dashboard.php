@@ -25,7 +25,8 @@ class Dashboard extends Page_Controller {
         'BusinessForm',
         'VoucherForm',
         'CreatePropertyForm',
-        'RentalListingForm'
+        'RentalListingForm',
+        'SaleListingForm'
     );
 
     public function index($request) {
@@ -72,16 +73,23 @@ class Dashboard extends Page_Controller {
                     return $this->customise(array('tab' => $tab))->renderWith(array('NeoProperties'));
                     break;
 
+                case 'sale-listing':
+                    return $this->customise(array('tab' => $tab))->renderWith(array('SaleListingForm'));
+                    break;
+
+                case 'sale-listings':
+                    $id = $request->getVar('id');
+                    $property = Property::get()->byID($id);
+                    return $this->customise(array('tab' => $tab, 'Property' => $property))->renderWith(array('SaleListings'));
+                    break;
+
                 case 'rental-listing':
                     return $this->customise(array('tab' => $tab))->renderWith(array('RentalListingForm'));
                     break;
 
                 case 'rental-listings':
-
                     $id = $request->getVar('id');
-
                     $property = Property::get()->byID($id);
-
                     return $this->customise(array('tab' => $tab, 'Property' => $property))->renderWith(array('RentalListings'));
                     break;
 
@@ -375,6 +383,11 @@ class Dashboard extends Page_Controller {
     public function VoucherForm()
     {
         return new VoucherForm($this);
+    }
+
+    public function SaleListingForm()
+    {
+        return new SaleListingForm($this);
     }
 
     public function RentalListingForm()

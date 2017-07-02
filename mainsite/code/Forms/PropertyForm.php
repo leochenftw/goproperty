@@ -55,7 +55,7 @@ class PropertyForm extends Form
                 'City',
                 'City'
             )->setEmptyString('- select one -')
-             ->setAttribute('data-direct-child', $name . '_' . $name . 'Suburb')
+             ->setAttribute('data-direct-child', $name . '_' . $name . '_Suburb')
              ->setAttribute('data-option', !empty($prop) ? $prop->City : null)
         );
 

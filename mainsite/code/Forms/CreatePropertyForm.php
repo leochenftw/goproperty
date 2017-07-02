@@ -60,9 +60,33 @@ class CreatePropertyForm extends Form
                 $fields->push(TextField::create('FullAddress', 'Street address', !empty($property) ? $property->FullAddress : null)->addExtraClass('google-placed'));
                 $fields->push(TextField::create('StreetNumber', 'Street number', !empty($property) ? $property->StreetNumber : null));
                 $fields->push(TextField::create('StreetName', 'Street name', !empty($property) ? $property->StreetName : null));
-                $fields->push(TextField::create('Suburb','Suburb', !empty($property) ? $property->Suburb : null));
-                $fields->push(TextField::create('City','City', !empty($property) ? $property->City : null));
-                $fields->push(TextField::create('Region','Region', !empty($property) ? $property->Region : null));
+                $fields->push(
+                    DropdownField::create(
+                        'Region',
+                        'Region',
+                        Config::inst()->get('NewZealand', 'Regions'),
+                        !empty($property) ? $property->Region : null
+                    )->setEmptyString('- select one -')
+                     ->setAttribute('data-direct-child', 'CreatePropertyForm_CreatePropertyForm_City')
+                );
+
+                $fields->push(
+                    DropdownField::create(
+                        'City',
+                        'City'
+                    )->setEmptyString('- select one -')
+                     ->setAttribute('data-direct-child', 'CreatePropertyForm_CreatePropertyForm_Suburb')
+                     ->setAttribute('data-option', !empty($property) ? $property->City : null)
+                );
+
+                $fields->push(
+                    DropdownField::create(
+                        'Suburb',
+                        'Suburb'
+                    )->setEmptyString('- select one -')
+                     ->setAttribute('data-option', !empty($property) ? $property->Suburb : null)
+                );
+
                 $fields->push(TextField::create('Country','Country', !empty($property) ? $property->Country : null));
                 $fields->push(TextField::create('PostCode','PostCode', !empty($property) ? $property->PostCode : null));
 
@@ -222,6 +246,11 @@ class CreatePropertyForm extends Form
              ->setFormAction(Controller::join_links(BASE_URL, 'member', 'CreatePropertyForm'))->addExtraClass('property-form');
     }
 
+    public function validate()
+    {
+        return true;
+    }
+
     private function makeList($list_of)
     {
         $max = Config::inst()->get('Property', $list_of);
@@ -252,6 +281,33 @@ class CreatePropertyForm extends Form
     {
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
             $this->step     =   Session::get('PropertyStep');
+            if ($this->step == 0) {
+                $result = true;
+                $error_fields = array();
+                if (empty($data['Region'])) {
+                    $result = false;
+                    $error_fields[] = 'Region';
+                }
+
+                if (empty($data['City'])) {
+                    $result = false;
+                    $error_fields[] = 'City';
+                }
+
+                if (empty($data['Suburb'])) {
+                    $result = false;
+                    $error_fields[] = 'Suburb';
+                }
+
+                if (!$result) {
+                    if ($this->request->isAjax()) {
+                        return  json_encode(array(
+                                    'then'          =>  'show_errors',
+                                    'error_fields'  =>  $error_fields
+                                ));
+                    }
+                }
+            }
             // Debugger::inspect($this->step);
             $propertyID     =   Session::get('WorkingPropertyID');
             if (empty($data['Editing'])) {

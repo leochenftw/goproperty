@@ -142,8 +142,9 @@ class Property extends DataObject
 
     public function getSaleListings()
     {
+        $origMode = Versioned::get_reading_mode(); // save current mode
+        Versioned::set_reading_mode('Stage.Stage'); // temporarily overwrite mode
         $listings = $this->Listings();
-
-        return $listings->filter(array('ClassName' => 'SaleListing'));
+        $listings = $listings->filter(array('ClassName' => 'SaleListing'));
     }
 }

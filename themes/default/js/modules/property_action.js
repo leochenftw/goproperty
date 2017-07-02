@@ -32,6 +32,10 @@
                 if (typeof(data) != 'object') {
                     me.removeClass('is-loading').addClass('is-active');
                     formContainer.append(data);
+                    formContainer.find('select[name="Region"], select[name="City"]').each(function(i, el)
+                    {
+                         $(this).locationSelect().change();
+                    });
                     formContainer.find('select[name="AgencyID"]').change(function(e)
                     {
                         if ($(this).val().length == 0) {
@@ -171,7 +175,7 @@
                 {
                     onstart: function()
                     {
-                        formContainer.find('form input[type="submit"]').prop('disabled', true)
+                        formContainer.find('form input[type="submit"]').prop('disabled', true);
                     },
                     success: function(response)
                     {
@@ -196,12 +200,24 @@
                             if (response.thumbnail && response.thumbnail.length > 0) {
                                 row.find('.member-area__content__property-list__item__image img').attr('src', response.thumbnail);
                             }
-                            
+
                             switch (response.then) {
                                 case 'close_form':
                                     formContainer.html('');
                                     row.find('.btn-listing.is-active').removeClass('is-active');
                                     $.scrollTo(row, 500, {axis: 'y', offset: -$('#header').outerHeight()});
+                                    break;
+                                case 'show_errors':
+                                    response.error_fields.forEach(function(name)
+                                    {
+                                        var issue_field = formContainer.find('[name="' + name + '"]');
+                                        if (issue_field.is('select')) {
+                                            issue_field = issue_field.parent();
+                                        }
+
+                                        issue_field.addClass('is-danger');
+                                    });
+                                    formContainer.find('form input[type="submit"]').prop('disabled', false);
                                     break;
                                 case 'redirect':
                                     location.href = response.url;
@@ -240,6 +256,10 @@
                     var formContainer = me.parents('div.forms:eq(0)');
                     var newForm = $(response).find('form');
                     newForm.find('a:not(".do-cancel, .btn-file-browser, .photos-row a")').unbind('click').click(ajaxGet);
+                    newForm.find('select[name="Region"], select[name="City"]').each(function(i, el)
+                    {
+                         $(this).locationSelect().change();
+                    });
                     formContainer.find('input[name="action_doCancel"], .do-cancel').click(function(e)
                     {
                         e.preventDefault();

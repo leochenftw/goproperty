@@ -8,6 +8,7 @@ class SaleListing extends Listing
         'RateableValue'         =>  'Decimal',
         'HideRV'                =>  'Boolean',
         'ExpectdSalePrice'      =>  'Decimal',
+        'OpenHomeFrequency'     =>  'Enum("On,Every,Upon request")',
         'OpenHomeTimes'         =>  'SS_Datetime',
         'PriceOption'           =>  'Varchar(48)',
         'AskingPrice'           =>  'Decimal',
@@ -16,6 +17,7 @@ class SaleListing extends Listing
         'TenderCloseOn'         =>  'Date',
         'PriceByNegotiation'    =>  'Boolean',
         'PrivateTreatyDeadline' =>  'Date'
+
     );
 
     public function getListTil()

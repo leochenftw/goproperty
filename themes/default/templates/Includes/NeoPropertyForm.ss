@@ -9,8 +9,11 @@
                 <div class="fields">
                     <div class="show">
                         <% if $step == 0 %>
-                        $Fields.fieldByName('FullAddress').FieldHolder
-                        <div id="location-on-map"></div>
+                            $Fields.fieldByName('FullAddress').FieldHolder
+                            <div id="location-on-map"></div>
+                            $Fields.fieldByName('Region').FieldHolder
+                            $Fields.fieldByName('City').FieldHolder
+                            $Fields.fieldByName('Suburb').FieldHolder
                         <% end_if %>
                         <% if $step == 1 %>
                         $Fields.fieldByName('PropertyType').FieldHolder
@@ -102,9 +105,6 @@
                     <div class="hide">
                         $Fields.fieldByName('StreetNumber').FieldHolder
                         $Fields.fieldByName('StreetName').FieldHolder
-                        $Fields.fieldByName('Suburb').FieldHolder
-                        $Fields.fieldByName('City').FieldHolder
-                        $Fields.fieldByName('Region').FieldHolder
                         $Fields.fieldByName('Country').FieldHolder
                         $Fields.fieldByName('PostCode').FieldHolder
                         $Fields.fieldByName('Lat').FieldHolder

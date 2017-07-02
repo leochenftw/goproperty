@@ -1,0 +1,99 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "bulma-scss",
+        "scope": null,
+        "escapedName": "bulma-scss",
+        "name": "bulma-scss",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/var/www/silverstripe/BSE/www/goprop/htdocs/themes/default"
+    ]
+  ],
+  "_from": "bulma-scss@latest",
+  "_id": "bulma-scss@0.3.0-cc1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/bulma-scss",
+  "_nodeVersion": "4.4.6",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/bulma-scss-0.3.0-cc1.tgz_1484421609255_0.7081008541863412"
+  },
+  "_npmUser": {
+    "name": "ulexus",
+    "email": "ulexus@gmail.com"
+  },
+  "_npmVersion": "2.15.5",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "bulma-scss",
+    "scope": null,
+    "escapedName": "bulma-scss",
+    "name": "bulma-scss",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/bulma-scss/-/bulma-scss-0.3.0-cc1.tgz",
+  "_shasum": "593e69a3dbd7bb4b451970494663a54aade3f25a",
+  "_shrinkwrap": null,
+  "_spec": "bulma-scss",
+  "_where": "/var/www/silverstripe/BSE/www/goprop/htdocs/themes/default",
+  "author": {
+    "name": "Jeremy Thomas",
+    "email": "bbxdesign@gmail.com",
+    "url": "http://jgthms.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jgthms/bulma/issues"
+  },
+  "dependencies": {},
+  "description": "Modern CSS framework based on Flexbox, converted to SCSS",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "593e69a3dbd7bb4b451970494663a54aade3f25a",
+    "tarball": "https://registry.npmjs.org/bulma-scss/-/bulma-scss-0.3.0-cc1.tgz"
+  },
+  "files": [
+    "scss",
+    "bulma.scss",
+    "LICENSE",
+    "README.md"
+  ],
+  "gitHead": "fd3f652ac893a306ebd346a0e1236b8689c84fad",
+  "homepage": "http://bulma.io",
+  "keywords": [
+    "css",
+    "scss",
+    "flexbox",
+    "responsive",
+    "framework"
+  ],
+  "license": "MIT",
+  "main": "bulma.scss",
+  "maintainers": [
+    {
+      "name": "ulexus",
+      "email": "ulexus@gmail.com"
+    }
+  ],
+  "name": "bulma-scss",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyCoreSystems/bulma.git"
+  },
+  "scripts": {
+    "convert": "rm -Rf scss; sass-convert -R ./ -F sass -T scss; cp -a sass scss; find ./scss -name '*.sass' -exec {} ; echo 'TODO: update import references'"
+  },
+  "version": "0.3.0-cc1"
+}

@@ -19,12 +19,8 @@
             <h3 class="title is-5">$Title</h3>
             <div class="is-marginless member-area__content__property-list__item__info__controls">
                 <a class="btn-listing button outlined inline" data-expect-form="1" href="/member/action/manage-property?id=$ID&step=5">Edit property</a>
-                <%-- <% if $RentalListings.Count > 0 %> --%>
-                    <a class="btn-listing button outlined inline" href="/member/action/rental-listings?id=$ID">Rental listings</a>
-                <%-- <% else %>
-                    <a class="btn-listing button outlined inline" data-expect-form="1" href="/member/action/rental-listing?id=$ID">Rent it</a> --%>
-                <%-- <% end_if %> --%>
-                <a class="btn-listing button outlined inline" href="/member/action/sale-listing?id=$ID">Sell it</a>
+                <a class="btn-listing button outlined inline" href="/member/action/rental-listings?id=$ID">Rental listings</a>
+                <a class="btn-listing button outlined inline" href="/member/action/sale-listings?id=$ID">Sale listings</a>
             </div>
             <div class="forms"></div>
         </div>
