@@ -9,6 +9,12 @@ class PropertyForm extends Form
 
     public function __construct($controller, $name, $prop = null)
     {
+        $member = Member::currentUser();
+
+        if (empty($member)) {
+            return $this->controller->redirect('/signin?BackURL=' . $this->controller->request->getVar('url'));
+        }
+
         if (!empty($prop) && !empty($prop->Title)) {
             $this->FormTitle = $prop->Title;
         }
@@ -141,7 +147,6 @@ class PropertyForm extends Form
                 ->setFieldHolderTemplate('PropertyGalleryUploader')
                 ->addExtraClass('viewable-gallery');
 
-        $member = Member::currentUser();
         if ($member->MemberOf()->exists()) {
             $fields->push(DropdownField::create(
                 'ListerAgencyID',

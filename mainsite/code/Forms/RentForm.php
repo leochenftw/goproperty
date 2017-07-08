@@ -29,10 +29,10 @@ class RentForm extends PropertyForm
 
         $fields->push($furnishings = TextareaField::create('Furnishings', 'Furnishing'));
 
-        $fields->push($testimonial = TextareaField::create('Testimonial', 'Testimonial')->setAttribute('placeholder', 'Customer partner network the property has features such as termsheet facebook focus product management.'));
+        // $fields->push($testimonial = TextareaField::create('Testimonial', 'Testimonial')->setAttribute('placeholder', 'Customer partner network the property has features such as termsheet facebook focus product management.'));
 
         if (!empty($prop)) {
-            $testimonial->setValue($prop->Testimonial);
+            // $testimonial->setValue($prop->Testimonial);
             $furnishings->setValue($prop->Furnishings);
         }
 

@@ -25,6 +25,32 @@ $(document).ready(function(e)
         $('.btn-listing').propertyAction();
     }
 
+    if ($('.btn-delete').length > 0) {
+        $('.btn-delete').click(function(e)
+        {
+            e.preventDefault();
+            if (confirm('Are you sure you want to remove this agency?')) {
+                var url     =   $(this).attr('href'),
+                    csrf    =   $(this).data('Security-id'),
+                    item    =   $(this).parents('.member-area__content__property-list__item:eq(0)');
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    data: {
+                        SecurityID: csrf
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(result)
+                    {
+                        item.remove();
+                    }
+                });
+            }
+        });
+    }
+
     if ($('body').hasClass('page-dashboard')) {
         $(".member-area__sidebar ul.neat-ul").fixy($('#header').outerHeight());
         if ($(".member-area__content .fields__aside .uploader").length > 0) {
@@ -85,8 +111,8 @@ $(document).ready(function(e)
     {
         e.preventDefault();
         var sid             =   $(this).data('sid'),
-            propertyid      =   $(this).data('id');
-
+            propertyid      =   $(this).data('id'),
+            title           =   $(this).data('title');
         $.get(
             '/api/v1/eoi/' + propertyid,
             {
@@ -94,7 +120,7 @@ $(document).ready(function(e)
             },
             function(data)
             {
-                var list = new InterestList('Applicants', data);
+                var list = new InterestList(title, data);
                 $('html').addClass('locked');
                 $('body').addClass('overlayed fixed').append(list);
             }

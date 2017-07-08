@@ -420,11 +420,17 @@
 
                     &#PriceOption {
                         ul.optionset {
-                            @include display-flex;
-                            @include flex-wrap(wrap);
                             li {
                                 display: block;
-                                width: 50%;
+                                margin-bottom: 5px;
+                                div {
+                                    padding-left: 1.25em;
+                                    display: none;
+                                }
+
+                                input.radio:checked ~ div {
+                                    display: block;
+                                }
                             }
                         }
                     }

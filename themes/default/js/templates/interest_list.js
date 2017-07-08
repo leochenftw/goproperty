@@ -9,7 +9,7 @@ var InterestList = function(title, list)
     if (theList.length > 0) {
         for (var i = 0; i < theList.length; i++)
         {
-            var item = new InterestItem(theList[i]);
+            var item = new InterestItem(theList[i], title == 'Applicants' ? true : false);
             theHTML.find('.message-body').append(item);
         }
     } else {

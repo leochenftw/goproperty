@@ -267,8 +267,25 @@ class PropertyPage extends Page
         return $OrderClass::get()->filter(array('PaidToClass' => 'PropertyPage', 'PaidToClassID' => $this->ID));
     }
 
+    public function Agency()
+    {
+        if (!empty($this->ListerAgencyID)) {
+            return $this->ListerAgency();
+            // $data = array(
+            //     'Portrait'              =>  $lister->Logo(),
+            //     'DisplayPhonenumber'    =>  true,
+            //     'DisplayName'           =>  $lister->Title,
+            //     'ContactNumber'         =>  $lister->ContactNumber,
+            // );
+        }
+
+        return null;
+    }
+
     public function Member()
     {
+
+
         return $this->Lister();
     }
 

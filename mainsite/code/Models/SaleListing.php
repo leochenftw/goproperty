@@ -9,6 +9,7 @@ class SaleListing extends Listing
         'HideRV'                =>  'Boolean',
         'ExpectdSalePrice'      =>  'Decimal',
         'OpenHomeFrequency'     =>  'Enum("On,Every,Upon request")',
+        'OpenHomeDays'          =>  'Enum("Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday")',
         'OpenHomeTimes'         =>  'SS_Datetime',
         'PriceOption'           =>  'Varchar(48)',
         'AskingPrice'           =>  'Decimal',
@@ -26,7 +27,7 @@ class SaleListing extends Listing
             return $this->ListTilDate;
         }
 
-        return 'Property is sold';
+        return 'sold';
     }
 
     public function getStatus()

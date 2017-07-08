@@ -154,6 +154,18 @@
                         img {
                             border-radius: 50%;
                         }
+
+                        &.agency-base {
+                            position: relative;
+                            img.member-self {
+                                position: absolute;
+                                width: 45px;
+                                height: 45px;
+                                top: 0;
+                                right: 0;
+                                border: 3px solid white;
+                            }
+                        }
                     }
 
                     &__details {

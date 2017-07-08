@@ -10539,15 +10539,16 @@ div.field.textarea {
 #main .member-area__content form fieldset .field.checkbox label {
   color: #001d58;
 }
-#main .member-area__content form fieldset .field#PriceOption ul.optionset {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
 #main .member-area__content form fieldset .field#PriceOption ul.optionset li {
   display: block;
-  width: 50%;
+  margin-bottom: 5px;
+}
+#main .member-area__content form fieldset .field#PriceOption ul.optionset li div {
+  padding-left: 1.25em;
+  display: none;
+}
+#main .member-area__content form fieldset .field#PriceOption ul.optionset li input.radio:checked ~ div {
+  display: block;
 }
 #main .member-area__content form fieldset .field#FloorArea_Holder, #main .member-area__content form fieldset .field#LandArea_Holder {
   position: relative;
@@ -10964,6 +10965,17 @@ body.lb-disable-scrolling {
 }
 .section.property .property__content-area__content .member-tile__portrait img {
   border-radius: 50%;
+}
+.section.property .property__content-area__content .member-tile__portrait.agency-base {
+  position: relative;
+}
+.section.property .property__content-area__content .member-tile__portrait.agency-base img.member-self {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  top: 0;
+  right: 0;
+  border: 3px solid white;
 }
 .section.property .property__content-area__content .member-tile__details__name {
   font-size: 22px;

@@ -84,7 +84,7 @@
                         <div class="comments">
                         <% loop $Comments %>
                             <div class="comment">
-                                <h3 class="title is-5">$Member.FirstName $Member.Surname</h3>
+                                <h3 class="title is-5">$Member.DisplayName</h3>
                                 <p class="subtitle is-6">$When</p>
                                 <p class="ratings" data-id="$ID" data-stars="$Stars">
                                     <span class="icon"><i class="fa fa-star-o"></i></span>

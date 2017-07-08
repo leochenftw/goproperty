@@ -16,6 +16,7 @@ class SaleListingForm extends Form
 
         $request = $controller->request;
         $propertyID =   $request->getVar('id');
+        $property_entity = Property::get()->byID($propertyID);
         if ($listingID  =   $request->getVar('listing-id')) {
 
             $prop       =   Versioned::get_by_stage('SaleListing', 'Stage')->byID($listingID);
@@ -53,16 +54,16 @@ class SaleListingForm extends Form
         $fields->push(TextField::create(
             'FloorArea',
             'Floor area (m<sup>2</sup>)',
-            !empty($prop) ? $prop->FloorArea : null
+            !empty($property_entity) ? $property_entity->FloorArea : null
         ));
 
         $fields->push(TextField::create(
             'LandArea',
             'Land area (m<sup>2</sup>)',
-            !empty($prop) ? $prop->LandArea : null
+            !empty($property_entity) ? $property_entity->LandArea : null
         ));
 
-        $fields->push(TextareaField::create('Content', 'Details', !empty($prop) ? $prop->Content : null));
+        // $fields->push(TextareaField::create('Content', 'Details', !empty($property_entity) ? $property_entity->Content : null));
 
         $fields->push(TextField::create('RateableValue', 'Rateable value', !empty($prop) ? $prop->RateableValue : null)->setAttribute('placeholder', 'e.g. 1,024,768'));
 
@@ -74,89 +75,84 @@ class SaleListingForm extends Form
             'PriceOption',
             'Price option',
             array(
-                'Asking price'                  =>  'Asking price',
-                'Enquiries over'                =>  'Enquiries over',
-                'To be auctioned on'            =>  'To be auctioned on',
-                'Tenders closing on'            =>  'Tenders closing on',
-                'Price by negotiation'          =>  'Price by negotiation',
-                'Deadline Private Treaty by'    =>  'Deadline Private Treaty by'
+                'AskingPrice'           =>  'Asking price',
+                'EnquiriesOver'         =>  'Enquiries over',
+                'AuctionOn'             =>  'To be auctioned on',
+                'TenderCloseOn'         =>  'Tenders closing on',
+                'PriceByNegotiation'    =>  'Price by negotiation',
+                'PrivateTreatyDeadline' =>  'Deadline Private Treaty by'
             ),
-            empty($prop) ? 'Asking price' : $prop->PriceOption
+            empty($prop) ? 'AskingPrice' : $prop->PriceOption
         ));
 
         $fields->push($askprice = TextField::create(
             'AskingPrice',
             'Asking price',
             !empty($prop) ? $prop->AskingPrice : null
-        )->addExtraClass('hide'));
+        ));
 
         $fields->push($enquryprice = TextField::create(
             'EnquiriesOver',
             'Enquiries over',
             !empty($prop) ? $prop->EnquiriesOver : null
-        )->addExtraClass('hide'));
+        ));
 
         $fields->push($auctionon = DateField::create(
             'AuctionOn',
             'To be auctioned on',
             !empty($prop) ? $prop->AuctionOn : null
-        )->addExtraClass('hide'));
+        )->addExtraClass('use-dt-picker'));
 
         $fields->push($tenderclose = DateField::create(
             'TenderCloseOn',
             'Tenders closing on',
             !empty($prop) ? $prop->TenderCloseOn : null
-        )->addExtraClass('hide'));
+        )->addExtraClass('use-dt-picker'));
 
-        if (!empty($prop)) {
-            switch ($prop->PriceOption) {
-                case 'AskingPrice':
-                    $askprice->removeExtraClass('hide');
-                    break;
-
-                case 'EnquiriesOver':
-                    $enquryprice->removeExtraClass('hide');
-                    break;
-
-                case 'AuctionOn':
-                    $auctionon->removeExtraClass('hide');
-                    break;
-
-                case 'TenderCloseOn':
-                    $tenderclose->removeExtraClass('hide');
-                    break;
-
-                case 'PriceByNegotiation':
-                    // $negotiable->removeExtraClass('hide');
-                    break;
-
-                case 'PrivateTreatyDeadline':
-                    $deadline->removeExtraClass('hide');
-                    break;
-
-                default:
-                    $askprice->removeExtraClass('hide');
-                    break;
-            }
-        } else {
-            $askprice->removeExtraClass('hide');
-        }
+        $fields->push($deadline = DateField::create(
+            'PrivateTreatyDeadline',
+            'Deadline Private Treaty by',
+            !empty($prop) ? $prop->PrivateTreatyDeadline : null
+        )->addExtraClass('use-dt-picker'));
 
         $fields->push(
             DropdownField::create(
                 'OpenHomeFrequency',
-                '',
+                'Open home schedule',
                 array(
                     'On'            =>  'On',
                     'Every'         =>  'Every',
                     'Upon request'  =>  'Upon request'
                 ),
-                !empty($prop) ? $prop->OpenHomeFrequency : null
+                !empty($prop) ? $prop->OpenHomeFrequency : 'Upon request'
             )
         );
 
+        $fields->push(
+            DropdownField::create(
+                'OpenHomeDays',
+                '&nbsp;',
+                array(
+                    'Monday'    =>  'Monday',
+                    'Tuesday'   =>  'Tuesday',
+                    'Wednesday' =>  'Wednesday',
+                    'Thursday'  =>  'Thursday',
+                    'Friday'    =>  'Friday',
+                    'Saturday'  =>  'Saturday',
+                    'Sunday'    =>  'Sunday'
+                ),
+                !empty($prop) ? $prop->OpenHomeFrequency : null
+            )->addExtraClass(!empty($prop) && $prop->OpenHomeFrequency == 'Every' ? '' : 'hide')
+        );
 
-        $fields->push(DateField::create('OpenHomeTimes', 'Date available', !empty($prop) ? $prop->OpenHomeTimes : null)->addExtraClass('use-dt-picker'));
+        $fields->push(
+            TextField::create(
+                'OpenHomeTimes',
+                '&nbsp;',
+                !empty($prop) ? $prop->OpenHomeTimes : null
+            )->addExtraClass('use-dt-picker use-time')
+             ->addExtraClass(!empty($prop) && $prop->OpenHomeFrequency == 'On' ? '' : 'hide')
+          );
 
         $fields->push(HiddenField::create(
             'PropertyID',
@@ -166,7 +162,7 @@ class SaleListingForm extends Form
 
 
         $daily_charge   =   Config::inst()->get('Property', 'DailyCharge');
-        $til_charge     =   Config::inst()->get('Property', 'TilRented');
+        $til_charge     =   Config::inst()->get('Property', 'TilSold');
 
         $listing_desc   =   'Rate: $' . $daily_charge . ' per day. ';
 
@@ -175,7 +171,7 @@ class SaleListingForm extends Form
             'Listing options',
             array(
                 'By length: $' . $daily_charge .' per day',
-                'List until rented: $' . $til_charge
+                'List until sold: $' . $til_charge
             ),
             !empty($prop) ? $prop->ListTilGone : null
         );
@@ -195,6 +191,7 @@ class SaleListingForm extends Form
 
         $list_until
             ->setAttribute('data-daily-charge', $daily_charge)
+            ->setAttribute('autocomplete', 'off')
             ->addExtraClass('use-dt-picker')
             ->setDescription('select date to work out the cost for listing.');
         if (!empty($prop) && $prop->isPaid) {
@@ -228,8 +225,16 @@ class SaleListingForm extends Form
 
     public function doList($data, $form)
     {
+        if (!empty($data['LandArea']) && !empty($data['FloorArea']) && !empty($data['PropertyID'])) {
+            $property = Property::get()->byID($data['PropertyID']);
+            $property->FloorArea = $data['FloorArea'];
+            $property->LandArea = $data['LandArea'];
+            $property->write();
+        }
+
         $listingID  =   !empty($data['ListingID']) ? $data['ListingID'] : null;
         $listing    =   !empty($listingID) ? (Versioned::get_by_stage('SaleListing', 'Stage')->byID($listingID)) : (new SaleListing());
+
         if (empty($listing->ID)) {
             $form->saveInto($listing);
         } else {
@@ -238,6 +243,10 @@ class SaleListingForm extends Form
                     $listing->$key = $value;
                 }
             }
+        }
+
+        if ($dt = $data['OpenHomeTimes']) {
+            $listing->OpenHomeTimes = strtotime($dt);
         }
 
         $listing->writeToStage('Stage');

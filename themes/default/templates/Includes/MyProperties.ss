@@ -47,7 +47,7 @@
                     <% if $isPublished %>
                         <a class="button outlined inline" href="$Link">View</a>
                         <a class="button outlined inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID#RentForm_RentForm_action_doWithdraw">Withdraw</a>
-                        <a class="button outlined inline btn-view-applicants" href="#" data-sid="$SecurityID" data-id="$ID">Applicants <span class="bubble">($ApplicantsCount)</span></a>
+                        <a class="button outlined inline btn-view-applicants" data-title="<% if $RentOrSale == 'rent' %>Applicants<% else %>Potential buyers<% end_if %>" href="#" data-sid="$SecurityID" data-id="$ID"><% if $RentOrSale == 'rent' %>Applicants<% else %>Interested<% end_if %> <span class="bubble">($ApplicantsCount)</span></a>
                     <% else %>
                         <a class="button outlined inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID">Edit</a>
                         <a class="button outlined inline" href="$Link">List</a>

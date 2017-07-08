@@ -27,7 +27,7 @@
                     <li><a title="My business" data-title="Dashboard | My business" href="/member/action/my-business" class="icon-wrench ajax-routed<% if $tab == 'my-business' %> active<% end_if %>"><span>My Trade</span></a></li>
                     <% end_if %>
                     <li><a title="Payment history" data-title="Dashboard | Payment history" href="/member/action/payment-history" class="icon-dollar ajax-routed<% if $tab == 'payment-history' %> active<% end_if %>"><span>Payment history</span></a></li>
-                    <li><a title="My credit card" data-title="Dashboard | My credit card" href="/member/action/creditcards" class="icon-creditcard ajax-routed<% if $tab == 'creditcards' %> active<% end_if %>"><span>My credit card</span></a></li>
+                    <%-- <li><a title="My credit card" data-title="Dashboard | My credit card" href="/member/action/creditcards" class="icon-creditcard ajax-routed<% if $tab == 'creditcards' %> active<% end_if %>"><span>My credit card</span></a></li> --%>
                     <li><a title="" href="/member/signout" class="icon-logout"><span>Sign out</span></a></li>
                 </ul>
             </aside>
@@ -51,6 +51,10 @@
 
                 <% if $tab == 'manage-property' %>
                     <% include NeoPropertyForm %>
+                <% end_if %>
+
+                <% if $tab == 'sale-listing' %>
+                    <% include SaleListingForm %>
                 <% end_if %>
 
                 <% if $tab == 'rental-listing' %>

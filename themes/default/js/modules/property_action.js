@@ -32,6 +32,36 @@
                 if (typeof(data) != 'object') {
                     me.removeClass('is-loading').addClass('is-active');
                     formContainer.append(data);
+                    if (formContainer.find('.price-options').length > 0) {
+                        formContainer.find('.price-options input.text').each(function(i, el)
+                        {
+                            var liClassname =   'val' + $(this).attr('name'),
+                                holder      =   $('<div />');
+                            holder.append($(this));
+                            formContainer.find('#PriceOption ul.optionset li.' + liClassname).append(holder);
+                        });
+                    }
+
+                    formContainer.find('[name="OpenHomeTimes"]').removeClass('hide');
+                    formContainer.find('[name="OpenHomeDays"]').removeClass('hide');
+
+                    formContainer.find('[name="OpenHomeFrequency"]').change(function(e)
+                    {
+                        var OpenHomeTimes   =   formContainer.find('[name="OpenHomeTimes"]').parents('.field:eq(0)'),
+                            OpenHomeDays    =   formContainer.find('[name="OpenHomeDays"]').parents('.field:eq(0)');
+
+                        OpenHomeTimes.addClass('hide');
+                        OpenHomeDays.addClass('hide');
+
+                        if ($(this).val() == 'On') {
+                            OpenHomeTimes.removeClass('hide');
+                        }
+
+                        if ($(this).val() == 'Every') {
+                            OpenHomeDays.removeClass('hide');
+                        }
+                    });
+
                     formContainer.find('select[name="Region"], select[name="City"]').each(function(i, el)
                     {
                          $(this).locationSelect().change();
@@ -44,27 +74,32 @@
                             formContainer.find('div.agency-ref').show();
                         }
                     }).change();
-                    formContainer.find('input.use-dt-picker').datetimepicker(
+
+                    formContainer.find('input.use-dt-picker').each(function(i, el)
                     {
-                        timepicker: false,
-                        format: 'Y-m-d',
-                        scrollInput: false,
-                        scrollMonth: false,
-                        minDate: new Date(),
-                        onSelectDate: function(ct,$i)
+                        var useTime = $(this).hasClass('use-time');
+                        $(this).datetimepicker(
                         {
-                            if ($i.data('daily-charge')) {
-                                var dailyCharge =   $i.data('daily-charge'),
-                                    toDate      =   ct.getTime(),
-                                    now         =   Date.now(),
-                                    diff        =   toDate - now,
-                                    diff_days   =   Math.ceil(diff/1000/3600/24) + 1,
-                                    output      =   $i.parents('div.field:eq(0)').find('.description');
+                            timepicker: useTime,
+                            format: useTime ? 'Y-m-d H:i' : 'Y-m-d',
+                            scrollInput: false,
+                            scrollMonth: false,
+                            minDate: new Date(),
+                            onSelectDate: function(ct,$i)
+                            {
+                                if ($i.data('daily-charge')) {
+                                    var dailyCharge =   $i.data('daily-charge'),
+                                        toDate      =   ct.getTime(),
+                                        now         =   Date.now(),
+                                        diff        =   toDate - now,
+                                        diff_days   =   Math.ceil(diff/1000/3600/24) + 1,
+                                        output      =   $i.parents('div.field:eq(0)').find('.description');
 
-                                output.html('Listing for ' + diff_days + (diff_days > 1 ? ' days' : ' day') + ' will cost you: ' + (diff_days * dailyCharge).toDollar());
+                                    output.html('Listing for ' + diff_days + (diff_days > 1 ? ' days' : ' day') + ' will cost you: ' + (diff_days * dailyCharge).toDollar());
 
+                                }
                             }
-                        }
+                        });
                     });
                     formContainer.find('input[name="action_doCancel"], .do-cancel').click(function(e)
                     {
@@ -78,11 +113,11 @@
                     {
                         if ($(this).is(':checked')) {
                             if ($(this).val() == 0) {
-                                $('#RentalListingForm_RentalListingForm_ListTilDate_Holder').show();
+                                formContainer.find('[name="ListTilDate"]').parents('.field:eq(0)').show();
                             } else {
-                                $('#RentalListingForm_RentalListingForm_ListTilDate_Holder').hide();
-                                $('#RentalListingForm_RentalListingForm_ListTilDate_Holder input.date').val('');
-                                $('#RentalListingForm_RentalListingForm_ListTilDate_Holder span.description').html('select date to work out the cost for listing.');
+                                formContainer.find('[name="ListTilDate"]').parents('.field:eq(0)').hide();
+                                formContainer.find('[name="ListTilDate"]').parents('.field:eq(0)').find('input.date').val('');
+                                formContainer.find('[name="ListTilDate"]').parents('.field:eq(0)').find('span.description').html('select date to work out the cost for listing.');
                             }
                         }
                     }).change();

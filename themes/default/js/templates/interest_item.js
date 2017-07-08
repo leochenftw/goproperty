@@ -1,4 +1,4 @@
-var InterestItem = function(data)
+var InterestItem = function(data, canAccept)
 {
     this.template = '<div class="columns interest-item">\
                         <div class="portrait column is-auto-width"><img src="" /></div>\
@@ -65,7 +65,10 @@ var InterestItem = function(data)
         $('body').append(rentalForm);
     });
 
-    this.html.find('.actions').append(btnReject, btnContact, btnAccept);
+    this.html.find('.actions').append(btnReject, btnContact);
+    if (canAccept) {
+        this.html.find('.actions').append(btnAccept);
+    }
 
     return this.html;
 };

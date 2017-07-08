@@ -8,23 +8,40 @@ use SaltedHerring\Debugger as Debugger;
  * */
 class AgencyAPI extends BaseRestController {
 
+    private $agency     =   null;
+
     private static $allowed_actions = array (
-        'post'			=>	"->isAuthenticated"
+        'post'			=>	"->isAuthenticated",
+        'delete'        =>  "->isAuthenticated"
     );
 
     public function isAuthenticated() {
 
-        $request = $this->request;
-        $sid = !empty($request->postVar('SecurityID')) ? $request->postVar('SecurityID') : $request->getVar('SecurityID');
+        $request        =   $this->request;
+        if (!$request->isDelete()) {
+            $sid            =   !empty($request->postVar('SecurityID')) ? $request->postVar('SecurityID') : $request->getVar('SecurityID');
 
-        if (!empty($sid) && $sid == Session::get('SecurityID')) {
-            return true;
+            if (!empty($sid) && $sid == Session::get('SecurityID')) {
+                return true;
+            }
+        } else {
+            if ($this->agency = Agency::get()->byID($request->param('ID'))) {
+                if ($this->agency->CreatedByID == Member::currentUserID()) {
+                    return true;
+                }
+            }
         }
 
         return false;
     }
 
-    public function post($request) {
+    public function delete($request)
+    {
+        return $this->agency->delete();
+    }
+
+    public function post($request)
+    {
         if (empty($request->postVar('agency_id')) && !empty($request->postVar('agency_title'))) {
             return
                 array(

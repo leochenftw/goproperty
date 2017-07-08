@@ -1,8 +1,17 @@
  <div class="member-tile columns">
-    <div class="member-tile__portrait column is-auto-width">
+    <div class="member-tile__portrait column is-auto-width<% if $Agency %> agency-base<% end_if %>">
         <% if $Member %>
+            <% if $Agency %>
+                <% if $Agency.Logo %>
+                    $Agency.Logo.Cropped.FillMax(75,75)
+                <% else %>
+                    <img src="/themes/default/images/default-portrait.png" width="75" height="75" />
+                <% end_if %>
+            <% end_if %>
             <% if $Member.Portrait %>
-                $Member.Portrait.Image.Cropped.FillMax(75,75)
+                <% with $Member.Portrait.Image.Cropped.FillMax(75,75) %>
+                    <img src="$URL" width="$Width" height="$Height" class="member-self" />
+                <% end_with %>
             <% else %>
                 <img src="/themes/default/images/default-portrait.png" width="75" height="75" />
             <% end_if %>
@@ -12,11 +21,20 @@
     </div>
     <div class="member-tile__details column">
         <div class="member-tile__details__name">
-            $Member.DisplayName
+            <% if $Agency %>
+                <h2 class="title is-3 is-bold">$Agency.Title</h2>
+                <p class="subtitle is-5"><em>$Member.DisplayName</em></p>
+            <% else %>
+                <h2 class="title is-3 is-bold">$Member.Title</h2>
+            <% end_if %>
         </div>
         <% if $Member.DisplayPhonenumber %>
         <div class="member-tile__details__phonenumber">
-            $Member.ContactNumber
+            <% if $Agency %>
+                $Agency.ContactNumber
+            <% else %>
+                $Member.ContactNumber
+            <% end_if %>
         </div>
         <% end_if %>
         <div class="ratings">
@@ -28,9 +46,6 @@
                     <span class="rating-count">($Count rating<% if $Count > 1 %>s<% end_if %>)</span>
                 <% end_with %>
             <% else %>
-                <%-- <ul class="rating" data-sid="$SecurityID" data-type="Member" data-id="$Member.ID">
-                    $Member.getRating(1)
-                </ul> --%>
                 <% with $Member.Rating %>
                     <ul class="rating<% if $Rated %> rated<% end_if %>" data-sid="$SecurityID" data-type="Member" data-id="$Up.ID">
                         $HTML

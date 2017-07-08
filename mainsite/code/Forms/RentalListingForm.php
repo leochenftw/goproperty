@@ -86,19 +86,6 @@ class RentalListingForm extends Form
             'PropertyID',
             $propertyID
         ));
-        //
-        // $fields->changeFieldOrder(array(
-        //     'AgencyID',
-        //     'AgencyReference',
-        //     'ContactNumber',
-		// 	'WeeklyRent',
-        //     'DateAvailable',
-		// 	'IdealTenants',
-		// 	'Furnishings',
-		// 	'AllowPet',
-		// 	'AllowSmoker',
-		// 	'SmokeAlarm'
-        // ));
 
         $daily_charge   =   Config::inst()->get('Property', 'DailyCharge');
         $til_charge     =   Config::inst()->get('Property', 'TilRented');
@@ -130,6 +117,7 @@ class RentalListingForm extends Form
 
         $list_until
             ->setAttribute('data-daily-charge', $daily_charge)
+            ->setAttribute('autocomplete', 'off')
             ->addExtraClass('use-dt-picker')
             ->setDescription('select date to work out the cost for listing.');
         if (!empty($prop) && $prop->isPaid) {

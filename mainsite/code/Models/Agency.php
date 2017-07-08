@@ -18,9 +18,9 @@ class Agency extends DataObject
      * @var array
      */
     private static $has_one = array(
-        'CreatedBy' =>  'Member',
-        'OwnedBy'   =>  'Member',
-        'Logo'      =>  'Image'
+        'CreatedBy'     =>  'Member',
+        'OwnedBy'       =>  'Member',
+        'Logo'          =>  'Image'
     );
 
     /**
@@ -28,7 +28,7 @@ class Agency extends DataObject
      * @var array
      */
     private static $has_many = array(
-        'Listings'  =>  'PropertyPage'
+        'Listings'      =>  'PropertyPage'
     );
 
     /**
@@ -36,7 +36,7 @@ class Agency extends DataObject
      * @var array
      */
     private static $many_many = array(
-        'Members'   =>  'Member'
+        'Members'       =>  'Member'
     );
 
     public function onBeforeWrite() {

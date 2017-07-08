@@ -87,6 +87,53 @@ class MemberExtension extends DataExtension
 
         return $fields;
     }
+
+    /**
+     * Event handler called before deleting from the database.
+     */
+    public function onBeforeDelete()
+    {
+        parent::onBeforeDelete();
+        $props      =   $this->owner->Properties();
+        $wishlist   =   $this->owner->Wishlist();
+        $rates      =   $this->owner->Rate();
+        $rateds     =   $this->owner->BeingRated();
+        $portrait   =   $this->owner->Portrait();
+        $business   =   $this->owner->Business();
+
+        $portrait->delete();
+        $business->delete();
+
+        foreach ($rates as $rate)
+        {
+            $rate->delete();
+        }
+
+        foreach ($rateds as $rated)
+        {
+            $rated->delete();
+        }
+
+        foreach ($wishlist as $wish)
+        {
+            $wish->delete();
+        }
+
+        foreach ($props as $prop)
+        {
+            $prop->delete();
+        }
+
+        $propages   =   Versioned::get_by_stage('PropertyPage', 'Stage')->filter(array('ListerID', $this->owner->ID));
+
+        foreach ($propages as $propage)
+        {
+            $propage->doUnpublish();
+            $propage->deleteFromStage('Stage');
+        }
+    }
+
+
     /**
      * Event handler called before writing to the database.
      */
