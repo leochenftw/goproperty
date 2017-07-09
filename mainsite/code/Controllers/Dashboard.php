@@ -270,7 +270,7 @@ class Dashboard extends Page_Controller {
 
     public function getMyProperties()
     {
-        $properties = Versioned::get_by_stage('PropertyPage', 'Stage')->filter(array('ListerID' => Member::currentUserID()));
+        $properties = Versioned::get_by_stage('PropertyPage', 'Stage')->filter(array('Tinfoiled:not' => true, 'ListerID' => Member::currentUserID()));
 
         return $properties;
     }

@@ -50,7 +50,8 @@
                         <a class="button outlined inline btn-view-applicants" data-title="<% if $RentOrSale == 'rent' %>Applicants<% else %>Potential buyers<% end_if %>" href="#" data-sid="$SecurityID" data-id="$ID"><% if $RentOrSale == 'rent' %>Applicants<% else %>Interested<% end_if %> <span class="bubble">($ApplicantsCount)</span></a>
                     <% else %>
                         <a class="button outlined inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID">Edit</a>
-                        <a class="button outlined inline" href="$Link">List</a>
+                        <a class="button outlined inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID#footer">List</a>
+                        <a class="btn-delete button outlined inline" href="/api/v1/property-page/$ID/delete" data-csrf="$SecurityID">Delete</a>
                     <% end_if %>
                 <% end_if %>
             </div>

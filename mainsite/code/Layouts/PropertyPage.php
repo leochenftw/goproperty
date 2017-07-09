@@ -52,7 +52,8 @@ class PropertyPage extends Page
         'FloorArea'             =>  'Int',
         'BeenRented'            =>  'Boolean',
         'isGone'                =>  'Boolean',
-        'isPaid'                =>  'Boolean'
+        'isPaid'                =>  'Boolean',
+        'Tinfoiled'             =>  'Boolean'   // <- this is just to hide the property from the public and the owner him/herself on v1.0.0
     );
 
     public function getPrice()

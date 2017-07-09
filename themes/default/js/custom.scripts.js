@@ -31,7 +31,7 @@ $(document).ready(function(e)
             e.preventDefault();
             if (confirm('Are you sure you want to remove this agency?')) {
                 var url     =   $(this).attr('href'),
-                    csrf    =   $(this).data('Security-id'),
+                    csrf    =   $(this).data('csrf'),
                     item    =   $(this).parents('.member-area__content__property-list__item:eq(0)');
                 $.ajax({
                     url: url,

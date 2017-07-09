@@ -17,6 +17,7 @@ Director:
     'api/v1/service/$Title': 'ServiceAPI'
     'api/v1/location/$district/$suburb': 'LocationAPI'
     'api/v1/listing/$ID/$Action': 'ListingAPI'
+    'api/v1/property-page/$ID/$Action': 'OldPropertyAPI'
     'list/$region/$district/$suburb/$ID': 'PropertyLister'
     'tradesmen/$region/$district/$suburb/$slug': 'TradesmenLister'
     'payment/$status': 'GatewayController'
