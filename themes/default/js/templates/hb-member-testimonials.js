@@ -5,6 +5,7 @@ var memberTestimonialTemplate   =
         <button class="delete"></button>\
     </div>\
     <div class="message-body">\
+        {{#if @root}}\
         {{#each @root}}\
         <div class="columns interest-item">\
             <div class="portrait column is-auto-width">\
@@ -17,5 +18,8 @@ var memberTestimonialTemplate   =
             </div>\
         </div>\
         {{/each}}\
+        {{else}}\
+        <p>no testimonial history</p>\
+        {{/if}}\
     </div>\
 </div>';

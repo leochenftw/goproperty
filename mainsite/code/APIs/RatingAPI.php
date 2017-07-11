@@ -28,7 +28,7 @@ class RatingAPI extends BaseRestController {
 
                     return $json;
                 } elseif ($type == 'PropertyPage') {
-
+                    return [];
                 }
             }
         }
