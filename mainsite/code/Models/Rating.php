@@ -12,6 +12,10 @@ class Rating extends DataObject
         'Key'           =>  'Varchar(40)'
     );
 
+    private static $default_sort = array(
+        'ID'            =>  'DESC'
+    );
+
     /**
      * Has_one relationship
      * @var array
@@ -49,6 +53,37 @@ class Rating extends DataObject
         if (!$this->exists() && empty($this->GiverID)) {
             $this->GiverID = Member::currentUserID();
         }
+    }
+
+    public function getData()
+    {
+        $member                 =   $this->Giver();
+        return  array(
+                    'ID'        =>  $this->ID,
+                    'Stars'     =>  $this->ratingHTML(),
+                    'Comment'   =>  $this->Comment,
+                    'Date'      =>  $this->Created,
+                    'By'        =>  $member->getDisplayName(),
+                    'portrait'  =>  !empty($member->Portrait()->ImageID) ? $member->Portrait()->Image()->Cropped()->FillMax(100, 100)->URL : '/themes/default/images/default-portrait.png',
+                );
+    }
+
+    private function ratingHTML()
+    {
+        $arr = array();
+        $n = $this->Stars;
+        $i = floor($n);
+        for ($j = 0; $j < 5; $j++) {
+            $arr[] = '<li data-stars="' . ($j+1) . '" class="icon"><i class="fa fa-' . ($j < $i ? 'star' : 'star-o') . '"></i></li>';
+        }
+
+        if ($n == 0) {
+            $arr[0] = '<li data-stars="1" class="icon"><i class="fa fa-star-o"></i></li>';
+        } elseif ($n - $i > 0 ) {
+            $arr[$i] = '<li data-stars="' . $i . '" class="icon"><i class="fa fa-star-half-o"></i></li>';
+        }
+
+        return implode("\n", $arr);
     }
 
 }

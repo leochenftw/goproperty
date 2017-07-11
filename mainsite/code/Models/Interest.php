@@ -29,6 +29,7 @@ class Interest extends DataObject
             'id'        =>  $this->ID,
             'token'     =>  Session::get('SecurityID'),
             'member'    =>  array(
+                                'id'        =>  $member->ID,
                                 'name'      =>  $member->getDisplayName(),
                                 'email'     =>  $member->Email,
                                 'portrait'  =>  !empty($member->Portrait()->ImageID) ? $member->Portrait()->Image()->Cropped()->FillMax(100, 100)->URL : '/themes/default/images/default-portrait.png',

@@ -13,6 +13,29 @@ class RatingAPI extends BaseRestController {
         'post'			=>	"->isAuthenticated"
     );
 
+    public function get($request)
+    {
+        if ($type = $request->param('Type')) {
+            if ($id = $request->param('ID')) {
+                if ($type == 'Member') {
+                    $member = Member::get()->byID($id);
+                    $ratings = $member->BeingRated();
+                    $json = array();
+                    foreach ($ratings as $rating)
+                    {
+                        $json[] = $rating->getData();
+                    }
+
+                    return $json;
+                } elseif ($type == 'PropertyPage') {
+
+                }
+            }
+        }
+
+        return $this->httpError(404, 'no such person/property exists');
+    }
+
     public function isAuthenticated() {
 
         $request = $this->request;

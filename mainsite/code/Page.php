@@ -27,9 +27,7 @@ class Page extends SiteTree {
     }
 }
 class Page_Controller extends ContentController {
-    protected static $extensions = array(
-        'SiteJSControllerExtension'
-    );
+
     /**
      * An array of actions that can be accessed via a request. Each array element should be an action name, and the
      * permissions or conditions required to allow the user to access it.
@@ -54,6 +52,7 @@ class Page_Controller extends ContentController {
     public function init() {
 
         parent::init();
+        $themeDir = $this->ThemeDir();
         if (!$this->request->isAjax()) {
             Requirements::block(THIRDPARTY_DIR . '/jquery-ui-themes/smoothness/jquery-ui.css');
             Requirements::block('framework/css/UploadField.css');
@@ -66,8 +65,6 @@ class Page_Controller extends ContentController {
             Requirements::block('framework/javascript/UploadField_uploadtemplate.js');
             Requirements::block('framework/javascript/UploadField_downloadtemplate.js');
             Requirements::block('framework/javascript/UploadField.js');
-
-
             Requirements::block(THIRDPARTY_DIR . '/javascript-templates/tmpl.js');
             Requirements::block(THIRDPARTY_DIR . '/javascript-loadimage/load-image.js');
             Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/jquery.iframe-transport.js');
@@ -75,7 +72,31 @@ class Page_Controller extends ContentController {
             Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/jquery.fileupload.js');
             Requirements::block(THIRDPARTY_DIR . '/jquery-fileupload/jquery.fileupload-ui.js');
 
-            $this->initJS();
+            Requirements::combine_files(
+                'scripts.js',
+                array(
+                    "$themeDir/js/components/jquery/dist/jquery.min.js",
+                    "$themeDir/js/components/datetimepicker/build/jquery.datetimepicker.full.min.js",
+                    "$themeDir/js/components/gsap/src/minified/TweenMax.min.js",
+                    "$themeDir/js/components/gsap/src/minified/easing/EasePack.min.js",
+                    "$themeDir/js/components/cropperjs/dist/cropper.min.js",
+                    "$themeDir/js/components/jquery.scrollTo/jquery.scrollTo.min.js",
+                    "$themeDir/js/components/owl.carousel/docs/assets/owlcarousel/owl.carousel.min.js",
+                    "$themeDir/js/components/salted-js/dist/salted-js.min.js",
+                    "$themeDir/js/modules/formwork.js",
+                    "$themeDir/js/modules/locationselect.js",
+                    "$themeDir/js/modules/typesearch.js",
+                    "$themeDir/js/modules/previewable.js",
+                    "$themeDir/js/modules/rating.js",
+                    "$themeDir/js/templates/interest_item.js",
+                    "$themeDir/js/templates/interest_list.js",
+                    "$themeDir/js/templates/rental_form.js",
+                    "$themeDir/js/modules/property_action.js",
+                    "$themeDir/js/templates/hb-member-testimonials.js",
+                    "$themeDir/js/components/handlebars/handlebars.min.js",
+                    "$themeDir/js/custom.scripts.js"
+                )
+            );
         }
     }
 
