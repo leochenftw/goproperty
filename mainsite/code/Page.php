@@ -75,6 +75,7 @@ class Page_Controller extends ContentController {
             Requirements::combine_files(
                 'scripts.js',
                 array(
+                    "$themeDir/js/components/handlebars/handlebars.js",
                     "$themeDir/js/components/jquery/dist/jquery.min.js",
                     "$themeDir/js/components/datetimepicker/build/jquery.datetimepicker.full.min.js",
                     "$themeDir/js/components/gsap/src/minified/TweenMax.min.js",
@@ -93,7 +94,6 @@ class Page_Controller extends ContentController {
                     "$themeDir/js/templates/rental_form.js",
                     "$themeDir/js/modules/property_action.js",
                     "$themeDir/js/templates/hb-member-testimonials.js",
-                    "$themeDir/js/components/handlebars/handlebars.js",
                     "$themeDir/js/custom.scripts.js"
                 )
             );
