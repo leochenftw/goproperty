@@ -93,7 +93,7 @@ class Page_Controller extends ContentController {
                     "$themeDir/js/templates/rental_form.js",
                     "$themeDir/js/modules/property_action.js",
                     "$themeDir/js/templates/hb-member-testimonials.js",
-                    "$themeDir/js/components/handlebars/handlebars.min.js",
+                    "$themeDir/js/components/handlebars/handlebars.js",
                     "$themeDir/js/custom.scripts.js"
                 )
             );
