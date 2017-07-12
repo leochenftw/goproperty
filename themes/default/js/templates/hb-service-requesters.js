@@ -7,7 +7,6 @@ var serviceRequesterTemplate =
             <h3 class="title is-4 is-bold is-marginless"><span class="name">{{member.name}}</span> <span class="email" style="font-style: italic; font-size: 14px;">({{member.email}})</span></h3>\
             <div class="columns vertical-center is-marginless-vertical">\
                 <div class="column is-narrow"><ul class="is-4 ratings is-marginless">{{{member.rating}}}</ul></div>\
-                <div class="column is-paddingless"><a class="history-viewer button inline" href="">view history</a></div>\
             </div>\
             <div class="content">{{message}}</div>\
             <div class="actions"></div>\
