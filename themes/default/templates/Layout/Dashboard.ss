@@ -45,6 +45,10 @@
                     $MemberProfileForm
                 <% end_if %>
 
+                <% if $tab == 'edit-business' %>
+                    <% include BusinessEditor %>
+                <% end_if %>
+
                 <% if $tab == 'properties' %>
                     <% include NeoProperties %>
                 <% end_if %>

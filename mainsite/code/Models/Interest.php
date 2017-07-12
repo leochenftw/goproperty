@@ -10,6 +10,7 @@ class Interest extends DataObject
 
     private static $has_one = array(
         'Member'    =>  'Member',
+        'Business'  =>  'Business',
         'Property'  =>  'PropertyPage',
         'Listing'   =>  'Listing'
     );

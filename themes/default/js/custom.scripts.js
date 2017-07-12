@@ -21,6 +21,44 @@ $(document).ready(function(e)
         }
     });
 
+    $('.hb-engaged').click(function(e)
+    {
+        e.preventDefault();
+        var endpoint        =   $(this).attr('href'),
+            templatefile    =   $(this).data('template'),
+            csrf            =   $(this).data('csrf'),
+            me              =   $(this);
+
+        if (!window[templatefile]) {
+            console.error('you don\'t even have this template');
+            return false;
+        }
+
+
+        $.get(
+            endpoint,
+            {
+                'SecurityID'    :   csrf
+            },
+            function(data)
+            {
+                var template    =   Handlebars.compile(window[templatefile]),
+                    popup       =   template(data);
+
+                $('#hd-ajaxed-content').html(popup);
+
+                // $('#member-testimonial-viewer').find('.delete').click(function(e)
+                // {
+                //     e.preventDefault();
+                //     $('#member-testimonial-viewer').remove();
+                //     $('#interest-list').removeClass('sunken');
+                // });
+            }
+        );
+    });
+
+    $('.hb-engaged.auto-fire').click();
+
     if ($('.btn-listing').length > 0) {
         $('.btn-listing').propertyAction();
     }

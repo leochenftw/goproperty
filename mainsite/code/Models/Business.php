@@ -41,6 +41,11 @@ class Business extends DataObject
         'BusinessOwner' =>  'Member'
     );
 
+    private static $has_many = array(
+        'Interests'     =>  'Interest',
+        'Appointments'  =>  'Appointment'
+    );
+
     /**
      * Many_many relationship
      * @var array
