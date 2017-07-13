@@ -1,14 +1,13 @@
 <% include SearchForms %>
-<% if $Content %>
+<%-- <% if $Content %>
 <section class="section is-paddingless-top content-area">
     <div class="container">
-        <div style="color: #5e5e5e; margin-bottom: 25px;">How to use GoProperty</div>
         <div class="has-2-column content">
             $Content
         </div>
     </div>
 </section>
-<% end_if %>
+<% end_if %> --%>
 <% include MidPageBanner Label='To list a Property, Rental or as a Tradesperson' %>
 <section class="section tiles">
     <div class="container">

@@ -106,6 +106,26 @@
                     </div>
                 </div>
             </div>
+            <% if $Top.RentalFormTitle || $Top.RentalFormContent %>
+            <div class="form-description for-rent">
+                <% if $Top.RentalFormTitle %><div style="color: #5e5e5e; margin-bottom: 25px;">$Top.RentalFormTitle</div><% end_if %>
+                <% if $Top.RentalFormContent %>
+                <div class="has-2-column content">
+                    $Top.RentalFormContent
+                </div>
+                <% end_if %>
+            </div>
+            <% end_if %>
+            <% if $Top.SaleFormTitle || $Top.SaleFormContent %>
+            <div class="form-description for-sale hide">
+                <% if $Top.SaleFormTitle %><div style="color: #5e5e5e; margin-bottom: 25px;">$Top.SaleFormTitle</div><% end_if %>
+                <% if $Top.SaleFormContent %>
+                <div class="has-2-column content">
+                    $Top.SaleFormContent
+                </div>
+                <% end_if %>
+            </div>
+            <% end_if %>
         </form>
         <% end_with %>
         <% with $TradesmenSearchForm %>
@@ -139,6 +159,16 @@
                     </div>
                 </div>
             </div>
+            <% if $Top.TradesFormTitle || $Top.TradesFormContent %>
+            <div class="form-description">
+                <% if $Top.TradesFormTitle %><div style="color: #5e5e5e; margin-bottom: 25px;">$Top.TradesFormTitle</div><% end_if %>
+                <% if $Top.TradesFormContent %>
+                <div class="has-2-column content">
+                    $Top.TradesFormContent
+                </div>
+                <% end_if %>
+            </div>
+            <% end_if %>
         </form>
         <% end_with %>
     </div>
