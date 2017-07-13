@@ -22,12 +22,12 @@ class ServiceRequestAPI extends BaseRestController {
             if ($sid = $this->getToken($request)) {
                 if ( $sid == Session::get('SecurityID') ) {
                     if ($ID = $request->param('ID')) {
-                        // if ($request->isPost()) {
-                        //     if ($this->interest = Interest::get()->byID($ID)) {
-                        //         $this->business = $this->interest->business();
-                        //         return $this->business->ListerID == $this->member->ID;
-                        //     }
-                        // }
+                        if ($request->isPost()) {
+                            if ($this->interest = Interest::get()->byID($ID)) {
+                                $this->business = $this->interest->business();
+                                return $this->business->ID == $this->member->BusinessID;
+                            }
+                        }
 
                         if ($this->business = Business::get()->byID($ID)) {
                             return $this->business->ID == $this->member->BusinessID;
@@ -54,27 +54,15 @@ class ServiceRequestAPI extends BaseRestController {
         }
 
         if ($request->param('Action') == 'accept') {
-            $rental = new Rental();
-            $rental->Start = $request->postVar('Start');
-            $rental->End = $request->postVar('End');
-            $rental->UseNotice = $request->postVar('UseNotice');
-            $rental->RenterID = $this->interest->MemberID;
-            $rental->businessID  = $this->interest->businessID;
-            $rental->write();
+            $appointment = new Appointment();
+            $appointment->BusinessID = $this->business->ID;
+            $appointment->ClientID = $this->interest->MemberID;
+            $appointment->write();
 
-            $interests = $this->business->Interests()->filter(array('Expired:not' => true));
-
-            foreach ($interests as $interest)
-            {
-                $interest->Expired = true;
-                $interest->write();
-            }
-
-            $this->business->isGone = true;
-            $this->business->isPaid = false;
-            $this->business->writeToStage('Stage');
-            $this->business->doUnpublish();
-            return true;
+            return  array(
+                        'code'              =>  200,
+                        'appointment_id'    =>  $appointment->ID
+                    );
         }
 
         return null;

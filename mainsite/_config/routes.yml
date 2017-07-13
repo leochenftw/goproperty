@@ -10,6 +10,7 @@ Director:
     'api/v1/fav': 'FavAPI'
     'api/v1/eoi/$ID/$Action': 'InterestAPI'
     'api/v1/service-request/$ID/$Action': 'ServiceRequestAPI'
+    'api/v1/appointment/$ID/$Action': 'AppointmentAPI'
     'api/v1/payment/$ID': 'PaymentAPI'
     'api/v1/creditcard/$ID': 'CreditcardAPI'
     'api/v1/agency/$ID': 'AgencyAPI'

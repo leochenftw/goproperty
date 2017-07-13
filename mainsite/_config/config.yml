@@ -143,6 +143,7 @@ Image:
 GoogleAPIs:
   Recaptcha: '6LcK8g8UAAAAAMspUwFUpvzBPZDgNN56AlUn6rqL'
   Recaptcha_site: '6LcK8g8UAAAAAHvUzsx9cEF4X8-OJEbVmamdkz06'
+  Map: 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4'
 MenuSet:
   default_sets:
     - "Footer First-Menu"

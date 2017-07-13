@@ -14,17 +14,24 @@ input.action {
     @extend .button;
 }
 
+p.align-vertical-center {
+    img,
+    span {
+        vertical-align: middle;
+    }
+}
+
 .is {
     &-maxheight {
         height: 100%;
     }
 
     &-absolute {
-        position: absolute;
+        position: absolute !important;
     }
 
     &-relative {
-        position: relative;
+        position: relative !important;
     }
     &-marginless {
         &-vertical {

@@ -31,8 +31,8 @@
 </div>
 <div class="tabs">
     <ul>
-        <li class="is-active"><a class="hb-engaged auto-fire" href="/api/v1/service-request/$Business.ID" data-csrf="$SecurityID" data-template="serviceRequesterTemplate">Requests</a></li>
-        <li><a>Appointments</a></li>
+        <li class="is-active"><a class="hb-engaged auto-fire tab-requests" href="/api/v1/service-request/$Business.ID" data-csrf="$SecurityID" data-template="serviceRequesterTemplate">Requests</a></li>
+        <li><a class="hb-engaged tab-appointments" href="/api/v1/appointment" data-csrf="$SecurityID" data-template="appointmentListTemplate">Appointments</a></li>
     </ul>
 </div>
 <% end_with %>

@@ -29,80 +29,91 @@
         overflow-y: auto; /* has to be scroll, not auto */
         -webkit-overflow-scrolling: touch;
     }
+}
 
-    .interest-item {
-        margin-bottom: 20px;
-        .portrait {
-            img {
-                display: block;
-                width: 100px;
-            }
-        }
-
-        .ratings {
-            margin: 5px 0 10px;
-        }
-
-        .title {
-            display: block !important;
-            text-align: left !important;
-            .email {
-                font-style: italic;
-                font-size: 14px;
-            }
-        }
-
-        .actions {
-            .button {
-                margin-right: 0.5em;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-
-        .ratings,
-        .content,
-        .actions {
+.interest-item {
+    margin-bottom: 20px;
+    .portrait {
+        img {
             display: block;
+            width: 100px;
         }
+    }
 
-        &[data-foldable="1"] {
-            .title {
-                position: relative;
-                padding-right: 16px;
-                cursor: pointer;
-                @extend .fa;
-                &:before {
-                    position: absolute;
-                    right: 0;
-                    @extend .fa-angle-double-up;
-                }
+    .ratings {
+        margin: 5px 0 10px;
+    }
+
+    .title {
+        display: block !important;
+        text-align: left !important;
+        .email {
+            font-style: italic;
+            font-size: 14px;
+        }
+    }
+
+    .actions {
+        .button {
+            margin-right: 0.5em;
+            &:last-child {
+                margin-right: 0;
             }
+        }
+    }
 
-            &.fold {
-                .title {
-                    &:before {
-                        @extend .fa-angle-double-down;
-                    }
-                }
+    .ratings,
+    .content,
+    .actions {
+        display: block;
+    }
+
+    &[data-foldable="1"] {
+        .title {
+            position: relative;
+            padding-right: 16px;
+            cursor: pointer;
+            @extend .fa;
+            &:before {
+                position: absolute;
+                right: 0;
+                @extend .fa-angle-double-up;
             }
         }
 
         &.fold {
-            margin-bottom: 0;
-            opacity: 0.5;
-
-            .portrait {
-                img {
-                    width: 30px;
+            .title {
+                &:before {
+                    @extend .fa-angle-double-down;
                 }
             }
-            .ratings,
-            .content,
-            .actions {
-                display: none;
+        }
+    }
+
+    &.fold {
+        margin-bottom: 0;
+        opacity: 0.5;
+
+        .portrait {
+            img {
+                width: 30px;
             }
+        }
+        .misc,
+        .ratings,
+        .content,
+        .actions {
+            display: none;
+        }
+    }
+}
+
+.appointment-item {
+    .display {
+        cursor: pointer;
+        @include transition(all 0.3s);
+        &:hover {
+            color: black;
         }
     }
 }

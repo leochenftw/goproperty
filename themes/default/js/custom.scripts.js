@@ -27,13 +27,23 @@ $(document).ready(function(e)
         var endpoint        =   $(this).attr('href'),
             templatefile    =   $(this).data('template'),
             csrf            =   $(this).data('csrf'),
-            me              =   $(this);
+            me              =   $(this),
+            parent          =   $(this).parent();
 
         if (!window[templatefile]) {
             console.error('you don\'t even have this template');
             return false;
         }
 
+        if (parent.is('li')) {
+            if (parent.is('.is-active') && e.originalEvent) {
+                return false;
+            }
+
+            var siblings = parent.siblings();
+            siblings.removeClass('is-active');
+            parent.addClass('is-active');
+        }
 
         $.get(
             endpoint,
@@ -45,14 +55,121 @@ $(document).ready(function(e)
                 var template    =   Handlebars.compile(window[templatefile]),
                     popup       =   template(data);
 
+                popup           =   $(popup);
+
                 $('#hd-ajaxed-content').html(popup);
 
-                // $('#member-testimonial-viewer').find('.delete').click(function(e)
-                // {
-                //     e.preventDefault();
-                //     $('#member-testimonial-viewer').remove();
-                //     $('#interest-list').removeClass('sunken');
-                // });
+                if (templatefile == 'appointmentListTemplate') {
+                    popup.find('.dt-picker').datetimepicker(
+                    {
+                        lazyInit: true,
+                        step: 15,
+                        minDate: 0,
+                        format: 'Y-m-d H:i',
+                        scrollInput: false
+                    });
+
+                    popup.find('form').each(function(i, el)
+                    {
+                        var me  =   $(this),
+                            btn =   me.find('button[type="submit"]');
+
+                        me.find('.display').click(function(e)
+                        {
+                            e.preventDefault();
+                            me.find('.editor').removeClass('hide');
+                            me.find('.display').addClass('hide');
+                        });
+
+                        me.find('.btn-cancel').click(function(e)
+                        {
+                            e.preventDefault();
+                            me.find('.display').removeClass('hide');
+                            me.find('.editor').addClass('hide');
+                        });
+
+                        me.ajaxSubmit(
+                        {
+                            onstart: function()
+                            {
+                                btn.addClass('is-loading');
+                            },
+
+                            validator: function()
+                            {
+                                me.find('.is-danger').removeClass('is-danger');
+                                var b = $.trim(me.find('.dt-picker').val()).length > 0;
+                                if (!b) {
+                                    me.find('.dt-picker').addClass('is-danger');
+                                }
+                                return b;
+                            },
+
+                            success: function(data)
+                            {
+                                me.find('.display .date').html('Appointment at: ' + me.find('.dt-picker').val());
+                                if ($.trim(me.find('.textarea').val()).length > 0) {
+                                    me.find('.display .memo').html('Memo: ' + me.find('.textarea').val());
+                                } else {
+                                    me.find('.display .memo').html('- no memo -');
+                                }
+                                me.find('.display').removeClass('hide');
+                                me.find('.editor').addClass('hide');
+                            },
+
+                            done: function(data)
+                            {
+                                btn.removeClass('is-loading');
+                            }
+                        });
+                    });
+                }
+
+                if (templatefile == 'serviceRequesterTemplate') {
+                    popup.find('.title').click(function(e)
+                    {
+                        e.preventDefault();
+                        if ($(this).parents('.interest-item:eq(0)').data('foldable') == 1) {
+                            $(this).parents('.interest-item:eq(0)').toggleClass('fold');
+                        }
+                    });
+
+                    popup.find('button.button').click(function(e)
+                    {
+                        e.preventDefault();
+
+                        var sid             =   $(this).data('sid'),
+                            endpoint        =   $(this).data('endpoint'),
+                            me              =   $(this),
+                            theHTML         =   $(this).parents('.interest-item:eq(0)');
+
+                        if (me.is('.red') && theHTML.data('foldable') == 1) {
+                            theHTML.addClass('fold');
+                            return;
+                        }
+
+                        $(this).addClass('is-loading');
+
+                        $.post(
+                            endpoint,
+                            {
+                                SecurityID: sid
+                            },
+                            function(data)
+                            {
+                                $(this).removeClass('is-loading');
+
+                                if (me.is('.red')) {
+                                    if (data === true) {
+                                        theHTML.addClass('fold').attr('data-foldable', 1);
+                                    }
+                                } else if (me.is('.green')) {
+                                    $('.tab-appointments').click();
+                                }
+                            }
+                        );
+                    });
+                }
             }
         );
     });

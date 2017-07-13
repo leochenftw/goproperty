@@ -4,7 +4,7 @@ var InterestItem = function(data, canAccept)
                         <div class="portrait column is-auto-width"><img src="" /></div>\
                         <div class="details column">\
                             <h3 class="title is-4 is-bold is-marginless"><span class="name"></span> <span class="email"></span></h3>\
-                            <div class="columns vertical-center is-marginless-vertical">\
+                            <div class="columns vertical-center is-marginless-vertical misc">\
                                 <div class="column is-narrow"><ul class="is-4 ratings is-marginless"></ul></div>\
                                 <div class="column is-paddingless"><a class="history-viewer button inline" href="">view history</a></div>\
                             </div>\
