@@ -235,7 +235,7 @@ class PropertyForm extends Form
         if (!empty($prop) && $prop->isPublished()) {
 
         } else {
-            $actions->push(FormAction::create('doSubmit', !empty($prop) ? 'Save changes' : 'Create'));
+            $actions->push(FormAction::create('doSubmit', !empty($prop) ? 'Save changes' : 'Create')->setAttribute('style', 'margin-right: 20px;'));
         }
 
         $actions->push($btnList = FormAction::create('doList', 'List it')->addExtraClass('green'));
