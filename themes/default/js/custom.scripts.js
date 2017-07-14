@@ -69,21 +69,57 @@ $(document).ready(function(e)
                         scrollInput: false
                     });
 
+                    popup.find('.actions a.button').click(function(e)
+                    {
+                        e.preventDefault();
+
+                        var me          =   $(this),
+                            endpoint    =   $(this).data('action'),
+                            csrf        =   $(this).data('csrf')
+                            row         =   me.parents('.appointment-item:eq(0)'),
+                            post        =   function()
+                                            {
+                                                $.post(
+                                                    endpoint,
+                                                    {
+                                                        SecurityID: csrf
+                                                    },
+                                                    function(data)
+                                                    {
+                                                        if (data) {
+                                                            row.remove();
+                                                        }
+                                                    }
+                                                );
+                                            };
+
+                        if (me.is('.red')) {
+                            if (confirm('You are cancelling this appointment. Are you sure?')) {
+                                post();
+                            }
+                        } else {
+                            post();
+                        }
+                    });
+
                     popup.find('form').each(function(i, el)
                     {
                         var me  =   $(this),
-                            btn =   me.find('button[type="submit"]');
+                            btn =   me.find('button[type="submit"]'),
+                            row =   me.parents('.appointment-item:eq(0)');
 
                         me.find('.display').click(function(e)
                         {
                             e.preventDefault();
                             me.find('.editor').removeClass('hide');
                             me.find('.display').addClass('hide');
+                            row.find('.actions').addClass('hide');
                         });
 
                         me.find('.btn-cancel').click(function(e)
                         {
                             e.preventDefault();
+                            row.find('.actions').removeClass('hide');
                             me.find('.display').removeClass('hide');
                             me.find('.editor').addClass('hide');
                         });
@@ -113,6 +149,7 @@ $(document).ready(function(e)
                                 } else {
                                     me.find('.display .memo').html('- no memo -');
                                 }
+                                row.find('.actions').removeClass('hide');
                                 me.find('.display').removeClass('hide');
                                 me.find('.editor').addClass('hide');
                             },

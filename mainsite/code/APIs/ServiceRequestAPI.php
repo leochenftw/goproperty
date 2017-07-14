@@ -57,6 +57,8 @@ class ServiceRequestAPI extends BaseRestController {
             $appointment = new Appointment();
             $appointment->BusinessID = $this->business->ID;
             $appointment->ClientID = $this->interest->MemberID;
+            $appointment->Memo = "client original message: " . $this->interest->Message;
+            $appointment->OriginalRequestID = $this->interest->ID;
             $appointment->write();
 
             return  array(

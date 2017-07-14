@@ -6,6 +6,7 @@ class FeedbackInvitationController extends Page_Controller
     private $ratingID       =   null;
     private $ratingTarget   =   null;
     private $rateWhat       =   'property';
+    private $ratingObject   =   null;
     private $used           =   false;
     /**
      * Defines methods that can be called directly
@@ -34,6 +35,16 @@ class FeedbackInvitationController extends Page_Controller
             return '<strong>Propety</strong>: ' . $this->ratingTarget->FullAddress;
         }
 
+        if (!empty($this->ratingObject->TargetRole)) {
+            if ($this->ratingObject->TargetRole == 'Tradesperson') {
+                $name = $this->ratingTarget->Business()->Title;
+            } else {
+                $name = $this->ratingTarget->FirstName . ' ' . $this->ratingTarget->Surname;
+            }
+
+            return "<strong>" . $this->ratingObject->TargetRole . "</strong>: " . $name;
+        }
+
         return '<strong>Tenant</strong>: ' . $this->ratingTarget->FirstName . ' ' . $this->ratingTarget->Surname;
     }
 
@@ -52,6 +63,7 @@ class FeedbackInvitationController extends Page_Controller
             }
 
             $rating     =   Rating::get()->byID($this->ratingID);
+            $this->ratingObject = $rating;
 
             if ($rating->GiverID != $member->ID) {
                 return $this->httpError(403, 'This is not for you');

@@ -11,7 +11,7 @@ var appointmentListTemplate =
         <p class="subtitle is-6 align-vertical-center"><span>Requested by:</span> <img style="width: auto; height: 16px; margin: 0 0.25em;" src="{{Portrait}}" alt="{{Client}} "/> <span>{{Client}}</span></p>\
         <div class="content">\
             <form class="appointment-dt-form" method="post" action="/api/v1/appointment/{{ID}}/set-date">\
-                <div class="display {{#unless Date}}hide{{/unless}}">\
+                <div class="display{{#unless Date}} hide{{/unless}}">\
                     <p class="date is-marginless">Appointment at: {{#if Date}}{{Date}}{{/if}}</p>\
                     <p class="memo">\
                     {{#if Memo}}\
@@ -39,6 +39,10 @@ var appointmentListTemplate =
                 <input type="hidden" name="SecurityID" value="{{CSRF}}" />\
             </form>\
         </div>\
+    </div>\
+    <div class="column is-2 actions{{#unless Date}} hide{{/unless}}">\
+        <a class="button inline" href="#" data-csrf="{{CSRF}}" data-action="/api/v1/appointment/{{ID}}/complete" style="margin-bottom: 10px;">Delivered</a>\
+        <a class="button inline red" href="#" data-csrf="{{CSRF}}" data-action="/api/v1/appointment/{{ID}}/cancel">Cancelled</a>\
     </div>\
 </div>\
 {{/each}}\

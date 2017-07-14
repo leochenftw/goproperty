@@ -48,10 +48,21 @@ class AppointmentAPI extends BaseRestController {
 
     public function post($request)
     {
-
-        if ($request->param('Action') == 'set-date') {
+        $action = $request->param('Action');
+        if ($action == 'set-date') {
             $this->appointment->Date    =   $request->postVar('Date');
             $this->appointment->Memo    =   $request->postVar('Memo');
+            $this->appointment->write();
+            if ($this->appointment->OriginalRequest()->exists()) {
+                $this->appointment->OriginalRequest()->delete();
+            }
+            return true;
+        } elseif ($action == 'complete') {
+            $this->appointment->Status  =   'Delivered';
+            $this->appointment->write();
+            return true;
+        } elseif ($action == 'cancel') {
+            $this->appointment->Status  =   'Cancelled';
             $this->appointment->write();
             return true;
         }
@@ -65,7 +76,7 @@ class AppointmentAPI extends BaseRestController {
 
         if (!empty($this->member->BusinessID)) {
             $business = $this->member->Business();
-            $appointments = $business->Appointments();
+            $appointments = $business->Appointments()->filter(array('Status:not' => array('Cancelled', 'Delivered')));
             foreach ($appointments as $appointment)
             {
                 $list[] = $appointment->getData();
