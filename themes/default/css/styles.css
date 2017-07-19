@@ -12505,6 +12505,50 @@ nav.breadcrumb a:after {
   content: "/\00a0";
 }
 
+.component-switch-board {
+  cursor: pointer;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.component-switch-board .switch-label,
+.component-switch-board .switch-board {
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
+}
+.component-switch-board .switch-board {
+  border-radius: 1.5rem;
+  width: 3rem;
+  height: 1.5rem;
+  margin: 0 0.5em;
+  border: 1px solid #7f8184;
+  background-color: #d8d8d8;
+}
+.component-switch-board .switch-board .switch {
+  width: 1.5rem;
+  border-radius: 50%;
+  height: 1.5rem;
+  display: block;
+  background-color: white;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  -moz-transform: translate(0, -1px);
+  -ms-transform: translate(0, -1px);
+  -webkit-transform: translate(0, -1px);
+  transform: translate(0, -1px);
+  border: 1px solid #363636;
+}
+.component-switch-board .switch-board.at-right .switch {
+  -moz-transform: translate(1.5rem, -1px);
+  -ms-transform: translate(1.5rem, -1px);
+  -webkit-transform: translate(1.5rem, -1px);
+  transform: translate(1.5rem, -1px);
+}
+
 html {
   background-color: #7f8184;
   font-size: 16px;

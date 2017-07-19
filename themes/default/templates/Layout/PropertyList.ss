@@ -15,10 +15,25 @@
             <div class="column"><h1 class="title is-2 is-marginless">Search result</h1></div>
             <div class="column is-auto-width"><a href="#" class="button inline show-search-form">Refine the result</a></div>
         </header>
+
         <div class="search-forms hide is-paddingless">
         <% with $PropertySearchForm %>
             <form $FormAttributes>
-                <div id="form-description" class="form-description">Refining your search result</div>
+                <div id="form-description" class="form-description columns">
+                    <div class="column">Refining your search result</div>
+                    <div class="column is-narrow">
+                        <div class="component-switch-board" data-left="#PropertySearchForm_PropertySearchForm_RentOrSale_rent" data-right="#PropertySearchForm_PropertySearchForm_RentOrSale_sale">
+                            <span class="switch-label" data-lr="left">Rent</span>
+                            <div class="switch-board at-left">
+                                <span class="switch"></span>
+                            </div>
+                            <span class="switch-label" data-lr="right">Sale</span>
+                        </div>
+                        <div class="hide">
+                            $Fields.fieldByName('RentOrSale').FieldHolder
+                        </div>
+                    </div>
+                </div>
                 <div class="columns Fields">
                     <div class="column is-half left-half half">
                         <div class="fields-wrapper columns location">
@@ -97,9 +112,6 @@
                         </div>
                         $Fields.fieldByName('SecurityID').FieldHolder
                         <div class="actions">
-                            <div class="hide">
-                                $Fields.fieldByName('RentOrSale').FieldHolder
-                            </div>
                             $Actions
                         </div>
                     </div>

@@ -37,7 +37,8 @@ $short-header-height: 60px;
         'blocks/owl-carousel',
         'blocks/interest-list';
 
-@import 'blocks/elements/breadcrumbs';
+@import 'blocks/elements/breadcrumbs',
+        'blocks/elements/switch-board';
 
 html {
     background-color: #7f8184;

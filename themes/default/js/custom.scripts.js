@@ -1,6 +1,45 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+    if ($('.component-switch-board').length > 0) {
+
+        var initialLR   =   QueryString.RentOrSale;
+
+        $('.component-switch-board').click(function(e)
+        {
+            var direction   =   'left',
+                leftcheck   =   $(this).data('left'),
+                rightcheck  =   $(this).data('right'),
+                form        =   $(this).parents('form:eq(0)');
+                toCheck     =   null;
+
+            if ($(e.target).is('.switch-label')) {
+                direction   =   $(e.target).data('lr');
+            } else if ($(e.target).is('.switch-board') || $(e.target).is('.switch')) {
+                direction   =   $(e.target).hasClass('at-right') || $(e.target).parent().hasClass('at-right') ? 'left' : 'right';
+            }
+
+            toCheck         =   direction == 'left' ? leftcheck : rightcheck;
+
+            $(this).find('.switch-board').removeClass('at-left').removeClass('at-right').addClass('at-' + direction);
+            $(toCheck).prop('checked', true);
+
+            var picked      =   $(toCheck).val();
+
+            if (picked == 'sale') {
+                form.find('.for-sale').removeClass('hide');
+                form.find('.for-rent').addClass('hide');
+            } else {
+                form.find('.for-rent').removeClass('hide');
+                form.find('.for-sale').addClass('hide');
+            }
+        });
+
+        if (initialLR == 'sale') {
+            $('.component-switch-board .switch-label[data-lr="right"]').click();
+        }
+    }
+
     $('.show-search-form').click(function(e)
     {
         e.preventDefault();

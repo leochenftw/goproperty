@@ -1,0 +1,41 @@
+.component-switch-board {
+    cursor: pointer;
+    @include user-select(none);
+    .switch-label,
+    .switch-board {
+        font-weight: bold;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .switch-board {
+        border-radius: 1.5rem;
+        width: 3rem;
+        height: 1.5rem;
+        margin: 0 0.5em;
+        border: 1px solid $grey;
+        background-color: $light;
+        .switch {
+            width: 1.5rem;
+            border-radius: 50%;
+            height: 1.5rem;
+            display: block;
+            background-color: white;
+            @include transition(all 0.25s);
+            @include transform(translate(0, -1px));
+            border: 1px solid $dark;
+        }
+
+        &.at {
+            &-left {
+
+            }
+
+            &-right {
+                .switch {
+                    @include transform(translate(1.5rem, -1px));
+                }
+            }
+        }
+    }
+}
