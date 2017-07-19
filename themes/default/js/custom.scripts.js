@@ -3,7 +3,7 @@ $(document).ready(function(e)
 {
     if ($('.component-switch-board').length > 0) {
 
-        var initialLR   =   QueryString.RentOrSale;
+        var initialLR   =   QueryString ? (QueryString.RentOrSale ? QueryString.RentOrSale  : '') : '';
 
         $('.component-switch-board').click(function(e)
         {
