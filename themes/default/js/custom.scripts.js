@@ -29,10 +29,13 @@ $(document).ready(function(e)
             if (picked == 'sale') {
                 form.find('.for-sale').removeClass('hide');
                 form.find('.for-rent').addClass('hide');
+                form.find('input[name="RentFrom"], input[name="RentTo"]').val('');
             } else {
                 form.find('.for-rent').removeClass('hide');
                 form.find('.for-sale').addClass('hide');
+                form.find('input[name="PriceFrom"], input[name="PriceTo"]').val('');
             }
+
         });
 
         if (initialLR == 'sale') {

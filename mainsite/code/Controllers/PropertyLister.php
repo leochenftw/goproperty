@@ -15,8 +15,47 @@ class PropertyLister extends Page_Controller
     public function index($request)
     {
         //Debugger::inspect($request->param('region'));
+        $filter = array();
+        if ($ros = $request->getVar('RentOrSale')) {
+            $filter['RentOrSale'] = $ros;
+        }
+
         $properties = PropertyPage::get();
-        // $properties =   RentalListing::get();
+
+        if ($ros == 'sale') {
+            if (!empty($request->getVar('PriceFrom')) || !empty($request->getVar('PriceTo'))) {
+                $sale_price_filter_asking = array();
+                $sale_price_filter_enquiry = array();
+
+                if ($min_price = $request->getVar('PriceFrom')) {
+                    $sale_price_filter_asking['AskingPrice:GreaterThanOrEqual'] = $min_price;
+                    $sale_price_filter_enquiry['EnquiriesOver:GreaterThanOrEqual'] = $min_price;
+                }
+
+                if ($max_price = $request->getVar('PriceTo')) {
+                    $sale_price_filter_asking['AskingPrice:LessThanOrEqual'] = $max_price;
+                    $sale_price_filter_enquiry['EnquiriesOver:LessThanOrEqual'] = $max_price;
+                }
+
+                $candidates = array();
+
+                if (!empty($sale_price_filter_asking)) {
+                    $ask_properties = $properties->filter($sale_price_filter_asking);
+                    // Debugger::inspect($ask_properties->column());
+                    $candidates = array_merge($candidates, $ask_properties->column());
+                }
+
+                if (!empty($sale_price_filter_enquiry)) {
+                    $enquiry_properties = $properties->filter($sale_price_filter_enquiry);
+                    // Debugger::inspect($enquiry_properties->column());
+                    $candidates = array_merge($candidates, $enquiry_properties->column());
+                }
+
+                $candidates = array_unique($candidates);
+
+                $properties = PropertyPage::get()->filter(array('ID' => $candidates));
+            }
+        }
 
         if ($region = $request->param('region')) {
             if ($region == 'PropertySearchForm') {
@@ -35,18 +74,12 @@ class PropertyLister extends Page_Controller
 
         // Debugger::inspect($region . '/' . $district . '/' . $suburb);
 
-        $filter = array();
-
         if ($type = $request->getVar('RentalPropertyType')) {
             $filter['PropertyType'] = $type;
         }
 
         if ($type = $request->getVar('SalePropertyType')) {
             $filter['PropertyType'] = $type;
-        }
-
-        if ($ros = $request->getVar('RentOrSale')) {
-            $filter['RentOrSale'] = $ros;
         }
 
         if ($min_bed = $request->getVar('BedroomFrom')) {
