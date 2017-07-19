@@ -3,7 +3,8 @@ use SaltedHerring\Debugger;
 use SaltedHerring\Utilities as Utilities;
 use SaltedHerring\SaltedPayment;
 use SaltedHerring\SaltedPayment\API\Paystation;
-class Page extends SiteTree {
+class Page extends SiteTree
+{
 
     private static $db = array(
         'NarrowContainer'   =>  'Boolean'
@@ -26,7 +27,9 @@ class Page extends SiteTree {
         return $fields;
     }
 }
-class Page_Controller extends ContentController {
+
+class Page_Controller extends ContentController
+{
 
     /**
      * An array of actions that can be accessed via a request. Each array element should be an action name, and the
@@ -273,6 +276,16 @@ class Page_Controller extends ContentController {
     public function getBackURL()
     {
         return $this->request->getVar('BackURL');
+    }
+
+    public function getHomepageHeroImage()
+    {
+        if ($this->ClassName != 'HomePage') {
+            $home   =   HomePage::get()->first();
+            return !empty($home->HomepageHeroID) ? $home->HomepageHero()->Cropped() : null;
+        }
+
+        return null;
     }
 
 }

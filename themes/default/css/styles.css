@@ -9678,9 +9678,12 @@ div.field.textarea {
   background-position: center;
   text-align: center;
 }
-.page-home .hero-region {
+.page-type-error-page .hero-region, .page-home .hero-region {
   padding: 55px 0 125px;
   min-height: 40vh;
+}
+.page-type-error-page .hero-region {
+  min-height: 25vh;
 }
 .hero-region#g-map-hero-wrapper {
   min-height: 20vh;
@@ -9764,7 +9767,7 @@ div.field.textarea {
   padding-top: 60px;
   padding-bottom: 60px;
 }
-.page-type-home-page #main, .page-propertylister #main, .page-type-property-page #main, .page-dashboard #main, .page-tradesmenlister #main, .page-signin #main, .page-signup #main {
+.page-type-error-page #main, .page-type-home-page #main, .page-propertylister #main, .page-type-property-page #main, .page-dashboard #main, .page-tradesmenlister #main, .page-signin #main, .page-signup #main {
   padding-top: 0;
 }
 .page-tradesmenlister #main, .page-propertylister #main {
@@ -10588,6 +10591,24 @@ div.field.textarea {
 #main .promo-signup-form div.field ul.optionset li label {
   padding-left: 0.5em;
   display: inline;
+}
+.page-type-error-page #main .container .title {
+  color: #2E3B52;
+  text-transform: uppercase;
+}
+.page-type-error-page #main .container .title.is-jumbo {
+  font-size: 100px;
+}
+@media screen and (max-width: 768px) {
+  .page-type-error-page #main .container .title.is-jumbo {
+    font-size: 56px;
+  }
+}
+.page-type-error-page #main .container .content {
+  font-size: 24px;
+}
+.page-type-error-page #main .container .content a {
+  color: #b8e81e;
 }
 
 /* Preload images */

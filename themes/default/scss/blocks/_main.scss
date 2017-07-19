@@ -1,6 +1,7 @@
 #main {
     padding-top: 60px;
     padding-bottom: 60px;
+    .page-type-error-page &,
     .page-type-home-page &,
     .page-propertylister &,
     .page-type-property-page &,
@@ -182,6 +183,28 @@
 
         .Actions {
             @extend .has-text-centered;
+        }
+    }
+
+    .page-type-error-page & {
+        .container {
+            .title {
+                color: #2E3B52;
+                text-transform: uppercase;
+                &.is-jumbo {
+                    font-size: 100px;
+                    @include mobile {
+                        font-size: 56px;
+                    }
+                }
+            }
+
+            .content {
+                font-size: 24px;
+                a {
+                    color: $green;
+                }
+            }
         }
     }
 

@@ -18,6 +18,10 @@ $(document).ready(function(e)
             if ($(this).is('.button')) {
                 $(this).html('Close');
             }
+
+            if ($('body').hasClass('page-type-error-page')) {
+                $('h1.title, .content').addClass('hide');
+            }
         }
     });
 
