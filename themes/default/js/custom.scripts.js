@@ -1,6 +1,10 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+    if ($('.message.notification').length > 0) {
+        $('.message.notification').removeClass('message');
+    }
+
     if ($('.component-switch-board').length > 0) {
 
         var initialLR   =   QueryString ? (QueryString.RentOrSale ? QueryString.RentOrSale  : '') : '';
