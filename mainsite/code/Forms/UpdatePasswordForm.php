@@ -33,7 +33,8 @@ class UpdatePasswordForm extends Form {
                 } else {
                     $messages = $check['messages'];
                     $refined_message = '';
-                    foreach ($messages as $message) {
+                    foreach ($messages as $message)
+                    {
                         $refined_message .= $message . "<br />";
                     }
                     $this->sessionMessage(rtrim($refined_message, '<br />'), 'is-danger notification', false);
