@@ -15,6 +15,12 @@
                 margin-right: 0.25em;
             }
 
+            .title {
+                @include mobile {
+                    font-size: 16px;
+                }
+            }
+
             &__controls {
                 .button {
                     padding: 0.25em 1em 0.35em;
@@ -28,6 +34,18 @@
             .button {
                 font-size: 12px;
                 padding: 2px 1em;
+                @include mobile {
+                    margin-bottom: 5px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    display: block;
+                }
+            }
+
+            @include mobile {
+                @include align-self(flex-start);
             }
         }
     }

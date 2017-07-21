@@ -1,6 +1,37 @@
 .member-area {
     &__sidebar {
+
+        @include mobile {
+            // position: absolute;
+            // width: 100%;
+            // z-index: 2;
+            text-align: right;
+
+            // &.is-static {
+            //     position: static;
+            // }
+        }
+
+        label.button {
+            margin: 5px 0 0;
+        }
+
+        #burger-toggler:checked + ul {
+            @include mobile {
+                height: auto;
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
         ul {
+            overflow: hidden;
+            @include transition(all 0.3s);
+            @include mobile {
+                height: 0;
+                opacity: 0;
+                visibility: hidden;
+            }
             li {
                 a {
                     border-bottom: 1px solid rgba(0, 29, 88, 0.2);
@@ -195,6 +226,10 @@
                     .btn-file-browser {
                         display: block;
                     }
+
+                    @include mobile {
+                        padding-right: 0;
+                    }
                 }
             }
 
@@ -368,6 +403,10 @@
                         top: 1.875rem;
                         right: 0;
                         max-width: 18.75rem;
+
+                        @include mobile {
+                            position: static;
+                        }
                     }
 
                     .ss-uploadfield-item-info {

@@ -90,6 +90,7 @@
             padding: 16px 0 24px;;
             color: $grey;
             line-height: 1.4;
+
             &__price {
                 width: 45%;
                 font-size: 20px;
@@ -180,6 +181,10 @@
         &__actions {
             @include mobile{
                 @include display-flex;
+
+                    margin-left: -12px !important;
+                    margin-right: -12px !important;
+            
             }
             @include align-items(center);
             .page-tradesmenlister & {
