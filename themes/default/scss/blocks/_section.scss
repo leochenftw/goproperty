@@ -188,6 +188,7 @@
                     padding-bottom: 2.5rem;
                     margin-bottom: 1.875rem;
                     @include mobile{
+                        margin-top: 10px;
                         @include display-flex;
                     };
                     &__portrait {

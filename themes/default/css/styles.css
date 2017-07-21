@@ -11155,6 +11155,7 @@ body.lb-disable-scrolling {
 }
 @media screen and (max-width: 768px) {
   .section.property .property__content-area__content .member-tile {
+    margin-top: 10px;
     display: -webkit-flex;
     display: flex;
   }
