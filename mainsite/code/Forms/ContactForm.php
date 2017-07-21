@@ -54,7 +54,7 @@ class ContactForm extends Form
             }
 
             $target = $type == 'PropertyPage' ? $property : $lister->Business();
-            $interest = $target->Interests()->filter(array('Expired:not' => true, 'MemberID' => Member::currentUserID()))->first();
+            // $interest = $target->Interests()->filter(array('Expired:not' => true, 'MemberID' => Member::currentUserID()))->first();
             if (empty($interest)) {
                 $interest = new Interest();
                 $email_type = 'business';
@@ -71,6 +71,9 @@ class ContactForm extends Form
 
                 $email = new InterestNotification($lister, $email_type);
                 $email->send();
+
+                $copy = new ForYourCopyNotification(Member::currentUser(), $target->Title, $target->Link(), $content);
+                $copy->send();
 
                 if ($this->controller->request->isAjax()) {
                     return  json_encode(array(
