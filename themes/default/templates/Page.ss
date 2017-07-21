@@ -50,5 +50,6 @@
             <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e5d87b19265d9e"></script>
         <% end_if %>
         <script src="/themes/default/js/components/lightbox2/dist/js/lightbox.min.js"></script>
+        $clearMessages
 	</body>
 </html>

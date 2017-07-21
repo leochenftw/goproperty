@@ -288,4 +288,10 @@ class Page_Controller extends ContentController
         return null;
     }
 
+    public function clearMessages()
+    {
+        Session::clear('Message');
+        Session::clear('FormInfo');
+    }
+
 }

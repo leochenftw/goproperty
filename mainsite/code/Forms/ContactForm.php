@@ -42,24 +42,46 @@ class ContactForm extends Form
             $type = $this->controller->ClassName;
             $content = trim($data['Content']);
             $targetID = $type == 'PropertyPage' ? $this->controller->ID : $data['MemberID'];
-            $target = $type == 'PropertyPage' ? PropertyPage::get()->byID($targetID) : Member::get()->byID($targetID)->Business();
-            $interest = $target->Interests()->filter(array('Expired:not' => true, 'MemberID' => Member::currentUserID()))->first();
+
+            $property = null;
+            $lister = null;
+
+            if ($type == 'PropertyPage') {
+                $property = PropertyPage::get()->byID($targetID);
+                $lister = $property->Lister();
+            } else {
+                $lister = Member::get()->byID($targetID);
+            }
+
+            $target = $type == 'PropertyPage' ? $property : $lister->Business();
+            // $interest = $target->Interests()->filter(array('Expired:not' => true, 'MemberID' => Member::currentUserID()))->first();
             if (empty($interest)) {
                 $interest = new Interest();
+                $email_type = 'business';
                 if ($type == 'PropertyPage') {
                     $interest->PropertyID = $targetID;
+                    $email_type = 'properties';
                 } else {
                     $interest->BusinessID = $target->ID;
                 }
+
                 $interest->MemberID = Member::currentUserID();
                 $interest->Message = $content;
                 $interest->write();
+
+                $email = new InterestNotification($lister, $email_type);
+                $email->send();
+
+                $copy = new ForYourCopyNotification(Member::currentUser(), $target->Title, $target->Link(), $content);
+                $copy->send();
+
                 if ($this->controller->request->isAjax()) {
                     return  json_encode(array(
                                 'codde'     =>  200,
                                 'message'   =>  'You contact message has been sent to the lister.'
                             ));
                 }
+
                 $this->sessionMessage('You contact message has been sent to the lister.', 'good');
                 return $this->controller->redirectBack();
             }

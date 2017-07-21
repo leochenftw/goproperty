@@ -9,7 +9,8 @@
             <form $FormAttributes>
                 <div class="fields">
                     $Fields
-                    $Actions.Last
+                    <%-- $Actions.Last --%>
+                    <p id="ForgotPassword"><a href="/Security/lostpassword">Forgotten my password</a></p>
                 </div>
                 <div class="Actions">
                     $Actions.First
