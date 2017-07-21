@@ -7,8 +7,8 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url(../fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0&1500505668);
-  src: url(../fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0&1500505668#iefix) format("embedded-opentype"), url(../fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0&1500505668) format("woff2"), url(../fonts/font-awesome/fontawesome-webfont.woff?v=4.7.0&1500505668) format("woff"), url(../fonts/font-awesome/fontawesome-webfont.ttf?v=4.7.0&1500505668) format("truetype"), url(../fonts/font-awesome/fontawesome-webfont.svg?v=4.7.0&1500505668#fontawesomeregular) format("svg");
+  src: url(../fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0&1493679106);
+  src: url(../fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0&1493679106#iefix) format("embedded-opentype"), url(../fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0&1493679106) format("woff2"), url(../fonts/font-awesome/fontawesome-webfont.woff?v=4.7.0&1493679106) format("woff"), url(../fonts/font-awesome/fontawesome-webfont.ttf?v=4.7.0&1493679106) format("truetype"), url(../fonts/font-awesome/fontawesome-webfont.svg?v=4.7.0&1493679106#fontawesomeregular) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -10288,6 +10288,35 @@ div.field.textarea {
   margin: 0;
   width: 100%;
 }
+@media screen and (max-width: 768px) {
+  #main .member-area__sidebar {
+    text-align: right;
+  }
+}
+#main .member-area__sidebar label.button {
+  margin: 5px 0 0;
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__sidebar #burger-toggler:checked + ul {
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+#main .member-area__sidebar ul {
+  overflow: hidden;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__sidebar ul {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 #main .member-area__sidebar ul li a {
   border-bottom: 1px solid rgba(0, 29, 88, 0.2);
   color: #7f8184;
@@ -10332,6 +10361,11 @@ div.field.textarea {
   border-radius: 3px;
   margin-right: 0.25em;
 }
+@media screen and (max-width: 768px) {
+  #main .member-area__content__property-list__item__info .title {
+    font-size: 16px;
+  }
+}
 #main .member-area__content__property-list__item__info__controls .button, #main .member-area__content__property-list__item__info__controls input.action {
   padding: 0.25em 1em 0.35em;
   margin-right: 0.5em;
@@ -10343,6 +10377,21 @@ div.field.textarea {
 #main .member-area__content__property-list__item__actions .button, #main .member-area__content__property-list__item__actions input.action {
   font-size: 12px;
   padding: 2px 1em;
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content__property-list__item__actions .button, #main .member-area__content__property-list__item__actions input.action {
+    margin-bottom: 5px;
+    display: block;
+  }
+  #main .member-area__content__property-list__item__actions .button:last-child, #main .member-area__content__property-list__item__actions input.action:last-child {
+    margin-bottom: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content__property-list__item__actions {
+    -webkit-align-self: flex-start;
+    align-self: flex-start;
+  }
 }
 #main .member-area__content .account-types-holder h3 {
   font-size: 14px;
@@ -10479,6 +10528,11 @@ div.field.textarea {
 }
 #main .member-area__content form#MemberProfileForm_MemberProfileForm fieldset .btn-file-browser {
   display: block;
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content form#MemberProfileForm_MemberProfileForm fieldset {
+    padding-right: 0;
+  }
 }
 #main .member-area__content form .notification a {
   text-decoration: underline;
@@ -10631,6 +10685,11 @@ div.field.textarea {
   top: 1.875rem;
   right: 0;
   max-width: 18.75rem;
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content form fieldset .field#memberprofileform-image-uploader {
+    position: static;
+  }
 }
 #main .member-area__content form fieldset .field .ss-uploadfield-item-info {
   display: none;
@@ -10995,6 +11054,11 @@ body.lb-disable-scrolling {
 @media screen and (max-width: 768px) {
   .page-dashboard .section .pagination a, .section.property-list .pagination a {
     margin-top: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .page-dashboard .section.dashboard {
+    padding: 0 0 24px;
   }
 }
 .section.property {

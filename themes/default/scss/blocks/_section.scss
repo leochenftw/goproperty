@@ -13,9 +13,16 @@
             a {
                 @include mobile{
                     margin-top: 10px;
-
-                };
+                }
                 font-size: 1rem !important;
+            }
+        }
+    }
+
+    .page-dashboard & {
+        &.dashboard {
+            @include mobile {
+                padding: 0 0 24px;
             }
         }
     }

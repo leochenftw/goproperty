@@ -1,6 +1,17 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+    $('#burger-toggler').change(function(e)
+    {
+        if ($(this).prop('checked')) {
+            // $('.member-area__sidebar').addClass('is-static');
+            TweenMax.to($('.member-area__content'), 0.25, {opacity: 0, height: 0, visibility: 'hidden'});
+        } else {
+            // $('.member-area__sidebar').removeClass('is-static');
+            TweenMax.to($('.member-area__content'), 0.25, {opacity: 1, height: 'auto', visibility: 'visible'});
+        }
+    });
+
     if ($('.message.notification').length > 0) {
         $('.message.notification').removeClass('message');
     }

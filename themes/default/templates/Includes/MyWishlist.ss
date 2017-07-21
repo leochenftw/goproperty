@@ -2,7 +2,7 @@
 <ul class="member-area__content__property-list">
 <% if $MyWishlist %>
     <% loop $MyWishlist %>
-        <li class="columns member-area__content__property-list__item<% if $isGone %> no-longer-available<% end_if %>">
+        <li class="columns is-flex-mobile member-area__content__property-list__item<% if $isGone %> no-longer-available<% end_if %>">
             <a href="$Link" class="column is-auto-width member-area__content__property-list__item__image">
                 <% if $ClassName == 'PropertyPage' %>
                     <% if $Gallery.Count > 0 %>
