@@ -16,6 +16,9 @@
 
 &__thumbnails {
     padding: 0 125px;
+    @include mobile{
+        padding:0 12px;
+    };
     &__thumbnail {
         display: block;
         width: 150px;
@@ -55,6 +58,9 @@
                 text-align: center;
                 color: #fff;
                 left: 75px;
+                @include mobile{
+                    left: 0;
+                };
                 &:before {
                     @extend .fa;
                     @extend .fa-angle-left;
@@ -68,6 +74,9 @@
                 text-align: center;
                 color: #fff;
                 right: 75px;
+                @include mobile{
+                    right: 0;
+                };
                 @extend .icon;
                 &:before {
                     @extend .fa;

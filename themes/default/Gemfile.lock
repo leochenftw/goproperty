@@ -33,6 +33,3 @@ DEPENDENCIES
   font-awesome-sass
   oily_png
   sass (= 3.4.13)
-
-BUNDLED WITH
-   1.13.6

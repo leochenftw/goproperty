@@ -34,5 +34,8 @@
     "jquery-sticky": "^1.0.4",
     "lightbox2": "^2.9.0",
     "handlebars": "^4.0.10"
+  },
+  "resolutions": {
+    "fizzy-ui-utils": "^2.0.5"
   }
 }

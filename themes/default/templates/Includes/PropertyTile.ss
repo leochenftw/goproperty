@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    <div class="property-list__tile__actions columns is-marginless">
+    <div class="property-list__tile__actions columns is-marginless is-mobileFlex">
         <div class="column is-auto-width">
             <a class="blue-button inline-block" href="$Link">More details</a>
         </div>

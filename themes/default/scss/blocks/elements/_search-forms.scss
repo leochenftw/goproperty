@@ -8,6 +8,10 @@
         width: 100%;
         left: 0;
         top: -85px;
+        @include mobile{
+            // display: none;
+            position: static;
+        }
         @include justify-content(center);
         .tab-ish {
             width: auto;
@@ -25,6 +29,7 @@
             border-bottom: none;
             span {
                 font-weight: bold;
+
             }
 
             &.active,
@@ -50,6 +55,16 @@
     }
 
     .Fields {
+        #div-left{
+            @include mobile{
+                padding:12px 12px 0 12px;
+            }
+        }
+        #div-right{
+            @include mobile{
+                padding: 0 12px 12px 12px;
+            }
+        }
         .fields-wrapper {
             margin-bottom: 0;
 
@@ -62,17 +77,45 @@
                 font-weight: normal;
                 width: 30%;
                 line-height: 40px;
+                @include mobile{
+                    width: 100%;
+                    text-align: left;
+                    font-size: 20px;
+
+                    display: block;
+                    line-height: 1rem;
+                    padding: 20px 0 5px 14px;
+                    margin: 0;
+
+                }
             }
 
             &.bedroom,
-            &.bathroom {
+            &.for-rent,
+            &.bathroom,
+            &.for-sale {
+                div.columns-2{
+                    @include mobile{
+                        @include display-flex;
+                        @include align-items(center);;
 
+                    }
+                    #padding-b-0{
+                        @include mobile{
+                            padding-bottom: 0 ;
+                        }
+                    }
+                }
             }
 
             &.optionset {
 
                 ul {
                     @extend .columns;
+                    @include mobile{
+                        @include display-flex;
+                        margin-bottom: 10px;
+                    }
                     li {
                         @extend .column;
                         @extend .is-auto-width;
@@ -86,12 +129,16 @@
                             font-weight: normal;
                             width: auto;
                             display: inline-block;
+                            @include mobile{
+                                padding-top: 0;
+                            }
                         }
                     }
                 }
             }
 
             .fields {
+
                 .field {
 
                     .dropdown {
@@ -103,6 +150,7 @@
                         padding: 0.5em;
                         border-radius: 5px;
                         outline: none;
+
                     }
 
                     .text {

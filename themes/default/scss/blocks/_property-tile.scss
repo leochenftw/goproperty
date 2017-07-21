@@ -95,6 +95,9 @@
                 font-size: 20px;
                 padding-left: 0;
                 padding-right: 20px;
+                @include mobile{
+                    width: 100%;
+                }
                 &.business-detail {
                     font-size: 16px;
                     h2 {
@@ -133,6 +136,9 @@
                 position: relative;
                 font-size: 16px;
                 width: 55%;
+                @include mobile{
+                    width: 100%;
+                };
                 &.business-services {
                     padding-right: 0;
                     padding-left: 20px;
@@ -172,18 +178,32 @@
         }
 
         &__actions {
+            @include mobile{
+                @include display-flex;
+            }
             @include align-items(center);
             .page-tradesmenlister & {
                 padding-left: 24px;
                 padding-right: 30px;
+
+
             }
             a.blue-button {
                 padding-left: 2em;
                 padding-right: 2em;
+                @include mobile{
+                    font-size: 18px;
+                    padding:3px 13px;
+                }
             }
             ul.rating {
                 text-align: right;
                 @import 'elements/rating';
+                & span{
+                    @include mobile{
+                        display: none;
+                    }
+                }
             }
         }
     }

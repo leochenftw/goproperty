@@ -11,6 +11,9 @@
     @include justify-content(space-between);
     @include align-items(center);
     @include transition(height 0.3s);
+    @include mobile {
+        height: 80px;
+    }
     #logo {
         color: #fff;
 
@@ -25,6 +28,10 @@
             text-indent: -9999px;
             margin-right: 0.25em;
         }
+
+        @include mobile {
+            display: none;
+        }
     }
 
     #mid-logo {
@@ -32,6 +39,10 @@
         visibility: visible;
         @include transition(all 0.15s);
         @include retina-sprite(logo_blue, spritesheet, $dimensions: true);
+        @include mobile {
+            @include transform(scale(0.6));
+            @include transform-origin(0, center);
+        }
     }
 
     .short-header & {
@@ -39,6 +50,23 @@
         #mid-logo {
             visibility: hidden;
             opacity: 0;
+        }
+
+        @include mobile {
+            height: 40px;
+            #mid-logo {
+                display: none;
+            }
+
+            #logo {
+                display: block;
+                span {
+                    display: none;
+                    &.logo-image {
+                        display: block;
+                    }
+                }
+            }
         }
     }
 
@@ -52,6 +80,17 @@
                 line-height: 30px;
                 margin-right: 0.5em;
             }
+
+            @include mobile {
+                span {
+                    display: none;
+                    &.icon {
+                        display: inline-block;
+                        margin-right: 0;
+                    }
+                }
+            }
+
         }
     }
 }

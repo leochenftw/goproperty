@@ -12,7 +12,7 @@
             <h2 class="form-title title is-2">Search</h2>
             <div id="form-description" class="form-description">Search for a <span>Rental Property</span></div>
             <div class="columns Fields">
-                <div class="column is-half left-half half">
+                <div class="column is-half left-half half" id="div-left">
                     <div class="fields-wrapper columns location hide">
                         <label class="label is-3 column">Region</label>
                         <div class="fields column">
@@ -45,35 +45,35 @@
                     </div>
                     <div class="fields-wrapper columns bedroom">
                         <label class="label is-3 column">Bedrooms</label>
-                        <div class="fields column columns is-marginless">
+                        <div class="fields column columns is-marginless columns-2">
                             <div class="field is-paddingless column">$Fields.fieldByName('BedroomFrom')</div>
-                            <span class="column is-auto-width">To</span>
+                            <span class="column is-auto-width" id="padding-b-0">To</span>
                             <div class="field is-paddingless column">$Fields.fieldByName('BedroomTo')</div>
                         </div>
                     </div>
                     <div class="fields-wrapper columns bathroom">
                         <label class="label is-3 column">Bathrooms</label>
-                        <div class="fields column columns is-marginless">
+                        <div class="fields column columns is-marginless  columns-2">
                             <div class="field is-paddingless column">$Fields.fieldByName('BathroomFrom')</div>
-                            <span class="column is-auto-width">To</span>
+                            <span class="column is-auto-width" id="padding-b-0">To</span>
                             <div class="field is-paddingless column">$Fields.fieldByName('BathroomTo')</div>
                         </div>
                     </div>
                 </div>
-                <div class="column is-half right-half half">
+                <div class="column is-half right-half half" id="div-right">
                     <div class="fields-wrapper columns price for-rent">
                         <label class="label is-3 column">Rent range</label>
-                        <div class="fields column columns is-marginless">
+                        <div class="fields column columns is-marginless columns-2">
                             <div class="field is-paddingless column">$Fields.fieldByName('RentFrom')</div>
-                            <span class="column is-auto-width">To</span>
+                            <span class="column is-auto-width" id="padding-b-0">To</span>
                             <div class="field is-paddingless column">$Fields.fieldByName('RentTo')</div>
                         </div>
                     </div>
                     <div class="fields-wrapper columns price for-sale hide">
                         <label class="label is-3 column">Price range</label>
-                        <div class="fields column columns is-marginless">
+                        <div class="fields column columns is-marginless columns-2 ">
                             <div class="field is-paddingless column">$Fields.fieldByName('PriceFrom')</div>
-                            <span class="column is-auto-width">To</span>
+                            <span class="column is-auto-width" id="padding-b-0">To</span>
                             <div class="field is-paddingless column">$Fields.fieldByName('PriceTo')</div>
                         </div>
                     </div>

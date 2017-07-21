@@ -1,7 +1,9 @@
 .section {
     padding-left: 0;
     padding-right: 0;
-
+    @include mobile{
+        padding-bottom: 0;
+    };
     .page-dashboard &,
     &.property-list {
         border-top: 0.625rem solid #b8e81e;
@@ -9,6 +11,10 @@
         .pagination {
             margin-bottom: 45px;
             a {
+                @include mobile{
+                    margin-top: 10px;
+
+                };
                 font-size: 1rem !important;
             }
         }
@@ -16,20 +22,42 @@
 
     &.property {
         border-top: 0.625rem solid $green;
+        @include mobile{
+            padding-top: 10px;
+        };
+        header{
+                h1{
+                    @include mobile{
+                        font-size: 24px;
+
+                    };
+                }
+        }
         .property__content-area {
             &__aside {
                 padding-right: 20px;
                 dl {
+                    @include mobile{
+                    @include display-flex;
+                };
                     @extend .columns;
                     @include flex-wrap(wrap);
                     margin: 0 0 1.5em !important;
                     dt, dd {
+                        @include mobile{
+                            width: 50%;
+                            flex:none;
+                            padding-bottom: 0;
+                        };
                         @extend .column;
                         font-size: 18px;
                     }
 
                     dt {
                         color: #001d58;
+                        @include mobile{
+                            text-align: left;
+                        };
                         @extend .has-text-right;
                         @extend .is-4;
                         .page-type-business & {
@@ -85,7 +113,16 @@
                 line-height: 1.6;
                 color: #7f8184;
                 margin: 0 0 1.875rem;
-
+                @include mobile{
+                    margin-bottom: 0;
+                }
+                .content{
+                    @include mobile{
+                        font-size:16px;
+                        line-height: 1.4;
+                        margin-bottom: 0;
+                    }
+                }
                 .page-type-business & {
                     h2.title {
                         margin-bottom: 12px;
@@ -150,6 +187,9 @@
                     border-bottom: 1px solid #d8d8d8;
                     padding-bottom: 2.5rem;
                     margin-bottom: 1.875rem;
+                    @include mobile{
+                        @include display-flex;
+                    };
                     &__portrait {
                         img {
                             border-radius: 50%;
@@ -173,6 +213,11 @@
                             font-size: 22px;
                             font-weight: bold;
                             text-transform: capitalize;
+                            h2.title{
+                                @include mobile{
+                                    font-size: 20px;
+                                };
+                            }
                         }
 
                         &__phonenumber {
@@ -191,6 +236,9 @@
                                 font-size: 22px;
                                 margin-top: 0;
                                 margin-right: 0.625rem;
+                                @include mobile{
+                                    margin-right: 2px;
+                                };
                                 color: #95a5a6;
                                 @include transition(color 0.3s);
                                 vertical-align: baseline;
@@ -215,6 +263,9 @@
                         .rating-count {
                             font-size: 14px;
                         }
+                    }
+                    a.blue-button{
+                        padding: 4px 33px;
                     }
                 }
             }

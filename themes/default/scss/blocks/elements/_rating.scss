@@ -5,6 +5,9 @@ li {
     color: $green;
     height: auto;
     line-height: 1;
+    @include mobile{
+        margin-right: -1px;   
+    }
     i {
         line-height: 1;
         font-size: 24px;

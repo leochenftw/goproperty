@@ -2,6 +2,11 @@
     background-color: transparent;
     border-top: 0.625rem solid #b8e81e;
     padding: 3.75rem 0 5.25rem;
+    @include mobile{
+        padding-top: 0;
+        padding-bottom: 0;
+        font-size: 14px;
+    };
     ul {
         margin-bottom: 16px;
         li {
@@ -43,16 +48,44 @@
         font-size: 10px;
         color: white;
     }
+    .second {
+        @include mobile{
+            width:50%;
+            float: right;
+        }
+    }
+    .first{
+        @include mobile{
+            width:50%;
+            float: left;
+        }
+    }
+
+    .social {
+        @include mobile{
+            clear: both;
+            @include display-flex;
+            @include flex-wrap(wrap);
+            @include align-items(center);
+            .payment-methods,
+            .payment-disclaimer,
+            .footer__col__logo-holder,
+            ul {
+                width: 50%;
+            }
+        };
+        ul li {
+            display: inline-block;
+            margin-right: 20px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
 
     &__col {
-        &.social {
-            ul li {
-                display: inline-block;
-                margin-right: 20px;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
+        @include mobile{
+            width: 100%;
         }
 
         &__logo-holder {

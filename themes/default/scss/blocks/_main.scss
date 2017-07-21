@@ -1,6 +1,9 @@
 #main {
     padding-top: 60px;
     padding-bottom: 60px;
+    @include mobile{
+        padding-bottom: 0;
+    };
     .page-type-error-page &,
     .page-type-home-page &,
     .page-propertylister &,
