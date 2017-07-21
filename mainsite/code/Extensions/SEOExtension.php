@@ -72,10 +72,10 @@ class SEOExtension extends DataExtension {
 			/**
 			 * Extract & save meta description if necessary.
 			 * */
-			if (empty($this->owner->$key) && !empty($description)) {
-				$matches = array();
-				$this->owner->$key = SaltedHerring\Utilities::getWordsWithinCharLimit(strip_tags($description));
-			}
+			// if (empty($this->owner->$key) && !empty($description)) {
+			// 	$matches = array();
+			// 	$this->owner->$key = SaltedHerring\Utilities::getWordsWithinCharLimit(strip_tags($description));
+			// }
 		}
 
 		/**
