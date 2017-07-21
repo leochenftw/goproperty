@@ -47,5 +47,5 @@ var appointmentListTemplate =
 </div>\
 {{/each}}\
 {{else}}\
-<p>- no appoint so far -</p>\
+<p>- no appointment so far -</p>\
 {{/if}}';
