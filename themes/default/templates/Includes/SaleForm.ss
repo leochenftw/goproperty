@@ -70,7 +70,7 @@
                     $Fields.fieldByName('ContactNumber').FieldHolder
                 </div>
             </div>
-
+            <% if not $CurrentMember.inFreeTrial %>
             <div class="fields__main__section listing-options column is-12">
                 <h3 class="fields__main__section__title title is-4 is-bold">Listing options</h3>
                 <div class="fields__main__section__content">
@@ -84,6 +84,7 @@
                     $Fields.fieldByName('ListingCloseOn').FieldHolder
                 </div>
             </div>
+            <% end_if %>
         </div>
         <div class="fields__aside column is-half">
             <h3 class="title is-4 is-bold">Property on map</h3>
