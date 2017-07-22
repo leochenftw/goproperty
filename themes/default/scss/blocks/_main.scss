@@ -2,7 +2,8 @@
     padding-top: 60px;
     padding-bottom: 60px;
     @include mobile{
-        padding-bottom: 0;
+        padding-top: 12px;
+        padding-bottom: 12px;
     };
     .page-type-error-page &,
     .page-type-home-page &,
@@ -23,6 +24,19 @@
     .container {
         &.narrow {
             max-width: 600px;
+        }
+
+        @include mobile {
+            padding-left: 12px;
+            padding-right: 12px;
+
+            .page-tradesmenlister &,
+            .page-propertylister &,
+            .page-home &,
+            .page-dashboard & {
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
     }
 
