@@ -1,8 +1,17 @@
 &__property-list {
+    @include mobile {
+        padding-top: 12px;
+    }
+
     &__item {
-        // &__image {
-        //
-        // }
+        &__image {
+            @include mobile {
+                padding-right: 0;
+                img {
+                    width: 50px;
+                }
+            }
+        }
 
         &__info {
             .type {
@@ -13,11 +22,20 @@
                 padding: 0.25em 0.5em 0.4em;
                 border-radius: 3px;
                 margin-right: 0.25em;
+                @include mobile {
+                    font-size: 10px;
+                }
             }
 
             .title {
                 @include mobile {
-                    font-size: 16px;
+                    &.is-5 {
+                        font-size: 16px;
+                    }
+
+                    &.is-3 {
+                        font-size: 24px;
+                    }
                 }
             }
 
@@ -25,6 +43,10 @@
                 .button {
                     padding: 0.25em 1em 0.35em;
                     margin-right: 0.5em;
+                    @include mobile {
+                        display: block;
+                        margin-top: 6px;
+                    }
                 }
             }
         }

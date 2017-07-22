@@ -1,7 +1,7 @@
 var serviceRequesterTemplate =
 '{{#if @root}}\
 {{#each @root}}\
-    <div class="columns interest-item{{#if fold}} fold{{/if}}" data-foldable="{{fold}}">\
+    <div class="columns is-flex-mobile interest-item{{#if fold}} fold{{/if}}" data-foldable="{{fold}}">\
         <div class="portrait column is-narrow"><img src="{{member.portrait}}" /></div>\
         <div class="details column">\
             <h3 class="title is-4 is-bold is-marginless"><span class="name">{{member.name}}</span> <span class="email" style="font-style: italic; font-size: 14px;">({{member.email}})</span></h3>\

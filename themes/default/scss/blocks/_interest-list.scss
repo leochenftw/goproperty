@@ -59,6 +59,10 @@
             &:last-child {
                 margin-right: 0;
             }
+
+            @include mobile {
+                margin-bottom: 0.5em;
+            }
         }
     }
 

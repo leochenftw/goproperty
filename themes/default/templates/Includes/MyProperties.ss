@@ -7,7 +7,7 @@
 </div>
 <ul class="member-area__content__property-list">
 <% loop $MyProperties %>
-    <li class="columns member-area__content__property-list__item">
+    <li class="columns member-area__content__property-list__item is-flex-mobile">
 
         <a href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID" class="column is-auto-width member-area__content__property-list__item__image">
             <% if $Gallery.Count > 0 %>
@@ -36,7 +36,7 @@
             <div class="is-marginless member-area__content__property-list__item__info__controls">
                 <% if $isGone %>
                     <% loop $Occupants %>
-                        <div class="columns">
+                        <div class="columns is-flex-mobile">
                             <div class="column is-auto-width">
                                 <% if $Renter.Portrait.Image %>$Renter.Portrait.Image.Cropped.FillMax(30,30)<% else %><img style="width: 30px;" src="/themes/default/images/default-portrait.png" /><% end_if %>
                             </div>

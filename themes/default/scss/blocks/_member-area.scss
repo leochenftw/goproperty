@@ -2,14 +2,14 @@
     &__sidebar {
 
         @include mobile {
-            // position: absolute;
-            // width: 100%;
-            // z-index: 2;
+            position: absolute;
+            width: 100%;
+            z-index: 2;
             text-align: right;
 
-            // &.is-static {
-            //     position: static;
-            // }
+            &.is-static {
+                position: static;
+            }
         }
 
         label.button {
@@ -26,8 +26,8 @@
 
         ul {
             overflow: hidden;
-            @include transition(all 0.3s);
             @include mobile {
+                @include transition(all 0.3s);
                 height: 0;
                 opacity: 0;
                 visibility: hidden;
@@ -150,6 +150,69 @@
             }
         }
 
+        h2.title {
+            @include mobile {
+                padding-right: 72px;
+                margin-bottom: 0.75rem;
+            }
+        }
+
+        .column {
+            img {
+                display: block;
+            }
+        }
+
+        .transactions {
+            .columns {
+                border-bottom: 1px solid $light;
+                &.is-heading {
+                    .column {
+                        color: $dark;
+                        font-weight: bold;
+                    }
+                }
+
+                &.is-body-row {
+                    font-size: 14px;
+                    &:last-child {
+                        border: none;
+                    }
+
+                    @include mobile {
+                        .column {
+                            &:not(:last-child) {
+                                padding-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .is-body {
+                @include mobile {
+                    margin-top: 24px;
+                }
+            }
+        }
+
+        &__business-list {
+            &__logo {
+                @include mobile {
+                    padding-bottom: 0;
+                }
+            }
+
+            &__info {
+                @include mobile {
+                    font-size: 14px;
+                    .subtitle {
+                        margin-bottom: 12px;
+                    }
+                }
+            }
+        }
+
         &__property-list {
             &__item {
                 &__info {
@@ -203,6 +266,10 @@
             position: absolute;
             right: 0;
             top: 1.25rem;
+            @include mobile {
+                position: static;
+                margin-bottom: 0.75rem;
+            }
             a {
                 display: inline-block;
                 border-radius: 0.25rem;
@@ -265,6 +332,10 @@
                     &.wrap {
                         @include flex-wrap(wrap);
                     }
+
+                    @include mobile {
+                        @include flex-wrap(wrap);
+                    }
                 }
 
                 .fields__aside {
@@ -300,6 +371,10 @@
                                 margin-right: 10px;
                                 &:last-child {
                                     margin-right: 0;
+                                }
+
+                                @include mobile {
+                                    margin-bottom: 10px;
                                 }
 
                                 .btn-remove-thumbnail {
@@ -343,6 +418,7 @@
                                     overflow: hidden;
                                     @include transition(opacity 0.5s);
                                     @include transition-delay(0.01s);
+
                                     &.show {
                                         visibility: visible;
                                         opacity: 1;

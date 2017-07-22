@@ -9,6 +9,10 @@
 
 .account-types {
     padding-left: 0;
+    margin-left: 0;
+    @include mobile {
+        padding-top: 12px;
+    }
     li {
         text-align: left;
         width: 100%;

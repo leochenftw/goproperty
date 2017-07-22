@@ -90,6 +90,13 @@ p.align-vertical-center {
         width: auto;
         @include flex(none);
     }
+
+    &.is-narrow {
+        @include mobile {
+            width: auto;
+            @include flex(none);
+        }
+    }
 }
 
 .text-centered {

@@ -7,7 +7,7 @@
 <% else %>
 <ul class="member-area__content__property-list">
 <% loop $Agencies %>
-    <li class="columns member-area__content__property-list__item">
+    <li class="columns member-area__content__property-list__item is-flex-mobile">
         <a href="/member/action/manage-property?id=$ID&step=5" data-expect-form="1" class="column is-auto-width member-area__content__property-list__item__image">
             <% if $Logo > 0 %>
                 <% with $Logo.FillMax(100, 100) %>

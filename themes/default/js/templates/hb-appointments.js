@@ -8,7 +8,7 @@ var appointmentListTemplate =
         </a>\
     <div class="column">\
         <h3 class="title is-5 is-bold">{{Address}}</h3>\
-        <p class="subtitle is-6 align-vertical-center"><span>Requested by:</span> <img style="width: auto; height: 16px; margin: 0 0.25em;" src="{{Portrait}}" alt="{{Client}} "/> <span>{{Client}}</span></p>\
+        <p class="subtitle is-6 align-vertical-center"><span>Requested by:</span> <img style="display: inline; width: auto; height: 16px; margin: 0 0.25em;" src="{{Portrait}}" alt="{{Client}} "/> <span>{{Client}}</span></p>\
         <div class="content">\
             <form class="appointment-dt-form" method="post" action="/api/v1/appointment/{{ID}}/set-date">\
                 <div class="display{{#unless Date}} hide{{/unless}}">\
@@ -21,7 +21,7 @@ var appointmentListTemplate =
                     {{/if}}\
                     </p>\
                 </div>\
-                <div class="editor columns is-marginless-vertical{{#if Date}} hide{{/if}}">\
+                <div class="editor is-flex-mobile columns is-marginless-vertical{{#if Date}} hide{{/if}}">\
                     <div class="column is-paddingless-vertical">\
                         <div class="field" style="margin-bottom: 10px;">\
                             <input placeholder="click to pick a date" type="text" class="text dt-picker input" name="Date"{{#if Date}} value="{{Date}}"{{/if}} />\
@@ -31,7 +31,7 @@ var appointmentListTemplate =
                             <em class="description">This memo will be emailed to the other party too.</em>\
                         </div>\
                     </div>\
-                    <div class="column is-paddingless">\
+                    <div class="column is-paddingless-vertical is-narrow" style="padding-left: 0;">\
                         <button class="button inline" type="submit"><span class="icon"><i class="fa fa-check"></i></span></button>\
                         {{#if Date}}<a href="#" class="button inline red btn-cancel"><span class="icon"><i class="fa fa-times"></i></span></a href="#">{{/if}}\
                     </div>\
