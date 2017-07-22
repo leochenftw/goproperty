@@ -20,6 +20,10 @@
         }
     }
 
+    .page-dashboard & {
+        padding-top: 0;
+    }
+
     &.property {
         border-top: 0.625rem solid $green;
         @include mobile{
