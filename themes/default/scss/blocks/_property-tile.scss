@@ -147,6 +147,7 @@
                 }
 
                 &__location {
+                    
                     h3 {
                         font-size: 20px;
                         margin-bottom: 16px;
@@ -167,10 +168,11 @@
                         margin-bottom: 5px;
                     }
                 }
+
                 &__lister {
                     position: absolute;
                     top: -50%;
-                    right: 30px;
+                    right: 20px;
                     @include transform(translateY(-16px));
                     img {
                         border-radius: 50%;

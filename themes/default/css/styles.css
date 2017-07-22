@@ -12635,7 +12635,7 @@ body.lb-disable-scrolling {
 .property-list__tile__details__location-lister__lister {
   position: absolute;
   top: -50%;
-  right: 30px;
+  right: 20px;
   -moz-transform: translateY(-16px);
   -ms-transform: translateY(-16px);
   -webkit-transform: translateY(-16px);
