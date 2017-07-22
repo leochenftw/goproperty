@@ -9213,6 +9213,14 @@ p.align-vertical-center span {
   -webkit-flex: none;
   flex: none;
 }
+@media screen and (max-width: 768px) {
+  .column.is-narrow, #main .search-forms .Fields .fields-wrapper.optionset ul li.is-narrow, #main .filter-form fieldset.is-narrow, #main .is-narrow#SignupForm_SignupForm,
+  #main .is-narrow#SigninForm_SigninForm, #main .member-area__content form fieldset .columns.items-2 .is-narrow.field, #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .is-narrow.field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 .is-narrow.field, #main .member-area__content form fieldset .section.property .property__content-area__aside dl.items-2 .is-narrow.field, .section.property .property__content-area__aside #main .member-area__content form fieldset dl.items-2 .is-narrow.field, .section.property .property__content-area__aside dl dt.is-narrow, .section.property .property__content-area__aside dl dd.is-narrow {
+    width: auto;
+    -webkit-flex: none;
+    flex: none;
+  }
+}
 
 div.field.textarea {
   max-height: none;
@@ -10298,7 +10306,13 @@ div.field.textarea {
 }
 @media screen and (max-width: 768px) {
   #main .member-area__sidebar {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
     text-align: right;
+  }
+  #main .member-area__sidebar.is-static {
+    position: static;
   }
 }
 #main .member-area__sidebar label.button {
@@ -10313,13 +10327,13 @@ div.field.textarea {
 }
 #main .member-area__sidebar ul {
   overflow: hidden;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
 }
 @media screen and (max-width: 768px) {
   #main .member-area__sidebar ul {
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
     height: 0;
     opacity: 0;
     visibility: hidden;
@@ -10360,6 +10374,19 @@ div.field.textarea {
 #main .member-area__content {
   position: relative;
 }
+@media screen and (max-width: 768px) {
+  #main .member-area__content__property-list {
+    padding-top: 12px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content__property-list__item__image {
+    padding-right: 0;
+  }
+  #main .member-area__content__property-list__item__image img {
+    width: 50px;
+  }
+}
 #main .member-area__content__property-list__item__info .type {
   display: inline-block;
   background-color: #001d58;
@@ -10370,13 +10397,27 @@ div.field.textarea {
   margin-right: 0.25em;
 }
 @media screen and (max-width: 768px) {
-  #main .member-area__content__property-list__item__info .title {
+  #main .member-area__content__property-list__item__info .type {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content__property-list__item__info .title.is-5 {
     font-size: 16px;
+  }
+  #main .member-area__content__property-list__item__info .title.is-3 {
+    font-size: 24px;
   }
 }
 #main .member-area__content__property-list__item__info__controls .button, #main .member-area__content__property-list__item__info__controls input.action {
   padding: 0.25em 1em 0.35em;
   margin-right: 0.5em;
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content__property-list__item__info__controls .button, #main .member-area__content__property-list__item__info__controls input.action {
+    display: block;
+    margin-top: 6px;
+  }
 }
 #main .member-area__content__property-list__item__actions {
   -webkit-align-self: center;
@@ -10409,6 +10450,12 @@ div.field.textarea {
 }
 #main .member-area__content .account-types {
   padding-left: 0;
+  margin-left: 0;
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content .account-types {
+    padding-top: 12px;
+  }
 }
 #main .member-area__content .account-types li {
   text-align: left;
@@ -10475,6 +10522,62 @@ div.field.textarea {
   display: inline-block;
   margin-right: 0.5em;
 }
+@media screen and (max-width: 768px) {
+  #main .member-area__content h2.title {
+    padding-right: 72px;
+    margin-bottom: 0.75rem;
+  }
+}
+#main .member-area__content .column img, #main .member-area__content .search-forms .Fields .fields-wrapper.optionset ul li img, #main .search-forms .Fields .fields-wrapper.optionset ul .member-area__content li img, #main .member-area__content .filter-form fieldset img, #main .filter-form .member-area__content fieldset img, #main .member-area__content #SignupForm_SignupForm img,
+#main .member-area__content #SigninForm_SigninForm img, #main .member-area__content form fieldset .columns.items-2 .field img, #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .field img, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 .field img, #main .member-area__content form fieldset .section.property .property__content-area__aside dl.items-2 .field img, .section.property .property__content-area__aside #main .member-area__content form fieldset dl.items-2 .field img, #main .member-area__content .section.property .property__content-area__aside dl dt img, .section.property .property__content-area__aside dl #main .member-area__content dt img, #main .member-area__content .section.property .property__content-area__aside dl dd img, .section.property .property__content-area__aside dl #main .member-area__content dd img {
+  display: block;
+}
+#main .member-area__content .transactions .columns, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul, #main .member-area__content .transactions .section.property .property__content-area__aside dl, .section.property .property__content-area__aside #main .member-area__content .transactions dl {
+  border-bottom: 1px solid #d8d8d8;
+}
+#main .member-area__content .transactions .columns.is-heading .column, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading .column, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading .column, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading .column, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-heading .column, #main .member-area__content .transactions .columns.is-heading .search-forms .Fields .fields-wrapper.optionset ul li, #main .search-forms .Fields .fields-wrapper.optionset ul .member-area__content .transactions .columns.is-heading li, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading li, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading li, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading .search-forms .Fields .fields-wrapper.optionset ul li, #main .search-forms .Fields .fields-wrapper.optionset ul .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading li, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-heading .search-forms .Fields .fields-wrapper.optionset ul li, .section.property .property__content-area__aside #main .search-forms .Fields .fields-wrapper.optionset ul .member-area__content .transactions dl.is-heading li, #main .member-area__content .transactions .columns.is-heading .filter-form fieldset, #main .filter-form .member-area__content .transactions .columns.is-heading fieldset, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading .filter-form fieldset, #main .filter-form .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading fieldset, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading .filter-form fieldset, #main .filter-form .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading fieldset, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading .filter-form fieldset, #main .filter-form .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading fieldset, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-heading .filter-form fieldset, .section.property .property__content-area__aside #main .filter-form .member-area__content .transactions dl.is-heading fieldset, #main .member-area__content .transactions .columns.is-heading #SignupForm_SignupForm, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading #SignupForm_SignupForm, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading #SignupForm_SignupForm, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading #SignupForm_SignupForm, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-heading #SignupForm_SignupForm,
+#main .member-area__content .transactions .columns.is-heading #SigninForm_SigninForm,
+#main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading #SigninForm_SigninForm,
+#main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading #SigninForm_SigninForm,
+#main .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading #SigninForm_SigninForm,
+.section.property .property__content-area__aside #main .member-area__content .transactions dl.is-heading #SigninForm_SigninForm, #main .member-area__content .transactions .columns.is-heading form fieldset .columns.items-2 .field, #main .member-area__content form fieldset .columns.items-2 .transactions .columns.is-heading .field, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading form fieldset .columns.items-2 .field, #main .member-area__content form fieldset .columns.items-2 .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading .field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading form fieldset .columns.items-2 .field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset .columns.items-2 .transactions ul.is-heading .field, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading form fieldset .columns.items-2 .field, #main .member-area__content form fieldset .columns.items-2 .transactions .section.property .property__content-area__aside dl.is-heading .field, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-heading form fieldset .columns.items-2 .field, .section.property .property__content-area__aside #main .member-area__content form fieldset .columns.items-2 .transactions dl.is-heading .field, #main .member-area__content .transactions .columns.is-heading form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .field, #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .transactions .columns.is-heading .field, #main .member-area__content .transactions form fieldset .search-forms .Fields .fields-wrapper.optionset ul.is-heading ul.items-2 .field, #main .member-area__content form fieldset .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading ul.items-2 .field, #main .member-area__content .transactions form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 ul.is-heading .field, #main .member-area__content form fieldset .transactions .search-forms .Fields .fields-wrapper.optionset ul.items-2 ul.is-heading .field, #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading ul.items-2 .field, #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .member-area__content .transactions ul.is-heading .field, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .field, #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .transactions .section.property .property__content-area__aside dl.is-heading .field, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-heading form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .field, .section.property .property__content-area__aside #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .transactions dl.is-heading .field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions .columns.is-heading form fieldset ul.items-2 .field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 .transactions .columns.is-heading .field, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading .member-area__content form fieldset ul.items-2 .field, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 ul.is-heading .field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading form fieldset ul.items-2 .field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 .transactions ul.is-heading .field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading form fieldset ul.items-2 .field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 .transactions .section.property .property__content-area__aside dl.is-heading .field, .section.property .property__content-area__aside #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions dl.is-heading form fieldset ul.items-2 .field, .section.property .property__content-area__aside #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 .transactions dl.is-heading .field, #main .member-area__content .transactions .columns.is-heading form fieldset .section.property .property__content-area__aside dl.items-2 .field, #main .member-area__content form fieldset .section.property .property__content-area__aside dl.items-2 .transactions .columns.is-heading .field, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading form fieldset .section.property .property__content-area__aside dl.items-2 .field, #main .member-area__content form fieldset .section.property .property__content-area__aside dl.items-2 .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading .field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading form fieldset .section.property .property__content-area__aside dl.items-2 .field, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset .section.property .property__content-area__aside dl.items-2 .transactions ul.is-heading .field, #main .member-area__content .transactions form fieldset .section.property .property__content-area__aside dl.is-heading dl.items-2 .field, #main .member-area__content form fieldset .transactions .section.property .property__content-area__aside dl.is-heading dl.items-2 .field, #main .member-area__content .transactions form fieldset .section.property .property__content-area__aside dl.items-2 dl.is-heading .field, #main .member-area__content form fieldset .transactions .section.property .property__content-area__aside dl.items-2 dl.is-heading .field, .section.property .property__content-area__aside #main .member-area__content .transactions .columns.is-heading form fieldset dl.items-2 .field, .section.property .property__content-area__aside #main .member-area__content form fieldset dl.items-2 .transactions .columns.is-heading .field, .section.property .property__content-area__aside #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading form fieldset dl.items-2 .field, .section.property .property__content-area__aside #main .member-area__content form fieldset dl.items-2 .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading .field, .section.property .property__content-area__aside #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading form fieldset dl.items-2 .field, .section.property .property__content-area__aside #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset dl.items-2 .transactions ul.is-heading .field, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading #main .member-area__content form fieldset dl.items-2 .field, #main .member-area__content .transactions .section.property .property__content-area__aside #main .member-area__content form fieldset dl.items-2 dl.is-heading .field, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-heading form fieldset dl.items-2 .field, .section.property .property__content-area__aside #main .member-area__content form fieldset dl.items-2 .transactions dl.is-heading .field, #main .member-area__content .transactions .columns.is-heading .section.property .property__content-area__aside dl dt, .section.property .property__content-area__aside dl #main .member-area__content .transactions .columns.is-heading dt, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading .section.property .property__content-area__aside dl dt, .section.property .property__content-area__aside dl #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading dt, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading .section.property .property__content-area__aside dl dt, .section.property .property__content-area__aside dl #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading dt, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading dt, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-heading dt, #main .member-area__content .transactions .columns.is-heading .section.property .property__content-area__aside dl dd, .section.property .property__content-area__aside dl #main .member-area__content .transactions .columns.is-heading dd, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading .section.property .property__content-area__aside dl dd, .section.property .property__content-area__aside dl #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-heading dd, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading .section.property .property__content-area__aside dl dd, .section.property .property__content-area__aside dl #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-heading dd, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-heading dd, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-heading dd {
+  color: #363636;
+  font-weight: bold;
+}
+#main .member-area__content .transactions .columns.is-body-row, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row {
+  font-size: 14px;
+}
+#main .member-area__content .transactions .columns.is-body-row:last-child, #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row:last-child, #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row:last-child, #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row:last-child, .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row:last-child {
+  border: none;
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content .transactions .columns.is-body-row .column:not(:last-child), #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row .column:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row .column:not(:last-child), #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row .column:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row .column:not(:last-child), #main .member-area__content .transactions .columns.is-body-row .search-forms .Fields .fields-wrapper.optionset ul li:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset ul .member-area__content .transactions .columns.is-body-row li:not(:last-child), #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row li:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row li:not(:last-child), #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row .search-forms .Fields .fields-wrapper.optionset ul li:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset ul .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row li:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row .search-forms .Fields .fields-wrapper.optionset ul li:not(:last-child), .section.property .property__content-area__aside #main .search-forms .Fields .fields-wrapper.optionset ul .member-area__content .transactions dl.is-body-row li:not(:last-child), #main .member-area__content .transactions .columns.is-body-row .filter-form fieldset:not(:last-child), #main .filter-form .member-area__content .transactions .columns.is-body-row fieldset:not(:last-child), #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row .filter-form fieldset:not(:last-child), #main .filter-form .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row fieldset:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row .filter-form fieldset:not(:last-child), #main .filter-form .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row fieldset:not(:last-child), #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row .filter-form fieldset:not(:last-child), #main .filter-form .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row fieldset:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row .filter-form fieldset:not(:last-child), .section.property .property__content-area__aside #main .filter-form .member-area__content .transactions dl.is-body-row fieldset:not(:last-child), #main .member-area__content .transactions .columns.is-body-row #SignupForm_SignupForm:not(:last-child), #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row #SignupForm_SignupForm:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row #SignupForm_SignupForm:not(:last-child), #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row #SignupForm_SignupForm:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row #SignupForm_SignupForm:not(:last-child),
+  #main .member-area__content .transactions .columns.is-body-row #SigninForm_SigninForm:not(:last-child),
+  #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row #SigninForm_SigninForm:not(:last-child),
+  #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row #SigninForm_SigninForm:not(:last-child),
+  #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row #SigninForm_SigninForm:not(:last-child),
+  .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row #SigninForm_SigninForm:not(:last-child), #main .member-area__content .transactions .columns.is-body-row form fieldset .columns.items-2 .field:not(:last-child), #main .member-area__content form fieldset .columns.items-2 .transactions .columns.is-body-row .field:not(:last-child), #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row form fieldset .columns.items-2 .field:not(:last-child), #main .member-area__content form fieldset .columns.items-2 .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row .field:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row form fieldset .columns.items-2 .field:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset .columns.items-2 .transactions ul.is-body-row .field:not(:last-child), #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row form fieldset .columns.items-2 .field:not(:last-child), #main .member-area__content form fieldset .columns.items-2 .transactions .section.property .property__content-area__aside dl.is-body-row .field:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row form fieldset .columns.items-2 .field:not(:last-child), .section.property .property__content-area__aside #main .member-area__content form fieldset .columns.items-2 .transactions dl.is-body-row .field:not(:last-child), #main .member-area__content .transactions .columns.is-body-row form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .field:not(:last-child), #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .transactions .columns.is-body-row .field:not(:last-child), #main .member-area__content .transactions form fieldset .search-forms .Fields .fields-wrapper.optionset ul.is-body-row ul.items-2 .field:not(:last-child), #main .member-area__content form fieldset .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row ul.items-2 .field:not(:last-child), #main .member-area__content .transactions form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 ul.is-body-row .field:not(:last-child), #main .member-area__content form fieldset .transactions .search-forms .Fields .fields-wrapper.optionset ul.items-2 ul.is-body-row .field:not(:last-child), #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row ul.items-2 .field:not(:last-child), #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .member-area__content .transactions ul.is-body-row .field:not(:last-child), #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .field:not(:last-child), #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .transactions .section.property .property__content-area__aside dl.is-body-row .field:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .field:not(:last-child), .section.property .property__content-area__aside #main .member-area__content form fieldset .search-forms .Fields .fields-wrapper.optionset ul.items-2 .transactions dl.is-body-row .field:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions .columns.is-body-row form fieldset ul.items-2 .field:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 .transactions .columns.is-body-row .field:not(:last-child), #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row .member-area__content form fieldset ul.items-2 .field:not(:last-child), #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 ul.is-body-row .field:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row form fieldset ul.items-2 .field:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 .transactions ul.is-body-row .field:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row form fieldset ul.items-2 .field:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 .transactions .section.property .property__content-area__aside dl.is-body-row .field:not(:last-child), .section.property .property__content-area__aside #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions dl.is-body-row form fieldset ul.items-2 .field:not(:last-child), .section.property .property__content-area__aside #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset ul.items-2 .transactions dl.is-body-row .field:not(:last-child), #main .member-area__content .transactions .columns.is-body-row form fieldset .section.property .property__content-area__aside dl.items-2 .field:not(:last-child), #main .member-area__content form fieldset .section.property .property__content-area__aside dl.items-2 .transactions .columns.is-body-row .field:not(:last-child), #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row form fieldset .section.property .property__content-area__aside dl.items-2 .field:not(:last-child), #main .member-area__content form fieldset .section.property .property__content-area__aside dl.items-2 .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row .field:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row form fieldset .section.property .property__content-area__aside dl.items-2 .field:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset .section.property .property__content-area__aside dl.items-2 .transactions ul.is-body-row .field:not(:last-child), #main .member-area__content .transactions form fieldset .section.property .property__content-area__aside dl.is-body-row dl.items-2 .field:not(:last-child), #main .member-area__content form fieldset .transactions .section.property .property__content-area__aside dl.is-body-row dl.items-2 .field:not(:last-child), #main .member-area__content .transactions form fieldset .section.property .property__content-area__aside dl.items-2 dl.is-body-row .field:not(:last-child), #main .member-area__content form fieldset .transactions .section.property .property__content-area__aside dl.items-2 dl.is-body-row .field:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions .columns.is-body-row form fieldset dl.items-2 .field:not(:last-child), .section.property .property__content-area__aside #main .member-area__content form fieldset dl.items-2 .transactions .columns.is-body-row .field:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row form fieldset dl.items-2 .field:not(:last-child), .section.property .property__content-area__aside #main .member-area__content form fieldset dl.items-2 .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row .field:not(:last-child), .section.property .property__content-area__aside #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row form fieldset dl.items-2 .field:not(:last-child), .section.property .property__content-area__aside #main .search-forms .Fields .fields-wrapper.optionset .member-area__content form fieldset dl.items-2 .transactions ul.is-body-row .field:not(:last-child), #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row #main .member-area__content form fieldset dl.items-2 .field:not(:last-child), #main .member-area__content .transactions .section.property .property__content-area__aside #main .member-area__content form fieldset dl.items-2 dl.is-body-row .field:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row form fieldset dl.items-2 .field:not(:last-child), .section.property .property__content-area__aside #main .member-area__content form fieldset dl.items-2 .transactions dl.is-body-row .field:not(:last-child), #main .member-area__content .transactions .columns.is-body-row .section.property .property__content-area__aside dl dt:not(:last-child), .section.property .property__content-area__aside dl #main .member-area__content .transactions .columns.is-body-row dt:not(:last-child), #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row .section.property .property__content-area__aside dl dt:not(:last-child), .section.property .property__content-area__aside dl #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row dt:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row .section.property .property__content-area__aside dl dt:not(:last-child), .section.property .property__content-area__aside dl #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row dt:not(:last-child), #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row dt:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row dt:not(:last-child), #main .member-area__content .transactions .columns.is-body-row .section.property .property__content-area__aside dl dd:not(:last-child), .section.property .property__content-area__aside dl #main .member-area__content .transactions .columns.is-body-row dd:not(:last-child), #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row .section.property .property__content-area__aside dl dd:not(:last-child), .section.property .property__content-area__aside dl #main .member-area__content .transactions .search-forms .Fields .fields-wrapper.optionset ul.is-body-row dd:not(:last-child), #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row .section.property .property__content-area__aside dl dd:not(:last-child), .section.property .property__content-area__aside dl #main .search-forms .Fields .fields-wrapper.optionset .member-area__content .transactions ul.is-body-row dd:not(:last-child), #main .member-area__content .transactions .section.property .property__content-area__aside dl.is-body-row dd:not(:last-child), .section.property .property__content-area__aside #main .member-area__content .transactions dl.is-body-row dd:not(:last-child) {
+    padding-bottom: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content .transactions .is-body {
+    margin-top: 24px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content__business-list__logo {
+    padding-bottom: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content__business-list__info {
+    font-size: 14px;
+  }
+  #main .member-area__content__business-list__info .subtitle {
+    margin-bottom: 12px;
+  }
+}
 #main .member-area__content__property-list__item__info a.button.is-active {
   background-color: #001d58 !important;
   color: white !important;
@@ -10512,6 +10615,12 @@ div.field.textarea {
   position: absolute;
   right: 0;
   top: 1.25rem;
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content .control-buttons {
+    position: static;
+    margin-bottom: 0.75rem;
+  }
 }
 #main .member-area__content .control-buttons a {
   display: inline-block;
@@ -10561,6 +10670,12 @@ div.field.textarea {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
 }
+@media screen and (max-width: 768px) {
+  #main .member-area__content form fieldset .as-flex {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+}
 #main .member-area__content form fieldset .fields__aside .uploader h3.title {
   margin-bottom: 10px;
 }
@@ -10590,6 +10705,11 @@ div.field.textarea {
 }
 #main .member-area__content form fieldset .fields__aside .previewable-uploader__previewable__thumbnail:last-child {
   margin-right: 0;
+}
+@media screen and (max-width: 768px) {
+  #main .member-area__content form fieldset .fields__aside .previewable-uploader__previewable__thumbnail {
+    margin-bottom: 10px;
+  }
 }
 #main .member-area__content form fieldset .fields__aside .previewable-uploader__previewable__thumbnail .btn-remove-thumbnail {
   visibility: hidden;
@@ -11906,6 +12026,11 @@ body.lb-disable-scrolling {
   list-style: none;
   font-size: 1.25rem;
 }
+@media screen and (max-width: 768px) {
+  .footer ul li {
+    font-size: 14px;
+  }
+}
 .footer ul li a {
   color: #fff;
   text-decoration: none;
@@ -11965,19 +12090,22 @@ body.lb-disable-scrolling {
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
-    -webkit-align-items: center;
-    align-items: center;
+    -webkit-align-items: flext-start;
+    align-items: flext-start;
   }
   .footer .social .payment-methods,
-  .footer .social .payment-disclaimer,
-  .footer .social .footer__col__logo-holder,
-  .footer .social ul {
+  .footer .social .payment-disclaimer {
     width: 50%;
+  }
+  .footer .social ul {
+    width: 100%;
   }
 }
 .footer .social ul li {
   display: inline-block;
   margin-right: 20px;
+  margin-bottom: 0;
+  vertical-align: bottom;
 }
 .footer .social ul li:last-child {
   margin-right: 0;
@@ -12809,6 +12937,11 @@ body.lb-disable-scrolling {
 .interest-item .actions .button:last-child, .interest-item .actions input.action:last-child {
   margin-right: 0;
 }
+@media screen and (max-width: 768px) {
+  .interest-item .actions .button, .interest-item .actions input.action {
+    margin-bottom: 0.5em;
+  }
+}
 .interest-item .ratings,
 .interest-item .content,
 .interest-item .actions {
@@ -12855,6 +12988,7 @@ nav.breadcrumb {
 nav.breadcrumb a, nav.breadcrumb span {
   display: inline-block;
   font-style: italic;
+  text-transform: capitalize;
 }
 nav.breadcrumb a:after {
   padding: 0 5px;

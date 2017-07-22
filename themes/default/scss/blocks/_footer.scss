@@ -12,6 +12,9 @@
         li {
             list-style: none;
             font-size: 1.25rem;
+            @include mobile {
+                font-size: 14px;
+            }
             a {
                 color: #fff;
                 text-decoration: none;
@@ -66,17 +69,21 @@
             clear: both;
             @include display-flex;
             @include flex-wrap(wrap);
-            @include align-items(center);
+            @include align-items(flext-start);
             .payment-methods,
-            .payment-disclaimer,
-            .footer__col__logo-holder,
-            ul {
+            .payment-disclaimer {
                 width: 50%;
+            }
+
+            ul {
+                width: 100%;
             }
         };
         ul li {
             display: inline-block;
             margin-right: 20px;
+            margin-bottom: 0;
+            vertical-align: bottom;
             &:last-child {
                 margin-right: 0;
             }

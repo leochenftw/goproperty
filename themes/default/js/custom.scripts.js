@@ -4,13 +4,13 @@ $(document).ready(function(e)
     $('#burger-toggler').change(function(e)
     {
         if ($(this).prop('checked')) {
-            // $('#PropertySearchNav').addClass('hide');
+            $('.member-area__sidebar').addClass('is-static');
             TweenMax.to($('.member-area__content'), 0.25, {opacity: 0, height: 0, visibility: 'hidden'});
         } else {
-            // $('#PropertySearchNav').removeClass('hide');
+            $('.member-area__sidebar').removeClass('is-static');
             TweenMax.to($('.member-area__content'), 0.25, {opacity: 1, height: 'auto', visibility: 'visible'});
         }
-    });
+    }).change();
 
     if ($('.message.notification').length > 0) {
         $('.message.notification').removeClass('message');

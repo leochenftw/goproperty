@@ -1,4 +1,4 @@
-<% include GooglemapsHero TextOverlay=$CurrentUser.Title, TextWrapper=h1, Lat=$CurrentUser.Lat, Lng=$CurrentUser.Lng %>
+<% include GooglemapsHero Lat=$CurrentUser.Lat, Lng=$CurrentUser.Lng %>
 <div class="section dashboard">
     <div class="container member-area">
         <div class="columns is-marginless">

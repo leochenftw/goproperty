@@ -1,7 +1,7 @@
 <h2 class="title is-3 is-bold">My trade</h2>
 <% with $CurrentMember %>
-<div class="columns">
-    <div class="column is-narrow">
+<div class="columns member-area__content__business-list">
+    <div class="column is-narrow member-area__content__business-list__logo">
         <% if $Business %>
             <% if $Business.Logo %>
                 $Business.Logo.SetHeight(100)
@@ -12,11 +12,11 @@
             <img src="https://via.placeholder.com/150x100" width="150" height="100" alt="logo place holder" />
         <% end_if %>
     </div>
-    <div class="column">
+    <div class="column member-area__content__business-list__info">
         <% if $Business %>
             <h3 class="title is-4 is-bold">$Business.Title <a class="button inline" style="margin-left: 0.5em;" href="/member/action/edit-business">Edit</a></h3>
             <% with $Rating %>
-            <div class="columns subtitle">
+            <div class="columns subtitle is-flex-mobile">
                 <div class="column is-paddingless-vertical is-narrow"><ul class="rating<% if $Rated %> rated<% end_if %>" data-sid="$SecurityID" data-type="Member" data-id="$Up.ID">
                     $HTML
                 </ul></div>

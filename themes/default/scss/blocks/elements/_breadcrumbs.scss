@@ -4,6 +4,7 @@ nav.breadcrumb {
     a, span {
         display: inline-block;
         font-style: italic;
+        text-transform: capitalize;
     }
 
     a:after {
