@@ -2,6 +2,14 @@
     position: relative;
     color: #5e5e5e;
     padding: 25px 0 45px;
+    label.is-hidden-tablet.button{
+        @include mobile{
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            width: calc(100% - 24px);
+            }
+        }
     .fake-tabs {
         margin: 0;
         position: absolute;

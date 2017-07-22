@@ -4,10 +4,10 @@ $(document).ready(function(e)
     $('#burger-toggler').change(function(e)
     {
         if ($(this).prop('checked')) {
-            // $('.member-area__sidebar').addClass('is-static');
+            // $('#PropertySearchNav').addClass('hide');
             TweenMax.to($('.member-area__content'), 0.25, {opacity: 0, height: 0, visibility: 'hidden'});
         } else {
-            // $('.member-area__sidebar').removeClass('is-static');
+            // $('#PropertySearchNav').removeClass('hide');
             TweenMax.to($('.member-area__content'), 0.25, {opacity: 1, height: 'auto', visibility: 'visible'});
         }
     });
@@ -649,6 +649,10 @@ $(document).ready(function(e)
             }
         }
 
+        if ($('label[for="searchNav"]').is(':visible')) {
+            $('label[for="searchNav"]').click();
+        }
+
     });
 
     if ($('#property-gallery').length == 1) {
@@ -830,6 +834,31 @@ $(document).ready(function(e)
 
             }
         });
+    });
+
+    $('#searchNav').change(function(e)
+    {
+        if ($('label[for="searchNav"]').is(':visible')) {
+            if ($(this).prop('checked')) {
+                // $('.member-area__sidebar').addClass('is-static');
+                $('#PropertySearchNav').removeClass('hide');
+
+                TweenMax.to($('#PropertySearchForm_PropertySearchForm'), 0.25, {opacity: 0, height: 0, visibility: 'hidden'});
+            } else {
+                // $('.member-area__sidebar').removeClass('is-static');
+                $('#PropertySearchNav').addClass('hide');
+
+                TweenMax.to($('#PropertySearchForm_PropertySearchForm'), 0.25, {opacity: 1, height: 'auto', visibility: 'visible'});
+            }
+        } else {
+            $('#PropertySearchNav').removeClass('hide');
+            TweenMax.to($('#PropertySearchForm_PropertySearchForm'), 0.25, {opacity: 1, height: 'auto', visibility: 'visible'});
+        }
+    }).change();
+
+    $(window).resize(function(e)
+    {
+        $('#searchNav').prop('checked', false).change();
     });
 
 });

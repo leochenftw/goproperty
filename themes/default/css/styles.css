@@ -9852,6 +9852,14 @@ div.field.textarea {
   color: #5e5e5e;
   padding: 25px 0 45px;
 }
+@media screen and (max-width: 768px) {
+  #main .search-forms label.is-hidden-tablet.button {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: calc(100% - 24px);
+  }
+}
 #main .search-forms .fake-tabs {
   margin: 0;
   position: absolute;
