@@ -155,4 +155,45 @@ class Business extends DataObject
         }
         return false;
     }
+
+    public function getComments()
+    {
+        $comments                       =   array();
+        if ($this->Member()->Rate()->exists()) {
+
+            $received = $this->Member()->Rate()->where('"Rating"."Key" IS NULL')->distinct('"Rating"."ID"');
+
+            $total = $received->count() * 5;
+
+            if ($total > 0) {
+                foreach ($received as $rating) {
+                    if (!$this->searchArray($rating->ID, $comments)) {
+                        $comment_item = array(
+                            'ID'        =>  $rating->ID,
+                            'Member'    =>  $rating->Giver(),
+                            'Comment'   =>  $rating->Comment,
+                            'When'      =>  $rating->Created,
+                            'Stars'     =>  $rating->Stars
+                        );
+                        $comments[]     =   $comment_item;
+                    }
+                }
+
+            }
+        }
+
+        return new ArrayList($comments);
+    }
+
+    public function searchArray($ID, &$comments)
+    {
+        foreach ($comments as $comment)
+        {
+            if ($comment['ID'] == $ID) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

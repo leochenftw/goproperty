@@ -155,7 +155,8 @@
                                 <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;">&nbsp;</p>
                                 <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;"><a href="$Link">Give feedback</a></p>
                             </td>
-                        </tr></table>
+                        </tr>
+                    </table>
 <!-- end -->
 </td>
     		</tr></tbody></table>

@@ -97,6 +97,8 @@
                             </div>
                         <% end_loop %>
                         </div>
+                    <% else %>
+                        <p>No Testimonial just yet.</p>
                     <% end_if %>
                 </div>
             </article>
