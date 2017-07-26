@@ -21,6 +21,7 @@ class FeedbackInvitation extends Email
 					'baseURL'      =>  Director::absoluteURL(Director::baseURL()),
 					'ContentTitle' =>  $subject,
                     'Member'       =>  $member,
+                    'Role'         =>  $role,
                     'Link'         =>  Director::absoluteURL(Controller::join_links (
 						Controller::join_links(Director::baseURL(), 'feedback', $rating_object->ID),
 						"?key=$rating_object->Key"
