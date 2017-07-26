@@ -139,16 +139,16 @@
                                 <h2>$ContentTitle</h2>
                                 <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;">Hi, $Member.FirstName</p>
                                 <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;">
-                                <% if $role == 'Tenant' %>
+                                <% if $Role == 'Tenant' %>
                                     Please place feedback on your experience with the last landlord and the property you were renting.
                                 <% end_if %>
-                                <% if $role == 'Landlord' %>
+                                <% if $Role == 'Landlord' %>
                                     Please place feedback on your experience with the last tenant that was renting the property.
                                 <% end_if %>
-                                <% if $role == 'Client' %>
+                                <% if $Role == 'Client' %>
                                     Please place feedback on your experience with the last tradesperson and his/her service you were hiring.
                                 <% end_if %>
-                                <% if $role == 'Tradesman' %>
+                                <% if $Role == 'Tradesman' %>
                                     Please place feedback on your experience with the last client that was using your service.
                                 <% end_if %>
                                 </p>
