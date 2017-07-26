@@ -21,7 +21,9 @@
     }
 
     .page-dashboard & {
-        padding-top: 0;
+        @include mobile {
+            padding-top: 0;
+        }
     }
 
     &.property {
