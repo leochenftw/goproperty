@@ -162,7 +162,7 @@ class Business extends DataObject
 
         if ($this->Member()->Rate()->exists()) {
 
-            $received = $this->Member()->Rate()->where('"Rating"."Key" IS NULL');//->distinct('"Rating"."ID"');
+            $received = $this->Member()->Rate()->where('"Rating"."Key" IS NULL')->distinct('"Rating"."ID"');
             $total = $received->count() * 5;
             // if ($total > 0) {
                 foreach ($received as $rating) {
