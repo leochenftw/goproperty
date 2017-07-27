@@ -160,9 +160,9 @@ class Business extends DataObject
     {
         $comments                       =   array();
 
-        if ($this->Member()->Rate()->exists()) {
+        if ($this->Member()->BeingRated()->exists()) {
 
-            $received = $this->Member()->Rate()->where('"Rating"."Key" IS NULL')->distinct('"Rating"."ID"');
+            $received = $this->Member()->BeingRated()->where('"Rating"."Key" IS NULL')->distinct('"Rating"."ID"');
             $total = $received->count() * 5;
             // if ($total > 0) {
                 foreach ($received as $rating) {
