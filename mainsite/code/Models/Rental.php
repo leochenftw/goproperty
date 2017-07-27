@@ -33,8 +33,8 @@ class Rental extends DataObject
     public function onAfterWrite()
     {
         parent::onAfterWrite();
+        $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($this->PropertyID);
         if ($this->Terminated) {
-            $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($this->PropertyID);
             $property->isGone   =   false;
             $property->writeToStage('Stage');
 
@@ -59,6 +59,10 @@ class Rental extends DataObject
 
             $invitation_first->send();
             $invitation_second->send();
+        }
+
+        if (!empty($this->PropertyID)) {
+            $property->doUnpublish();
         }
     }
 }
