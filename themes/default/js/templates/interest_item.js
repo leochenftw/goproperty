@@ -1,4 +1,4 @@
-var InterestItem = function(data, canAccept)
+var InterestItem = function(data, isRenting)
 {
     this.template = '<div class="columns interest-item">\
                         <div class="portrait column is-auto-width"><img src="" /></div>\
@@ -26,7 +26,7 @@ var InterestItem = function(data, canAccept)
 
     var btnReject   =   $('<button />').addClass('button inline red').attr('data-sid', data.token).attr('data-id', data.id).html('Ignore'),
         btnContact  =   $('<a />').addClass('button inline yellow').attr('href', 'mailto:' + data.member.email).html('Contact'),
-        btnAccept   =   $('<button />').addClass('button inline green').html('Accept');
+        btnAccept   =   $('<button />').addClass('button inline green').html(isRenting ? 'Accept' : 'Sold');
 
     this.html.find('.title').click(function(e)
     {
@@ -91,15 +91,32 @@ var InterestItem = function(data, canAccept)
     btnAccept.click(function(e)
     {
         e.preventDefault();
-        var rentalForm = new RentalForm(data);
-        $('#interest-list').addClass('sunken');
-        $('body').append(rentalForm);
+        if (isRenting) {
+            var rentalForm = new RentalForm(data);
+            $('#interest-list').addClass('sunken');
+            $('body').append(rentalForm);
+        } else if (confirm('Please check the email, and make sure this is the person that you\'ve sold the property to')) {
+            console.log(data.property_id);
+            $.post(
+                '/api/v1/invitation',
+                {
+                    csrf: data.token,
+                    propertyID: data.property_id,
+                    email: data.member.email
+                },
+                function(data)
+                {
+                    location.reload();
+                    // var p = $('<p />');
+                    // p.html('Congratulation! The property has now been marked as sold, and a feedback invitation has been sent to this buyer.');
+                    // $('#interest-list .interest-item').replaceWith(p);
+                }
+            );
+        }
     });
 
-    this.html.find('.actions').append(btnReject, btnContact);
-    if (canAccept) {
-        this.html.find('.actions').append(btnAccept);
-    }
+    this.html.find('.actions').append(btnReject, btnContact, btnAccept);
+
 
     return this.html;
 };

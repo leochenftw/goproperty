@@ -1,6 +1,62 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+    $('.form-feedback-invitation').each(function(i, el)
+    {
+        var me = $(this);
+
+        $(this).ajaxSubmit(
+        {
+            onstart: function()
+            {
+                me.find('.btn-invite').addClass('is-loading');
+                me.find('.text, select').prop('disabled', true);
+            },
+
+            validator: function()
+            {
+                me.find('.is-danger').removeClass('is-danger');
+                var b = true;
+
+                if ($.trim(me.find('.invitee').val()).length == 0) {
+                    b = false;
+                    me.find('.invitee').addClass('is-danger');
+                }
+
+                if ($.trim(me.find('select option:selected').val()).length == 0) {
+                    b = false;
+                    me.find('.select').addClass('is-danger');
+                }
+
+                return b;
+            },
+
+            success: function(data)
+            {
+                me.parent().find('.btn-request-invitation').click();
+                me.find('select option:selected').remove();
+            },
+
+            done: function(data)
+            {
+                me.find('.btn-invite').removeClass('is-loading');
+                me.find('.text, select').prop('disabled', false);
+            }
+        });
+    });
+
+    $('.btn-request-invitation').click(function(e)
+    {
+        e.preventDefault();
+        if ($(this).hasClass('is-active')) {
+            $(this).removeClass('is-active');
+            $(this).parent().removeClass('show-form');
+        } else {
+            $(this).addClass('is-active');
+            $(this).parent().addClass('show-form');
+        }
+    });
+
     $('#burger-toggler').change(function(e)
     {
         if ($(this).prop('checked')) {

@@ -27,17 +27,18 @@ class Interest extends DataObject
         }
 
         $data = array(
-            'id'        =>  $this->ID,
-            'token'     =>  Session::get('SecurityID'),
-            'member'    =>  array(
-                                'id'        =>  $member->ID,
-                                'name'      =>  $member->getDisplayName(),
-                                'email'     =>  $member->Email,
-                                'portrait'  =>  !empty($member->Portrait()->ImageID) ? $member->Portrait()->Image()->Cropped()->FillMax(100, 100)->URL : '/themes/default/images/default-portrait.png',
-                                'rating'    =>  $member->getRating()->HTML
-                            ),
-            'message'   =>  $message,
-            'fold'      =>  $this->hasRead
+            'id'            =>  $this->ID,
+            'property_id'   =>  $this->PropertyID,
+            'token'         =>  Session::get('SecurityID'),
+            'member'        =>  array(
+                                    'id'        =>  $member->ID,
+                                    'name'      =>  $member->getDisplayName(),
+                                    'email'     =>  $member->Email,
+                                    'portrait'  =>  !empty($member->Portrait()->ImageID) ? $member->Portrait()->Image()->Cropped()->FillMax(100, 100)->URL : '/themes/default/images/default-portrait.png',
+                                    'rating'    =>  $member->getRating()->HTML
+                                ),
+            'message'       =>  $message,
+            'fold'          =>  $this->hasRead
         );
 
         return $data;

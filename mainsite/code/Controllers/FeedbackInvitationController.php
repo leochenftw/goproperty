@@ -36,6 +36,7 @@ class FeedbackInvitationController extends Page_Controller
         }
 
         if (!empty($this->ratingObject->TargetRole)) {
+
             if ($this->ratingObject->TargetRole == 'Tradesperson') {
                 $name = $this->ratingTarget->Business()->Title;
             } else {
@@ -56,13 +57,18 @@ class FeedbackInvitationController extends Page_Controller
         $this->ratingID =   $request->param('ID');
         $key            =   $request->getVar('key');
 
+        $rating         =   Rating::get()->byID($this->ratingID);
+
+        if (!empty($rating->GiverEmail)) {
+            return $this->redirect('/signup?BackURL=' . $this->Link() . '/' . $this->ratingID . '?key=' . $key . '&email=' . $rating->GiverEmail);
+        }
+
         if (!empty($key) && !empty($this->ratingID)) {
 
             if (empty($member)) {
                 return $this->redirect('/signin?BackURL=' . $this->Link() . '/' . $this->ratingID . '?key=' . $key);
             }
 
-            $rating     =   Rating::get()->byID($this->ratingID);
             $this->ratingObject = $rating;
 
             if ($rating->GiverID != $member->ID) {
@@ -70,7 +76,7 @@ class FeedbackInvitationController extends Page_Controller
             }
 
             if (!empty($rating->TakerID)) {
-                $this->rateWhat = 'Tradeperson';
+                $this->rateWhat = $this->ratingObject->TargetRole;
             }
 
             $this->used = empty($rating->Key);

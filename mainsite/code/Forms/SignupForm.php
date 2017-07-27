@@ -21,6 +21,10 @@ class SignupForm extends Form {
 
         // $type->addExtraClass('hide');
 
+        if ($preset_email = $controller->request->getVar('email')) {
+            $email->setValue($preset_email);
+        }
+
         if ($controller->request->getVar('BackURL')) {
             $fields->push(HiddenField::create('SignupFrom', 'SignupFrom', $controller->request->getVar('BackURL')));
         }
@@ -46,6 +50,11 @@ class SignupForm extends Form {
         $required = new RequiredFields($required_fields);
 
         parent::__construct($controller, 'SignupForm', $fields, $actions, $required);
+
+        if (!empty($preset_email)) {
+            $this->sessionMessage('Please sign up to give feedback', 'is-info');
+        }
+
         $this->setFormMethod('POST', true)
              ->setFormAction(Controller::join_links(BASE_URL, $controller->Link(), "SignupForm"));
     }

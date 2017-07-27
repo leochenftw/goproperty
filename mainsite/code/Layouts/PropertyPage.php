@@ -98,7 +98,15 @@ class PropertyPage extends Page
                 DateField::create('DateAvailable', 'Date available'),
                 TextField::create('ListingDuration', 'Days of listing'),
                 TextField::create('FullRef', 'Internal reference')->performReadonlyTransformation(),
-                DropdownField::create('CustomerID', 'Customer', Member::get()->map(), $this->CustomerID)->performReadonlyTransformation()
+                DropdownField::create('CustomerID', 'Customer', Member::get()->map(), $this->CustomerID)->performReadonlyTransformation(),
+                CheckboxField::create(
+                    'Tinfoiled',
+                    'Tinfoiled'
+                ),
+                CheckboxField::create(
+                    'isGone',
+                    'isGone'
+                )
             )
         );
         $fields->addFieldsToTab(
