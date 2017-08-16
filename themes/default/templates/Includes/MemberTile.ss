@@ -13,7 +13,7 @@
                     <img src="$URL" width="$Width" height="$Height" class="member-self" />
                 <% end_with %>
             <% else %>
-                <img src="/themes/default/images/default-portrait.png" width="75" height="75" />
+                <img src="/themes/default/images/default-portrait.png"  class="member-self" width="75" height="75" />
             <% end_if %>
         <% else %>
             <img src="/themes/default/images/default-portrait.png" width="75" height="75" />
