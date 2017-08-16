@@ -279,6 +279,11 @@ class PropertyForm extends Form
         $result = true;
         $data = $this->getData();
 
+        if (empty($data['ListTilGone']) && empty($data['ListingCloseOn'])) {
+            $this->addErrorMessage('ListingCloseOn', 'Please choose the date this property is listed until!', 'bad');
+            return false;
+        }
+
         if (!empty($data['ListingCloseOn'])) {
             $today  =   date_create(date("Y-m-d"));
             $until  =   date_create($data['ListingCloseOn']);
