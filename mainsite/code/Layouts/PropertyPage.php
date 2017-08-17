@@ -308,16 +308,18 @@ class PropertyPage extends Page
 
     public function getRating()
     {
+        $ratings        =   (!empty($this->ListerAgencyID) && $this->RentOrSale == 'sale') ? $this->ListerAgency()->BeingRated() : $this->Ratings();
+
         $data = array(
-            'Rated'     =>  $this->Ratings()->filter(array('GiverID' => Member::currentUserID()))->first() ? true : false,
+            'Rated'     =>  $ratings->filter(array('GiverID' => Member::currentUserID()))->first() ? true : false,
             'Count'     =>  0,
             'HTML'      =>  ''
         );
 
         $n = 0;
 
-        if ($this->Ratings()->exists()) {
-            $received = $this->Ratings()->where('"Rating"."Key" IS NULL')->distinct('"Rating"."ID"');
+        if ($ratings->exists()) {
+            $received = $ratings->where('"Rating"."Key" IS NULL')->distinct('"Rating"."ID"');
             $data['Count'] = $received->count();
             $total = $received->count() * 5;
 
