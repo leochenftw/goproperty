@@ -226,3 +226,11 @@
     }
 
 }
+
+#FeedbackForm_FeedbackForm_Stars_Holder {
+    .columns.vertical-bottom {
+        @media screen and (max-width: $widescreen - 1px) {
+            display: block;
+        }
+    }
+}

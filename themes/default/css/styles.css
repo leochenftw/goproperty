@@ -10995,6 +10995,12 @@ div.field.textarea {
   color: #b8e81e;
 }
 
+@media screen and (max-width: 1191px) {
+  #FeedbackForm_FeedbackForm_Stars_Holder .columns.vertical-bottom, #FeedbackForm_FeedbackForm_Stars_Holder #main .search-forms .Fields .fields-wrapper.optionset ul.vertical-bottom, #main .search-forms .Fields .fields-wrapper.optionset #FeedbackForm_FeedbackForm_Stars_Holder ul.vertical-bottom, #FeedbackForm_FeedbackForm_Stars_Holder .section.property .property__content-area__aside dl.vertical-bottom, .section.property .property__content-area__aside #FeedbackForm_FeedbackForm_Stars_Holder dl.vertical-bottom {
+    display: block;
+  }
+}
+
 /* Preload images */
 body:after {
   content: url(../images/close.png) url(../images/loading.gif) url(../images/prev.png) url(../images/next.png);
