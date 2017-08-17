@@ -46,7 +46,7 @@ class PropertyListingPage_Controller extends Page_Controller
     public function findProperty()
     {
         $request = $this->request;
-        Debugger::inspect($request);
+        // Debugger::inspect($request);
     }
 
 }

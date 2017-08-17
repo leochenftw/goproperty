@@ -54,7 +54,7 @@ class InvitationAPI extends BaseRestController {
 
         $invitation->send();
 
-        $this->property->doUnpublish();
+        $this->property->deleteFromStage('Live');
         $this->property->isGone     =   true;
         $this->property->Tinfoiled  =   true;
         $this->property->writeToStage('Stage');

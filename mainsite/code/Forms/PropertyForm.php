@@ -279,11 +279,6 @@ class PropertyForm extends Form
         $result = true;
         $data = $this->getData();
 
-        if (empty($data['ListTilGone']) && empty($data['ListingCloseOn'])) {
-            $this->addErrorMessage('ListingCloseOn', 'Please choose the date this property is listed until!', 'bad');
-            return false;
-        }
-
         if (!empty($data['ListingCloseOn'])) {
             $today  =   date_create(date("Y-m-d"));
             $until  =   date_create($data['ListingCloseOn']);
@@ -302,8 +297,7 @@ class PropertyForm extends Form
         if (!empty($data['SecurityID']) && $data['SecurityID'] == Session::get('SecurityID')) {
             if (!empty($data['PropertyID'])) {
                 $property = Versioned::get_by_stage('PropertyPage', 'Stage')->byID($data['PropertyID']);
-                // $property->ListingCloseOn = $data['ListingCloseOn'];
-                // $property->writeToStage('Stage');
+
                 $this->doSubmit($data, $form, true);
 
                 if ($member = Member::currentUser()) {
@@ -321,6 +315,20 @@ class PropertyForm extends Form
                         $amount = ($property->RentOrSale == 'rent') ? Config::inst()->get('PropertyPage', 'TilRented') : Config::inst()->get('PropertyPage', 'TilSold');
                     } else {
                         $daily_charge = Config::inst()->get('PropertyPage', 'DailyCharge');
+
+                        if (empty($property->ListingDuration)) {
+                            if (!empty($property->ListingCloseOn)) {
+                                // Debugger::inspect();
+                                $today  =   date_create(date("Y-m-d"));
+                                $until  =   date_create($property->ListingCloseOn);
+
+                                if ($until >= $today) {
+                                    $diff   =   date_diff($today,$until);
+                                    $property->ListingDuration = $diff->days + 1;
+                                }
+                            }
+                        }
+
                         $amount = $daily_charge * $property->ListingDuration;
                     }
 

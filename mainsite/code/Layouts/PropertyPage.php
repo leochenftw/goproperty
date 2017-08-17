@@ -280,12 +280,6 @@ class PropertyPage extends Page
     {
         if (!empty($this->ListerAgencyID)) {
             return $this->ListerAgency();
-            // $data = array(
-            //     'Portrait'              =>  $lister->Logo(),
-            //     'DisplayPhonenumber'    =>  true,
-            //     'DisplayName'           =>  $lister->Title,
-            //     'ContactNumber'         =>  $lister->ContactNumber,
-            // );
         }
 
         return null;
@@ -293,8 +287,6 @@ class PropertyPage extends Page
 
     public function Member()
     {
-
-
         return $this->Lister();
     }
 
@@ -308,7 +300,11 @@ class PropertyPage extends Page
 
     public function getRating()
     {
-        $ratings        =   (!empty($this->ListerAgencyID) && $this->RentOrSale == 'sale') ? $this->ListerAgency()->OwnedBy()->BeingRated() : $this->Ratings();
+        $ratings        =   $this->Ratings();
+
+        if ($this->RentOrSale == 'sale') {
+            $ratings    =   !empty($this->ListerAgencyID) ? $this->ListerAgency()->OwnedBy()->BeingRated() : $this->Lister()->BeingRated();
+        }
 
         $data = array(
             'Rated'     =>  $ratings->filter(array('GiverID' => Member::currentUserID()))->first() ? true : false,

@@ -1,6 +1,20 @@
 window.gplaceapi = 'AIzaSyC0iYnTDuwXR7d1hdo1Gd-QTCFfqoAyNR4';
 $(document).ready(function(e)
 {
+
+    $('#SaleForm_SaleForm input[name="action_doList"], #RentForm_RentForm input[name="action_doList"]').click(function(e)
+    {
+        if ($('input[name="ListingCloseOn"]').length > 0) {
+            if ($('input[name="ListingCloseOn"]').is(':visible')) {
+                if ($.trim($('input[name="ListingCloseOn"]').val()).length == 0) {
+                    alert('Please choose the date this property is listed until!');
+                    $('input[name="ListingCloseOn"]').focus();
+                    return false;
+                }
+            }
+        }
+    });
+
     $('.form-feedback-invitation').each(function(i, el)
     {
         var me = $(this);
