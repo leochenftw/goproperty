@@ -45,7 +45,7 @@
                 <% if $FeedbackMessage %>
                     $FeedbackMessage
                 <% else %>
-                    You just open a feedback ticket that you have previously rated.
+                    You just opened a feedback ticket that you have previously rated.
                 <% end_if %>
                 </div>
             <% end_if %>
