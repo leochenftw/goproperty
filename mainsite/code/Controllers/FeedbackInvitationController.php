@@ -80,7 +80,6 @@ class FeedbackInvitationController extends Page_Controller
             }
 
             $this->used = empty($rating->Key);
-            Session::set('FeedbackMessage', 'You have rated. Thank you for your feedback!');
 
             $this->ratingTarget = !empty($rating->TakerID) ? $rating->Taker() : Versioned::get_by_stage('PropertyPage', 'Stage')->byID($rating->PropertyID);
 

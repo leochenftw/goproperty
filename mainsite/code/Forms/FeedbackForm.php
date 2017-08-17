@@ -50,7 +50,9 @@ class FeedbackForm extends Form
             $form->saveInto($rating);
             $rating->Key = null;
             $rating->write();
-            $form->sessionMessage('Thanks for your feedback!', 'is-success');
+
+            Session::set('FeedbackMessage', 'You have rated. Thank you for your feedback!');
+                        
             Session::clear("FormData.{$form->getName()}.data");
             return $this->controller->redirectBack();
         }
