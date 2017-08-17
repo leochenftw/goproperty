@@ -154,12 +154,17 @@
             padding: 3rem 12px;
 
             .feedback-form {
-                select.dropdown {
-                    display: block;
-                    width: 100%;
-                    padding: 10px;
-                    border: 1px solid #dbdbdb;
-                    border-radius: 3px;
+                .select {
+                    height: auto;
+                    select.dropdown {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        min-height: 0;
+                        padding: 10px 40px 12px 10px;
+                        border: 1px solid #dbdbdb;
+                        border-radius: 3px;
+                    }
                 }
 
                 .field {
@@ -227,10 +232,22 @@
 
 }
 
-#FeedbackForm_FeedbackForm_Stars_Holder {
+#FeedbackForm_FeedbackForm {
     .columns.vertical-bottom {
         @media screen and (max-width: $widescreen - 1px) {
             display: block;
+            .column {
+                width: 100%;
+                flex: none;
+                display: block;
+                &:not(:last-child) {
+                    padding-bottom: 0;
+                }
+
+                ul.has-text-right {
+                    text-align: left;
+                }
+            }
         }
     }
 }
