@@ -308,7 +308,7 @@ class PropertyPage extends Page
 
     public function getRating()
     {
-        $ratings        =   (!empty($this->ListerAgencyID) && $this->RentOrSale == 'sale') ? $this->ListerAgency()->BeingRated() : $this->Ratings();
+        $ratings        =   (!empty($this->ListerAgencyID) && $this->RentOrSale == 'sale') ? $this->ListerAgency()->OwnedBy()->BeingRated() : $this->Ratings();
 
         $data = array(
             'Rated'     =>  $ratings->filter(array('GiverID' => Member::currentUserID()))->first() ? true : false,
