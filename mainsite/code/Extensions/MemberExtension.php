@@ -101,8 +101,13 @@ class MemberExtension extends DataExtension
         $portrait   =   $this->owner->Portrait();
         $business   =   $this->owner->Business();
 
-        $portrait->delete();
-        $business->delete();
+        if ($portrait->exists()) {
+            $portrait->delete();
+        }
+
+        if ($business->exists()) {
+            $business->delete();
+        }
 
         if ($rates->count() > 0) {
             foreach ($rates as $rate)
