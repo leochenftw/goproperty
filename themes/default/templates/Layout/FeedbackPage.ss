@@ -41,7 +41,13 @@
                     </form>
                 <% end_with %>
             <% else %>
-                <div class="column is-half is-offset-one-quarter">You have rated</div>
+                <div class="column is-half is-offset-one-quarter">
+                <% if $FeedbackMessage %>
+                    $FeedbackMessage
+                <% else %>
+                    You just opened a feedback ticket that you have previously rated.
+                <% end_if %>
+                </div>
             <% end_if %>
         </div>
     <% end_if %>

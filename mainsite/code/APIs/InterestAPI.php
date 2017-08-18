@@ -69,7 +69,7 @@ class InterestAPI extends BaseRestController {
                 $interest->Expired = true;
                 $interest->write();
             }
-            
+
             $this->property->isGone = true;
             $this->property->isPaid = false;
             $this->property->writeToStage('Stage');

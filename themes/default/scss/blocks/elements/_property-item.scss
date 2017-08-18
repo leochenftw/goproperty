@@ -48,6 +48,69 @@
                         margin-top: 6px;
                     }
                 }
+
+                .form-feedback-invitation {
+                    visibility: hidden;
+                    opacity: 0;
+                    position: absolute;
+                    margin-top: 10px;
+                    @include transition(all 0.3s);
+                    max-width: 360px;
+                    width: 100%;
+                    @include mobile {
+                        margin-top: 20px;
+                    }
+
+                    .field {
+                        margin-bottom: 20px;
+                        .select {
+                            display: block;
+                            select {
+                                width: 100%;
+                            }
+                        }
+                    }
+
+                    // .invitee {
+                    //     display: block;
+                    //     width: 100%;
+                    //     padding-right: 96px;
+                    //     height: 32px;
+                    // }
+                    //
+                    // .btn-invite {
+                    //     position: absolute;
+                    //     top: 0;
+                    //     right: 0;
+                    //     margin-right: 0;
+                    //     height: 100%;
+                    //     font-size: 16px;
+                    //     border-top-left-radius: 0;
+                    //     border-bottom-left-radius: 0;
+                    //     @include mobile {
+                    //         margin-top: 0;
+                    //     }
+                    // }
+                }
+
+                &.show-form {
+                    // .btn {
+                    //     &-listing,
+                    //     &-delete {
+                    //         display: none;
+                    //     }
+                    //
+                    //     &-request-invitation {
+                    //         margin-bottom: 10px;
+                    //     }
+                    // }
+
+                    .form-feedback-invitation {
+                        position: relative;
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
             }
         }
 

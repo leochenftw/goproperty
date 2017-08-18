@@ -98,6 +98,7 @@
                 padding-right: 20px;
                 @include mobile{
                     width: 100%;
+                    padding-right: 110px;
                 }
                 &.business-detail {
                     font-size: 16px;
@@ -146,6 +147,7 @@
                 }
 
                 &__location {
+                    
                     h3 {
                         font-size: 20px;
                         margin-bottom: 16px;
@@ -166,13 +168,21 @@
                         margin-bottom: 5px;
                     }
                 }
+
                 &__lister {
                     position: absolute;
                     top: -50%;
-                    right: 30px;
+                    right: 20px;
                     @include transform(translateY(-16px));
                     img {
                         border-radius: 50%;
+                        border: 4px solid white;
+                    }
+
+                    @include mobile {
+                        top: -100%;
+                        right: 16px;
+                        @include transform(translateY(10%));
                     }
                 }
             }
@@ -184,7 +194,7 @@
 
                     margin-left: -12px !important;
                     margin-right: -12px !important;
-            
+
             }
             @include align-items(center);
             .page-tradesmenlister & {

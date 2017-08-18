@@ -10,7 +10,8 @@ class Rating extends DataObject
         'Stars'         =>  'Int',
         'Comment'       =>  'Text',
         'Key'           =>  'Varchar(40)',
-        'TargetRole'    =>  'Varchar(16)'
+        'TargetRole'    =>  'Varchar(16)',
+        'GiverEmail'    =>  'Varchar(256)'
     );
 
     private static $default_sort = array(

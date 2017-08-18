@@ -21,6 +21,14 @@ p.align-vertical-center {
     }
 }
 
+.select {
+    &.is-danger {
+        select {
+            border-color: #ff3860;
+        }
+    }
+}
+
 .is {
     &-maxheight {
         height: 100%;

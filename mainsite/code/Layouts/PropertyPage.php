@@ -98,7 +98,15 @@ class PropertyPage extends Page
                 DateField::create('DateAvailable', 'Date available'),
                 TextField::create('ListingDuration', 'Days of listing'),
                 TextField::create('FullRef', 'Internal reference')->performReadonlyTransformation(),
-                DropdownField::create('CustomerID', 'Customer', Member::get()->map(), $this->CustomerID)->performReadonlyTransformation()
+                DropdownField::create('CustomerID', 'Customer', Member::get()->map(), $this->CustomerID)->performReadonlyTransformation(),
+                CheckboxField::create(
+                    'Tinfoiled',
+                    'Tinfoiled'
+                ),
+                CheckboxField::create(
+                    'isGone',
+                    'isGone'
+                )
             )
         );
         $fields->addFieldsToTab(
@@ -272,12 +280,6 @@ class PropertyPage extends Page
     {
         if (!empty($this->ListerAgencyID)) {
             return $this->ListerAgency();
-            // $data = array(
-            //     'Portrait'              =>  $lister->Logo(),
-            //     'DisplayPhonenumber'    =>  true,
-            //     'DisplayName'           =>  $lister->Title,
-            //     'ContactNumber'         =>  $lister->ContactNumber,
-            // );
         }
 
         return null;
@@ -285,8 +287,6 @@ class PropertyPage extends Page
 
     public function Member()
     {
-
-
         return $this->Lister();
     }
 
@@ -300,16 +300,22 @@ class PropertyPage extends Page
 
     public function getRating()
     {
+        $ratings        =   $this->Ratings();
+
+        if ($this->RentOrSale == 'sale') {
+            $ratings    =   !empty($this->ListerAgencyID) ? $this->ListerAgency()->OwnedBy()->BeingRated() : $this->Lister()->BeingRated();
+        }
+
         $data = array(
-            'Rated'     =>  $this->Ratings()->filter(array('GiverID' => Member::currentUserID()))->first() ? true : false,
+            'Rated'     =>  $ratings->filter(array('GiverID' => Member::currentUserID()))->first() ? true : false,
             'Count'     =>  0,
             'HTML'      =>  ''
         );
 
         $n = 0;
 
-        if ($this->Ratings()->exists()) {
-            $received = $this->Ratings()->where('"Rating"."Key" IS NULL')->distinct('"Rating"."ID"');
+        if ($ratings->exists()) {
+            $received = $ratings->where('"Rating"."Key" IS NULL')->distinct('"Rating"."ID"');
             $data['Count'] = $received->count();
             $total = $received->count() * 5;
 

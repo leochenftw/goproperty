@@ -14,6 +14,7 @@ Director:
     'api/v1/payment/$ID': 'PaymentAPI'
     'api/v1/creditcard/$ID': 'CreditcardAPI'
     'api/v1/agency/$ID': 'AgencyAPI'
+    'api/v1/invitation/$ID': 'InvitationAPI'
     'api/v1/rental/$ID/$PROPERTYID': 'RentalAPI'
     'api/v1/rating/$Type/$ID': 'RatingAPI'
     'api/v1/service/$Title': 'ServiceAPI'

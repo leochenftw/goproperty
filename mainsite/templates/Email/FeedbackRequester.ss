@@ -136,13 +136,16 @@
                 	<!-- start -->
                     <table class="alpha-center-table bg-white" width="600" cellpadding="0" cellspacing="0" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !important; border-spacing: 0 !important; border-collapse: collapse !important; table-layout: fixed !important; margin: 0 auto !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; width: 600px; background-color: #fff;"><tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
 <td valign="top" class="content-area has-text-left" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; text-align: left; border: none; padding: 30px 30px 50px; background-color: #fff;">
-                                <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;">Hi there,</p>
-                                <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;">Someone is interested in the $Thing that you are listing.</p>
-                                <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: bold; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;">Please <a href="$Link">sign in to your dashboard and check out</a>.</p>
+                                <h2>$ContentTitle</h2>
+                                <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;">Hi, there</p>
+                                <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;">
+                                    You are invited to give feedback to the seller of your new property.
+                                </p>
                                 <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;">&nbsp;</p>
-                                <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;">GoProperty Team</p>
+                                <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: none!important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-style: normal; font-weight: 400; margin-top: 0; color: #000; font-size: 20px; line-height: 1.4;"><a href="$Link">Give feedback</a></p>
                             </td>
-                        </tr></table>
+                        </tr>
+                    </table>
 <!-- end -->
 </td>
     		</tr></tbody></table>

@@ -2,6 +2,9 @@
     position: relative;
     color: #5e5e5e;
     padding: 25px 0 45px;
+    @include mobile {
+        padding: 12px 0;
+    }
     label.is-hidden-tablet.button{
         @include mobile{
             text-align: center;
@@ -19,6 +22,9 @@
         @include mobile{
             // display: none;
             position: static;
+            margin: 25px 0 0;
+            padding-left: 12px;
+            padding-right: 12px;
         }
         @include justify-content(center);
         .tab-ish {
@@ -54,6 +60,10 @@
 
             &:last-child {
                 border-radius: 5px 10px 0 0;
+            }
+
+            @include mobile {
+                border-radius: 0 !important;
             }
         }
     }

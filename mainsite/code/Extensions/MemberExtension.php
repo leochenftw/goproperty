@@ -124,7 +124,7 @@ class MemberExtension extends DataExtension
             $prop->delete();
         }
 
-        $propages   =   Versioned::get_by_stage('PropertyPage', 'Stage')->filter(array('ListerID', $this->owner->ID));
+        $propages   =   Versioned::get_by_stage('PropertyPage', 'Stage')->filter(array('ListerID' => $this->owner->ID));
 
         foreach ($propages as $propage)
         {
@@ -332,6 +332,11 @@ class MemberExtension extends DataExtension
             return $freeUntil >= time();
         }
         return false;
+    }
+
+    public function getPropertyonSale()
+    {
+        return Versioned::get_by_stage('PropertyPage', 'Stage')->filter(array('ListerID' => $this->owner->ID, 'Tinfoiled' => false, 'RentOrSale' => 'sale'));
     }
 
 }
