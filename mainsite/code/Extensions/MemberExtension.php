@@ -104,32 +104,42 @@ class MemberExtension extends DataExtension
         $portrait->delete();
         $business->delete();
 
-        foreach ($rates as $rate)
-        {
-            $rate->delete();
+        if ($rates->count() > 0) {
+            foreach ($rates as $rate)
+            {
+                $rate->delete();
+            }
         }
 
-        foreach ($rateds as $rated)
-        {
-            $rated->delete();
+        if ($rateds->count() > 0) {
+            foreach ($rateds as $rated)
+            {
+                $rated->delete();
+            }
         }
 
-        foreach ($wishlist as $wish)
-        {
-            $wish->delete();
+        if ($wishlist->count() > 0) {
+            foreach ($wishlist as $wish)
+            {
+                $wish->delete();
+            }
         }
 
-        foreach ($props as $prop)
-        {
-            $prop->delete();
+        if ($props->count() > 0) {
+            foreach ($props as $prop)
+            {
+                $prop->delete();
+            }
         }
+
 
         $propages   =   Versioned::get_by_stage('PropertyPage', 'Stage')->filter(array('ListerID' => $this->owner->ID));
-
-        foreach ($propages as $propage)
-        {
-            $propage->doUnpublish();
-            $propage->deleteFromStage('Stage');
+        if ($propages->count() > 0) {
+            foreach ($propages as $propage)
+            {
+                $propage->doUnpublish();
+                $propage->deleteFromStage('Stage');
+            }
         }
     }
 
