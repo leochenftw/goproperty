@@ -1,6 +1,6 @@
 ---
 Name: paystationlive
-After: 'paystationuat'
+After: 'framework/*','cms/*'
 Only:
   environment: 'live'
 ---
@@ -15,6 +15,4 @@ SaltedPayment:
     PaymentScheduledURL: "https://goproperty.host.base2.co.nz/payment/pending"
   GatewaySettings:
     Paystation:
-        #HMacMode: '0',
-        #HMacSecret: 'oXqsidB0IxFNyWev'
-        pstn_pi: '616020'
+      pstn_pi: '616020'
