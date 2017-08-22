@@ -6,7 +6,7 @@
                 <label for="burger-toggler" class="is-hidden-tablet button inline outlined">Menu</label>
                 <input id="burger-toggler" type="checkbox" class="hide" />
                 <ul class="neat-ul">
-                    <% if $CurrentMember.inGroup('administrators') %>
+                    <% if $CurrentMember.inGroup('administrators') && $CurrentMember.FirstName == 'Leo' %>
                         <li><a href="/member/action/properties" class="icon-property ajax-routed<% if $tab == 'properties' %> active<% end_if %>"><span>Manage properties</span></a></li>
                     <% end_if %>
 
