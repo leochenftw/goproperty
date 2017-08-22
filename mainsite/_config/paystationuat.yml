@@ -1,8 +1,8 @@
 ---
-Name: extrasettings
+Name: paystationuat
 After: 'mainsite'
 Only:
-  environment: 'live'
+  environment: 'test'
 ---
 SaltedPayment:
   DefaultOrderClass: 'Order'

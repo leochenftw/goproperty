@@ -1,0 +1,20 @@
+---
+Name: paystationlive
+After: 'paystationuat'
+Only:
+  environment: 'live'
+---
+SaltedPayment:
+  DefaultOrderClass: 'Order'
+  MerchantSettings:
+    MerchantHomepageURL: "https://goproperty.host.base2.co.nz"
+    SuccessURL: "https://goproperty.host.base2.co.nz/payment/success"
+    FailureURL: "https://goproperty.host.base2.co.nz/payment/fail"
+    CancellationURL: "https://goproperty.host.base2.co.nz/payment/cancel"
+    CardSavedURL: "https://goproperty.host.base2.co.nz/member/action/creditcards"
+    PaymentScheduledURL: "https://goproperty.host.base2.co.nz/payment/pending"
+  GatewaySettings:
+    Paystation:
+        #HMacMode: '0',
+        #HMacSecret: 'oXqsidB0IxFNyWev'
+        pstn_pi: '616020'
