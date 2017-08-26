@@ -25,3 +25,4 @@ Director:
     'tradesmen/$region/$district/$suburb/$slug': 'TradesmenLister'
     'payment/$status': 'GatewayController'
     'feedback/$ID': 'FeedbackInvitationController'
+    'prelive-test': 'PreliveController'
