@@ -7,12 +7,12 @@ Only:
 SaltedPayment:
   DefaultOrderClass: 'Order'
   MerchantSettings:
-    MerchantHomepageURL: "https://goproperty.host.base2.co.nz"
-    SuccessURL: "https://goproperty.host.base2.co.nz/payment/success"
-    FailureURL: "https://goproperty.host.base2.co.nz/payment/fail"
-    CancellationURL: "https://goproperty.host.base2.co.nz/payment/cancel"
-    CardSavedURL: "https://goproperty.host.base2.co.nz/member/action/creditcards"
-    PaymentScheduledURL: "https://goproperty.host.base2.co.nz/payment/pending"
+    MerchantHomepageURL: "https://www.goproperty.co.nz"
+    SuccessURL: "https://www.goproperty.co.nz/payment/success"
+    FailureURL: "https://www.goproperty.co.nz/payment/fail"
+    CancellationURL: "https://www.goproperty.co.nz/payment/cancel"
+    CardSavedURL: "https://www.goproperty.co.nz/member/action/creditcards"
+    PaymentScheduledURL: "https://www.goproperty.co.nz/payment/pending"
   GatewaySettings:
     Paystation:
       pstn_pi: '616020'
