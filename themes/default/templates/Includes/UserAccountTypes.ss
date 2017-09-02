@@ -36,5 +36,21 @@
             <p>You can list your business and services, and take job from the public.</p>
         </li>
     <% end_if %>
+
+    <%-- this needs to go --%>
+    <% if $CurrentMember.inGroup('testa') %>
+        <li class="checked">
+            <h4>Test A</h4>
+            <p>$1.00 test.</p>
+        </li>
+    <% end_if %>
+
+    <% if $CurrentMember.inGroup('testb') %>
+        <li class="checked">
+            <h4>Test B</h4>
+            <p>$1.50 test.</p>
+        </li>
+    <% end_if %>
+    <%-- this needs to go --%>
 </ul>
 <% end_if %>
