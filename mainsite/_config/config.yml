@@ -54,8 +54,6 @@ Member:
     'Landlords': 15
     'Tradesmen': 25
     'Realtors': 35
-    'TestA': 1
-    'TestB': 1.5
   extensions:
     - AddressProperties
     - MemberExtension

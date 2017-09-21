@@ -54,24 +54,6 @@
                     <p>${$AccountUpgradeForm.getSubscription('Tradesmen')} per month</p>
                 </li>
             <% end_if %>
-
-            <%-- this needs to go --%>
-            <% if not $CurrentMember.inGroup('testa') %>
-                <li class="icon" data-price="$AccountUpgradeForm.getSubscription('TestA')" data-target="AccountUpgradeForm_AccountUpgradeForm_AccountType_TestA">
-                    <h4 class="title is-4">Test A</h4>
-                    <p>$1.00 test</p>
-                    <p>${$AccountUpgradeForm.getSubscription('TestA')} per month</p>
-                </li>
-            <% end_if %>
-
-            <% if not $CurrentMember.inGroup('testb') %>
-                <li class="icon" data-price="$AccountUpgradeForm.getSubscription('TestB')" data-target="AccountUpgradeForm_AccountUpgradeForm_AccountType_TestB">
-                    <h4 class="title is-4">Test B</h4>
-                    <p>$1.5 test</p>
-                    <p>${$AccountUpgradeForm.getSubscription('TestB')} per month</p>
-                </li>
-            <% end_if %>
-            <%-- this needs to go --%>
         </ul>
     </div>
     <div class="content">

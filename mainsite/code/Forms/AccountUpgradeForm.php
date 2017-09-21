@@ -11,10 +11,7 @@ class AccountUpgradeForm extends Form
         $types = array(
             'Landlords'     =>  'Landlord',
             'Realtors'      =>  'Realtor',
-            'Tradesmen'     =>  'Tradesperson',
-            // below needs to go
-            'TestA'         =>  'Test A ($1.00)',
-            'TestB'         =>  'Test B ($1.50)',
+            'Tradesmen'     =>  'Tradesperson'
         );
 
         if ($member = Member::currentUser()) {
@@ -30,15 +27,6 @@ class AccountUpgradeForm extends Form
                 unset($types['Realtors']);
             }
 
-            // this needs to go
-            if ($member->inGroup('testa')) {
-                unset($types['TestA']);
-            }
-
-            if ($member->inGroup('testb')) {
-                unset($types['TestB']);
-            }
-            // this needs to go
         }
 
         $checked = null;

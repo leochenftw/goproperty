@@ -12,9 +12,6 @@ class Order extends SaltedOrder
         'Landlords'             =>  'Boolean',
         'Realtors'              =>  'Boolean',
         'Tradesmen'             =>  'Boolean',
-        // needs to go
-        'TestA'                 =>  'Boolean',
-        'TestB'                 =>  'Boolean'
     );
 
     protected static $has_one = array(
@@ -34,17 +31,6 @@ class Order extends SaltedOrder
         if ($this->Tradesmen) {
             return 'Tradesperson account subscription';
         }
-
-        // this needs to go
-        if ($this->TestA) {
-            return '$1.00 test';
-        }
-
-        if ($this->TestB) {
-            return '$1.50 test';
-        }
-
-        // this needs to go
 
         $clsname = $this->PaidToClass;
         if ($property = $clsname::get()->byID($this->PaidToClassID)) {
@@ -85,16 +71,6 @@ class Order extends SaltedOrder
                 if ($this->Tradesmen) {
                     $member->addToGroupByCode('tradesmen', 'Tradesmen');
                 }
-
-                // this needs to go
-                if ($this->TestA) {
-                    $member->addToGroupByCode('testa', 'TestA');
-                }
-
-                if ($this->TestB) {
-                    $member->addToGroupByCode('testb', 'TestB');
-                }
-                // this needs to go
 
                 $member->beLandlords = false;
                 $member->beTradesmen = false;
