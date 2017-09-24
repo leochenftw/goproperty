@@ -26,6 +26,7 @@ class AccountUpgradeForm extends Form
             if ($member->inGroup('realtors')) {
                 unset($types['Realtors']);
             }
+
         }
 
         $checked = null;

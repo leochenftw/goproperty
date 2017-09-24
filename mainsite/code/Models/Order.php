@@ -11,7 +11,7 @@ class Order extends SaltedOrder
         'PaidToClassID'         =>  'Int',
         'Landlords'             =>  'Boolean',
         'Realtors'              =>  'Boolean',
-        'Tradesmen'             =>  'Boolean'
+        'Tradesmen'             =>  'Boolean',
     );
 
     protected static $has_one = array(

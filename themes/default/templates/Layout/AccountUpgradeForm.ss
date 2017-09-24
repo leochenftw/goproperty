@@ -28,7 +28,7 @@
     </div>
     <% end_if %>
 </div>
-<% if not $CurrentMember.inGroup('landlords') || not $CurrentMember.inGroup('realtors') || not $CurrentMember.inGroup('tradesmen') %>
+<% if not $CurrentMember.inGroup('landlords') || not $CurrentMember.inGroup('realtors') || not $CurrentMember.inGroup('tradesmen') || not $CurrentMember.inGroup('testa') || not $CurrentMember.inGroup('testb') %>
     <div class="about-to content">
         <h3>Available types</h3>
         <p>Want to empower your account to do more? Choose from below account types.</p>

@@ -16,3 +16,4 @@ SaltedPayment:
   GatewaySettings:
     Paystation:
       pstn_pi: '616020'
+      pstn_tm: 'f' #test mode

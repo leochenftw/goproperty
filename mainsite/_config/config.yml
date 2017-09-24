@@ -78,7 +78,7 @@ Business:
     '1 year': 365
 PropertyPage:
   DailyCharge: 2
-  TilSold: 39.95
+  TilSold: 29.95
   TilRented: 30
   MaxBedroom: 10
   MaxBathroom: 5
@@ -109,8 +109,8 @@ PropertyPage:
     - 'Professional'
 Property:
   DailyCharge: 2
-  TilSold: 39.95
-  TilRented: 39.95
+  TilSold: 29.95
+  TilRented: 29.95
   MaxBedroom: 10
   MaxBathroom: 5
   MaxCapacity: 20
@@ -163,3 +163,4 @@ SaltedPayment:
         #HMacMode: '0',
         #HMacSecret: 'O6cS8Y52pb5fbEz6'
         pstn_pi: '615812'
+        pstn_tm: 't'
