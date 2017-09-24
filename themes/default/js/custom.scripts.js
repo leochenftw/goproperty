@@ -342,6 +342,12 @@ $(document).ready(function(e)
         );
     });
 
+    $('.notification button.delete').click(function(e)
+    {
+        e.preventDefault();
+        $(this).parents('.notification:eq(0)').remove();
+    });
+
     $('.hb-engaged.auto-fire').click();
 
     if ($('.btn-listing').length > 0) {

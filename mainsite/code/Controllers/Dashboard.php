@@ -150,6 +150,24 @@ class Dashboard extends Page_Controller {
             }
         }
 
+        if ($tab == 'list-property-for-rent' || $tab == 'list-property-for-sale') {
+
+            if ($todo = $this->request->getVar('todo')) {
+                $id     =   $this->request->getVar('property_id');
+                if ($page   =   PropertyPage::get()->byID($id)) {
+
+                    $page->deleteFromStage('Live');
+                    $page->writeToStage('Stage');
+
+                    if ($todo == 'withdraw') {
+                        Session::set('SiteMessage', '<strong><em>' . $page->Title . '</em></strong> has been withdrawn from the public listing');
+                        return $this->redirect('/member/action/my-properties');
+                    }
+                }
+            }
+
+        }
+
         return $this->customise(array('tab' => $tab))->renderWith(array('Dashboard', 'Page'));
     }
 

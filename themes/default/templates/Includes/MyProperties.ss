@@ -1,4 +1,11 @@
 <h2 class="title is-3 is-bold">My properties</h2>
+<% if $SiteMessage %>
+<div class="notification is-warning">
+    <button class="delete"></button>
+    $SiteMessage
+</div>
+<% end_if %>
+
 <div class="control-buttons as-flex wrap">
     <a data-title="Dashboard | List a property for rent" href="/member/action/list-property-for-rent" class="ajax-routed">List for rent</a>
     <% if $isAgent %>
@@ -46,7 +53,8 @@
                 <% else %>
                     <% if $isPublished %>
                         <a class="button outlined inline" href="$Link">View</a>
-                        <a class="button outlined inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID#RentForm_RentForm_action_doWithdraw">Withdraw</a>
+                        <a class="button outlined inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID&todo=edit">Edit</a>
+                        <a class="button outlined inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID&todo=withdraw">Withdraw</a>
                         <a class="button outlined inline btn-view-applicants" data-title="<% if $RentOrSale == 'rent' %>Applicants<% else %>Potential buyers<% end_if %>" href="#" data-sid="$SecurityID" data-id="$ID"><% if $RentOrSale == 'rent' %>Applicants<% else %>Interested<% end_if %> <span class="bubble">($ApplicantsCount)</span></a>
                     <% else %>
                         <a class="button outlined inline" href="/member/action/list-property-for-{$RentOrSale}?property_id=$ID">Edit</a>
@@ -59,3 +67,4 @@
     </li>
 <% end_loop %>
 </ul>
+$clearMessages
