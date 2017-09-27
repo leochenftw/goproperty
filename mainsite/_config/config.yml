@@ -79,7 +79,7 @@ Business:
 PropertyPage:
   DailyCharge: 2
   TilSold: 29.95
-  TilRented: 30
+  TilRented: 29.95
   MaxBedroom: 10
   MaxBathroom: 5
   MaxCapacity: 20
