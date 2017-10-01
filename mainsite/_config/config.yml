@@ -149,6 +149,12 @@ MenuSet:
     - "Footer First-Menu"
     - "Footer Second-Menu"
     - "Footer Social-Menu"
+Ads:
+  Position:
+    'home-top': 'Homepage top'
+    'home-middle': 'Homepage middle'
+    'home-bottom': 'Homepage bottom'
+
 SaltedPayment:
   DefaultOrderClass: 'Order'
   MerchantSettings:

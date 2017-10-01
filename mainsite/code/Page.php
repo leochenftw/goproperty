@@ -52,8 +52,8 @@ class Page_Controller extends ContentController
         'Form'
     );
 
-    public function init() {
-
+    public function init()
+    {
         parent::init();
         $themeDir = $this->ThemeDir();
         if (!$this->request->isAjax()) {
@@ -104,11 +104,13 @@ class Page_Controller extends ContentController
         }
     }
 
-    protected function getSessionID() {
+    protected function getSessionID()
+    {
         return session_id();
     }
 
-    protected function getHTTPProtocol() {
+    protected function getHTTPProtocol()
+    {
         $protocol = 'http';
         if (isset($_SERVER['SCRIPT_URI']) && substr($_SERVER['SCRIPT_URI'], 0, 5) == 'https') {
             $protocol = 'https';
@@ -118,11 +120,13 @@ class Page_Controller extends ContentController
         return $protocol;
     }
 
-    protected function getCurrentPageURL() {
+    protected function getCurrentPageURL()
+    {
         return $this->getHTTPProtocol().'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     }
 
-    public function MetaTags($includeTitle = true) {
+    public function MetaTags($includeTitle = true)
+    {
         $tags = parent::MetaTags();
         /**
          * Find title & replace with MetaTitle (if it exists).
@@ -160,11 +164,13 @@ class Page_Controller extends ContentController
         return $tags;
     }
 
-    public function getTheTitle() {
+    public function getTheTitle()
+    {
         return Convert::raw2xml(($this->MetaTitle) ? $this->MetaTitle : $this->Title);
     }
 
-    public function getBodyClass() {
+    public function getBodyClass()
+    {
         return Utilities::sanitiseClassName($this->singular_name(),'-');
     }
 
@@ -298,6 +304,21 @@ class Page_Controller extends ContentController
         Session::clear('Message');
         Session::clear('FormInfo');
         Session::clear('SiteMessage');
+    }
+
+    public function getTopAds()
+    {
+        return Ads::get()->filter(['Position' => 'home-top', 'Expiry:GreaterThanOrEqual' => time()])->first();
+    }
+
+    public function getMidAds()
+    {
+        return Ads::get()->filter(['Position' => 'home-middle', 'Expiry:GreaterThanOrEqual' => time()])->first();
+    }
+
+    public function getBottomAds()
+    {
+        return Ads::get()->filter(['Position' => 'home-bottom', 'Expiry:GreaterThanOrEqual' => time()])->first();
     }
 
 }
