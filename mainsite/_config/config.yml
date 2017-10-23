@@ -79,7 +79,7 @@ Business:
 PropertyPage:
   DailyCharge: 2
   TilSold: 29.95
-  TilRented: 30
+  TilRented: 29.95
   MaxBedroom: 10
   MaxBathroom: 5
   MaxCapacity: 20
@@ -149,6 +149,12 @@ MenuSet:
     - "Footer First-Menu"
     - "Footer Second-Menu"
     - "Footer Social-Menu"
+Ads:
+  Position:
+    'home-top': 'Homepage top'
+    'home-middle': 'Homepage middle'
+    'home-bottom': 'Homepage bottom'
+
 SaltedPayment:
   DefaultOrderClass: 'Order'
   MerchantSettings:
@@ -164,3 +170,6 @@ SaltedPayment:
         #HMacSecret: 'O6cS8Y52pb5fbEz6'
         pstn_pi: '615812'
         pstn_tm: 't'
+LeftAndMain:
+  extensions:
+    - LeftMainDecorator

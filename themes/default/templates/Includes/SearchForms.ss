@@ -9,9 +9,13 @@
             <%-- <a class="column is-2 tab-ish" href="/member/action/list-property-for-rent">List a <span>property</span></a> --%>
             <a class="column is-2 tab-ish" href="/resources"><span>Resources</span></a>
         </div>
+        <% if $Top.TopAds %>
+            $Top.TopAds
+        <% end_if %>
         <% with $PropertySearchForm %>
         <form $FormAttributes>
             <h2 class="form-title title is-2">Search</h2>
+
             <div id="form-description" class="form-description">Search for a <span>Rental Property</span></div>
             <div class="columns Fields">
                 <div class="column is-half left-half half" id="div-left">
