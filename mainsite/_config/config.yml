@@ -170,3 +170,6 @@ SaltedPayment:
         #HMacSecret: 'O6cS8Y52pb5fbEz6'
         pstn_pi: '615812'
         pstn_tm: 't'
+LeftAndMain:
+  extensions:
+    - LeftMainDecorator
