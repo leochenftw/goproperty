@@ -25,6 +25,8 @@ Requirements::set_write_js_to_body(false);
 SS_Cache::set_cache_lifetime('Property', 86400); // 1 day
 
 if (Director::isLive()) {
+    Director::forceSSL();
+    Director::forceWWW();
     SS_Log::add_writer(new SS_LogEmailWriter('leochenftw@gmail.com'), SS_Log::ERR);
 }
 
