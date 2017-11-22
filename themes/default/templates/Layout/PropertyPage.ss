@@ -14,7 +14,7 @@
             <h1 class="title is-2">$Title</h1>
             <p class="subtitle is-5">
                 <% if $RentOrSale == 'rent' %>
-                <strong>${$WeeklyRent} per week</strong><br />Available $DateAvailable.Day, $DateAvailable.Long
+                <strong>${$formattedNumber($WeeklyRent)} per week</strong><br />Available $DateAvailable.Day, $DateAvailable.Long
                 <% else %>
                     $Price
                 <% end_if %>
