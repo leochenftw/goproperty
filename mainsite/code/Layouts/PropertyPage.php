@@ -59,19 +59,19 @@ class PropertyPage extends Page
     public function getPrice()
     {
         if (!empty($this->EnquiriesOver) && $this->EnquiriesOver > 0) {
-            return 'Enquiries over $' . $this->EnquiriesOver;
+            return 'Enquiries over $' . number_format($this->EnquiriesOver, 2, '.', ',');
         }
 
         if (!empty($this->AskingPrice) && $this->AskingPrice > 0) {
-            return 'Asking price $' . $this->AskingPrice;
+            return 'Asking price $' . number_format($this->AskingPrice, 2, '.', ',');
         }
 
         if (!empty($this->RateableValue) && $this->RateableValue > 0) {
-            return 'RV $' . $this->RateableValue;
+            return 'RV $' . number_format($this->RateableValue, 2, '.', ',');
         }
 
         if (!empty($this->WeeklyRent) && $this->WeeklyRent > 0) {
-            return '$' . $this->WeeklyRent . ' per week';
+            return '$' . number_format($this->WeeklyRent, 2, '.', ',') . ' per week';
         }
 
         return '- price not specified -';
@@ -95,6 +95,10 @@ class PropertyPage extends Page
         $fields->addFieldsToTab(
             'Root.Main',
             array(
+                TextField::create(
+                    'WeeklyRent',
+                    'Weekly rent'
+                ),
                 DateField::create('DateAvailable', 'Date available'),
                 TextField::create('ListingDuration', 'Days of listing'),
                 TextField::create('FullRef', 'Internal reference')->performReadonlyTransformation(),
@@ -439,5 +443,10 @@ class PropertyPage_Controller extends Page_Controller
             $string = str_replace("\n", '<br />', $string);
         }
         return $string;
+    }
+
+    public function formattedNumber($number)
+    {
+        return number_format($number, 2, '.', ',');
     }
 }
