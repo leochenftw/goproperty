@@ -24,7 +24,7 @@ class PropertySearchForm extends Form
             Config::inst()->get('NewZealand', 'Regions')
         )->setEmptyString('All New Zealand')->setAttribute('data-direct-child', 'PropertySearchForm_PropertySearchForm_City'));
 
-        $RegionSelector->setValue('Wellington')->addExtraClass('hide');
+        $RegionSelector->setValue('Wellington');//->addExtraClass('hide');
 
         $fields->push(
             DropdownField::create(

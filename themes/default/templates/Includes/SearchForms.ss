@@ -19,7 +19,7 @@
             <div id="form-description" class="form-description">Search for a <span>Rental Property</span></div>
             <div class="columns Fields">
                 <div class="column is-half left-half half" id="div-left">
-                    <div class="fields-wrapper columns location hide">
+                    <div class="fields-wrapper columns location">
                         <label class="label is-3 column">Region</label>
                         <div class="fields column">
                             <div class="field">$Fields.fieldByName('Region')</div>
