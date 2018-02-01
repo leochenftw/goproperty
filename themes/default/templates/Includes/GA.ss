@@ -1,9 +1,12 @@
 <% if getGACode %>
-	<script>
-		var _gaq=[['_setAccount','$getGACode'],['_trackPageview']];
-		_gaq.push(['_setAllowLinker', true]);
-		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-		s.parentNode.insertBefore(g,s)}(document,'script'));
-	</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=$getGACode"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '$getGACode');
+    </script>
+
 <% end_if %>
